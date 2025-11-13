@@ -87,7 +87,7 @@ footer_credit = true
 #archive_reverse = true # Set to True to sort posts chronologically per year instead of newest first on the archive page: example.com/archive/
 
 ### Uncomment one of the below lines, or neither, depending on which type of logo you want to use:
-logo = { file="avatar.png", width="48", height="48", alt="한걸음씩", text='<span style="display: inline-flex; flex-direction: column;"><span style="font-size: 1.1rem; font-weight: 700; line-height: 1.2;">한걸음씩</span><span style="font-size: 0.7rem; color: #586069; font-weight: 400; line-height: 1.2;">어제보다 나은 오늘을 위해 전진</span></span>' }
+logo = { file="avatar.png", width="44", height="44", alt="한걸음씩", text='<span style="display: inline-block; vertical-align: middle;"><span style="display: block; font-size: 1.1rem; font-weight: 700; line-height: 1.2;">한걸음씩</span><span style="display: block; font-size: 0.7rem; color: #586069; font-weight: 400; line-height: 1.2;">어제보다 나은 오늘을 위해 전진</span></span>' }
 #textlogo = '<font color="#f90">A</font>bridge'
 #textlogo = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="32" height="32" style="vertical-align: middle; margin-right: 8px;"><circle cx="24" cy="24" r="20" fill="#0366d6" opacity="0.1"/><path d="M24 8 L32 16 L32 28 L24 36 L16 28 L16 16 Z" fill="#0366d6" stroke="#0256c7" stroke-width="1.5"/><circle cx="20" cy="20" r="2.5" fill="#fff"/><circle cx="28" cy="20" r="2.5" fill="#fff"/><path d="M20 28 Q24 30 28 28" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M14 18 L10 14 M34 18 L38 14 M14 26 L10 30 M34 26 L38 30" stroke="#0366d6" stroke-width="2" stroke-linecap="round"/></svg><span style="display: inline-block; vertical-align: middle;"><span style="font-size: 1.2rem; font-weight: 700;">한걸음씩</span><br><span style="font-size: 0.75rem; color: #586069; font-weight: 400;">어제보다 나은 오늘을 위해 전진</span></span>'
 
@@ -97,7 +97,7 @@ foothr = false # show or hide horizontal rule above footer
 
 ### $CURRENT_YEAR and $SITE_TITLE can be used anywhere within the copyright, you can change their position or you can also delete them and type whatever you want instead.
 #copyright = false # set to false to disable the copyright.
-#copyright_override = '© 2019-$CURRENT_YEAR $SITE_TITLE'
+copyright_override = '© $CURRENT_YEAR 김태훈'
 #copyright_override = '© $CURRENT_YEAR $SITE_TITLE • Website content is licensed <a rel="noopener" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.'
 
 

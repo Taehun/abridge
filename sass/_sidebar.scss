@@ -63,19 +63,25 @@ pre {
 header {
   border-bottom: 1px solid var(--c3);
   background-color: var(--c1);
+  height: 70px;
+  display: flex;
+  align-items: center;
 
   nav {
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
+    gap: 2rem;
 
+    // Logo + Title (left aligned)
     > div:first-child {
       big a {
         font-weight: 600;
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         color: var(--f2);
         text-decoration: none;
         display: flex;
@@ -83,6 +89,8 @@ header {
         gap: 0.75rem;
 
         img {
+          width: 44px;
+          height: 44px;
           border-radius: 50%;
           border: 2px solid var(--c3);
           object-fit: cover;
@@ -95,15 +103,17 @@ header {
     }
 
     > div:last-child {
-      display: flex;
-      align-items: center;
+      display: grid;
+      grid-template-columns: auto auto;
       gap: 2rem;
+      align-items: center;
 
-      // Search box
+      // Search box (centered)
       > div:first-child {
         form {
           display: flex;
           align-items: center;
+          justify-content: center;
 
           .searchd {
             display: flex;
@@ -120,7 +130,7 @@ header {
               font-size: 0.9rem;
               outline: none;
               color: var(--f1);
-              width: 200px;
+              width: 250px;
 
               &::placeholder {
                 color: var(--c4);
@@ -144,7 +154,7 @@ header {
         }
       }
 
-      // Menu items
+      // Menu items (right aligned)
       > div:last-child {
         ul {
           display: flex;
@@ -152,6 +162,7 @@ header {
           gap: 1.5rem;
           margin: 0;
           padding: 0;
+          justify-content: flex-end;
 
           li {
             a {
@@ -178,32 +189,210 @@ main {
   padding: 3rem 2rem;
 }
 
+// Mobile menu toggle button
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: var(--f1);
+  justify-self: end;
+
+  &:hover {
+    color: var(--a1);
+  }
+}
+
 // Responsive
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
+  .menu-toggle {
+    display: block;
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  header {
+    height: 60px;
+    position: relative;
+  }
+
   header nav {
-    flex-direction: column;
+    grid-template-columns: 1fr;
     gap: 1rem;
-    padding: 1rem;
+    padding: 0 1rem;
 
-    > div:last-child {
-      flex-direction: column;
-      gap: 1rem;
-      width: 100%;
+    // Logo + Title (left aligned on mobile)
+    > div:first-child {
+      big a {
+        gap: 0.5rem;
+        font-size: 1rem;
+        align-items: center;
 
+        img {
+          width: 36px;
+          height: 36px;
+        }
+
+        span {
+          display: inline-flex;
+          flex-direction: column;
+          justify-content: center;
+        }
+      }
+    }
+
+    // Search and Menu in mobile layout - use ID selector for higher specificity
+    #mobileMenu {
+      position: fixed !important;
+      top: 0 !important;
+      right: -100% !important;
+      width: 250px !important;
+      height: 100vh !important;
+      background: var(--c1) !important;
+      border-left: 1px solid var(--c3) !important;
+      box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1) !important;
+      transition: right 0.3s ease !important;
+      z-index: 1000 !important;
+      padding: 0 !important;
+      overflow-y: auto !important;
+      display: block !important;
+
+      &.active {
+        right: 0 !important;
+      }
+
+      // Close button
+      &::before {
+        content: '×';
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        font-size: 2rem;
+        cursor: pointer;
+        color: var(--c4);
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1;
+      }
+
+      // Search box on mobile
       > div:first-child {
-        width: 100%;
+        display: block !important;
+        padding: 3.5rem 1rem 1rem 1rem !important;
+        border-bottom: 1px solid var(--c3) !important;
 
-        form .searchd input {
-          width: 100%;
+        form {
+          width: 100% !important;
+
+          .searchd {
+            width: 100% !important;
+            display: flex !important;
+            align-items: center !important;
+            border: 1px solid var(--c3) !important;
+            border-radius: 4px !important;
+            padding: 0.25rem 0.5rem !important;
+            background: var(--c1) !important;
+
+            input {
+              flex: 1 !important;
+              border: none !important;
+              background: none !important;
+              padding: 0.25rem 0.5rem !important;
+              font-size: 0.9rem !important;
+              outline: none !important;
+              color: var(--f1) !important;
+
+              &::placeholder {
+                color: var(--c4) !important;
+              }
+            }
+
+            button {
+              background: none !important;
+              border: none !important;
+              cursor: pointer !important;
+              color: var(--c4) !important;
+              padding: 0.25rem !important;
+              display: flex !important;
+              align-items: center !important;
+
+              &:hover {
+                color: var(--a1) !important;
+              }
+            }
+          }
         }
       }
 
-      > div:last-child ul {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 1rem;
+      // Menu items (vertical list)
+      > div:last-child {
+        padding: 0 !important;
+        width: 100% !important;
+        display: block !important;
+
+        ul {
+          display: block !important;
+          list-style: none !important;
+          margin: 0 !important;
+          padding: 0 !important;
+          width: 100% !important;
+
+          li {
+            display: block !important;
+            width: 100% !important;
+            border-bottom: 1px solid var(--c3) !important;
+            margin: 0 !important;
+            float: none !important;
+
+            a {
+              display: block !important;
+              width: 100% !important;
+              padding: 1.25rem 1.5rem !important;
+              font-size: 1rem !important;
+              font-weight: 400 !important;
+              text-decoration: none !important;
+              color: var(--f1) !important;
+              box-sizing: border-box !important;
+
+              &:hover {
+                background-color: var(--c2);
+              }
+            }
+          }
+        }
       }
     }
+  }
+
+  // Overlay when menu is open
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  body.menu-open::before {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  body.menu-open {
+    overflow: hidden;
   }
 
   main {

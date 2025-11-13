@@ -45,7 +45,8 @@
         <big><a href="{{ get_url(path="/", lang=lang) }}{%- if uglyurls %}/index.html{%- endif %}" title="{{config.title}}">{{ config.title | safe }}</a></big>
         {%- endif -%}
       </div>
-      <div>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+      <div id="mobileMenu">
         <div>
           {%- if config.build_search_index %}
           {%- set icon_search=config.extra.icon_search | default(value="svgs svgm search") %}
@@ -143,5 +144,6 @@
 {%- endblock footer %}
 {%- block gotop %}
 {%- endblock gotop %}
+<script src="{{ get_url(path="js/mobile-menu.js", trailing_slash=false) }}"></script>
 </body>
 </html>
