@@ -71,14 +71,18 @@ header {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 2rem;
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
     gap: 2rem;
+    position: relative;
 
-    // Logo + Title (left aligned)
+    // Logo + Title (left aligned, with same padding as main content)
     > div:first-child {
+      flex: 0 0 auto;
+      padding-left: 2rem;
+
       big a {
         font-weight: 600;
         font-size: 1.1rem;
@@ -102,15 +106,21 @@ header {
       }
     }
 
-    > div:last-child {
-      display: grid;
-      grid-template-columns: auto auto;
+    // Mobile menu container
+    #mobileMenu {
+      display: flex;
       gap: 2rem;
       align-items: center;
+      justify-content: flex-end;
+      padding-right: 2rem;
 
-      // Search box (centered)
+      // Search box wrapper (first div) - centered in viewport
       > div:first-child {
-        form {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+
+        > div form {
           display: flex;
           align-items: center;
           justify-content: center;
@@ -184,9 +194,16 @@ header {
 
 // Main content centered
 main {
-  max-width: 760px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 3rem 2rem;
+
+  // On homepage with sidebar, adjust the first div (post list) alignment
+  > div:first-child {
+    flex: 1;
+    min-width: 0;
+    padding-right: 0;  // Remove extra padding on the right
+  }
 }
 
 // Mobile menu toggle button

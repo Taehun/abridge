@@ -761,6 +761,7 @@ $coderoundhighlight: false !default;//round corners on highlighted code blocks
   //pagination
   main nav {
     margin-top: var(--s2);//pagination margin
+    justify-content: flex-start;//align pagination to left
     a,span {
       margin: .2rem;
     }
@@ -1257,7 +1258,7 @@ $coderoundhighlight: false !default;//round corners on highlighted code blocks
     }
     width: 15rem;
     max-width: 15rem;
-    margin-left: var(--s1);
+    margin-left: 2rem;
     display: none;//hide in mobile view
   }
   .desc {
@@ -1568,5 +1569,28 @@ $coderoundhighlight: false !default;//round corners on highlighted code blocks
   //json
   .z-key.z-json {
     color: var(--h4);
+  }
+}
+
+// Custom styles - Reduce font size for blog post previews on home page
+.sum, .sum p {
+  font-size: 1.0em !important;  // Reduce from default 1em to 0.9em
+  h1 {
+    font-size: 1.5em !important;
+  }
+  h2 {
+    font-size: 1.4em !important;
+  }
+  h3 {
+    font-size: 1.3em !important;
+  }
+  h4 {
+    font-size: 1.2em !important;
+  }
+  h5 {
+    font-size: 1.1em !important;
+  }
+  h6 {
+    font-size: 1.0em !important;
   }
 }
