@@ -99,36 +99,36 @@
       @return $result;
     }
   } @else {//orange (default)
-    @if $dark {/// Dark Colors
-      $cs: dark !default;// color-scheme Variable for scrollbars, required for Chrome.
-      $f1: #ccc !default;// Font Color Primary
-      $f2: #ddd !default;// Font Color Headers
-      $c1: #111 !default;// Background Color Primary
-      $c2: #222 !default;// Background Color Secondary
-      $c3: #333 !default;// Table Rows, Block quote edge, Borders
-      $c4: #888 !default;// Disabled Buttons, Borders, mark background
-      $a1: #f90 !default;// link color
-      $a2: #fb0 !default;// link hover/focus color
-      $a3: #f90 !default;// link h1-h2 hover/focus color
-      $a4: #f90 !default;// link visited color
-      $cg: #593 !default;// ins green, success
-      $cr: #e33 !default;// del red, errors
+    @if $dark {/// Dark Colors - Disabled for light-only mode
+      $cs: light !default;// color-scheme Variable for scrollbars, required for Chrome.
+      $f1: #24292e !default;// Font Color Primary
+      $f2: #24292e !default;// Font Color Headers
+      $c1: #ffffff !default;// Background Color Primary
+      $c2: #f6f8fa !default;// Background Color Secondary (sidebar)
+      $c3: #e1e4e8 !default;// Table Rows, Block quote edge, Borders
+      $c4: #586069 !default;// Disabled Buttons, Borders, mark background
+      $a1: #0366d6 !default;// link color
+      $a2: #0256c7 !default;// link hover/focus color
+      $a3: #f90 !default;// link h1-h2 hover/focus color (accent)
+      $a4: #0366d6 !default;// link visited color
+      $cg: #28a745 !default;// ins green, success
+      $cr: #d73a49 !default;// del red, errors
       $result: $cs $f1 $f2 $c1 $c2 $c3 $c4 $a1 $a2 $a3 $a4 $cg $cr;
       @return $result;
     } @else {/// Light Colors
       $cs: light !default;// color-scheme Variable for scrollbars, required for Chrome.
-      $f1: #333 !default;// Font Color Primary
-      $f2: #222 !default;// Font Color Headers
-      $c1: #fff !default;// Background Color Primary
-      $c2: #eee !default;// Background Color Secondary
-      $c3: #ddd !default;// Table Rows, Block quote edge, Borders
-      $c4: #555 !default;// Disabled Buttons, Borders, mark background
-      $a1: #c40 !default;// link color
-      $a2: #e60 !default;// link hover/focus color
-      $a3: #f90 !default;// link h1-h2 hover/focus color
-      $a4: #c40 !default;// link visited color
-      $cg: #373 !default;// ins green, success
-      $cr: #d33 !default;// del red, errors
+      $f1: #24292e !default;// Font Color Primary
+      $f2: #24292e !default;// Font Color Headers
+      $c1: #ffffff !default;// Background Color Primary
+      $c2: #f6f8fa !default;// Background Color Secondary (sidebar)
+      $c3: #e1e4e8 !default;// Table Rows, Block quote edge, Borders
+      $c4: #586069 !default;// Disabled Buttons, Borders, mark background
+      $a1: #0366d6 !default;// link color
+      $a2: #0256c7 !default;// link hover/focus color
+      $a3: #f90 !default;// link h1-h2 hover/focus color (accent)
+      $a4: #0366d6 !default;// link visited color
+      $cg: #28a745 !default;// ins green, success
+      $cr: #d73a49 !default;// del red, errors
       $result: $cs $f1 $f2 $c1 $c2 $c3 $c4 $a1 $a2 $a3 $a4 $cg $cr;
       @return $result;
     }

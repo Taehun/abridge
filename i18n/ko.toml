@@ -1,0 +1,32 @@
+language_name = "한국어" # Shown in language picker for multi-language sites.
+date_locale = "ko_KR"
+full_stop = "."  # Used at the end of a sentence.
+
+# Menu items should match the names in config.extra.menu
+Blog = "블로그"
+About = "소개"
+Posts = "글"
+Tags = "태그"
+Categories = "카테고리"
+Contact = "연락"
+Privacy = "개인정보"
+Sitemap = "사이트맵"
+
+Search = "검색"
+Updated = "업데이트"
+Index = "목록"
+Recent = "최근"
+Powered_by = "Powered by"
+and = "&"
+more = "더보기" # "...more" read more links
+series_parts = "시리즈" # $NUMBER_OF_PARTS Part Series : 10 Part Series
+
+### © $CURRENT_YEAR $SITE_TITLE • Website content is licensed <a rel="noopener" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+copyright_override = '© $CURRENT_YEAR $SITE_TITLE • 웹사이트 콘텐츠는 <a rel="noopener" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> 라이선스를 따릅니다.'
+
+### Page not found, maybe moved or not in this language
+404_not_found = "페이지를 찾을 수 없습니다"
+### Try searching or
+404_try_search = "검색하거나"
+### go to homepage
+404_go_home = "홈으로 돌아가기"

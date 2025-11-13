@@ -1,20 +1,19 @@
 # do NOT include a trailing slash on the base URL
-base_url = "https://abridge.netlify.app"
+base_url = "https://blog.taehun.dev"
 # Usable site directly from disk, Including Search: "/home/jieiku/.dev/abridge/public"
 # Also set index format = "elasticlunr_javascript", and in [extra] uglyurls = true, integrity = false
 # If you use the npm/node script then all you have to do is set search_library = "offline", and everything else is automatic.
 
-title = "Abridge"
-description = "Abridge is a fast, lightweight, and modern Zola theme (class-light, semantic HTML). Perfect Lighthouse, YellowLabTools, and Observatory scores."#for SEO aim for 140-180 Characters
+title = "김태훈 기술 블로그"
+description = "MLOps/DevOps/AI/클라우드/AWS/웹 개발등 기술 블로그"
 #theme = "abridge"
 
-default_language = "en"
+default_language = "ko"
 compile_sass = true
 minify_html = false
 build_search_index = true
 generate_feeds = true
 taxonomies = [
-#    {name = "categories", feed = true},
     {name = "tags", feed = true},
 ]
 
@@ -45,47 +44,7 @@ external_links_no_referrer = false # rel="noreferrer"
 smart_punctuation = false          # `...` to `…`, `"quote"` to `“curly”` etc
 
 # Any Extra language you do not use, delete or comment out the extra language sections:
-[languages.fr]
-title = "Abridge"
-description = "Abridge est un thème Zola rapide et léger utilisant le html sémantique, le CSS abridge.css class-light et aucun JS obligatoire."
-generate_feeds = true
-build_search_index = true
-search.include_title = true # include title of page/section in index
-search.include_description = true # include description of page/section in index
-search.include_content = true # include rendered content of page/section in index
-# search.truncate_content_length = 100 # Truncate at nth character. May be useful if index is getting too large.
-taxonomies = [
-#    {name = "categories", feed = true},
-    {name = "tags", feed = true},
-]
-
-[languages.es]
-title = "Abridge"
-description = "Abridge es un tema de Zola rápido y liviano que utiliza HTML semántico, CSS ligero de clase abridge.css y JS no obligatorio."
-generate_feeds = true
-build_search_index = true
-search.include_title = true # include title of page/section in index
-search.include_description = true # include description of page/section in index
-search.include_content = true # include rendered content of page/section in index
-# search.truncate_content_length = 100 # Truncate at nth character. May be useful if index is getting too large.
-taxonomies = [
-#    {name = "categories", feed = true},
-    {name = "tags", feed = true},
-]
-
-[languages.pt]
-title = "Abridge"
-description = "Abridge é um tema rápido e leve que usa HTML semântico, CSS de clase leve abridge.css y JS não obrigatório."
-generate_feeds = true
-build_search_index = true
-search.include_title = true # include title of page/section in index
-search.include_description = true # include description of page/section in index
-search.include_content = true # include rendered content of page/section in index
-# search.truncate_content_length = 100 # Truncate at nth character. May be useful if index is getting too large.
-taxonomies = [
-#    {name = "categories", feed = true},
-    {name = "tags", feed = true},
-]
+# English is the default language, no need for [languages.en] section
 
 [extra]
 ###############################################################################
@@ -96,10 +55,8 @@ taxonomies = [
 ###############################################################################
 
 menu = [
-#    {url = "blog", name = "Blog", slash = true, blank = false, size="s110"},
-#    {url = "about", name = "About", slash = true, blank = false, size="s110"},
+    {url = "about", name = "About", slash = true, blank = false, size="s110"},
     {url = "archive", name = "Posts", slash = true, blank = false, size="s110"},
-#    {url = "categories", name = "Categories", slash = true, blank = false, size="s110"},
     {url = "tags", name = "Tags", slash = true, blank = false, size="s110"},
 ]
 menu_footer = [
@@ -221,8 +178,8 @@ js_bundle = true # multiple javascript files combined into a single file (settin
 js_copycode = true # The copy button on code blocks that allows you to copy them to the clipboard.
 js_email_encode = true # obfuscates email address in footer
 js_prestyle = true # used to preload: FontAwesome, Katex, external Google Fonts
-js_switcher = true # The button that allows manually changing between light/dark mode.
-js_switcher_default = "dark" # default nojs switcher mode: dark, light (make sure to also set $switcherDefault in abridge.scss)
+js_switcher = false # The button that allows manually changing between light/dark mode.
+js_switcher_default = "light" # default nojs switcher mode: dark, light (make sure to also set $switcherDefault in abridge.scss)
 
 search_library = "elasticlunr"
 stylesheets = ["abridge.css"]
@@ -344,7 +301,7 @@ favicon16 = "favicon-16x16.png" # favicon-16x16.png
 
 ### For externally loaded Fonts, make sure to include the FULL url including the https prefix:
 
-#fonts = [ {url = "https://fonts.googleapis.com/css?family=Roboto:400,700,italic|Roboto+Mono:400,italic"} ]
+fonts = [ {url = "https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"} ]
 
 ### Local fonts are defined in the css, https://github.com/Jieiku/abridge/tree/master/COPY-TO-ROOT-SASS/fonts/_Arimo.scss
 ### To load a local font resource, look at the bottom of this file: https://github.com/Jieiku/abridge/blob/master/COPY-TO-ROOT-SASS/abridge.scss

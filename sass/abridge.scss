@@ -4,6 +4,7 @@
 @use "functions";
 @use "colors";
 @use "colors-syntax";
+@use "sidebar";
 
 /******************************************************************************
  *   FONTS - Abridge by default uses the System Font Stack
@@ -26,9 +27,9 @@ $enable-maxwidth: true !default;
 $mw: 70% !default;// max-width
 $mb: 1200px !default;// value at which to switch from fluid layout to max-width
 
-$abridgeMode: "switcher" !default;//valid values: switcher, auto, dark, light
-$syntax-mode: "auto" !default;// Force syntax mode: auto, dark, light
-$switcherDefault: "dark" !default;// default for nojs switcher: dark, light
+$abridgeMode: "light" !default;//valid values: switcher, auto, dark, light
+$syntax-mode: "light" !default;// Force syntax mode: auto, dark, light
+$switcherDefault: "light" !default;// default for nojs switcher: dark, light
 
 $color: "orange" !default;// color template to use/override: orange, blue, blueshade
 
@@ -244,8 +245,8 @@ $coderoundhighlight: false !default;//round corners on highlighted code blocks
   --ow: 0.1875rem; //outline width
 
   --fs: 1rem; //font-size
-  --lh: 1.5; //line-height
-  --lhh: 1.2; //line-height headers
+  --lh: 1.7; //line-height (increased for better readability)
+  --lhh: 1.3; //line-height headers (increased for better readability)
   --fw: 400; //font-weight
   --fh: 700; //font-weight h1-h6
 
