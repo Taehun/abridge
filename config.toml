@@ -198,7 +198,7 @@ webmanifest = "manifest.min.json" # Required for PWAs
 ###############################################################################
 
 pwa = true # true to load the service worker
-pwa_VER = '3.12.1' # Service Worker cache version. (increment if you need to force a new cache)
+pwa_VER = '3.12.2' # Service Worker cache version. (increment if you need to force a new cache)
 
 ### 3600=1hour, 28800=8hours, 86400=1day, 604800=1week, 1209600=2weeks
 pwa_NORM_TTL = 0 #  86400 is reasonable. html, json, xml, anything else undefined
@@ -230,7 +230,7 @@ favicon_theme_color = "#333333"
 favicon_ms_color = "#333333"
 favicon_mask = "safari-pinned-tab.svg" # safari-pinned-tab.svg
 favicon_mask_color = "#ff9900"
-favicon_svg = "favicon.svg" # favicon.svg
+#favicon_svg = "favicon.svg" # favicon.svg - Disabled, using PNG favicons only
 favicon180 = "apple-touch-icon.png" # apple-touch-icon.png
 favicon32 = "favicon-32x32.png" # favicon-32x32.png
 favicon16 = "favicon-16x16.png" # favicon-16x16.png
