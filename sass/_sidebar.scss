@@ -1,7 +1,22 @@
 // Clean Blog Design Styles
 // Redesigned for clean, minimal look inspired by taehun.github.io
 
-// Typography enhancements for content
+// ============================================================================
+// Variables
+// ============================================================================
+$header-height: 70px;
+$header-height-mobile: 60px;
+$logo-size: 44px;
+$logo-size-mobile: 36px;
+$content-max-width: 1200px;
+$content-padding: 2rem;
+$content-padding-mobile: 1rem;
+$mobile-menu-width: 250px;
+$mobile-breakpoint: 1024px;
+
+// ============================================================================
+// Typography
+// ============================================================================
 body {
   font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Apple SD Gothic Neo', sans-serif;
   font-size: 17px;
@@ -35,6 +50,9 @@ p {
   margin-bottom: 1.5rem;
 }
 
+// ============================================================================
+// Code Blocks
+// ============================================================================
 code {
   font-family: 'JetBrains Mono', 'SF Mono', 'Monaco', 'Menlo', 'Consolas', monospace;
   font-size: 0.9em;
@@ -59,17 +77,19 @@ pre {
   }
 }
 
-// Top navigation styles
+// ============================================================================
+// Header Navigation
+// ============================================================================
 header {
   border-bottom: 1px solid var(--c3);
   background-color: var(--c1);
-  height: 70px;
+  height: $header-height;
   display: flex;
   align-items: center;
 
   nav {
     width: 100%;
-    max-width: 1200px;
+    max-width: $content-max-width;
     margin: 0 auto;
     padding: 0;
     display: flex;
@@ -81,7 +101,7 @@ header {
     // Logo + Title (left aligned, with same padding as main content)
     > div:first-child {
       flex: 0 0 auto;
-      padding-left: 2rem;
+      padding-left: $content-padding;
 
       big a {
         font-weight: 600;
@@ -93,8 +113,8 @@ header {
         gap: 0.75rem;
 
         img {
-          width: 44px;
-          height: 44px;
+          width: $logo-size;
+          height: $logo-size;
           border-radius: 50%;
           border: 2px solid var(--c3);
           object-fit: cover;
@@ -112,7 +132,7 @@ header {
       gap: 2rem;
       align-items: center;
       justify-content: flex-end;
-      padding-right: 2rem;
+      padding-right: $content-padding;
 
       // Search box wrapper (first div) - centered in viewport
       > div:first-child {
@@ -192,21 +212,25 @@ header {
   }
 }
 
-// Main content centered
+// ============================================================================
+// Main Content
+// ============================================================================
 main {
-  max-width: 1200px;
+  max-width: $content-max-width;
   margin: 0 auto;
-  padding: 3rem 2rem;
+  padding: 3rem $content-padding;
 
   // On homepage with sidebar, adjust the first div (post list) alignment
   > div:first-child {
     flex: 1;
     min-width: 0;
-    padding-right: 0;  // Remove extra padding on the right
+    padding-right: 0;
   }
 }
 
-// Mobile menu toggle button
+// ============================================================================
+// Mobile Menu Toggle Button
+// ============================================================================
 .menu-toggle {
   display: none;
   background: none;
@@ -222,164 +246,139 @@ main {
   }
 }
 
-// Responsive
-@media (max-width: 1024px) {
+// ============================================================================
+// Responsive Styles
+// ============================================================================
+@media (max-width: $mobile-breakpoint) {
+  // Mobile menu toggle button
   .menu-toggle {
     display: block;
     position: absolute;
-    right: 1rem;
+    right: $content-padding-mobile;
     top: 50%;
     transform: translateY(-50%);
   }
 
+  // Header adjustments for mobile
   header {
-    height: 60px;
+    height: $header-height-mobile;
     position: relative;
-  }
 
-  header nav {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    padding: 0 1rem;
+    nav {
+      gap: 1rem;
+      padding: 0 $content-padding-mobile;
 
-    // Logo + Title (left aligned on mobile)
-    > div:first-child {
-      big a {
-        gap: 0.5rem;
-        font-size: 1rem;
-        align-items: center;
-
-        img {
-          width: 36px;
-          height: 36px;
-        }
-
-        span {
-          display: inline-flex;
-          flex-direction: column;
-          justify-content: center;
-        }
-      }
-    }
-
-    // Search and Menu in mobile layout - use ID selector for higher specificity
-    #mobileMenu {
-      position: fixed !important;
-      top: 0 !important;
-      right: -100% !important;
-      width: 250px !important;
-      height: 100vh !important;
-      background: var(--c1) !important;
-      border-left: 1px solid var(--c3) !important;
-      box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1) !important;
-      transition: right 0.3s ease !important;
-      z-index: 1000 !important;
-      padding: 0 !important;
-      overflow-y: auto !important;
-      display: block !important;
-
-      &.active {
-        right: 0 !important;
-      }
-
-      // Close button
-      &::before {
-        content: '×';
-        position: absolute;
-        top: 0.5rem;
-        right: 0.5rem;
-        font-size: 2rem;
-        cursor: pointer;
-        color: var(--c4);
-        width: 32px;
-        height: 32px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 1;
-      }
-
-      // Search box on mobile
+      // Logo adjustments for mobile
       > div:first-child {
-        display: block !important;
-        padding: 3.5rem 1rem 1rem 1rem !important;
-        border-bottom: 1px solid var(--c3) !important;
+        padding-left: $content-padding-mobile;
 
-        form {
-          width: 100% !important;
+        big a {
+          gap: 0.5rem;
+          font-size: 1rem;
+          align-items: center;
 
-          .searchd {
-            width: 100% !important;
-            display: flex !important;
-            align-items: center !important;
-            border: 1px solid var(--c3) !important;
-            border-radius: 4px !important;
-            padding: 0.25rem 0.5rem !important;
-            background: var(--c1) !important;
+          img {
+            width: $logo-size-mobile;
+            height: $logo-size-mobile;
+          }
 
-            input {
-              flex: 1 !important;
-              border: none !important;
-              background: none !important;
-              padding: 0.25rem 0.5rem !important;
-              font-size: 0.9rem !important;
-              outline: none !important;
-              color: var(--f1) !important;
-
-              &::placeholder {
-                color: var(--c4) !important;
-              }
-            }
-
-            button {
-              background: none !important;
-              border: none !important;
-              cursor: pointer !important;
-              color: var(--c4) !important;
-              padding: 0.25rem !important;
-              display: flex !important;
-              align-items: center !important;
-
-              &:hover {
-                color: var(--a1) !important;
-              }
-            }
+          span {
+            display: inline-flex;
+            flex-direction: column;
+            justify-content: center;
           }
         }
       }
 
-      // Menu items (vertical list)
-      > div:last-child {
-        padding: 0 !important;
-        width: 100% !important;
-        display: block !important;
+      // Mobile menu drawer
+      #mobileMenu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: $mobile-menu-width;
+        height: 100vh;
+        background: var(--c1);
+        border-left: 1px solid var(--c3);
+        box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+        transition: right 0.3s ease;
+        z-index: 1000;
+        padding: 0;
+        overflow-y: auto;
+        display: block;
+        flex-direction: column;
+        justify-content: flex-start;
 
-        ul {
-          display: block !important;
-          list-style: none !important;
-          margin: 0 !important;
-          padding: 0 !important;
-          width: 100% !important;
+        &.active {
+          right: 0;
+        }
 
-          li {
-            display: block !important;
-            width: 100% !important;
-            border-bottom: 1px solid var(--c3) !important;
-            margin: 0 !important;
-            float: none !important;
+        // Close button for mobile menu
+        &::before {
+          content: '×';
+          position: absolute;
+          top: 0.5rem;
+          right: 0.5rem;
+          font-size: 2rem;
+          cursor: pointer;
+          color: var(--c4);
+          width: 32px;
+          height: 32px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 1;
+        }
 
-            a {
-              display: block !important;
-              width: 100% !important;
-              padding: 1.25rem 1.5rem !important;
-              font-size: 1rem !important;
-              font-weight: 400 !important;
-              text-decoration: none !important;
-              color: var(--f1) !important;
-              box-sizing: border-box !important;
+        // Search box in mobile menu
+        > div:first-child {
+          position: static;
+          transform: none;
+          left: auto;
+          display: block;
+          padding: 3.5rem 1rem 1rem 1rem;
+          border-bottom: 1px solid var(--c3);
 
-              &:hover {
-                background-color: var(--c2);
+          > div form {
+            width: 100%;
+
+            .searchd {
+              width: 100%;
+
+              input {
+                flex: 1;
+                width: auto;
+              }
+            }
+          }
+        }
+
+        // Menu items in mobile drawer (vertical list)
+        > div:last-child {
+          padding: 0;
+          width: 100%;
+          display: block;
+
+          ul {
+            display: block;
+            width: 100%;
+
+            li {
+              display: block;
+              width: 100%;
+              border-bottom: 1px solid var(--c3);
+              margin: 0;
+
+              a {
+                display: block;
+                width: 100%;
+                padding: 1.25rem 1.5rem;
+                font-size: 1rem;
+                font-weight: 400;
+                box-sizing: border-box;
+
+                &:hover {
+                  background-color: var(--c2);
+                }
               }
             }
           }
@@ -388,7 +387,7 @@ main {
     }
   }
 
-  // Overlay when menu is open
+  // Overlay when mobile menu is open
   body::before {
     content: '';
     position: fixed;
@@ -403,16 +402,17 @@ main {
     transition: opacity 0.3s ease, visibility 0.3s ease;
   }
 
-  body.menu-open::before {
-    opacity: 1;
-    visibility: visible;
-  }
-
   body.menu-open {
     overflow: hidden;
+
+    &::before {
+      opacity: 1;
+      visibility: visible;
+    }
   }
 
+  // Main content padding adjustment for mobile
   main {
-    padding: 2rem 1rem;
+    padding: 2rem $content-padding-mobile;
   }
 }
