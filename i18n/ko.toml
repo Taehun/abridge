@@ -22,7 +22,7 @@ more = "더보기" # "...more" read more links
 series_parts = "시리즈" # $NUMBER_OF_PARTS Part Series : 10 Part Series
 
 ### © $CURRENT_YEAR $SITE_TITLE • Website content is licensed <a rel="noopener" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
-copyright_override = '© $CURRENT_YEAR $SITE_TITLE • 웹사이트 콘텐츠는 <a rel="noopener" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> 라이선스를 따릅니다.'
+copyright_override = '© $CURRENT_YEAR 김태훈 • 웹사이트 콘텐츠는 <a rel="noopener" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> 라이선스를 따릅니다.'
 
 ### Page not found, maybe moved or not in this language
 404_not_found = "페이지를 찾을 수 없습니다"

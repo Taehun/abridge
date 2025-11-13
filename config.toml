@@ -4,8 +4,8 @@ base_url = "https://blog.taehun.dev"
 # Also set index format = "elasticlunr_javascript", and in [extra] uglyurls = true, integrity = false
 # If you use the npm/node script then all you have to do is set search_library = "offline", and everything else is automatic.
 
-title = "김태훈 기술 블로그"
-description = "MLOps/DevOps/AI/클라우드/AWS/웹 개발등 기술 블로그"
+title = "한걸음씩"
+description = "어제보다 나은 오늘을 위해 전진"
 #theme = "abridge"
 
 default_language = "ko"
@@ -87,9 +87,9 @@ footer_credit = true
 #archive_reverse = true # Set to True to sort posts chronologically per year instead of newest first on the archive page: example.com/archive/
 
 ### Uncomment one of the below lines, or neither, depending on which type of logo you want to use:
-#logo = { file="logo.svg", width="32", height="32", alt="Abridge", text="bridge" }
+logo = { file="avatar.png", width="48", height="48", alt="한걸음씩", text='<span style="display: inline-flex; flex-direction: column;"><span style="font-size: 1.1rem; font-weight: 700; line-height: 1.2;">한걸음씩</span><span style="font-size: 0.7rem; color: #586069; font-weight: 400; line-height: 1.2;">어제보다 나은 오늘을 위해 전진</span></span>' }
 #textlogo = '<font color="#f90">A</font>bridge'
-textlogo = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#f90" viewBox="0 0 96 96" width="28" height="28"><path stroke-width="14" d="M14 99 46 7h4l32 92"/><path stroke-width="9" d="M-3 82c43-26 59-26 102 0"/><path stroke-linecap="round" stroke-width="1.5" d="M94 72v7m-5-9.8v7m-5-9.8v7.1M79 64v7M63 57.7v7m-5-8.2v7m-5-7.8v7m-5-7.2v7m-5-6.7v7m-5-6.3v7m-5-5.8v7M17 64v7m-5-4.6v7m-5-4.2v7M2 72v7"/></svg>bridge'
+#textlogo = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="32" height="32" style="vertical-align: middle; margin-right: 8px;"><circle cx="24" cy="24" r="20" fill="#0366d6" opacity="0.1"/><path d="M24 8 L32 16 L32 28 L24 36 L16 28 L16 16 Z" fill="#0366d6" stroke="#0256c7" stroke-width="1.5"/><circle cx="20" cy="20" r="2.5" fill="#fff"/><circle cx="28" cy="20" r="2.5" fill="#fff"/><path d="M20 28 Q24 30 28 28" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M14 18 L10 14 M34 18 L38 14 M14 26 L10 30 M34 26 L38 30" stroke="#0366d6" stroke-width="2" stroke-linecap="round"/></svg><span style="display: inline-block; vertical-align: middle;"><span style="font-size: 1.2rem; font-weight: 700;">한걸음씩</span><br><span style="font-size: 0.75rem; color: #586069; font-weight: 400;">어제보다 나은 오늘을 위해 전진</span></span>'
 
 sitedesc = false # enables or disables the display of the site description below the logo.
 headhr = false # show or hide horizontal rule below header
@@ -108,11 +108,11 @@ foothr = false # show or hide horizontal rule above footer
 ###############################################################################
 
 title_separator = "|"  # Separator between title and title_addition, set as |, -, _, etc
-title_addition = "Fast, Lightweight, and Modern Zola Theme" # a default value for title addition (for SEO aim for 50-70 characters including the title and separator 'Abridge | title_addition')
-author = "Jake G" # Put Your Name here
-keywords = "Abridge, Abridge.css, Zola, Theme, Zola Theme, getzola, Semantic Html, Fast, lightweight" # used for the primary site index
-banner = "banner.png" # Used as default image for OpenGraph/Twitter if page specific image is undefined.
-twitter_meta = "your-user-name" # for SEO: twitter:site and twitter:creator
+title_addition = "임베디드 개발자 출신의 머신러닝 엔지니어 블로그" # a default value for title addition (for SEO aim for 50-70 characters including the title and separator 'Abridge | title_addition')
+author = "김태훈" # Put Your Name here
+keywords = "MLOps, DevOps, AI, Cloud, Kubernetes, AWS, Web Development, Rust" # used for the primary site index
+banner = "avatar.png" # Used as default image for OpenGraph/Twitter if page specific image is undefined.
+twitter_meta = "taehun_kim" # for SEO: twitter:site and twitter:creator
 google = "Your Google Site verification code."
 bing = "Your Bing Site verification code."
 seo = true  # enable or disable seo-related meta tags: opengraph, facebook, twitter
@@ -127,28 +127,28 @@ seo = true  # enable or disable seo-related meta tags: opengraph, facebook, twit
 ###############################################################################
 
 feed = true # this adds the RSS feed icon in the footer.
-mail = "name@example.com"
-mastodon = "https://mastodon.example.com/@username"
-element = "matrix.example.com"
+mail = "kth3321@gmail.com"
+#mastodon = "https://mastodon.example.com/@username"
+#element = "matrix.example.com"
 #buymeacoffee = "your-user-name"
-kofi = "your-user-name"
+#kofi = "your-user-name"
 #discord = "https://discord.com/invite/my-server" # https://discord.com/invite/my-server  *or*  https://discord.com/servers/my-server-id
 #twitter = "your-user-name"
 #facebook = "your-user-name"
-#linkedin = "your-user-name"
+linkedin = "taehun-brian-kim"
 #gitlab = "your-user-name"
-github = "your-user-name"
+github = "Taehun"
 #codeberg = "your-user-name" # Everything after https://codeberg.org/   eg: username  *or*  username/repository
 #github_sponsor = "your-user-name"
 #bitbucket = "your-user-name"
 #python = "your-user-name"
 #docker = "your-user-name"
 #stack = "your-user-name"
-instagram = "your-user-name"
+#instagram = "your-user-name"
 #pixelfed = "https://pixelfed.example.com/" # Heaviest icon, off by default
 #pinterest = "your-user-name"
-twitch = "your-user-name"
-youtube = "channel/your-channel-id"
+#twitch = "your-user-name"
+#youtube = "channel/your-channel-id"
 #peertube = "https://peertube.example.com/@username"
 #researchgate = "your-profile-id"
 #telegram = "your-user-name"
