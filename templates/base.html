@@ -48,7 +48,7 @@
       <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
       <div id="mobileMenu">
         <div>
-          {%- if config.build_search_index %}
+          {%- if config.build_search_index or config.extra.search_library == "pagefind" %}
           {%- set icon_search=config.extra.icon_search | default(value="svgs svgm search") %}
           <div>
             <form autocomplete=off class="js" name="goSearch" id="searchbox">

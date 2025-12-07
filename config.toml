@@ -11,7 +11,7 @@ description = "어제보다 나은 오늘을 위해 전진"
 default_language = "ko"
 compile_sass = true
 minify_html = false
-build_search_index = true
+build_search_index = false
 generate_feeds = true
 taxonomies = [
     {name = "tags", feed = true},
@@ -181,7 +181,7 @@ js_prestyle = true # used to preload: FontAwesome, Katex, external Google Fonts
 js_switcher = false # The button that allows manually changing between light/dark mode.
 js_switcher_default = "light" # default nojs switcher mode: dark, light (make sure to also set $switcherDefault in abridge.scss)
 
-search_library = "elasticlunr"
+search_library = "pagefind"
 stylesheets = ["abridge.css"]
 
 webmanifest = "manifest.min.json" # Required for PWAs
