@@ -11,7 +11,7 @@ description = "어제보다 나은 오늘을 위해 전진"
 default_language = "ko"
 compile_sass = true
 minify_html = false
-build_search_index = true
+build_search_index = false
 generate_feeds = true
 taxonomies = [
     {name = "tags", feed = true},
@@ -112,9 +112,9 @@ title_addition = "임베디드 개발자 출신의 머신러닝 엔지니어 블
 author = "김태훈" # Put Your Name here
 keywords = "MLOps, DevOps, AI, Cloud, Kubernetes, AWS, Web Development, Rust" # used for the primary site index
 banner = "avatar.png" # Used as default image for OpenGraph/Twitter if page specific image is undefined.
-twitter_meta = "taehun_kim" # for SEO: twitter:site and twitter:creator
-google = "Your Google Site verification code."
-bing = "Your Bing Site verification code."
+#twitter_meta = "taehun_kim" # for SEO: twitter:site and twitter:creator
+#google = "Your Google Site verification code."
+#bing = "Your Bing Site verification code."
 seo = true  # enable or disable seo-related meta tags: opengraph, facebook, twitter
 #dev = false # development mode, if true then robots.txt should prevent search indexing.
 
@@ -181,7 +181,7 @@ js_prestyle = true # used to preload: FontAwesome, Katex, external Google Fonts
 js_switcher = false # The button that allows manually changing between light/dark mode.
 js_switcher_default = "light" # default nojs switcher mode: dark, light (make sure to also set $switcherDefault in abridge.scss)
 
-search_library = "elasticlunr"
+search_library = "pagefind"
 stylesheets = ["abridge.css"]
 
 webmanifest = "manifest.min.json" # Required for PWAs
