@@ -75,6 +75,14 @@
 
   {%-   if search_library == "tinysearch" %}
   <script defer type="module" src="{{ get_url(path='js/tinysearch.js'   , trailing_slash=false, cachebust=true) | safe }}"{%- if integrity %} integrity="sha384-{{ get_hash(path='js/tinysearch.js'   , sha_type=384, base64=true) | safe }}"{%- endif %}></script>
+  {%- elif search_library == "pagefind" %}
+  <script type="module">
+    import * as pagefind from '/pagefind/pagefind.js';
+    window.init = pagefind.init;
+    window.search = pagefind.search;
+    window.options = pagefind.options;
+  </script>
+  <script defer src="{{ get_url(path='js/pagefind.search.js', trailing_slash=false, cachebust=true) | safe }}"></script>
   {%- elif config.build_search_index %}
 
   {%- set search_index_format="elasticlunr_json" -%}
