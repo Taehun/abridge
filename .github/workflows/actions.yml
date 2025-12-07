@@ -1,20 +1,45 @@
-name: publish-sponsors
+name: Deploy to GitHub Pages
+
 on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
+
 jobs:
-  generate-sponsors:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout 🛎️
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Deploy to GitHub Pages 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
+      - name: Install Zola
+        uses: taiki-e/install-action@v2
         with:
-          branch: main
-          folder: "."
+          tool: zola@0.19.2
+
+      - name: Build
+        run: zola build
+
+      - name: Install Pagefind
+        run: npm install -g pagefind
+
+      - name: Build search index
+        run: pagefind --site public
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./public
+
+  deploy:
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
