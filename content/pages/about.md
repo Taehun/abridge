@@ -4,10 +4,11 @@ path = "about"
 template = "pages.html"
 title = "About"
 +++
-This site provides a demo for the [abridge theme](https://github.com/Jieiku/abridge) for [Zola](https://www.getzola.org/) the static site generator.
 
-Abridge was created by [Jake G (jieiku)](https://github.com/Jieiku) to be fast and lightweight, using semantic html, a class-light [abridge.css](https://github.com/Jieiku/abridge.css), and No Mandatory JS.
+## 김태훈
 
-Nearly half of the existing Zola MIT themes were inspiration for features and design of this theme.
+MLOps, DevOps, 데이터 엔지니어링, 임베디드 시스템 분야에서 다양한 경험을 쌓은 AI/머신러닝/소프트웨어 엔지니어입니다.
 
-Abridge is licensed under the [MIT license](https://opensource.org/licenses/MIT).
+2019년부터 머신러닝 엔지니어로 일하고 있으며, 2008년부터 2017년까지는 임베디드 리눅스 엔지니어로 근무했습니다.
+
+다양한 기술 스택과 탄탄한 프로그래밍 역량을 바탕으로 빠르게 변화하는 기술 환경에 적응하며 성장하고 있습니다.
