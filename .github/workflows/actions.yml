@@ -2,10 +2,10 @@ name: publish-sponsors
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
     branches:
-      - master
+      - main
 jobs:
   generate-sponsors:
     runs-on: ubuntu-latest
@@ -13,15 +13,8 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v4
 
-      - name: Generate Sponsors 💖
-        uses: JamesIves/github-sponsors-readme-action@v1
-        with:
-          token: ${{ secrets.PAT }}
-          file: 'README.md'
-          active-only: false
-
       - name: Deploy to GitHub Pages 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: master
-          folder: '.'
+          branch: main
+          folder: "."
