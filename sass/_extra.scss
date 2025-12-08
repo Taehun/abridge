@@ -7,6 +7,24 @@
 $mobile-breakpoint: 768px;
 
 // ============================================================================
+// Typography - Reduced font sizes
+// ============================================================================
+html {
+  font-size: 15px !important;  // Desktop base (70% of ~17px original)
+}
+
+@media (max-width: $mobile-breakpoint) {
+  html {
+    overflow-x: hidden !important;
+    font-size: 13px !important;  // Mobile base (smaller for mobile)
+  }
+
+  body:not(.menu-open) {
+    overflow-x: hidden !important;
+  }
+}
+
+// ============================================================================
 // Global Layout Overrides
 // ============================================================================
 
