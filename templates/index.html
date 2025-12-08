@@ -33,36 +33,56 @@ This Template can also be used directly for the index eg: example.com/ or as the
 
 
 {%- block content %}
-    <div>
+    <div class="post-grid">
     {%- for page in paginator.pages %}
-      <article>
-        {{- macros::title_index(page=page, config=config) }}
-        {%- if config.extra.meta_index.position %}
-        {%- if config.extra.meta_index.position == "top" or config.extra.meta_index.position == "both" %}
-        {{- macros::meta_index(page=page, config=config) }}
-        {%- endif %}{%- endif %}
-        <div class="sum">
-        <p>
-        {%- if page.summary %}
-          {{ page.summary | markdown(inline=true) | safe }}
-        {%- elif page.description %}
-          {{ page.description | markdown(inline=true) | safe }}
-        {%- elif page.content %}
-          {{ page.content | striptags | truncate(length=150) | markdown(inline=true) | safe }}
-        {%- elif page.extra.static_thumbnail %}
-        {%- endif %}
-          <a href="{{ page.permalink | safe }}{%- if uglyurls %}index.html{%- endif %}">
-            ...{{ macros::translate(key="more", default="more", i18n=i18n) }}
-          </a>
-        </p>
+      <article class="post-card">
+        <div class="post-card-content">
+          {# All Tags #}
+          {%- if page.taxonomies.tags %}
+          <div class="post-card-tags">
+            {%- for tag in page.taxonomies.tags %}
+            <a href="{{ get_taxonomy_url(kind='tags', name=tag, lang=lang) | safe }}{%- if uglyurls %}index.html{%- endif %}" class="post-card-tag">
+              {{ tag }}
+            </a>
+            {%- endfor %}
+          </div>
+          {%- endif %}
+
+          {# Title #}
+          <h2 class="post-card-title">
+            <a href="{{ page.permalink | safe }}{%- if uglyurls %}index.html{%- endif %}">
+              {{ page.title | markdown(inline=true) | safe }}
+            </a>
+          </h2>
+
+          {# Summary #}
+          <p class="post-card-summary">
+          {%- if page.summary %}
+            {{ page.summary | markdown(inline=true) | striptags | truncate(length=120) | safe }}
+          {%- elif page.description %}
+            {{ page.description | truncate(length=120) }}
+          {%- elif page.content %}
+            {{ page.content | striptags | truncate(length=120) }}
+          {%- endif %}
+          </p>
+
+          {# Meta info #}
+          <div class="post-card-meta">
+            {%- if page.date %}
+            <time datetime="{{ page.date | date(format='%Y-%m-%d') }}">{{ page.date | date(format="%Y.%m.%d") }}</time>
+            {%- endif %}
+            {%- if page.reading_time %}
+            <span class="meta-divider">·</span>
+            <span>{{ page.reading_time }} min</span>
+            {%- endif %}
+          </div>
         </div>
-        {%- if config.extra.meta_index.position %}
-        {%- if config.extra.meta_index.position == "bottom" or config.extra.meta_index.position == "both" %}
-        {{- macros::meta_index(page=page, config=config) }}
-        {%- endif %}
-        {%- endif %}
       </article>
     {%- endfor %}
+    </div>
+
+    {# Pagination #}
+    <div class="pagination-container">
     {%- if config.extra.arrow_pagination %}
     {{- macros::pagination(paginator=paginator, config=config) }}
     {%- else %}

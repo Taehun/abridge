@@ -59,12 +59,7 @@ menu = [
     {url = "archive", name = "Posts", slash = true, blank = false, size="s110"},
     {url = "tags", name = "Tags", slash = true, blank = false, size="s110"},
 ]
-menu_footer = [
-    {url = "about", name = "About", slash = true, blank = false, size="s90"},
-    {url = "contact", name = "Contact", slash = true, blank = false, size="s90"},
-    {url = "privacy", name = "Privacy", slash = true, blank = false, size="s90"},
-    {url = "sitemap.xml", name = "Sitemap", slash = false, blank = true, size="s90"},
-]
+menu_footer = []
 
 toc = true
 recent = true # TOC / index
@@ -301,7 +296,7 @@ favicon16 = "favicon-16x16.png" # favicon-16x16.png
 
 ### For externally loaded Fonts, make sure to include the FULL url including the https prefix:
 
-fonts = [ {url = "https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"} ]
+fonts = [ {url = "https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"} ]
 
 ### Local fonts are defined in the css, https://github.com/Jieiku/abridge/tree/master/COPY-TO-ROOT-SASS/fonts/_Arimo.scss
 ### To load a local font resource, look at the bottom of this file: https://github.com/Jieiku/abridge/blob/master/COPY-TO-ROOT-SASS/abridge.scss

@@ -32,7 +32,7 @@ $abridgeMode: "light" !default;//valid values: switcher, auto, dark, light
 $syntax-mode: "light" !default;// Force syntax mode: auto, dark, light
 $switcherDefault: "light" !default;// default for nojs switcher: dark, light
 
-$color: "orange" !default;// color template to use/override: orange, blue, blueshade
+$color: "meta" !default;// color template to use/override: orange, blue, blueshade, meta
 
 $color-syntax: "abridge" !default;// syntax color template to use/override: abridge,
 $syntax: true !default;//syntax highlighting for Code Blocks.
@@ -165,7 +165,7 @@ $findFont-Code : null !default;
 $fontExt-Main  : null !default;
 $fontExt-Code  : null !default;
 
-$font: Roboto system-ui -apple-system BlinkMacSystemFont "Segoe UI" Oxygen Ubuntu Cantarell "Fira Sans" "Droid Sans" "Helvetica Neue" "Noto Sans" Helvetica Arial sans-serif !default;
+$font: "Nanum Gothic" system-ui -apple-system BlinkMacSystemFont "Segoe UI" Oxygen Ubuntu Cantarell "Fira Sans" "Droid Sans" "Helvetica Neue" "Noto Sans" Helvetica Arial sans-serif !default;
 $font-mono: ui-monospace Menlo Monaco Consolas "SF Mono" "Cascadia Mono" "Segoe UI Mono" "DejaVu Sans Mono" "Liberation Mono" "Roboto Mono" "Oxygen Mono" "Ubuntu Monospace" "Ubuntu Mono" "Source Code Pro" "Fira Mono" "Droid Sans Mono" "Courier New" Courier monospace !default;
 
 /// Enable <header>, <main>, <footer> inside <body> as a container
@@ -235,21 +235,28 @@ $coderoundhighlight: false !default;//round corners on highlighted code blocks
 @mixin root {
   color-scheme: var(--cs);
 
-  // Spacings
+  // Spacings - Meta AI inspired generous whitespace
   --s1: .5rem;
   --s2: 1rem;
   --rc: .5rem; //radius corners
+  --space-xs: 0.5rem;   // 8px
+  --space-sm: 1rem;     // 16px
+  --space-md: 1.5rem;   // 24px
+  --space-lg: 2rem;     // 32px
+  --space-xl: 3rem;     // 48px
+  --space-2xl: 4rem;    // 64px
 
-  // Borders
-  --br: 0.25rem; //border radius
-  --bw: 0.0625rem; //border width
-  --ow: 0.1875rem; //outline width
+  // Borders - Larger radius for modern look
+  --br: 8px;           //border radius (increased from 4px)
+  --br-lg: 12px;       //large border radius for cards
+  --bw: 0.0625rem;     //border width
+  --ow: 0.1875rem;     //outline width
 
-  --fs: 1rem; //font-size
-  --lh: 1.7; //line-height (increased for better readability)
-  --lhh: 1.3; //line-height headers (increased for better readability)
-  --fw: 400; //font-weight
-  --fh: 700; //font-weight h1-h6
+  --fs: 1.0625rem;     //font-size (17px for better readability)
+  --lh: 1.7;           //line-height
+  --lhh: 1.25;         //line-height headers (tighter for headlines)
+  --fw: 400;           //font-weight
+  --fh: 600;           //font-weight h1-h6 (semibold instead of bold)
 
   // Responsive typography
   @if $enable-responsive-typography {
@@ -454,19 +461,19 @@ $coderoundhighlight: false !default;//round corners on highlighted code blocks
     line-height: var(--lhh);
   }
   big,h1 {
-    font-size: 2rem;
+    font-size: 2.5rem;  // 40px - larger, more impactful
   }
   h2 {
-    font-size: 1.75rem;
+    font-size: 2rem;    // 32px
   }
   h3 {
-    font-size: 1.5rem;
+    font-size: 1.5rem;  // 24px
   }
   h4 {
-    font-size: 1.25rem;
+    font-size: 1.25rem; // 20px
   }
   h5 {
-    font-size: 1.125rem;
+    font-size: 1.125rem; // 18px
   }
   header h1 {
     margin: 0;

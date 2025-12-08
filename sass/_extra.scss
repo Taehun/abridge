@@ -1,66 +1,531 @@
-// Custom styles for navigation menu layout
+// ============================================================================
+// Meta AI Blog Inspired - Extra Styles
+// Card grid, search, pagination, and component overrides
+// ============================================================================
 
-// Fix header navigation alignment
-header > nav {
+// ============================================================================
+// Global Layout Overrides
+// ============================================================================
+
+// Main container - full width for card grid
+main {
+  display: block !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 2rem !important;
+  flex: 1 !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+
+  @media (max-width: 768px) {
+    padding: 1rem !important;
+  }
+
+  // Remove flex behavior that causes issues
+  > div:first-child {
+    flex: none !important;
+  }
+}
+
+// ============================================================================
+// Post Grid Layout - 2 column responsive card grid
+// ============================================================================
+.post-grid {
+  display: grid !important;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  padding: 0;
+  margin: 0;
   width: 100%;
 
-  > div:first-child {
-    // Logo section - remove left padding/margin
-    flex: 0 0 auto;
-    margin-left: 0 !important;
-    padding-left: 0 !important;
-
-    big, big a {
-      margin-left: 0 !important;
-      padding-left: 0 !important;
-    }
-  }
-
-  > div:nth-child(2) {
-    // Menu section - don't use margin-left: auto which pushes it too far right
-    margin-left: 0 !important;
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
   }
 }
 
-// Increase search box width
-.searchd > input {
-  width: 25rem !important;  // 400px (was 15rem = 240px)
-  max-width: none !important;
+// ============================================================================
+// Post Card Component
+// ============================================================================
+.post-card {
+  background: var(--c1);
+  border-radius: 12px;
+  border: 1px solid var(--c3);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  padding: 0 !important;
+  min-width: 0 !important;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+    border-color: var(--a1);
+  }
 }
 
-#searchinput {
-  width: 25rem !important;  // 400px
-  max-width: none !important;
+.post-card-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
-// Desktop layout improvements
-@media (min-width: 768px) {
-  header nav {
-    width: 100%;
-    max-width: var(--mw);
-    margin: 0 auto !important;
-    padding-left: 0 !important;
+.post-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
 
-    ul {
-      margin-left: 0;
+.post-card-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--a1) !important;
+  background: rgba(24, 119, 242, 0.1);
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  text-decoration: none !important;
+  transition: background 0.2s ease;
+
+  &:hover {
+    background: rgba(24, 119, 242, 0.2);
+    text-decoration: none !important;
+  }
+
+  &:visited {
+    color: var(--a1) !important;
+  }
+}
+
+.post-card-title {
+  font-size: 1.25rem !important;
+  font-weight: 600 !important;
+  line-height: 1.4 !important;
+  margin: 0 0 0.75rem 0 !important;
+  padding: 0 !important;
+
+  a {
+    color: var(--f2) !important;
+    text-decoration: none !important;
+    transition: color 0.2s ease;
+    font-weight: 600 !important;
+
+    &:hover {
+      color: var(--a1) !important;
+    }
+
+    &:visited {
+      color: var(--f2) !important;
+    }
+  }
+}
+
+.post-card-summary {
+  font-size: 0.9375rem;
+  color: var(--c4);
+  line-height: 1.7;
+  margin: 0 0 1rem 0;
+  flex: 1;
+}
+
+.post-card-meta {
+  font-size: 0.75rem;
+  color: var(--c4);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+
+  .meta-divider {
+    color: var(--c3);
+  }
+
+  time {
+    color: var(--c4);
+  }
+}
+
+// ============================================================================
+// Hide Sidebar on Homepage
+// ============================================================================
+.post-grid ~ .sblock,
+main > .sblock {
+  display: none !important;
+}
+
+// ============================================================================
+// Pagination
+// ============================================================================
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0 1rem;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+main nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.on,
+.on:visited {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  height: 36px;
+  padding: 0 0.6rem;
+  border-radius: 8px;
+  border: 1px solid var(--c3) !important;
+  background: var(--c1) !important;
+  color: var(--f1) !important;
+  font-weight: 500;
+  font-size: 0.875rem;
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: var(--a1) !important;
+    color: var(--a1) !important;
+    text-decoration: none !important;
+  }
+}
+
+.cnav {
+  background: var(--a1) !important;
+  border-color: var(--a1) !important;
+  color: white !important;
+
+  &:hover {
+    background: var(--a2) !important;
+    border-color: var(--a2) !important;
+    color: white !important;
+  }
+}
+
+.off,
+.dis {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+// ============================================================================
+// Search Suggestions Dropdown
+// ============================================================================
+#suggestions {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  min-width: 350px;
+  max-width: 450px;
+  background: var(--c1);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  border: 1px solid var(--c3);
+  max-height: 400px;
+  overflow-y: auto;
+  z-index: 1000;
+
+  a {
+    display: block;
+    padding: 0.875rem 1rem;
+    border-bottom: 1px solid var(--c3);
+    text-decoration: none !important;
+    transition: background 0.2s ease;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &:hover {
+      background: var(--c2);
+    }
+
+    span:first-child {
+      display: block;
+      font-weight: 600;
+      color: var(--f2);
+      margin-bottom: 0.25rem;
+    }
+
+    span:nth-child(2) {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--c4);
+      line-height: 1.4;
+    }
+  }
+}
+
+.results {
+  position: relative;
+}
+
+// ============================================================================
+// Article Page Styles
+// ============================================================================
+article {
+  max-width: 100%;
+
+  // Article in main content (single post)
+  > h1:first-of-type {
+    font-size: 2rem;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+
+    @media (max-width: 640px) {
+      font-size: 1.5rem;
     }
   }
 
-  header > nav {
-    flex-direction: row !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-    padding-left: 0 !important;
+  // Content spacing
+  p {
+    margin-bottom: 1.25rem;
+  }
 
-    > div:first-child {
-      padding-left: 0 !important;
+  img {
+    border-radius: 8px;
+    margin: 1.25rem 0;
+  }
+
+  // Blockquotes
+  blockquote {
+    margin: 1.5rem 0;
+    padding: 1rem 1.25rem;
+    background: var(--c2);
+    border-left: 4px solid var(--a1);
+    border-radius: 0 8px 8px 0;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  // Lists
+  ul, ol {
+    margin-bottom: 1.25rem;
+    padding-left: 1.5rem;
+
+    li {
+      margin-bottom: 0.4rem;
+      line-height: 1.7;
+    }
+  }
+}
+
+// ============================================================================
+// Sidebar Blocks (TOC, Recent Posts) - Only show on article pages
+// ============================================================================
+.sblock {
+  display: none;
+
+  @media (min-width: 1024px) {
+    display: block;
+    width: 240px;
+    flex-shrink: 0;
+    margin-left: 2rem;
+  }
+
+  .blockdiv {
+    position: sticky;
+    top: calc(64px + 1.5rem);
+    background: var(--c1);
+    border: 1px solid var(--c3);
+    border-radius: 12px;
+    padding: 1rem;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+
+    // Title
+    .b.s150, a.b.s150 {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--f2);
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--c3);
     }
 
-    > div:nth-child(2) {
-      flex-direction: row !important;
-      margin: 0 !important;
-      flex: 1;
-      justify-content: flex-end !important;
+    // Links
+    a:not(.b) {
+      display: block;
+      padding: 0.4rem 0;
+      font-size: 0.8rem;
+      color: var(--f1);
+      text-decoration: none;
+      border-left: 2px solid transparent;
+      padding-left: 0.6rem;
+      margin-left: -0.6rem;
+      transition: all 0.2s ease;
+
+      &:hover {
+        color: var(--a1);
+        border-left-color: var(--a1);
+      }
+
+      &:visited {
+        color: var(--f1);
+      }
     }
+
+    .scur {
+      color: var(--a1) !important;
+      border-left-color: var(--a1) !important;
+      font-weight: 600;
+    }
+  }
+}
+
+// Mobile block (series navigation in article)
+.block {
+  margin: 1.5rem 0;
+
+  .blockdiv {
+    background: var(--c2);
+    border-radius: 12px;
+    padding: 1rem;
+    border: 1px solid var(--c3);
+    border-top: none;
+
+    a {
+      display: block;
+      padding: 0.4rem 0;
+      font-size: 0.875rem;
+      color: var(--f1);
+      text-decoration: none;
+
+      &:hover {
+        color: var(--a1);
+      }
+
+      &.scur {
+        color: var(--a1);
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+// ============================================================================
+// Utility Overrides
+// ============================================================================
+
+// Remove hr in header/footer
+header hr,
+footer hr {
+  display: none !important;
+}
+
+// Links styling
+a {
+  transition: color 0.2s ease;
+}
+
+// Tables
+table {
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 1.25rem 0;
+}
+
+thead tr {
+  background: var(--c2);
+}
+
+// Selection color
+::selection {
+  background: rgba(24, 119, 242, 0.2);
+  color: var(--f1);
+}
+
+// Scrollbar styling (webkit)
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--c2);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--c4);
+  border-radius: 3px;
+
+  &:hover {
+    background: var(--a1);
+  }
+}
+
+// ============================================================================
+// Back to Top Button
+// ============================================================================
+.topout {
+  position: fixed !important;
+  bottom: 1.5rem !important;
+  right: 1.5rem !important;
+  z-index: 50;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.topleft {
+  display: none !important;
+}
+
+.top {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: var(--c1) !important;
+  border: 1px solid var(--c3) !important;
+  border-radius: 50% !important;
+  color: var(--f1) !important;
+  text-decoration: none !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+  padding: 0 !important;
+
+  &:hover {
+    background: var(--a1) !important;
+    border-color: var(--a1) !important;
+    color: white !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  }
+}
+
+// ============================================================================
+// Print Styles
+// ============================================================================
+@media print {
+  header,
+  footer,
+  .sblock,
+  .top,
+  .topout {
+    display: none !important;
+  }
+
+  main {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+
+  article {
+    max-width: 100%;
   }
 }

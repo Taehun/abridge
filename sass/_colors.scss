@@ -98,6 +98,41 @@
       $result: $cs $f1 $f2 $c1 $c2 $c3 $c4 $a1 $a2 $a3 $a4 $cg $cr;
       @return $result;
     }
+  } @else if $color == "meta" {
+    // Meta AI Blog inspired color scheme - clean, minimal, modern
+    @if $dark {/// Dark Colors
+      $cs: dark !default;
+      $f1: #e4e6eb !default;// Font Color Primary
+      $f2: #ffffff !default;// Font Color Headers
+      $c1: #18191a !default;// Background Color Primary
+      $c2: #242526 !default;// Background Color Secondary
+      $c3: #3e4042 !default;// Borders
+      $c4: #b0b3b8 !default;// Disabled/Muted
+      $a1: #1877f2 !default;// link color (Meta Blue)
+      $a2: #4599ff !default;// link hover
+      $a3: #1877f2 !default;// accent
+      $a4: #1877f2 !default;// link visited
+      $cg: #31a24c !default;// success green
+      $cr: #f02849 !default;// error red
+      $result: $cs $f1 $f2 $c1 $c2 $c3 $c4 $a1 $a2 $a3 $a4 $cg $cr;
+      @return $result;
+    } @else {/// Light Colors
+      $cs: light !default;
+      $f1: #1c1e21 !default;// Font Color Primary (dark gray)
+      $f2: #050505 !default;// Font Color Headers (near black)
+      $c1: #ffffff !default;// Background Color Primary
+      $c2: #f5f5f5 !default;// Background Color Secondary
+      $c3: #e8e8e8 !default;// Borders (subtle)
+      $c4: #8c8c8c !default;// Disabled/Muted text
+      $a1: #1877f2 !default;// link color (Meta Blue)
+      $a2: #1466d9 !default;// link hover (darker blue)
+      $a3: #1877f2 !default;// accent (blue, not orange)
+      $a4: #1877f2 !default;// link visited
+      $cg: #31a24c !default;// success green
+      $cr: #f02849 !default;// error red
+      $result: $cs $f1 $f2 $c1 $c2 $c3 $c4 $a1 $a2 $a3 $a4 $cg $cr;
+      @return $result;
+    }
   } @else {//orange (default)
     @if $dark {/// Dark Colors - Disabled for light-only mode
       $cs: light !default;// color-scheme Variable for scrollbars, required for Chrome.
