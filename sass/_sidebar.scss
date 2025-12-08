@@ -14,6 +14,11 @@ $content-padding-mobile: 1rem;
 $mobile-menu-width: 280px;
 $mobile-breakpoint: 768px;
 
+// Z-index scale for layering
+$z-header: 100;
+$z-overlay: 1000;
+$z-modal: 1001;
+
 // ============================================================================
 // Typography Enhancements
 // ============================================================================
@@ -32,7 +37,7 @@ body {
 header {
   position: sticky !important;
   top: 0 !important;
-  z-index: 100 !important;
+  z-index: $z-header !important;
   background: rgba(255, 255, 255, 0.98) !important;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -349,7 +354,7 @@ footer {
         border-left: 1px solid var(--c3) !important;
         box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1) !important;
         transition: right 0.3s ease !important;
-        z-index: 1000 !important;
+        z-index: $z-modal !important;
         flex-direction: column !important;
         padding: 0 !important;
         gap: 0 !important;
@@ -359,27 +364,12 @@ footer {
           right: 0 !important;
         }
 
-        // Close button
-        &::before {
-          content: '\00d7' !important;
-          position: absolute !important;
-          top: 0.75rem !important;
-          right: 0.75rem !important;
-          font-size: 1.5rem !important;
-          cursor: pointer !important;
-          color: var(--c4) !important;
-          width: 28px !important;
-          height: 28px !important;
-          display: flex !important;
-          align-items: center !important;
-          justify-content: center !important;
-          z-index: 1 !important;
-        }
-
         // Search in mobile menu
         > div:first-child {
-          padding: 3.5rem 1.25rem 1.25rem !important;
+          padding: 1.25rem !important;
           border-bottom: 1px solid var(--c3) !important;
+          position: relative !important;
+          z-index: 2 !important;
 
           > div form .searchd {
             width: 100% !important;
@@ -387,6 +377,13 @@ footer {
             input {
               flex: 1 !important;
               width: auto !important;
+              pointer-events: auto !important;
+              touch-action: manipulation !important;
+            }
+
+            button {
+              pointer-events: auto !important;
+              touch-action: manipulation !important;
             }
           }
         }
@@ -395,6 +392,8 @@ footer {
         > div:last-child {
           padding: 0 !important;
           width: 100% !important;
+          position: relative !important;
+          z-index: 2 !important;
 
           ul {
             flex-direction: column !important;
@@ -413,8 +412,12 @@ footer {
                 font-size: 0.9375rem !important;
                 width: 100% !important;
                 box-sizing: border-box !important;
+                pointer-events: auto !important;
+                -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1) !important;
+                touch-action: manipulation !important;
 
-                &:hover {
+                &:hover,
+                &:active {
                   background: var(--c2) !important;
                 }
               }
@@ -425,28 +428,31 @@ footer {
     }
   }
 
-  // Overlay when mobile menu is open
-  body::before {
-    content: '';
+  // Menu overlay
+  #menuOverlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
-    z-index: 999;
+    z-index: $z-overlay;
     opacity: 0;
     visibility: hidden;
+    pointer-events: none;
     transition: opacity 0.3s ease, visibility 0.3s ease;
+
+    &.active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
   }
 
   body.menu-open {
     overflow: hidden;
-
-    &::before {
-      opacity: 1;
-      visibility: visible;
-    }
+    position: fixed;
+    width: 100%;
   }
 
   footer {

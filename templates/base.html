@@ -46,6 +46,7 @@
         {%- endif -%}
       </div>
       <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+      <div id="menuOverlay"></div>
       <div id="mobileMenu">
         <div>
           {%- if config.build_search_index or config.extra.search_library == "pagefind" %}
@@ -145,5 +146,6 @@
 {%- block gotop %}
 {%- endblock gotop %}
 <script src="{{ get_url(path="js/mobile-menu.js", trailing_slash=false) }}"></script>
+<script src="{{ get_url(path="js/spa-navigation.js", trailing_slash=false) }}"></script>
 </body>
 </html>

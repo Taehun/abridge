@@ -187,7 +187,7 @@
         {%- if h.children %}
         {%- for h2 in h.children %}
         <div class="hpad">
-          <a href="#{{h2.id | safe}}"><small>- {{ h2.title }}</small></a>
+          <a href="#{{h2.id | safe}}"><small>{{ h2.title }}</small></a>
         </div>
         {%- endfor %}
         {%- endif %}

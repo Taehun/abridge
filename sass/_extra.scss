@@ -3,6 +3,9 @@
 // Card grid, search, pagination, and component overrides
 // ============================================================================
 
+// Variables (matching _sidebar.scss for consistency)
+$mobile-breakpoint: 768px;
+
 // ============================================================================
 // Global Layout Overrides
 // ============================================================================
@@ -17,7 +20,7 @@ main {
   width: 100% !important;
   box-sizing: border-box !important;
 
-  @media (max-width: 768px) {
+  @media (max-width: $mobile-breakpoint) {
     padding: 1rem !important;
   }
 
@@ -38,7 +41,7 @@ main {
   margin: 0;
   width: 100%;
 
-  @media (min-width: 768px) {
+  @media (min-width: $mobile-breakpoint) {
     grid-template-columns: repeat(2, 1fr);
     gap: 2.5rem;
   }
@@ -52,12 +55,15 @@ main {
   border-radius: 12px;
   border: 1px solid var(--c3);
   overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
   display: flex;
   flex-direction: column;
   padding: 1.5rem !important;
   min-width: 0 !important;
   cursor: pointer;
+
+  @media (min-width: $mobile-breakpoint + 1) {
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
 
   &:hover {
     transform: translateY(-4px);
@@ -145,10 +151,10 @@ main {
 }
 
 // ============================================================================
-// Hide Sidebar on Homepage
+// Hide Sidebar on Homepage (show only on article pages)
 // ============================================================================
 .post-grid ~ .sblock,
-main > .sblock {
+main:has(.post-grid) .sblock {
   display: none !important;
 }
 
@@ -267,10 +273,32 @@ main nav {
 }
 
 // ============================================================================
-// Article Page Styles
+// Article Page Layout (with sidebar TOC)
 // ============================================================================
-article {
-  max-width: 100%;
+// When article page (not post-card) exists, make main a flex container
+main:has(article:not(.post-card)) {
+  display: flex !important;
+  justify-content: center;
+  gap: 2rem;
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+  }
+}
+
+// ============================================================================
+// Article Page Styles (single post page, not cards)
+// ============================================================================
+article:not(.post-card) {
+  max-width: 720px;  // Optimal reading width (~65-75 chars per line)
+  flex: 0 1 720px;   // Don't grow, can shrink, base width 720px
+  font-size: 0.6875rem;  // 11px
+  line-height: 1.8;      // Comfortable line height
+
+  // Fix anchor scroll position for sticky header
+  h2, h3, h4, h5, h6 {
+    scroll-margin-top: calc(72px + 1rem);
+  }
 
   // Article in main content (single post)
   > h1:first-of-type {
@@ -323,12 +351,11 @@ article {
 // ============================================================================
 .sblock {
   display: none;
+  width: 200px;
+  flex-shrink: 0;
 
   @media (min-width: 1024px) {
     display: block;
-    width: 240px;
-    flex-shrink: 0;
-    margin-left: 2rem;
   }
 
   .blockdiv {
@@ -352,11 +379,35 @@ article {
       border-bottom: 1px solid var(--c3);
     }
 
-    // Links
-    a:not(.b) {
+    // Links (main headings)
+    > div > a {
       display: block;
-      padding: 0.4rem 0;
+      padding: 0.2rem 0;
       font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--f1);
+      text-decoration: none;
+      border-left: 2px solid transparent;
+      padding-left: 0.6rem;
+      margin-left: -0.6rem;
+      transition: all 0.2s ease;
+
+      &:hover {
+        color: var(--a1);
+        border-left-color: var(--a1);
+      }
+
+      &:visited {
+        color: var(--f1);
+      }
+    }
+
+    // Sub-headings
+    .hpad a {
+      display: block;
+      padding: 0.2rem 0;
+      font-size: 0.75rem;
+      font-weight: 400;
       color: var(--f1);
       text-decoration: none;
       border-left: 2px solid transparent;
