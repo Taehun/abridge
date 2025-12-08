@@ -6,16 +6,10 @@
 
   if (!menuToggle || !mobileMenu) return;
 
-  let scrollPosition = 0;
-
   // Toggle menu
   function openMenu() {
-    // Save scroll position before fixing body
-    scrollPosition = window.pageYOffset;
-    document.body.style.top = -scrollPosition + 'px';
     mobileMenu.classList.add('active');
     if (menuOverlay) menuOverlay.classList.add('active');
-    document.body.classList.add('menu-open');
     // ARIA attributes for screen readers
     mobileMenu.setAttribute('aria-hidden', 'false');
     menuToggle.setAttribute('aria-expanded', 'true');
@@ -26,20 +20,14 @@
     if (firstFocusable) firstFocusable.focus();
   }
 
-  function closeMenu(returnFocus, restoreScroll) {
+  function closeMenu(returnFocus) {
     mobileMenu.classList.remove('active');
     if (menuOverlay) menuOverlay.classList.remove('active');
-    document.body.classList.remove('menu-open');
-    document.body.style.top = '';
     // ARIA attributes for screen readers
     mobileMenu.setAttribute('aria-hidden', 'true');
     menuToggle.setAttribute('aria-expanded', 'false');
     // Remove focus trap
     mobileMenu.removeEventListener('keydown', trapFocus);
-    // Restore scroll position only if requested
-    if (restoreScroll !== false) {
-      window.scrollTo(0, scrollPosition);
-    }
     // Return focus to toggle button only when explicitly requested
     if (returnFocus) menuToggle.focus();
   }
@@ -75,6 +63,16 @@
     });
   }
 
+  // Close menu when clicking outside (fallback for overlay z-index issues)
+  document.addEventListener('click', function(e) {
+    if (!mobileMenu.classList.contains('active')) return;
+
+    // If click is inside menu or on toggle button, don't close
+    if (mobileMenu.contains(e.target) || menuToggle.contains(e.target)) return;
+
+    closeMenu(false);
+  });
+
   // Handle menu link clicks with event delegation (no need to re-attach on SPA navigation)
   mobileMenu.addEventListener('click', function(e) {
     const link = e.target.closest('a');
@@ -89,20 +87,20 @@
     const currentPath = window.location.pathname.replace(/\/$/, '') || '/';
     // If same page, close menu immediately
     if (linkPath === currentPath) {
-      closeMenu(false, true);
+      closeMenu(false);
     }
   });
 
   // Close menu after SPA navigation completes
   document.addEventListener('spa:navigate', function() {
-    if (document.body.classList.contains('menu-open')) {
-      closeMenu(false, false);
+    if (mobileMenu.classList.contains('active')) {
+      closeMenu(false);
     }
   });
 
   // Close menu on escape key
   document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && document.body.classList.contains('menu-open')) {
+    if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
       closeMenu(true);
     }
   });

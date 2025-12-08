@@ -347,21 +347,22 @@ footer {
       #mobileMenu {
         position: fixed !important;
         top: 0 !important;
-        right: -100% !important;
+        right: 0 !important;
         width: $mobile-menu-width !important;
         height: 100vh !important;
         background: var(--c1) !important;
         border-left: 1px solid var(--c3) !important;
         box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1) !important;
-        transition: right 0.3s ease !important;
         z-index: $z-modal !important;
         flex-direction: column !important;
         padding: 0 !important;
         gap: 0 !important;
         overflow-y: auto !important;
+        // 애니메이션 없이 즉시 표시/숨김
+        visibility: hidden;
 
         &.active {
-          right: 0 !important;
+          visibility: visible;
         }
 
         // Search in mobile menu
@@ -428,7 +429,7 @@ footer {
     }
   }
 
-  // Menu overlay
+  // Menu overlay - 애니메이션 없이 즉시 표시
   #menuOverlay {
     position: fixed;
     top: 0;
@@ -440,7 +441,6 @@ footer {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
 
     &.active {
       opacity: 1;
@@ -450,9 +450,8 @@ footer {
   }
 
   body.menu-open {
-    overflow: hidden;
-    position: fixed;
-    width: 100%;
+    overflow: hidden !important;
+    touch-action: none;  // iOS Safari 스크롤 방지
   }
 
   footer {
