@@ -35,13 +35,12 @@ This Template can also be used directly for the index eg: example.com/ or as the
 {%- block content %}
     <div class="post-grid">
     {%- for page in paginator.pages %}
-      <article class="post-card">
-        <div class="post-card-content">
+      <article class="post-card" onclick="window.location='{{ page.permalink | safe }}{%- if uglyurls %}index.html{%- endif %}'">
           {# All Tags #}
           {%- if page.taxonomies.tags %}
           <div class="post-card-tags">
             {%- for tag in page.taxonomies.tags %}
-            <a href="{{ get_taxonomy_url(kind='tags', name=tag, lang=lang) | safe }}{%- if uglyurls %}index.html{%- endif %}" class="post-card-tag">
+            <a href="{{ get_taxonomy_url(kind='tags', name=tag, lang=lang) | safe }}{%- if uglyurls %}index.html{%- endif %}" class="post-card-tag" onclick="event.stopPropagation()">
               {{ tag }}
             </a>
             {%- endfor %}
@@ -76,7 +75,6 @@ This Template can also be used directly for the index eg: example.com/ or as the
             <span>{{ page.reading_time }} min</span>
             {%- endif %}
           </div>
-        </div>
       </article>
     {%- endfor %}
     </div>

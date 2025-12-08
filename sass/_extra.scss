@@ -55,8 +55,9 @@ main {
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
   display: flex;
   flex-direction: column;
-  padding: 0 !important;
+  padding: 1.5rem !important;
   min-width: 0 !important;
+  cursor: pointer;
 
   &:hover {
     transform: translateY(-4px);
@@ -65,12 +66,6 @@ main {
   }
 }
 
-.post-card-content {
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
 
 .post-card-tags {
   display: flex;
