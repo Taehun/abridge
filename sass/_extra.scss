@@ -19,9 +19,10 @@ main {
   flex: 1 !important;
   width: 100% !important;
   box-sizing: border-box !important;
+  overflow-x: hidden !important;  // Prevent horizontal scroll
 
   @media (max-width: $mobile-breakpoint) {
-    padding: 1rem !important;
+    padding: 1rem 1.25rem !important;  // Increased horizontal padding for mobile
   }
 
   // Remove flex behavior that causes issues
@@ -294,6 +295,14 @@ article:not(.post-card) {
   flex: 0 1 720px;   // Don't grow, can shrink, base width 720px
   font-size: 0.6875rem;  // 11px
   line-height: 1.8;      // Comfortable line height
+  width: 100%;           // Ensure full width on mobile
+  min-width: 0;          // Allow shrinking below content size
+  box-sizing: border-box;
+  padding: 0 1rem;       // Add horizontal padding for mobile
+
+  @media (min-width: $mobile-breakpoint) {
+    padding: 0;          // Remove padding on desktop
+  }
 
   // Fix anchor scroll position for sticky header
   h2, h3, h4, h5, h6 {
