@@ -358,11 +358,13 @@ footer {
         padding: 0 !important;
         gap: 0 !important;
         overflow-y: auto !important;
-        // 애니메이션 없이 즉시 표시/숨김
+        // 애니메이션 없이 즉시 표시/숨김 (opacity로 잔상 방지)
         visibility: hidden;
+        opacity: 0;
 
         &.active {
           visibility: visible;
+          opacity: 1;
         }
 
         // Search in mobile menu
