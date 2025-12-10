@@ -478,6 +478,7 @@ code {
 }
 
 pre {
+  position: relative !important;
   background-color: var(--c2) !important;
   border: 1px solid var(--c3) !important;
   border-radius: 8px !important;
@@ -502,20 +503,19 @@ pre {
   }
 }
 
-// Copy button
-.cc {
+// Copy button - always visible
+pre .cc.svgh.copy {
   position: absolute !important;
-  top: 0.6rem !important;
-  right: 0.6rem !important;
-  padding: 0.4rem !important;
-  background: var(--c3) !important;
+  top: 0.5rem !important;
+  right: 0.5rem !important;
+  padding: 0.3rem !important;
+  background: var(--f2) !important;
   border-radius: 4px !important;
-  opacity: 0 !important;
-  transition: opacity 0.2s ease, background 0.2s ease !important;
-
-  pre:hover & {
-    opacity: 1 !important;
-  }
+  opacity: 1 !important;
+  cursor: pointer !important;
+  z-index: 10 !important;
+  width: 1.4rem !important;
+  height: 1.4rem !important;
 
   &:hover {
     background: var(--a1) !important;
