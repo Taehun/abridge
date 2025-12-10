@@ -2,7 +2,7 @@
 base_url = "https://blog-new.taehun.dev"
 # Usable site directly from disk, Including Search: "/home/jieiku/.dev/abridge/public"
 # Also set index format = "elasticlunr_javascript", and in [extra] uglyurls = true, integrity = false
-# If you use the npm/node script then all you have to do is set search_library = "offline", and everything else is automatic.
+# If you use the npm/node script then all you have to do is set search_library = "pagefind"
 
 title = "한걸음씩"
 description = "어제보다 나은 오늘을 위해 전진"
