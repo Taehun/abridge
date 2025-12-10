@@ -99,6 +99,13 @@
     });
   }
 
+  // Close menu when search is executed (custom event from search scripts)
+  document.addEventListener('search:submit', function() {
+    if (mobileMenu.classList.contains('active')) {
+      closeMenu(false);
+    }
+  });
+
   // Close menu after SPA navigation completes
   document.addEventListener('spa:navigate', function() {
     if (mobileMenu.classList.contains('active')) {

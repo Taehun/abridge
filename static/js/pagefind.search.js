@@ -134,6 +134,8 @@ window.onload = function () {
 
                 document.getElementById("searchinput").value = "";
                 document.body.contains(document.closeSearch) && (document.closeSearch.onsubmit = function () { closeSearchNow() })
+                // Dispatch event to close mobile menu
+                document.dispatchEvent(new CustomEvent('search:submit'));
                 return false
             }
 
