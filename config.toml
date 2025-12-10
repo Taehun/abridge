@@ -11,7 +11,7 @@ description = "어제보다 나은 오늘을 위해 전진"
 default_language = "ko"
 compile_sass = true
 minify_html = false
-build_search_index = false
+build_search_index = true
 generate_feeds = true
 taxonomies = [
     {name = "tags", feed = true},
@@ -27,7 +27,7 @@ taxonomies = [
 
 [search]                # Options specific to elasticlunr search.
 # index format can be: elasticlunr_json or elasticlunr_javascript or fuse_json
-index_format = "elasticlunr_json"
+index_format = "fuse_json"
 include_title = true        # include title of page/section in index
 include_description = true # include description of page/section in index
 include_content = true      # include rendered content of page/section in index
@@ -168,7 +168,7 @@ github = "Taehun"
 
 uglyurls = false # if set to true then links are generated with the full path. eg https://abridge.netlify.app/index.html
 integrity = true # increases site security, should normally be true. (setting to false is useful during js development)
-js_bundle = false # multiple javascript files combined into a single file (setting to false is useful during js development)
+js_bundle = true # multiple javascript files combined into a single file (setting to false is useful during js development)
 
 js_copycode = true # The copy button on code blocks that allows you to copy them to the clipboard.
 js_email_encode = true # obfuscates email address in footer

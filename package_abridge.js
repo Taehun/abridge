@@ -435,7 +435,8 @@ async function createPagefindIndex() {
           /initPrimary\(\)\{([^{}]*\{[^{}]*\})*[^{}]*\}/g,
           `initPrimary(){}`
         ) // Remove annoying function
-        .replace(/;export\{[^}]*\}/g, "");
+        .replace(/;export\{[^}]*\}/g, "")
+        .replace(/import\.meta\.url/g, '""'); // Remove import.meta.url
       fs.writeFileSync(pagefindPath, pagefindContent);
 
       // now insert the CJS into the anonymous function within pagefind.search.js
