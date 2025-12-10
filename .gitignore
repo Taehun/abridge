@@ -18,6 +18,3 @@ static/js/wasm.*.pagefind
 static/js/pagefind_search.js
 static/js/index
 static/js/fragment
-static/js/*.min.js
-static/sw.min.js
-static/manifest.min.json
