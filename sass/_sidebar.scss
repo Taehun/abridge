@@ -467,10 +467,10 @@ footer {
 }
 
 // ============================================================================
-// Code Block Enhancements
+// Code Block Enhancements (Theme-aware)
 // ============================================================================
 code {
-  font-family: 'JetBrains Mono', 'SF Mono', 'Monaco', 'Menlo', 'Consolas', monospace !important;
+  font-family: var(--fm) !important;
   font-size: 0.85rem !important;
   background-color: var(--c2) !important;
   padding: 0.15em 0.35em !important;
@@ -478,25 +478,26 @@ code {
 }
 
 pre {
-  background-color: #1e1e1e !important;
-  border-radius: 10px !important;
-  padding: 1.25rem !important;
+  background-color: var(--c2) !important;
+  border: 1px solid var(--c3) !important;
+  border-radius: 8px !important;
+  padding: 2.5rem 1rem 1rem !important; // top padding for language header
   overflow-x: auto !important;
   margin: 1.25rem 0 !important;
 
   code {
     background: none !important;
     padding: 0 !important;
-    color: #e4e6eb !important;
+    color: var(--f1) !important;
     font-size: 0.85rem !important;
     line-height: 1.6 !important;
   }
 
   // Language header
   code[data-lang]::before {
-    color: #8b949e !important;
-    border-bottom: 1px solid #30363d !important;
-    margin-bottom: 0.75rem !important;
+    color: var(--f2) !important;
+    background-color: var(--c3) !important;
+    border-bottom: 1px solid var(--c3) !important;
     padding-bottom: 0.5rem !important;
   }
 }
@@ -507,7 +508,7 @@ pre {
   top: 0.6rem !important;
   right: 0.6rem !important;
   padding: 0.4rem !important;
-  background: rgba(255, 255, 255, 0.1) !important;
+  background: var(--c3) !important;
   border-radius: 4px !important;
   opacity: 0 !important;
   transition: opacity 0.2s ease, background 0.2s ease !important;
@@ -517,6 +518,6 @@ pre {
   }
 
   &:hover {
-    background: rgba(255, 255, 255, 0.2) !important;
+    background: var(--a1) !important;
   }
 }
