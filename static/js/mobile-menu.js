@@ -91,6 +91,14 @@
     }
   });
 
+  // Close menu when search form is submitted
+  const searchForm = mobileMenu.querySelector('form[name="goSearch"]');
+  if (searchForm) {
+    searchForm.addEventListener('submit', function() {
+      closeMenu(false);
+    });
+  }
+
   // Close menu after SPA navigation completes
   document.addEventListener('spa:navigate', function() {
     if (mobileMenu.classList.contains('active')) {
