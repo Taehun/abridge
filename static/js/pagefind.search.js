@@ -1,6 +1,8 @@
+// Pagefind 검색 - 동적 로딩으로 모바일 성능 최적화
 window.onload = function () {
     if (document.body.contains(document.goSearch)) {
         var loaded = false;
+        var pagefindModule = null;
         document.goSearch.onsubmit = function () { return goSearchNow() };
 
         /*
@@ -62,9 +64,7 @@ window.onload = function () {
             if (baseUrl.slice(-1) == "/") {
                 baseUrl = baseUrl.slice(0, -1);
             }
-            options({//pagefind options
-                basePath: baseUrl + '/js/'
-            });
+
             var index;
             searchinput.addEventListener('input', show_results, true);
             suggestions.addEventListener('click', accept_suggestion, true);
@@ -77,8 +77,19 @@ window.onload = function () {
                 }
                 document.getElementById('searchinput').onfocus = '';
             }
+            // 동적으로 Pagefind 모듈 로드 (검색 사용 시에만)
             async function lazyLoad() {
-                await init();
+                if (!pagefindModule) {
+                    pagefindModule = await import('/pagefind/pagefind.js');
+                    window.init = pagefindModule.init;
+                    window.search = pagefindModule.search;
+                    window.options = pagefindModule.options;
+                    // Pagefind 옵션 설정
+                    window.options({
+                        basePath: baseUrl + '/js/'
+                    });
+                }
+                await window.init();
             }
 
             // in page results when press enter or click search icon from search box
