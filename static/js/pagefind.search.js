@@ -1,4 +1,31 @@
+// Disable search UI for restricted environments (iOS Lockdown Mode)
+function disableSearchUI() {
+    var searchbox = document.getElementById('searchbox');
+    var searchinput = document.getElementById('searchinput');
+    if (searchinput) {
+        searchinput.disabled = true;
+        searchinput.placeholder = 'Search unavailable';
+    }
+    if (searchbox) {
+        searchbox.classList.add('search-disabled');
+    }
+}
+
 window.onload = function () {
+    // Skip search initialization in Lockdown Mode
+    if (window.isLockdownMode === true) {
+        disableSearchUI();
+        return;
+    }
+    // Wait for lockdown detection if not yet complete
+    if (window.isLockdownMode === null) {
+        document.addEventListener('lockdown:detected', function(e) {
+            if (e.detail.isLockdownMode) {
+                disableSearchUI();
+            }
+        }, { once: true });
+    }
+
     if (document.body.contains(document.goSearch)) {
         var loaded = false;
         document.goSearch.onsubmit = function (e) { e.preventDefault(); goSearchNow(); return false; };

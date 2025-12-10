@@ -2,8 +2,20 @@
 if ("serviceWorker" in navigator) {
     // 페이지 로드 완료 후 서비스 워커 등록 (초기 렌더링 차단 방지)
     window.addEventListener("load", function() {
+        // Lockdown Mode에서는 SW 등록 건너뛰기
+        if (window.isLockdownMode === true) {
+            console.info("SW skipped: Lockdown Mode");
+            return;
+        }
+
         // 추가로 2초 지연하여 중요한 리소스가 먼저 로드되도록 함
         setTimeout(function() {
+            // Lockdown 감지 완료 후 재확인
+            if (window.isLockdownMode === true) {
+                console.info("SW skipped: Lockdown Mode");
+                return;
+            }
+
             navigator.serviceWorker
                 .register("/sw.min.js?v=3.12.2",
                           { scope: "/" })

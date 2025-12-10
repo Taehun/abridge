@@ -617,6 +617,23 @@ thead tr {
 }
 
 // ============================================================================
+// Lockdown Mode - Search Disabled State
+// ============================================================================
+.search-disabled {
+  opacity: 0.5;
+  pointer-events: none;
+
+  input {
+    cursor: not-allowed;
+    background: var(--c2) !important;
+  }
+
+  button[type="submit"] {
+    cursor: not-allowed;
+  }
+}
+
+// ============================================================================
 // Print Styles
 // ============================================================================
 @media print {
