@@ -8,7 +8,7 @@
   {%- if config.extra.js_switcher_default %}
     {%- if config.extra.js_switcher_default == "light" %}{% set js_theme="js/theme_light.min.js" %}{% endif %}
   {%- endif %}
-  <script src="{{                     get_url(path=js_theme                        , trailing_slash=false) | safe }}"{%- if integrity %} integrity="sha384-{{ get_hash(path=js_theme, sha_type=384, base64=true) | safe }}"{%- endif %}></script>
+  <script defer src="{{                     get_url(path=js_theme                        , trailing_slash=false) | safe }}"{%- if integrity %} integrity="sha384-{{ get_hash(path=js_theme, sha_type=384, base64=true) | safe }}"{%- endif %}></script>
   {%- endif %}
 
 
@@ -96,6 +96,14 @@
 {#- Style Sheets Preload #}
   {%- set integrity = config.extra.integrity | default(value=true) -%}
   {%- if config.extra.search_library %}{%- if config.extra.search_library == "offline" %}{% set integrity = false %}{% endif %}{% endif %}
+
+{#- Google Fonts preconnect for faster font loading -#}
+{%- if config.extra.fonts %}{%- for i in config.extra.fonts %}
+  {%- if i.url is matching("^http[s]?://fonts.googleapis.com") %}
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  {%- endif %}
+{%- endfor %}{%- endif %}
 
 {%- if config.extra.fonts %}{%- for i in config.extra.fonts %}
   {%- if i.url is matching("^http[s]?://") %}
