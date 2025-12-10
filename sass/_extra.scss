@@ -309,6 +309,37 @@ main:has(article:not(.post-card)) {
 }
 
 // ============================================================================
+// Article Meta Information (author, date, tags)
+// ============================================================================
+article > span:first-of-type {
+  display: block;
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--c4);
+  margin-bottom: 1.5rem;
+
+  // Tag hash symbol - not italic, same color as meta text
+  .tag-hash {
+    font-style: normal;
+    color: var(--c4);
+  }
+
+  // Tags - keep original size and colors
+  a {
+    font-style: normal;
+    color: var(--a1);
+
+    &:hover {
+      color: var(--a2);
+    }
+
+    &:visited {
+      color: var(--a4);
+    }
+  }
+}
+
+// ============================================================================
 // Article Page Styles (single post page, not cards)
 // ============================================================================
 article:not(.post-card) {
