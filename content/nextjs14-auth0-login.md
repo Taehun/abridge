@@ -69,7 +69,8 @@ Auth0 대쉬보드 `Settings` → `General` → `Environment Tag` 에서 현재 
 npx create-next-app@latest nextjs-auth0-example --use-pnpm --ts --tailwind --eslint --app --no-src-dir --import-alias "@/*"
 ```
 
-```cd nextjs-auth0-example
+```
+cd nextjs-auth0-example
 ```
 
 Auth0 Next.js SDK를 설치 합니다.

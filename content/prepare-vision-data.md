@@ -85,7 +85,7 @@ def create_bucket_notifications(bucket_name, topic_name):
 
 좀 더 자세한 내용은 [Cloud Storage용 Cloud Pub/Sub 알림](https://cloud.google.com/storage/docs/pubsub-notifications?hl=ko), [Cloud Storage용 Pub/Sub 알림 구성](https://cloud.google.com/storage/docs/reporting-changes?hl=ko#storage_create_bucket_notifications-python), [Notification Polling 예제](https://github.com/googleapis/python-storage/blob/main/samples/snippets/notification_polling.py)를 참고하세요. [Github 예제 코드](https://github.com/Taehun/vision-dataset-sample-infra/blob/main/infra/pubsub.tf)에는 Terraform으로 인프라를 생성할 때 Pub/Sub 토픽을 생성하도록 구현하였습니다.
 
-```hcl
+```bash
 resource "google_storage_notification" "notification" {
   bucket         = google_storage_bucket.dataset.name
   payload_format = "JSON_API_V1"
@@ -345,7 +345,8 @@ GCP에서 가장 기본적인 비전 데이터셋 아키텍처를 구성해 보�
 pip3 install image-similarity-measures
 ```
 
-```import cv2
+```python
+import cv2
 import os
 import image_similarity_measures
 from sys import argv

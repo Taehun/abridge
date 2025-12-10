@@ -82,7 +82,8 @@ def get_completion(prompt, model="gpt-3.5-turbo", temperature=0):
 
 **전략 1: 구분 기호를 사용하여 입력의 뚜렷한 부분을 명확하게 표시하세요.**
 
-- 구분 기호는 다음과 같을 수 있습니다: ```` ``` ````, `"""`, `< >`, `<tag> </tag>`, `:`
+- 구분 기호는 다음과 같을 수 있습니다: ```
+` ``` ````, `"""`, `< >`, `<tag> </tag>`, `:`
 
 ```toml
 text = f"""
@@ -95,13 +96,15 @@ text = f"""
 
 prompt = f"""
 백틱 세 개로 구분된 텍스트를 한 문장으로 요약하세요.
-```{text}```
+```json
+{text}```
 """
 response = get_completion(prompt)
 print(response)
 ```
 
-```모델의 작업을 명확하고 구체적으로 표현하고, 긴 프롬프트를 사용하여 모델이 더 명확하고 관련성 높은 출력을 얻을 수 있도록 해야 합니다.
+```
+모델의 작업을 명확하고 구체적으로 표현하고, 긴 프롬프트를 사용하여 모델이 더 명확하고 관련성 높은 출력을 얻을 수 있도록 해야 합니다.
 ```
 
 **전략 2: 구조화된 결과물 요청하기**
@@ -118,7 +121,8 @@ response = get_completion(prompt)
 print(response)
 ```
 
-```{
+```json
+{
     "book_id": 1,
     "제목": "어린 왕자",
     "저자": "생텍쥐페리",
@@ -166,7 +170,8 @@ print("text_1 결과:")
 print(response)
 ```
 
-```text_1 결과:
+```
+text_1 결과:
 1 단계 - 물을 끓입니다.
 2 단계 - 끓는 동안 컵을 들고 티백을 넣습니다.
 3 단계 - 물이 충분히 뜨거워지면 티백 위에 붓습니다.
@@ -176,7 +181,8 @@ print(response)
 7 단계 - 맛있는 차 한 잔을 즐깁니다.
 ```
 
-```text_2 = f"""
+```
+text_2 = f"""
 오늘은 태양이 밝게 빛나고 새들이 노래하고 있습니다.
 공원에서 산책하기 좋은 날입니다.
 꽃이 피고 나무들이 바람에 살랑살랑 흔들리고 있습니다.
@@ -205,7 +211,8 @@ print("text_2 결과:")
 print(response)
 ```
 
-```text_2 결과:
+```
+text_2 결과:
 단계 없음
 ```
 
@@ -225,7 +232,8 @@ response = get_completion(prompt)
 print(response)
 ```
 
-```<할아버지>: 인생은 언제나 어려움과 도전으로 가득 차 있습니다. 하지만 회복탄력성이 있다면 어떤 어려움이든 극복할 수 있습니다. 회복탄력성은 어려운 상황에서도 긍정적인 마인드를 유지하고, 빠르게 회복하는 능력입니다. 이것은 자신의 강점과 약점을 인식하고, 문제를 해결하기 위해 적극적으로 행동하는 것을 의미합니다.
+```json
+<할아버지>: 인생은 언제나 어려움과 도전으로 가득 차 있습니다. 하지만 회복탄력성이 있다면 어떤 어려움이든 극복할 수 있습니다. 회복탄력성은 어려운 상황에서도 긍정적인 마인드를 유지하고, 빠르게 회복하는 능력입니다. 이것은 자신의 강점과 약점을 인식하고, 문제를 해결하기 위해 적극적으로 행동하는 것을 의미합니다.
 ```
 
 #### 원칙 2: 모델에게 '생각할 시간' 주기
@@ -258,7 +266,8 @@ print("프롬프트 1 결과:")
 print(response)
 ```
 
-```프롬프트 1 결과:
+```
+프롬프트 1 결과:
 1 - 잭과 질 남매는 마을에서 우물에서 물을 길어오기 위해 모험을 떠났고, 중간에 사고가 있었지만 모험심은 꺾이지 않았습니다.
 2 - Jack et Jill, frère et sœur, sont partis à l'aventure pour chercher de l'eau dans un puits sur une colline dans un charmant village. En chantant joyeusement, Jack a trébuché sur une pierre et est tombé en roulant en bas de la colline, suivi de Jill. Bien qu'ils aient été légèrement blessés, ils se sont encouragés mutuellement et sont rentrés chez eux. Malgré l'accident, leur esprit d'aventure n'a pas été brisé et ils ont continué à explorer avec joie.
 3 - Jack et Jill
@@ -289,7 +298,8 @@ print("\n프롬프트 2 결과:")
 print(response)
 ```
 
-```프롬프트 2 결과:
+```
+프롬프트 2 결과:
 요약: 잭과 질 남매는 우물에서 물을 길어오기 위해 모험을 떠났고, 사고에도 불구하고 모험심은 꺾이지 않았습니다.
 번역: Jack et Jill, frère et sœur, sont partis à l'aventure pour chercher de l'eau dans un puits sur une colline charmante. Malgré un accident, leur esprit d'aventure n'a pas été brisé et ils ont continué à explorer avec joie.
 Names: Jack, Jill
@@ -322,7 +332,8 @@ response = get_completion(prompt)
 print(response)
 ```
 
-```정답입니다.
+```
+정답입니다.
 ```
 
 **학생의 솔루션이 실제로는 오답이라는 점에 유의하세요.
@@ -388,7 +399,8 @@ response = get_completion(prompt)
 print(response)
 ```
 
-```정답을 찾는 과정과 실제 정답:
+```
+정답을 찾는 과정과 실제 정답:
 1. 토지 비용: 100x
 2. 태양광 패널 비용: 250x
 3. 유지보수 비용: 100,000 + 10x (평방 피트당 $10의 추가 비용)
@@ -414,7 +426,8 @@ response = get_completion(prompt)
 print(response)
 ```
 
-```Boie의 AeroGlide 울트라슬림 스마트 칫솔은 미국의 칫솔 제조업체 Boie에서 출시한 제품입니다. 이 제품은 블루투스 기능을 탑재하여 스마트폰과 연동하여 사용할 수 있습니다. 이를 통해 칫솔 사용 시간, 세척 횟수, 배터리 잔량 등을 모니터링할 수 있습니다.
+```
+Boie의 AeroGlide 울트라슬림 스마트 칫솔은 미국의 칫솔 제조업체 Boie에서 출시한 제품입니다. 이 제품은 블루투스 기능을 탑재하여 스마트폰과 연동하여 사용할 수 있습니다. 이를 통해 칫솔 사용 시간, 세척 횟수, 배터리 잔량 등을 모니터링할 수 있습니다.
 
 또한, 이 제품은 울트라슬림 디자인으로 구성되어 있어 칫솔질이 더욱 편리하고 쉽습니다. 또한, 칫솔 머리는 부드러운 섬유로 만들어져 치아와 잇몸을 부드럽게 마사지하며 치아의 표면을 깨끗하게 닦아줍니다.
 
@@ -472,7 +485,8 @@ SEAT
 """
 ```
 
-```prompt = f"""
+```
+prompt = f"""
 당신의 임무는 마케팅 팀이 기술 팩트 시트를 기반으로
 제품의 소매 웹사이트에 대한 한글 제품 소개 작성을 돕는 것입니다.
 
@@ -484,7 +498,8 @@ response = get_completion(prompt)
 print(response)
 ```
 
-```제품 소개:
+```
+제품 소개:
 
 이 제품은 20세기 중반의 아름다운 사무용 가구 제품군의 일부로, 파일 캐비닛, 책상, 책장, 회의 테이블 등을 포함합니다. 다양한 쉘 색상 및 베이스 마감 옵션으로 제공되며, 플라스틱 소재의 후면 및 전면 커버 (SWC-100) 또는 10가지 패브릭 및 6가지 가죽 옵션의 풀 커버 (SWC-110)로 제공됩니다. 기본 마감 옵션은 스테인리스 스틸, 무광 블랙, 유광 화이트 또는 크롬입니다.
 
@@ -514,7 +529,8 @@ response = get_completion(prompt)
 print(response)
 ```
 
-```이 제품군은 20세기 중반의 사무용 가구에서 영감을 받아 디자인된 제품으로, 파일 캐비닛, 책상, 책장, 회의 테이블 등을 포함합니다. 다양한 쉘 색상과 베이스 마감 옵션을 제공하며, 플라스틱 또는 패브릭/가죽 커버를 선택할 수 있습니다. 의자는 팔걸이가 있든 없든 선택 가능하며, 가정 또는 비즈니스 환경에 적합합니다. 또한, 소프트 또는 하드 플로어 캐스터 옵션과 두 가지 시트 폼 밀도 선택이 가능하며, 이 제품은 이탈리아에서 생산됩니다.
+```
+이 제품군은 20세기 중반의 사무용 가구에서 영감을 받아 디자인된 제품으로, 파일 캐비닛, 책상, 책장, 회의 테이블 등을 포함합니다. 다양한 쉘 색상과 베이스 마감 옵션을 제공하며, 플라스틱 또는 패브릭/가죽 커버를 선택할 수 있습니다. 의자는 팔걸이가 있든 없든 선택 가능하며, 가정 또는 비즈니스 환경에 적합합니다. 또한, 소프트 또는 하드 플로어 캐스터 옵션과 두 가지 시트 폼 밀도 선택이 가능하며, 이 제품은 이탈리아에서 생산됩니다.
 ```
 
 #### 이슈 2. 잘못된 세부 사항에 중점을 둔 텍스트
@@ -539,10 +555,12 @@ response = get_completion(prompt)
 print(response)
 ```
 
-```이 제품군은 20세기 중반의 아름다운 사무용 가구를 현대적으로 재해석한 제품입니다. 파일 캐비닛, 책상, 책장, 회의 테이블 등 다양한 제품으로 구성되며, 다양한 쉘 색상과 베이스 마감 옵션을 제공합니다. 플라스틱 소재의 후면 및 전면 커버 또는 패브릭 및 가죽 옵션의 풀 커버로 제공됩니다. 의자는 팔걸이가 있든 없든 선택할 수 있으며, 가정 또는 비즈니스 환경에 적합합니다. 이 제품은 이탈리아에서 생산되었으며, 고품질의 재료로 만들어졌습니다.
+```
+이 제품군은 20세기 중반의 아름다운 사무용 가구를 현대적으로 재해석한 제품입니다. 파일 캐비닛, 책상, 책장, 회의 테이블 등 다양한 제품으로 구성되며, 다양한 쉘 색상과 베이스 마감 옵션을 제공합니다. 플라스틱 소재의 후면 및 전면 커버 또는 패브릭 및 가죽 옵션의 풀 커버로 제공됩니다. 의자는 팔걸이가 있든 없든 선택할 수 있으며, 가정 또는 비즈니스 환경에 적합합니다. 이 제품은 이탈리아에서 생산되었으며, 고품질의 재료로 만들어졌습니다.
 ```
 
-```prompt = f"""
+```
+prompt = f"""
 당신의 임무는 마케팅 팀이 기술 팩트 시트를 기반으로
 제품의 소매 웹사이트에 대한 한글 제품 소개 작성을 돕는 것입니다.
 
@@ -561,7 +579,8 @@ response = get_completion(prompt)
 print(response)
 ```
 
-```20세기 중반의 아름다운 사무용 가구 제품군 중 하나인 이 제품은 파일 캐비닛, 책상, 책장, 회의 테이블 등으로 구성되어 있습니다. 다양한 쉘 색상과 베이스 마감 옵션을 제공하며, 플라스틱 소재의 후면 및 전면 커버 또는 패브릭 및 가죽 옵션의 풀 커버로 제공됩니다. 스테인리스 스틸, 무광 블랙, 유광 화이트 또는 크롬으로 마감할 수 있으며, 팔걸이가 있든 없든 선택할 수 있습니다. 이 제품은 가정 또는 비즈니스 환경에 적합하며, 계약 사용 자격이 있습니다. 제품 ID: SWC-100, SWC-110.
+```
+20세기 중반의 아름다운 사무용 가구 제품군 중 하나인 이 제품은 파일 캐비닛, 책상, 책장, 회의 테이블 등으로 구성되어 있습니다. 다양한 쉘 색상과 베이스 마감 옵션을 제공하며, 플라스틱 소재의 후면 및 전면 커버 또는 패브릭 및 가죽 옵션의 풀 커버로 제공됩니다. 스테인리스 스틸, 무광 블랙, 유광 화이트 또는 크롬으로 마감할 수 있으며, 팔걸이가 있든 없든 선택할 수 있습니다. 이 제품은 가정 또는 비즈니스 환경에 적합하며, 계약 사용 자격이 있습니다. 제품 ID: SWC-100, SWC-110.
 ```
 
 #### 이슈 3. 설명서에 치수의 표가 필요한 경우
@@ -597,7 +616,8 @@ response = get_completion(prompt)
 print(response)
 ```
 
-```<div>
+```json
+<div>
 <h2>제품 소개</h2>
 <p>이 제품은 20세기 중반에서 영감을 받은 아름다운 사무용 가구 제품군의 일부입니다. 파일 캐비닛, 책상, 책장, 회의 테이블 등을 포함하며, 다양한 쉘 색상 및 베이스 마감 옵션을 제공합니다. 플라스틱 소재의 후면 및 전면 커버 (SWC-100) 또는 10가지 패브릭 및 6가지 가죽 옵션의 풀 커버 (SWC-110)로 제공됩니다. 기본 마감 옵션은 스테인리스 스틸, 무광 블랙, 유광 화이트 또는 크롬입니다. 의자는 팔걸이가 있든 없든 선택할 수 있으며, 가정 또는 비즈니스 환경에 적합합니다. 계약 사용 자격이 있습니다.</p>
 <p>제품 ID: SWC-100, SWC-110</p>
@@ -640,7 +660,8 @@ print(response)
 </div>
 ```
 
-```from IPython.display import display, HTML
+```python
+from IPython.display import display, HTML
 display(HTML(response))
 ```
 
@@ -667,7 +688,8 @@ prod_review = """
 """
 ```
 
-```prompt = f"""
+```
+prompt = f"""
 당신의 임무는 전자 상거래 사이트에서 제품 리뷰에 대한 짧은 요약을 생성하는 것입니다.
 
 최대 30단어로 세 개의 백틱으로 구분된 아래 리뷰를 요약하십시오.
@@ -679,7 +701,8 @@ response = get_completion(prompt)
 print(response)
 ```
 
-```"부드럽고 귀여운 팬더 봉제 인형, 작은 크기에 비해 가격이 조금 높음. 빠른 배송."
+```
+"부드럽고 귀여운 팬더 봉제 인형, 작은 크기에 비해 가격이 조금 높음. 빠른 배송."
 ```
 
 #### **배송에 중점을 두고 요약하기**
@@ -698,7 +721,8 @@ response = get_completion(prompt)
 print(response)
 ```
 
-```"부드럽고 귀여운 팬더 봉제 인형, 배송은 예상보다 일찍 도착했지만 가격 대비 크기는 작음."
+```
+"부드럽고 귀여운 팬더 봉제 인형, 배송은 예상보다 일찍 도착했지만 가격 대비 크기는 작음."
 ```
 
 #### **가격에 중점을 두고 요약하기**
@@ -710,14 +734,16 @@ prompt = f"""
 
 세 개의 백틱으로 구분된 아래 리뷰를 가격 측면에 중점을 둬서 최대 30단어로 요약하세요.
 
-리뷰: ```{prod_review}```
+리뷰: ```json
+{prod_review}```
 """
 
 response = get_completion(prompt)
 print(response)
 ```
 
-```"부드럽고 귀여운 팬더 봉제인형, 가격 대비 크기는 작음"
+```
+"부드럽고 귀여운 팬더 봉제인형, 가격 대비 크기는 작음"
 ```
 
 💡
@@ -740,7 +766,8 @@ response = get_completion(prompt)
 print(response)
 ```
 
-```"배송은 예상보다 하루 일찍 도착"
+```
+"배송은 예상보다 하루 일찍 도착"
 ```
 
 #### **여러 제품 리뷰 요약**
@@ -797,7 +824,8 @@ review_4 = """
 reviews = [review_1, review_2, review_3, review_4]
 ```
 
-```for i in range(len(reviews)):
+```
+for i in range(len(reviews)):
     prompt = f"""
     당신의 임무는 전자상거래 사이트의 제품 리뷰에 대한 간단한 요약을 생성하는 것입니다. 
 
@@ -810,7 +838,8 @@ reviews = [review_1, review_2, review_3, review_4]
     print(i, response, "\n")
 ```
 
-```0 "부드럽고 귀여운 팬더 봉제인형, 가격 대비 크기는 작지만 딸이 좋아해요. 배송은 예상보다 일찍 도착했습니다." 
+```
+0 "부드럽고 귀여운 팬더 봉제인형, 가격 대비 크기는 작지만 딸이 좋아해요. 배송은 예상보다 일찍 도착했습니다."
 
 1 간단 요약: 멋진 램프, 추가 수납 공간, 빠른 배송, 누락된 부품 신속 대응, 고객 친절. 
 
@@ -848,10 +877,12 @@ response = get_completion(prompt)
 print(response)
 ```
 
-```감성: 긍정적
+```
+감성: 긍정적
 ```
 
-```prompt = f"""
+```
+prompt = f"""
 세 개의 백틱으로 구분된 제품 리뷰의 감성은 무엇입니까?
 '긍정적' 또는 '부정적' 중 한 단어로 답하세요.
 
@@ -861,7 +892,8 @@ response = get_completion(prompt)
 print(response)
 ```
 
-```긍정적
+```
+긍정적
 ```
 
 #### 감성 유형 식별
@@ -878,7 +910,8 @@ response = get_completion(prompt)
 print(response)
 ```
 
-```만족, 감사, 놀람, 신뢰, 친절함
+```
+만족, 감사, 놀람, 신뢰, 친절함
 ```
 
 #### 불만 식별
@@ -895,7 +928,8 @@ response = get_completion(prompt)
 print(response)
 ```
 
-```아니요
+```
+아니요
 ```
 
 #### 고객 리뷰에서 제품 및 회사명 추출
@@ -917,7 +951,8 @@ response = get_completion(prompt)
 print(response)
 ```
 
-```{
+```json
+{
     "Item": "램프",
     "Brand": "Lumina"
 }
@@ -949,7 +984,8 @@ response = get_completion(prompt)
 print(response)
 ```
 
-```{
+```json
+{
   "감성": "긍정적",
   "불만": false,
   "아이템": "램프",
@@ -996,7 +1032,8 @@ response = get_completion(prompt)
 print(response)
 ```
 
-```['설문조사 결과', 'NASA의 직원 만족도', 'NASA의 경영진 반응', '사회보장국의 직원 만족도', '정부의 대응 약속']
+```json
+['설문조사 결과', 'NASA의 직원 만족도', 'NASA의 경영진 반응', '사회보장국의 직원 만족도', '정부의 대응 약속']
 ```
 
 특정 주제에 대한 뉴스 알람 만들기
@@ -1017,19 +1054,22 @@ response = get_completion(prompt)
 print(response)
 ```
 
-```NASA: 1
+```
+NASA: 1
 지방 정부: 0
 Engineering: 0
 직원 만족도: 1
 연방 정부: 1
 ```
 
-```topic_dict = {i.split(': ')[0]: int(i.split(': ')[1]) for i in response.split(sep='\n')}
+```
+topic_dict = {i.split(': ')[0]: int(i.split(': ')[1]) for i in response.split(sep='\n')}
 if topic_dict['NASA'] == 1:
     print("알람: 새로운 NASA 기사!")
 ```
 
-```알람: 새로운 NASA 기사!
+```
+알람: 새로운 NASA 기사!
 ```
 
 ### 변환하기
@@ -1049,10 +1089,12 @@ response = get_completion(prompt)
 print(response)
 ```
 
-```Hola, me gustaría pedir una licuadora.
+```
+Hola, me gustaría pedir una licuadora.
 ```
 
-```prompt = f"""
+```
+prompt = f"""
 어떤 언어인지 알려주세요: 
 ```Combien coûte le lampadaire?```
 """
@@ -1060,10 +1102,12 @@ response = get_completion(prompt)
 print(response)
 ```
 
-```이 문장은 프랑스어입니다.
+```
+이 문장은 프랑스어입니다.
 ```
 
-```prompt = f"""
+```
+prompt = f"""
 다음 언어를 프랑스어, 스페인어, 영어로 번역하세요:
 ```I want to order a basketball```
 """
@@ -1071,12 +1115,14 @@ response = get_completion(prompt)
 print(response)
 ```
 
-```Je veux commander un ballon de basket (프랑스어)
+```
+Je veux commander un ballon de basket (프랑스어)
 Quiero pedir una pelota de baloncesto (스페인어)
 I want to order a basketball (영어)
 ```
 
-```prompt = f"""
+```
+prompt = f"""
 다음 텍스트를 반말과 존댓말 두 형식의 스페인어로 번역하세요:
 'Would you like to order a pillow?'
 """
@@ -1084,7 +1130,8 @@ response = get_completion(prompt)
 print(response)
 ```
 
-```- 반말: ¿Quieres pedir una almohada?
+```
+- 반말: ¿Quieres pedir una almohada?
 - 존댓말: ¿Le gustaría pedir una almohada?
 ```
 
@@ -1102,7 +1149,7 @@ user_messages = [
 ]
 
 for issue in user_messages:
-    prompt = f"언어 종류는?: ```{issue}```"
+    prompt = f"언어 종류는?: ```{issue}```
     lang = get_completion(prompt)
     print(f"원본 메세지 ({lang}): {issue}")
 
@@ -1113,7 +1160,8 @@ for issue in user_messages:
     print(response, "\n")
 ```
 
-```원본 메세지 (프랑스어 (French)): La performance du système est plus lente que d'habitude.
+```
+원본 메세지 (프랑스어 (French)): La performance du système est plus lente que d'habitude.
 English: The system performance is slower than usual.
 한국어: 시스템 성능이 평소보다 느립니다. 
 
@@ -1141,13 +1189,15 @@ English: My screen is flickering.
 ```toml
 prompt = f"""
 다음 속어 문장을 정중한 비즈니스 이메일 형식으로 변경하세요:
-```나 태훈인데, 첨부한 스탠드 램프의 사양을 확인해.```
+```
+나 태훈인데, 첨부한 스탠드 램프의 사양을 확인해.```
 """
 response = get_completion(prompt)
 print(response)
 ```
 
-```안녕하세요,
+```
+안녕하세요,
 저는 태훈입니다. 첨부된 스탠드 램프의 사양을 확인 부탁드립니다.
 감사합니다.
 ```
@@ -1206,7 +1256,8 @@ for t in text:
     print(response)
 ```
 
-```The girl with the black and white puppies has a ball.
+```
+The girl with the black and white puppies has a ball.
 <오류 없음>
 It's going to be a long day. Does the car need its oil changed?
 Their goes my freedom. They're going to bring their suitcases.
@@ -1215,7 +1266,8 @@ You're going to need your notebook.
 This phrase is to check ChatGPT for spelling ability.
 ```
 
-```text = f"""
+```
+text = f"""
 Got this for my daughter for her birthday cuz she keeps taking \
 mine from my room.  Yes, adults also like pandas too.  She takes \
 it everywhere with her, and it's super soft and cute.  One of the \
@@ -1225,15 +1277,17 @@ though. I think there might be other options that are bigger for \
 the same price.  It arrived a day earlier than expected, so I got \
 to play with it myself before I gave it to my daughter.
 """
-prompt = f"이 리뷰 교정 및 수정: ```{text}```"
+prompt = f"이 리뷰 교정 및 수정: ```{text}```
 response = get_completion(prompt)
 print(response)
 ```
 
-```I got this panda plushie for my daughter's birthday because she kept taking mine from my room. Yes, even adults like pandas too. She takes it everywhere with her, and it's super soft and cute. However, one of the ears is a bit lower than the other, and I don't think that was designed to be asymmetrical. Also, I feel like it's a bit small for the price I paid. I think there might be other options that are bigger for the same price. On the bright side, it arrived a day earlier than expected, so I got to play with it myself before giving it to my daughter.
+```
+I got this panda plushie for my daughter's birthday because she kept taking mine from my room. Yes, even adults like pandas too. She takes it everywhere with her, and it's super soft and cute. However, one of the ears is a bit lower than the other, and I don't think that was designed to be asymmetrical. Also, I feel like it's a bit small for the price I paid. I think there might be other options that are bigger for the same price. On the bright side, it arrived a day earlier than expected, so I got to play with it myself before giving it to my daughter.
 ```
 
-```from redlines import Redlines
+```python
+from redlines import Redlines
 
 diff = Redlines(text, response)
 display(Markdown(diff.output_markdown))
@@ -1296,10 +1350,12 @@ review = f"""
 """
 ```
 
-```prompt = f"""
+```
+prompt = f"""
 당신은 고객 서비스 AI 어시스턴트입니다.
 당신의 임무는 소중한 고객에게 이메일 답장을 보내는 것입니다.
-```로 고객 이메일을 구분합니다.
+```
+로 고객 이메일을 구분합니다.
 고객의 리뷰에 대한 감사의 답장을 생성합니다.
 감정이 긍정적이거나 중립적인 경우 고객의 리뷰에 감사를 표시합니다.
 
@@ -1308,14 +1364,16 @@ review = f"""
 간결하고 전문적인 어조로 작성하세요.
 이메일에 'AI 고객 상담원'으로 서명합니다.
 
-고객 리뷰: ```{review}```
+고객 리뷰: ```json
+{review}```
 리뷰 감성: {sentiment}
 """
 response = get_completion(prompt)
 print(response)
 ```
 
-```안녕하세요,
+```
+안녕하세요,
 
 저희 제품을 구매해 주셔서 감사합니다. 그러나 고객님의 리뷰를 읽어보니 불만족스러운 경험을 하셨다는 것을 알게 되어 죄송합니다.
 
@@ -1340,20 +1398,23 @@ AI 고객 상담원
 prompt = f"""
 당신은 고객 서비스 AI 어시스턴트입니다.
 당신의 임무는 소중한 고객에게 이메일 답장을 보내는 것입니다.
-```로 구분된 고객 이메일이 주어지면, 고객의 리뷰에 대한 답장을 생성합니다.
+```
+로 구분된 고객 이메일이 주어지면, 고객의 리뷰에 대한 답장을 생성합니다.
 감정이 긍정적이거나 중립적인 경우, 고객의 리뷰에 감사를 표시합니다.
 부정적인 감정인 경우에는 사과하고 고객 서비스에 문의할 수 있도록 제안합니다. 
 리뷰의 구체적인 세부 정보를 사용하세요.
 간결하고 전문적인 어조로 작성하세요.
 이메일에 'AI 고객 상담원'으로 서명합니다.
-고객 리뷰: ```{review}```
+고객 리뷰: ```json
+{review}```
 리뷰 감성: {sentiment}
 """
 response = get_completion(prompt, temperature=0.7)
 print(response)
 ```
 
-```안녕하세요,
+```
+안녕하세요,
 
 고객님의 이메일을 받아보았습니다. 먼저 저희 제품을 구매해주셔서 감사드립니다.
 
@@ -1409,10 +1470,12 @@ response = get_completion_from_messages(messages, temperature=1)
 print(response)
 ```
 
-```아내가 "아보카도 있으면 6개 사와"라고 했기 때문에요! 이것이 개발자 유머의 전형적인 예시죠. :)
+```
+아내가 "아보카도 있으면 6개 사와"라고 했기 때문에요! 이것이 개발자 유머의 전형적인 예시죠. :)
 ```
 
-```messages =  [  
+```
+messages =  [
     {'role':'system', 'content':'당신은 친근한 챗봇입니다.'},    
     {'role':'user', 'content':'안녕, 나는 태훈 이야.'}
 ]
@@ -1420,7 +1483,8 @@ response = get_completion_from_messages(messages, temperature=1)
 print(response)
 ```
 
-```안녕하세요, 태훈님! 반갑습니다. 무엇을 도와드릴까요?
+```
+안녕하세요, 태훈님! 반갑습니다. 무엇을 도와드릴까요?
 ```
 
 컨텍스트(context)가 다르면 ChatGPT는 이전 내용을 기억하지 못합니다.
@@ -1434,7 +1498,8 @@ response = get_completion_from_messages(messages, temperature=1)
 print(response)
 ```
 
-```안녕하세요! 당신의 이름을 무엇으로 부르면 좋을까요?
+```
+안녕하세요! 당신의 이름을 무엇으로 부르면 좋을까요?
 ```
 
 동일한 컨텍스트에서는 이전에 입력한 내용을 기반으로 응답을 생성합니다.
@@ -1450,7 +1515,8 @@ response = get_completion_from_messages(messages, temperature=1)
 print(response)
 ```
 
-```당신의 이름은 태훈이라고 하셨죠! :)
+```
+당신의 이름은 태훈이라고 하셨죠! :)
 ```
 
 #### 주문 봇 만들기
@@ -1472,7 +1538,8 @@ def collect_messages(_):
     return pn.Column(*panels)
 ```
 
-```import panel as pn  # GUI
+```python
+import panel as pn  # GUI
 pn.extension()
 
 panels = [] # collect display 
@@ -1543,7 +1610,8 @@ response = get_completion_from_messages(messages, temperature=0)
 print(response)
 ```
 
-```아래는 이전 주문에 대한 JSON 형식의 요약입니다.
+```
+아래는 이전 주문에 대한 JSON 형식의 요약입니다.
 
 {
   "피자": {

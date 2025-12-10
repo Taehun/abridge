@@ -175,7 +175,8 @@ Label Stdio 관련 Pod들이 *Running* 상태가 되기전 까지 대기 합니�
 $ kubectl get pod -l "app.kubernetes.io/instance=labelstudio"
 ```
 
-```NAME                                  READY   STATUS    RESTARTS   AGE
+```
+NAME                                  READY   STATUS    RESTARTS   AGE
 labelstudio-ls-app-7b85f987dd-qp8vl   2/2     Running   0          3m23s
 labelstudio-postgresql-0              1/1     Running   0          3m23s
 ```
@@ -186,7 +187,8 @@ labelstudio-postgresql-0              1/1     Running   0          3m23s
 $ kubectl port-forward svc/labelstudio-ls-app 8080:80
 ```
 
-```Forwarding from 127.0.0.1:8080 -> 8085
+```
+Forwarding from 127.0.0.1:8080 -> 8085
 Forwarding from [::1]:8080 -> 8085
 Handling connection for 8080
 ```

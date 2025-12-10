@@ -76,7 +76,8 @@ $ brew install ansible
 $ ansible --version
 ```
 
-```ansible [core 2.14.5]
+```
+ansible [core 2.14.5]
   config file = None
   configured module search path = ['/Users/taehun/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
   ansible python module location = /Users/taehun/Library/Python/3.9/lib/python/site-packages/ansible
@@ -105,7 +106,8 @@ $ ansible --version
 $ ansible all --list-hosts
 ```
 
-```hosts (2):
+```
+hosts (2):
     192.168.65.6
     192.168.65.7
 ```
@@ -132,7 +134,8 @@ $ ssh-keygen -t ed25519 -C "your_email@example.com"
 $ ansible all -m ping
 ```
 
-```192.168.65.7 | SUCCESS => {
+```
+192.168.65.7 | SUCCESS => {
     "ansible_facts": {
         "discovered_interpreter_python": "/usr/bin/python3"
     },
@@ -174,7 +177,8 @@ $ ansible-playbook playbook.yml -K
 BECOME password: <sudo 계정 비밀번호>
 ```
 
-```PLAY [all] *************************************************************************************************************
+```
+PLAY [all] *************************************************************************************************************
 
 TASK [Gathering Facts] *************************************************************************************************
 ok: [192.168.65.6]
@@ -320,7 +324,8 @@ $ ansible-playbook playbook.yml -K
 BECOME password: <sudo 계정 비밀번호 입력>
 ```
 
-```PLAY [Common Tasks] ************************************************************************************************************
+```
+PLAY [Common Tasks] ************************************************************************************************************
 
 TASK [Gathering Facts] *********************************************************************************************************
 ok: [192.168.65.6]
@@ -439,7 +444,8 @@ Helm이 설치 되었으면 Helm Chart를 가져올 저장소를 추가해야 �
 $ helm repo add bitnami https://charts.bitnami.com/bitnami
 ```
 
-```"bitnami" has been added to your repositories
+```
+"bitnami" has been added to your repositories
 ```
 
 다음과 같이 저장소에 있는 Helm Chart 목록을 확인할 수 있습니다.
@@ -448,7 +454,8 @@ $ helm repo add bitnami https://charts.bitnami.com/bitnami
 $ helm search repo bitnami
 ```
 
-```NAME                                        	CHART VERSION	APP VERSION  	DESCRIPTION
+```
+NAME                                        	CHART VERSION	APP VERSION  	DESCRIPTION
 bitnami/airflow                             	14.1.1       	2.5.3        	Apache Airflow is a tool to express and execute...
 bitnami/apache                              	9.5.2        	2.4.57       	Apache HTTP Server is an open-source HTTP serve...
 bitnami/appsmith                            	0.2.1        	1.9.17       	Appsmith is an open source platform for buildin...
@@ -470,7 +477,8 @@ $ helm repo update   # 저장소의 최신 차트 목록으로 갱신 합니다.
 $ helm install mysql bitnami/mysql
 ```
 
-```NAME: mysql
+```
+NAME: mysql
 LAST DEPLOYED: Wed May  3 00:42:11 2023
 NAMESPACE: default
 STATUS: deployed
@@ -502,7 +510,8 @@ $ helm install -n somenamespace redis bitnami/mysql
 $ helm ls
 ```
 
-```NAME                 	NAMESPACE	REVISION	UPDATED                             	STATUS  	CHART                        	APP VERSION
+```
+NAME                 	NAMESPACE	REVISION	UPDATED                             	STATUS  	CHART                        	APP VERSION
 mysql                	default  	1       	2023-05-03 00:42:11.096995 +0900 KST	deployed	mysql-9.8.2                  	8.0.33
 ```
 
@@ -512,7 +521,8 @@ mysql                	default  	1       	2023-05-03 00:42:11.096995 +0900 KST	de
 $ helm uninstall mysql
 ```
 
-```release "mysql" uninstalled
+```
+release "mysql" uninstalled
 ```
 
 앞으로 MLOps에 사용되는 많은 도구들을 Helm으로 쿠버네티스 환경에 설치하여 MLOps 인프라를 만들어 나갈 것 입니다.
@@ -556,7 +566,8 @@ $ helm -n argocd install argocd argo/argo-cd --create-namespace
 $ kubectl wait --for=condition=available --timeout=180s -n argocd --all deployments
 ```
 
-```deployment.apps/argocd-applicationset-controller condition met
+```
+deployment.apps/argocd-applicationset-controller condition met
 deployment.apps/argocd-dex-server condition met
 deployment.apps/argocd-notifications-controller condition met
 deployment.apps/argocd-redis condition met
@@ -633,7 +644,8 @@ ArgoCD 어플리케이션의 세 개의 버튼은 각각 다음을 의미 합니
 $ kubectl get all
 ```
 
-```NAME                                             READY   STATUS    RESTARTS   AGE
+```
+NAME                                             READY   STATUS    RESTARTS   AGE
 pod/guest-book-helm-guestbook-6dcf44954d-v2fpf   1/1     Running   0          9m45s
 
 NAME                                TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
@@ -723,7 +735,8 @@ $ sudo apt-get install terraform
 $ terraform -version
 ```
 
-```Terraform v1.4.6
+```
+Terraform v1.4.6
 on darwin_arm64
 ```
 
@@ -775,7 +788,8 @@ resource "aws_instance" "app_server" {
 $ terraform init
 ```
 
-```Initializing the backend...
+```
+Initializing the backend...
 
 Initializing provider plugins...
 - Finding hashicorp/aws versions matching "~> 4.16"...
@@ -792,7 +806,8 @@ HCL 파일이 유효한지 검증 합니다.
 $ terraform validate
 ```
 
-```Success! The configuration is valid.
+```
+Success! The configuration is valid.
 ```
 
 HCL 파일을 적용하여 실제 인프라를 생성 합니다.
@@ -801,7 +816,8 @@ HCL 파일을 적용하여 실제 인프라를 생성 합니다.
 $ terraform apply
 ```
 
-```Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+```
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
   + create
 
 Terraform will perform the following actions:
@@ -858,7 +874,8 @@ Terraform은 HCL 파일을 적용할 때 `terraform.tfstate` 파일에 인프라
 $ terraform destroy
 ```
 
-```aws_instance.app_server: Refreshing state... [id=i-07c4ba04f5ff58673]
+```
+aws_instance.app_server: Refreshing state... [id=i-07c4ba04f5ff58673]
 
 Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the
 following symbols:

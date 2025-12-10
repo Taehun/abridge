@@ -79,7 +79,8 @@ https://colab.research.google.com/drive/1kUtM8o62QPP0BkzXHPmHmXgsdPOmBynd?usp](h
 !pip install -q flax
 ```
 
-```import jax
+```python
+import jax
 import jax.numpy as jnp                # JAX NumPy
 import numpy as np                     # 기존 NumPy
 

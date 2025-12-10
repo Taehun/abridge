@@ -407,7 +407,8 @@ actix-web = { version = "4", features = ["openssl"] }
 openssl = { version = "0.10" }
 ```
 
-```use actix_web::{get, App, HttpRequest, HttpServer, Responder};
+```
+use actix_web::{get, App, HttpRequest, HttpServer, Responder};
 use openssl::ssl::{SslAcceptor, SslFiletype, SslMethod};
 
 #[get("/")]
@@ -848,7 +849,8 @@ async fn index(_req: HttpRequest) -> &'static str {
 }
 ```
 
-```async fn index(_req: HttpRequest) -> String {
+```python
+async fn index(_req: HttpRequest) -> String {
     "Hello world!".to_owned()
 }
 ```
@@ -861,7 +863,8 @@ async fn index(_req: HttpRequest) -> impl Responder {
 }
 ```
 
-```async fn index(req: HttpRequest) -> Box<Future<Item=HttpResponse, Error=Error>> {
+```python
+async fn index(req: HttpRequest) -> Box<Future<Item=HttpResponse, Error=Error>> {
     ...
 }
 ```
@@ -1171,7 +1174,8 @@ env_logger = "0.8"
 log = "0.4"
 ```
 
-```use actix_web::{error, get, middleware::Logger, App, HttpServer, Result};
+```
+use actix_web::{error, get, middleware::Logger, App, HttpServer, Result};
 use derive_more::{Display, Error};
 use log::info;
 
@@ -1982,7 +1986,8 @@ async fn index() -> HttpResponse {
 serde = { version = "1.0", features = ["derive"] }
 ```
 
-```use actix_web::{get, web, Responder, Result};
+```
+use actix_web::{get, web, Responder, Result};
 use serde::Serialize;
 
 #[derive(Serialize)]
@@ -2412,7 +2417,8 @@ async fn main() {
 %a %t "%r" %s %b "%{Referer}i" "%{User-Agent}i" %T
 ```
 
-```use actix_web::middleware::Logger;
+```
+use actix_web::middleware::Logger;
 use env_logger::Env;
 
 #[actix_web::main]
@@ -2757,7 +2763,8 @@ actix-web = { version = "4", features = ["openssl"] }
 openssl = { version = "0.10", features = ["v110"] }
 ```
 
-```use actix_web::{web, App, HttpRequest, HttpServer, Responder};
+```
+use actix_web::{web, App, HttpRequest, HttpServer, Responder};
 use openssl::ssl::{SslAcceptor, SslFiletype, SslMethod};
 
 async fn index(_req: HttpRequest) -> impl Responder {

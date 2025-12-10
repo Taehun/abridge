@@ -269,7 +269,8 @@ $ brew install kubectl
 $ kubectl version --client
 ```
 
-```WARNING: This version information is deprecated and will be replaced with the output from kubectl version --short.  Use --output=yaml|json to get the full version.
+```
+WARNING: This version information is deprecated and will be replaced with the output from kubectl version --short.  Use --output=yaml|json to get the full version.
 Client Version: version.Info{Major:"1", Minor:"25", GitVersion:"v1.25.0", GitCommit:"a866cbe2e5bbaa01cfd5e969aa3e033f3282a8a2", GitTreeState:"clean", BuildDate:"2022-08-23T17:44:59Z", GoVersion:"go1.19", Compiler:"gc", Platform:"darwin/arm64"}
 Kustomize Version: v4.5.7
 ```
@@ -304,7 +305,8 @@ $ sudo snap install kubectl --classic
 $ kubectl version --client
 ```
 
-```WARNING: This version information is deprecated and will be replaced with the output from kubectl version --short.  Use --output=yaml|json to get the full version.
+```
+WARNING: This version information is deprecated and will be replaced with the output from kubectl version --short.  Use --output=yaml|json to get the full version.
 Client Version: version.Info{Major:"1", Minor:"26", GitVersion:"v1.26.4", GitCommit:"f89670c3aa4059d6999cb42e23ccb4f0b9a03979", GitTreeState:"clean", BuildDate:"2023-04-14T02:14:23Z", GoVersion:"go1.19.8", Compiler:"gc", Platform:"linux/arm64"}
 Kustomize Version: v4.5.7
 ```
@@ -363,7 +365,8 @@ $ sudo mv ./kind /usr/local/bin/kind
 $ kind version
 ```
 
-```kind v0.16.0 go1.19.1 darwin/arm64
+```
+kind v0.16.0 go1.19.1 darwin/arm64
 ```
 
 **kind로 (로컬) 쿠버네티스 클러스터 생성하기**
@@ -372,7 +375,8 @@ $ kind version
 $ kind create cluster
 ```
 
-```Creating cluster "kind" ...
+```
+Creating cluster "kind" ...
  ✓ Ensuring node image (kindest/node:v1.25.2) 🖼
  ✓ Preparing nodes 📦
  ✓ Writing configuration 📜
@@ -391,7 +395,8 @@ kind는 도커 컨테이너를 노드로 사용합니다. 실행 중인 도커 �
 $ docker ps
 ```
 
-```CONTAINER ID   IMAGE                  COMMAND                  CREATED              STATUS              PORTS                       NAMES
+```
+CONTAINER ID   IMAGE                  COMMAND                  CREATED              STATUS              PORTS                       NAMES
 870ca58fe6c3   kindest/node:v1.25.2   "/usr/local/bin/entr…"   About a minute ago   Up About a minute   127.0.0.1:54988->6443/tcp   kind-control-plane
 ```
 
@@ -407,7 +412,8 @@ kind 클러스터 목록 가져오기
 $ kind get clusters
 ```
 
-```kind
+```
+kind
 local-k8s
 ```
 
@@ -417,7 +423,8 @@ kind 클러스터 삭제
 $ kind delete cluster
 ```
 
-```Deleting cluster "kind" ...
+```
+Deleting cluster "kind" ...
 ```
 
 `kubectl get all -A` 커맨드로 kind 클러스터에 기본 설치된 리소스를 확인해보면 다음과 같은 쿠버네티스 기본 파드, 서비스, 데몬셋이 동작하고 있는걸 확인할 수 있습니다.
@@ -426,7 +433,8 @@ $ kind delete cluster
 $ kubectl get all -A
 ```
 
-```NAMESPACE            NAME                                                  READY   STATUS    RESTARTS   AGE
+```
+NAMESPACE            NAME                                                  READY   STATUS    RESTARTS   AGE
 kube-system          pod/coredns-565d847f94-f5cz7                          1/1     Running   0          3m21s
 kube-system          pod/coredns-565d847f94-pr7q8                          1/1     Running   0          3m21s
 kube-system          pod/etcd-local-k8s-control-plane                      1/1     Running   0          3m35s
@@ -480,7 +488,8 @@ spec:
         - containerPort: 80" | kubectl apply -f -
 ```
 
-```deployment.apps/nginx-deployment created
+```
+deployment.apps/nginx-deployment created
 ```
 
 3개의 파드가 생성되어 잘 동작하고 있네요!
@@ -489,7 +498,8 @@ spec:
 $ kubectl get pod
 ```
 
-```NAME                                READY   STATUS    RESTARTS   AGE
+```
+NAME                                READY   STATUS    RESTARTS   AGE
 nginx-deployment-7fb96c846b-hprbj   1/1     Running   0          58s
 nginx-deployment-7fb96c846b-jnmhs   1/1     Running   0          58s
 nginx-deployment-7fb96c846b-kq5fv   1/1     Running   0          58s
@@ -501,7 +511,8 @@ nginx-deployment-7fb96c846b-kq5fv   1/1     Running   0          58s
 $ kubectl port-forward deployment/nginx-deployment 8080:80
 ```
 
-```Forwarding from 127.0.0.1:8080 -> 80
+```
+Forwarding from 127.0.0.1:8080 -> 80
 Forwarding from [::1]:8080 -> 80
 Handling connection for 8080
 Handling connection for 8080
@@ -541,7 +552,8 @@ Handling connection for 8080
 $ sudo dd if=ubuntu-22.04.2-live-server-amd64.iso of=/dev/sdb bs=4M
 ```
 
-```357+1 records in
+```
+357+1 records in
 357+1 records out
 1501102080 bytes (1.5 GB, 1.4 GiB) copied, 164.77 s, 9.1 MB/s
 ```
@@ -631,7 +643,8 @@ $ sudo swapoff -a
 $ sudo vi /etc/fstab
 ```
 
-```# 아래와 같은 스왑 파티션이 있으면 사용하지 않도록 커맨트 처리 합니다.
+```
+# 아래와 같은 스왑 파티션이 있으면 사용하지 않도록 커맨트 처리 합니다.
 #/swap.img      none    swap    sw      0       0
 ```
 
@@ -674,7 +687,8 @@ $ sudo mkdir -p /etc/rancher/rke2/
 $ sudo vi /etc/rancher/rke2/config.yaml
 ```
 
-```tls-san:
+```
+tls-san:
   - 12.34.56.78
   - some.domain.com
 ```
@@ -697,7 +711,8 @@ $ journalctl -u rke2-server -f
 $ systemctl status rke2-server
 ```
 
-```● rke2-server.service - Rancher Kubernetes Engine v2 (server)
+```
+● rke2-server.service - Rancher Kubernetes Engine v2 (server)
      Loaded: loaded (/usr/local/lib/systemd/system/rke2-server.service; enabled; vendor preset: enabled)
      Active: active (running) since Sat 2023-04-22 08:08:23 UTC; 14min ago
        Docs: https://github.com/rancher/rke2#readme
@@ -758,7 +773,8 @@ $ sudo mkdir -p /etc/rancher/rke2/
 $ sudo vi /etc/rancher/rke2/config.yaml
 ```
 
-```server: https://<server>:9345
+```
+server: https://<server>:9345
 token: <token from server node>
 ```
 
@@ -776,7 +792,8 @@ $ sudo systemctl start rke2-agent.service
 $ systemctl status rke2-agent
 ```
 
-```● rke2-agent.service - Rancher Kubernetes Engine v2 (agent)
+```
+● rke2-agent.service - Rancher Kubernetes Engine v2 (agent)
      Loaded: loaded (/usr/local/lib/systemd/system/rke2-agent.service; enabled; vendor preset: enabled)
      Active: active (running) since Sat 2023-04-22 09:41:45 UTC; 1min 14s ago
        Docs: https://github.com/rancher/rke2#readme
@@ -822,7 +839,8 @@ Apr 22 09:41:57 instance-3 rke2[515]: time="2023-04-22T09:41:57Z" level=info msg
 $ vim ~/.kube/config
 ```
 
-```clusters:
+```
+clusters:
 - cluster:
     certificate-authority-data: <원본 파일 내용 복사 & 붙여넣기>
     server: https://12.34.56.78:6443  # 원본 파일의 '127.0.0.1'를 RKE2 서버 노드 IP로 수정합니다.
@@ -852,7 +870,8 @@ $ kubectl config set current-context rke2-context
 $ kubectl get node
 ```
 
-```NAME            STATUS                        ROLES                       AGE     VERSION
+```
+NAME            STATUS                        ROLES                       AGE     VERSION
 control-plane   Ready                         control-plane,etcd,master   26m     v1.24.12+rke2r1
 worker-node-1   Ready                         <none>                      25m     v1.24.12+rke2r1
 ```
@@ -908,7 +927,8 @@ $ kubectl apply -f nginx-deployment.yaml
 $ kubectl get pod -o wide
 ```
 
-```NAME                                READY   STATUS        RESTARTS      AGE     IP           NODE            NOMINATED NODE   READINESS GATES
+```
+NAME                                READY   STATUS        RESTARTS      AGE     IP           NODE            NOMINATED NODE   READINESS GATES
 nginx-deployment-6595874d85-8bcrq   1/1     Running       0             54s     10.42.3.6    worker-node-1   <none>           <none>
 nginx-deployment-6595874d85-cz9qg   1/1     Running       0             54s     10.42.3.7    worker-node-1   <none>           <none>
 nginx-deployment-6595874d85-wdxpd   1/1     Running       0             54s     10.42.3.5    worker-node-1   <none>           <none>
@@ -959,7 +979,8 @@ systemd containerd 서비스 설치 확인
 $ systemctl status containerd
 ```
 
-```● containerd.service - containerd container runtime
+```
+● containerd.service - containerd container runtime
      Loaded: loaded (/lib/systemd/system/containerd.service; enabled; vendor preset: enabled)
      Active: active (running) since Sun 2023-04-23 06:50:10 UTC; 4s ago
        Docs: https://containerd.io
@@ -988,7 +1009,8 @@ containerd 버전 확인
 $ containerd --version
 ```
 
-```containerd github.com/containerd/containerd 1.6.12-0ubuntu1~22.04.1
+```
+containerd github.com/containerd/containerd 1.6.12-0ubuntu1~22.04.1
 ```
 
 💡
@@ -1074,7 +1096,8 @@ $ sudo apt-mark hold kubelet kubeadm kubectl
 $ kubectl version --client && kubeadm version
 ```
 
-```WARNING: This version information is deprecated and will be replaced with the output from kubectl version --short.  Use --output=yaml|json to get the full version.
+```
+WARNING: This version information is deprecated and will be replaced with the output from kubectl version --short.  Use --output=yaml|json to get the full version.
 Client Version: version.Info{Major:"1", Minor:"27", GitVersion:"v1.27.1", GitCommit:"4c9411232e10168d7b050c49a1b59f6df9d7ea4b", GitTreeState:"clean", BuildDate:"2023-04-14T13:21:19Z", GoVersion:"go1.20.3", Compiler:"gc", Platform:"linux/amd64"}
 Kustomize Version: v5.0.1
 kubeadm version: &version.Info{Major:"1", Minor:"27", GitVersion:"v1.27.1", GitCommit:"4c9411232e10168d7b050c49a1b59f6df9d7ea4b", GitTreeState:"clean", BuildDate:"2023-04-14T13:20:04Z", GoVersion:"go1.20.3", Compiler:"gc", Platform:"linux/amd64"}
@@ -1086,7 +1109,8 @@ kubeadm version: &version.Info{Major:"1", Minor:"27", GitVersion:"v1.27.1", GitC
 $ sudo kubeadm config images pull
 ```
 
-```W0423 09:06:17.801914    9688 images.go:80] could not find officially supported version of etcd for Kubernetes v1.27.1, falling back to the nearest etcd version (3.5.7-0)
+```
+W0423 09:06:17.801914    9688 images.go:80] could not find officially supported version of etcd for Kubernetes v1.27.1, falling back to the nearest etcd version (3.5.7-0)
 [config/images] Pulled registry.k8s.io/kube-apiserver:v1.27.1
 [config/images] Pulled registry.k8s.io/kube-controller-manager:v1.27.1
 [config/images] Pulled registry.k8s.io/kube-scheduler:v1.27.1
@@ -1102,7 +1126,8 @@ $ sudo kubeadm config images pull
 $ sudo kubeadm init --pod-network-cidr=10.244.0.0/16
 ```
 
-```[init] Using Kubernetes version: v1.27.1
+```json
+[init] Using Kubernetes version: v1.27.1
 [preflight] Running pre-flight checks
 [preflight] Pulling images required for setting up a Kubernetes cluster
 [preflight] This might take a minute or two, depending on the speed of your internet connection
@@ -1192,7 +1217,8 @@ $ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 $ kubectl cluster-info
 ```
 
-```Kubernetes control plane is running at https://192.168.65.5:6443
+```
+Kubernetes control plane is running at https://192.168.65.5:6443
 CoreDNS is running at https://192.168.65.5:6443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
 
 To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
@@ -1204,7 +1230,8 @@ To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
 $ kubectl get node
 ```
 
-```NAME            STATUS   ROLES           AGE   VERSION
+```
+NAME            STATUS   ROLES           AGE   VERSION
 control-plane   NotReady    control-plane   26m   v1.27.1
 ```
 
@@ -1221,7 +1248,8 @@ $ sudo systemctl restart kubelet
 $ kubectl get nodes
 ```
 
-```NAME            STATUS   ROLES           AGE   VERSION
+```
+NAME            STATUS   ROLES           AGE   VERSION
 control-plane   Ready    control-plane   26m   v1.27.1
 ```
 
@@ -1236,7 +1264,8 @@ $ kubeadm join 192.168.65.5:6443 --token u3fgqe.scjkkqpy3y1wa32p \
 	--discovery-token-ca-cert-hash sha256:db0b82417ad151c665e9984a88747ffd54fdc7f93080603dc4e4f6c796741343
 ```
 
-```[preflight] Running pre-flight checks
+```json
+[preflight] Running pre-flight checks
 [preflight] Reading configuration from the cluster...
 [preflight] FYI: You can look at this config file with 'kubectl -n kube-system get cm kubeadm-config -o yaml'
 [kubelet-start] Writing kubelet configuration to file "/var/lib/kubelet/config.yaml"
@@ -1257,7 +1286,8 @@ Run 'kubectl get nodes' on the control-plane to see this node join the cluster.
 $ kubectl get nodes
 ```
 
-```NAME            STATUS   ROLES           AGE   VERSION
+```
+NAME            STATUS   ROLES           AGE   VERSION
 control-plane   Ready    control-plane   55m   v1.27.1
 worker-node-1   Ready    <none>          17m   v1.27.1
 ```
@@ -1288,7 +1318,8 @@ spec:
         - containerPort: 80" | kubectl apply -f -
 ```
 
-```deployment.apps/nginx-deployment created
+```
+deployment.apps/nginx-deployment created
 ```
 
 파드들이 워커 노드에 모두 할당되어 잘 실행되고 있네요!

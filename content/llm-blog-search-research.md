@@ -84,7 +84,8 @@ headers = {'Authorization': f"Bearer {NOTION_KEY}",
 Notion API Key:··········
 ```
 
-```page_id = "1a64aad6a8d9466e9a49c2a1e38ea384"  # 최상위 Notion 페이지 ID
+```
+page_id = "1a64aad6a8d9466e9a49c2a1e38ea384"  # 최상위 Notion 페이지 ID
 blocks_response = requests.get(
     f"https://api.notion.com/v1/blocks/{page_id}/children",
     headers=headers)
@@ -212,7 +213,7 @@ block_types
  'toggle'}
 ```
 
-Block 페이지를 참고하여 텍스트 컨텐츠가 포함된 Block들은 모두 텍스트로 추출하였습니다. Code Block의 코드 내용은 앞 뒤로 ```` ``` ```` 문자를 추가하여 구분하였습니다. 텍스트만 추출하기 위해 테이블과 이미지 컨텐츠는 일단 포함하지 않습니다.
+Block 페이지를 참고하여 텍스트 컨텐츠가 포함된 Block들은 모두 텍스트로 추출하였습니다. Code Block의 코드 내용은 앞 뒤로 \`\`\` 문자를 추가하여 구분하였습니다. 텍스트만 추출하기 위해 테이블과 이미지 컨텐츠는 일단 포함하지 않습니다.
 
 ```toml
 # 텍스트 컨텐츠가 포함된 Block 타입들
@@ -231,9 +232,10 @@ for block in blocks_response.json()['results']:
             base_content = obj['plain_text'] + "\n"
             if block["type"][:7] == "heading":  # 제목 블록은 한 줄 공백을 추가
                 content = "\n" + base_content if len(contents) > 0 else base_content
-            elif block["type"] == "code":  # 코드 블럭은 앞 뒤로 ``` 문자를 추가
+            elif block["type"] == "code":  # 코드 블럭은 앞 뒤로 ```
+문자를 추가
                 lang = block[block["type"]]['language']
-                content = f"```{lang}\n{base_content}```\n"
+                content = f"```{lang}\n{base_content}```
             elif block["type"][-9:] == "list_item":  # List item 블럭은 앞에 '- ' 문자 추가
                 content = "- " + base_content
             else:
@@ -395,7 +397,7 @@ ffmpeg
 ffmpeg
  CLI 도구만 추가적으로 필요합니다.
 - Dockerfile
-```docker
+```bash
 FROM ubuntu:24.04
 RUN apt-get update && apt-get install -y ffmpeg
 ```
@@ -510,7 +512,7 @@ def notion_block_to_text(block: list) -> str:
                     content = "\n" + base_content if len(contents) > 0 else base_content
                 elif block["type"] == "code":
                     lang = block[block["type"]]['language']
-                    content = f"```{lang}\n{base_content}```\n"
+                    content = f"```{lang}\n{base_content}```
                 elif block["type"][-9:] == "list_item":
                     content = "- " + base_content
                 else:
@@ -519,7 +521,8 @@ def notion_block_to_text(block: list) -> str:
     return contents
 ```
 
-```blog_datas = []
+```
+blog_datas = []
 
 for idx, post in enumerate(blog_posts):
     page_id = post['id']
@@ -588,7 +591,8 @@ tantivy를 설치하고, 스키마 빌더를 정의 합니다.
 !pip install -q tantivy
 ```
 
-```import tempfile
+```python
+import tempfile
 import pathlib
 import tantivy
 
@@ -917,7 +921,8 @@ Sentence Transformers의 장점은 Hugging Face에 있는 다양한 오픈 소�
 contents_vectors_hf = hf_embeddings.embed_documents([data["contents"] for data in blog_datas])
 ```
 
-```for query in queries:
+```
+for query in queries:
     query_vector = hf_embeddings.embed_query(query)
     query_results = similarity_search(contents_vectors_hf, query_vector)
     print(f"쿼리: '{query}'")
