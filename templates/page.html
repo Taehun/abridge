@@ -31,6 +31,23 @@
 {%- endblock seo %}
 
 {%- block comments_init %}
+  {%- if config.extra.comments.giscus %}
+  <script src="https://giscus.app/client.js"
+    data-repo="{{ config.extra.comments.giscus_repo }}"
+    data-repo-id="{{ config.extra.comments.giscus_repo_id }}"
+    data-category="{{ config.extra.comments.giscus_category }}"
+    data-category-id="{{ config.extra.comments.giscus_category_id }}"
+    data-mapping="{{ config.extra.comments.giscus_mapping | default(value='pathname') }}"
+    data-strict="0"
+    data-reactions-enabled="{{ config.extra.comments.giscus_reactions | default(value='1') }}"
+    data-emit-metadata="0"
+    data-input-position="{{ config.extra.comments.giscus_input_position | default(value='top') }}"
+    data-theme="{{ config.extra.comments.giscus_theme | default(value='preferred_color_scheme') }}"
+    data-lang="{{ config.extra.comments.giscus_lang | default(value='ko') }}"
+    crossorigin="anonymous"
+    async>
+  </script>
+  {%- endif %}
   {%- if config.extra.comments.hyvor %}
   <script defer src="https://talk.hyvor.com/embed/embed.js" type="module"></script>
   {%- endif %}
@@ -90,6 +107,9 @@
     {%- endblock page_footer %}
 
     {%- block comments_body %}
+    {%- if config.extra.comments.giscus %}
+    <div class="giscus" style="margin-top: 2rem;"></div>
+    {%- endif %}
     {%- if config.extra.comments.hyvor %}
     <hyvor-talk-comments website-id={{ config.extra.comments.hyvor }} page-id={{ page.slug }}{%- if config.extra.comments.hyvorcolor %} colors="{{ config.extra.comments.hyvorcolor }}"{%- endif %}></hyvor-talk-comments>
     {%- endif %}
