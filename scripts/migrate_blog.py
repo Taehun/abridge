@@ -17,7 +17,7 @@ from markdownify import markdownify as md
 BASE_URL = "https://blog.taehun.dev"
 OUTPUT_DIR = "content"
 
-# 40 post paths from homepage
+# 41 post paths from homepage
 POST_PATHS = [
     "/2024-retrospective",
     "/kubestronaut-review",
