@@ -485,6 +485,8 @@ pre {
   padding: 2.5rem 1rem 1rem !important; // top padding for language header
   overflow-x: auto !important;
   margin: 1.25rem 0 !important;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 
   code {
     background: none !important;
