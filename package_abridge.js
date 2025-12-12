@@ -54,7 +54,7 @@ async function execWrapper(cmd) {
     console.log(stdout);
   }
   if (stderr) {
-    console.log('ERROR: ' + stderr);
+    console.log(stderr);
   }
 }
 
