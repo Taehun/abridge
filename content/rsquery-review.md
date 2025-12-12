@@ -17,13 +17,13 @@ toc = true
 
 Taehun • Updated Apr 28, 2024](https://github.com/Taehun/rsquery)
 
-### 프로젝트 개요
+## 프로젝트 개요
 
 [Apache Ballista](https://arrow.apache.org/ballista/)를 활용하여 구글 BigQuery 클론 만들기
 
 - **REST API → Apache Flight RPC 프록시 서버를 Rust 마이크로 서비스로 구현**
 
-### 기술 스택
+## 기술 스택
 
 - 프론트엔드
 
@@ -38,7 +38,7 @@ Taehun • Updated Apr 28, 2024](https://github.com/Taehun/rsquery)
 - EKS
 - S3
 
-### 시스템 아키텍처
+## 시스템 아키텍처
 
 
 <!-- TODO: 이미지 추가 - 파일명: rsquery.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F5f93c5c8-e5d2-42ae-9fcc-11c739b9c31c%2Frsquery.png?table=block&id=d570383e-3269-492f-b0d1-ff5d1707fbc7&cache=v2 -->
@@ -50,9 +50,9 @@ Taehun • Updated Apr 28, 2024](https://github.com/Taehun/rsquery)
 
 - Rest API Server → Ballista Scheduler (Flight RPC)
 
-### 프로젝트 로그
+## 프로젝트 로그
 
-#### 1주차: 2023.07.17 ~ 2023.07.23
+## 1주차: 2023.07.17 ~ 2023.07.23
 
 - Git 원격 저장소 생성 및 설정
 
@@ -70,7 +70,7 @@ Taehun • Updated Apr 28, 2024](https://github.com/Taehun/rsquery)
 - Actix Web 템플릿 코드 작성
 - Actix Web 학습
 
-#### 2주차: 2023.07.24 ~ 2023.07.30
+## 2주차: 2023.07.24 ~ 2023.07.30
 
 - 프론트엔드
 
@@ -99,7 +99,7 @@ Taehun • Updated Apr 28, 2024](https://github.com/Taehun/rsquery)
 
 - [utoipa](https://github.com/juhaku/utoipa) 크레이트 사용
 
-#### 3주차: 2023.07.31 ~ 2023.08.06
+## 3주차: 2023.07.31 ~ 2023.08.06
 
 - Actix Web 학습 → 문서 번역하면서 학습하고 있습니다.
 
@@ -116,7 +116,7 @@ Taehun • Updated Apr 28, 2024](https://github.com/Taehun/rsquery)
 - Standalone 환경 잘됨
 - Distributed 환경 (k8s)에서 예제 Job이 동작 하지 않는 이슈 트래킹 중…
 
-#### 4주차: 2023.08.07 ~ 2023.08.13
+## 4주차: 2023.08.07 ~ 2023.08.13
 
 - Actix Web 학습 → 문서 번역 완료
 
@@ -134,7 +134,7 @@ Taehun • Updated Apr 28, 2024](https://github.com/Taehun/rsquery)
 
 - UI 레이아웃 구현 (SQL 쿼리 에디터)
 
-#### 5주차: 2023.08.14 ~ 2023.08.20
+## 5주차: 2023.08.14 ~ 2023.08.20
 
 - 백엔드
 
@@ -151,7 +151,7 @@ Taehun • Updated Apr 28, 2024](https://github.com/Taehun/rsquery)
 - 백엔드 연동
 - 응답 메세지 파싱 및 표시 추가
 
-#### 스터디 종료 이후: ~2023.09.17
+## 스터디 종료 이후: ~2023.09.17
 
 - 백엔드
 
@@ -213,7 +213,7 @@ Taehun • Updated Apr 28, 2024](https://github.com/Taehun/rsquery)
 
 - 인프라 코드 관련 커밋 삭제
 
-### 후기
+## 후기
 
 - 프로젝트 수행은 매주 주말 평균 3~5시간을 투자 했습니다. [Actix 문서 번역](https://blog.taehun.dev/actix-docs-hangul)에 쏟은 시간이 아깝다는 생각이 들었습니다.
 

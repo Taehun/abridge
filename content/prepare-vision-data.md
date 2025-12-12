@@ -11,7 +11,7 @@ author = "김태훈"
 toc = true
 +++
 
-### 개요
+## 개요
 
 실험실을 벗어나 상용 딥러닝 모델 개발 경험이 있는 분이라면 데이터셋을 준비하는 것이 매우 힘들다는 것에 공감하실 겁니다. 더구나 데이터셋 관리가 되지 않아 재현성을 포기한채 모델 개발하는 곳도 보았습니다. 이런 ‘해석 불가능한’ 모델은 [거버넌스](https://www.datarobot.com/blog/what-is-model-governance/)로 인해 힘들게 개발을 완료 하더라도 법적인 제약으로 상용화가 불가능 할 수도 있습니다.
 
@@ -23,7 +23,7 @@ AI 선도 업체들은 이미 [*반지도 학습 (Semi-supervised Learning)*](h
 
 > [*Taehun/vision-dataset-sample-infra*](https://github.com/Taehun/vision-dataset-sample-infra)*Github 저장소에서 이 기사에서 다루는 예제 코드를 확인 하실 수 있습니다.*
 
-### **비전 데이터셋 아키텍처 on GCP**
+## **비전 데이터셋 아키텍처 on GCP**
 
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F81c8b8c5-2d4a-40cd-a975-eaef8e1cff39%2FUntitled.png?table=block&id=b73282b2-696b-4a50-9c86-5555cf7a512c&cache=v2 -->
@@ -33,7 +33,7 @@ AI 선도 업체들은 이미 [*반지도 학습 (Semi-supervised Learning)*](h
 
 딥러닝 비전 데이터셋 아키텍처 (GCP)
 
-#### Raw Data
+## Raw Data
 
 > *솔루션:**[Cloud Storage](https://cloud.google.com/storage?hl=ko)*
 
@@ -57,7 +57,7 @@ blob = bucket.blob(f"{collector_id}/{video_file_name}")
 blob.upload_from_filename(video_file_name)
 ```
 
-#### Trigger
+## Trigger
 
 > *솔루션:**[Pub/Sub](https://cloud.google.com/pubsub)*
 
@@ -95,7 +95,7 @@ resource "google_storage_notification" "notification" {
 }
 ```
 
-#### Extracting
+## Extracting
 
 > *솔루션:**[Dataflow](https://cloud.google.com/dataflow?hl=ko)*
 
@@ -222,7 +222,7 @@ def run(input_topic, vidoe_path, image_path, key_file, pipeline_args=None):
         )
 ```
 
-#### Labeling Task
+## Labeling Task
 
 > *솔루션:*[*Cloud Functions*](https://cloud.google.com/functions?hl=ko)
 
@@ -276,7 +276,7 @@ def request_labeling(event, context):
             print(err.message)  # If unique_id is already used for a different task
 ```
 
-#### Labeling Data
+## Labeling Data
 
 > *솔루션:*[*Cloud Firestore*](https://firebase.google.com/docs/firestore?hl=ko)
 
@@ -307,17 +307,17 @@ doc_ref.set({
 })
 ```
 
-#### Data Warehouse
+## Data Warehouse
 
 > 솔루션: BigQuery
 
 Firestore에 저장된 어노테이션 데이터를 BigQuery로 추출하여, 데이터 과학자들께 데이터 분석 환경을 제공합니다. BigQuery를 오프라인 피처 스토어로 설정하여 이미지 데이터와 함께 딥러닝 모델 학습에 사용 할 수 있습니다.
 
-### **비전 데이터셋 아키텍처 고도화**
+## **비전 데이터셋 아키텍처 고도화**
 
 GCP에서 가장 기본적인 비전 데이터셋 아키텍처를 구성해 보았습니다. 이렇게 아키텍처를 구성하면 크게 두가지 문제에 직면하게 됩니다.
 
-#### 클라우드 비용 문제
+## 클라우드 비용 문제
 
 비디오 데이터는 저장 장치 용량을 많이 차지하므로 수집되는 데이터가 많아질수록 클라우드 사용료가 큰 폭으로 증가하게 됩니다. 이런 문제를 해결하기 위해 아래와 같이 추출한 이미지 파일만 클라우드에 업로드하는 하이브리드 클라우드 방식으로도 아키텍처링 할 수 있습니다. 기존 GCP의 서비스와 동일한 동작을 하는 On-premise용 솔루션을 활용하여 클라우드 사용료를 절감 할 수 있습니다. On-premise로 일부 서비스가 이전됨에 따라 그만큼 인프라 관리 비용이 증가하는 점을 잊지마시기 바랍니다. (`클라우드 사용료` > `인프라 관리 비용`?)
 
@@ -335,7 +335,7 @@ GCP에서 가장 기본적인 비전 데이터셋 아키텍처를 구성해 보�
 
 *딥러닝 비전 데이터셋 아키텍처 (On-premise + GCP)*
 
-#### 유사한 이미지 제거
+## 유사한 이미지 제거
 
 자율주행 데이터셋을 수집하는 시나리오를 생각해보면, 1초마다 한 프레임을 추출하는 것은 자동차가 정지된 구간에는 유사한 이미지를 여러장 추출하여 라벨링 비용만 낭비할 가능성이 매우 큽니다. *능동적 학습* 알고리즘을 적용하기 앞서 *이미지 유사도*를 검사하여 유사도가 높은 이미지는 샘플링 하지 않는 간단한 알고리즘으로도 샘플링 이미지 개수를 줄일수 있을 것 입니다.
 
@@ -375,7 +375,7 @@ print(f"Image similaraty is {ssim_measures}")
 >
 > *Image similaraty is 0.7200022681160081*
 
-### 정리
+## 정리
 
 처음 이 글을 작성할 때는 기본은 지키되 최대한 단순한 아키텍처를 제시하고 예제를 추가하려고 했습니다. 그 **기본**에 해당되는 부분이 생각보다 많네요. 인프라 코드 작성하고, Dataflow로 데이터 파이프라인 예제 만드는데 아직 부족한 점이 많아서 시간이 많이 걸렸습니다. 특히, Apache Beam은 이번에 처음 써보았는데 꽤나 진입 장벽이 있어서 어려웠습니다. (Apache Beam 고수 분들의 많은 피드백 부탁드립니다.)
 

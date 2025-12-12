@@ -15,7 +15,7 @@ toc = true
 
 Mac 터미널 환경과 VSCode 기준으로 작성하였습니다.
 
-### Rust 설치하기
+## Rust 설치하기
 
 curl 커맨드를 사용하여 Rush 설치 스크립트를 다운로드하고 설치 합니다.
 
@@ -39,7 +39,7 @@ rustc --version
 
 Rust는 `rustc` (컴파일러), `cargo` (프로젝트/패키지 관리자) 등이 포함된 Rust 툴체인을 관리하는 `rustup` 툴체인 관리 도구를 제공 합니다.
 
-#### 최신 버전으로 업데이트 하기
+## 최신 버전으로 업데이트 하기
 
 ```
 rustup update
@@ -53,9 +53,9 @@ rustup update
 ![notion image]()
 
 
-### Cargo: Rust 프로젝트/패키지 관리자
+## Cargo: Rust 프로젝트/패키지 관리자
 
-#### 프로젝트 생성
+## 프로젝트 생성
 
 `cargo` 커맨드로 Rust 프로젝트를 생성 할 수 있습니다.
 
@@ -75,7 +75,7 @@ $ cd rust-demo
     └── main.rs
 ```
 
-#### 프로젝트 빌드 및 실행
+## 프로젝트 빌드 및 실행
 
 cargo로 프로젝트를 빌드하여 실행 파일을 생성 할 수 있습니다.
 
@@ -149,7 +149,7 @@ cargo run
 ![notion image]()
 
 
-#### Crate 바이너리 설치
+## Crate 바이너리 설치
 
 `cargo install` 로 [crates.io](http://crates.io) 에 배포된 crate 바이너리를 설치 할 수 있습니다. (`go install` 같은 것)
 
@@ -165,7 +165,7 @@ cargo install wasm-pack
 ![notion image]()
 
 
-#### 자주쓰는 Cargo 명령어 정리
+## 자주쓰는 Cargo 명령어 정리
 
 - `cargo new`로 새 프로젝트를 생성할 수 있습니다.
 
@@ -181,9 +181,9 @@ cargo install wasm-pack
 
 - `cargo install` 명령으로 Crate 바이너리를 설치 합니다.
 
-### VSCode 설정
+## VSCode 설정
 
-#### Rust 관련 추천 Extensions
+## Rust 관련 추천 Extensions
 
 - **[rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)** **→ VSCode Rust 필수 확장 프로그램**
 
@@ -193,9 +193,9 @@ cargo install wasm-pack
 - [crates](https://marketplace.visualstudio.com/items?itemName=serayuzgur.crates) → Cargo.toml 파일로 의존성 관리를 편리하게 해줌
 - [Better TOML](https://marketplace.visualstudio.com/items?itemName=bungcip.better-toml) → .toml 파일 (Rust 진영에서 많이 사용되는 설정파일 포맷) 쓰기 편하게 도와줌
 
-### Neovim 설정
+## Neovim 설정
 
-#### **AstroNvim 확장에 Rust 설정**
+## **AstroNvim 확장에 Rust 설정**
 
 기존 Neovim 설정이 있으면, 백업을 해둡니다.
 
@@ -245,9 +245,9 @@ nvim .
 :TSInstall rust
 ```
 
-### 테스트 작성법
+## 테스트 작성법
 
-#### 유닛 테스트
+## 유닛 테스트
 
 Rust의 유닛 테스트는 테스트 대상과 **같은 파일**내 **`tests`** **모듈**을 만들고, **`cfg(test)`**를 어노테이션하는 게 일반적인 관례입니다.
 
@@ -272,7 +272,7 @@ mod tests {
 
 `#[cfg(test)]` 는 이 코드가 `cargo build` 가 아닌 `cargo test` 명령어 실행시에만 컴파일 및 실행되도록 지정하는 것 입니다.
 
-#### 통합 테스트
+## 통합 테스트
 
 통합 테스트는 `tests` 폴더 아래 작성 합니다. 예를 들면, 아래와 같은 디렉터리 구조가 될 수 있습니다.
 
@@ -317,9 +317,9 @@ cargo test
 ![notion image]()
 
 
-### 생성형 AI 활용
+## 생성형 AI 활용
 
-#### ChatGPT
+## ChatGPT
 
 Code Interpreter로 ONNX 모델 파일 REST API 추론 서비스 코드 작성하기
 
@@ -386,7 +386,7 @@ How to develop CLI tools using Rust?
 ![notion image]()
 
 
-#### Copilot Labs
+## Copilot Labs
 
 ChatGPT와 연동된 Copilot Labs를 사용하면 매우 편리합니다. VSCode 내에서 코드나 주석을 Drag해서 다음과 같은 작업을 할 수 있습니다:
 
@@ -410,7 +410,7 @@ ChatGPT와 연동된 Copilot Labs를 사용하면 매우 편리합니다. VSCode
 ![notion image]()
 
 
-### 참고 링크
+## 참고 링크
 
 - <https://rust-kr.github.io/doc.rust-kr.org/title-page.html>
 

@@ -23,7 +23,7 @@ https://colab.research.google.com/drive/1AeZKMjhWBxNUMb96lLQ-ZKAEaiypg0as](https
 ![notion image]()
 
 
-### **YOLOv5 설치**
+## **YOLOv5 설치**
 
 YOLOv5 저장소를 클론 하고, 실행에 필요한 파이썬 패키지를 설치합니다.
 
@@ -41,7 +41,7 @@ docker를 사용하시는 분은 DockerHub의 [ultralytics/yolov5 이미지](ht
 docker pull ultralytics/yolov5:latest
 ```
 
-#### **추론 테스트**
+## **추론 테스트**
 
 먼저 [COCO 데이터셋](https://cocodataset.org/#home)으로 사전 학습된 모델 파일을 사용하여 샘플 이미지에서 객체 감지 결과를 보여주는 `detect.py` 스크립트를 실행해 봅시다.
 
@@ -89,7 +89,7 @@ results = model(img)
 results.print()  # or .show(), .save(), .crop(), .pandas(), etc.
 ```
 
-### **데이터 수집**
+## **데이터 수집**
 
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F7583568b-9cb2-457c-8a8b-433220e20125%2FUntitled.png?table=block&id=6c86c942-2e02-46d6-8c55-168ce92c160f&cache=v2 -->
@@ -113,7 +113,7 @@ YOLOv5 모델 학습에는 이미지 데이터를 사용하지만, 데이터 수
 
 수집한 영상이나 이미지 파일(.mp4 또는 .jpg)을 데이터 레이크에 업로드하면 데이터 수집 과정이 완료됩니다. 데이터 레이크는 AWS S3/GCP GS/Azure Blob과 같은 오브젝트 스토리지, HDFS와 같은 분산 파일 시스템, 대용량 NAS(Network Attached Storage)등이 될 수 있습니다. 영상이나 이미지와 같은 멀티미디어 데이터 특성상 매우 큰 스토리지 저장 공간이 필요하므로 세심한 데이터 인프라 아키텍처링이 필요합니다. 이에 대해서는 추후 MLOps 인프라에 관한 기사에서 좀 더 자세히 다루어 보도록 하겠습니다.
 
-### **데이터 가공**
+## **데이터 가공**
 
 수집된 이미지 데이터에서 학습 데이터셋을 생성하기 위해서는 데이터 라벨링 작업이 필요합니다. 일반적으로 수집한 데이터를 모두 라벨링 하지는 않고, 라벨링이 필요한 이미지만 먼저 추려냅니다. 그리고 이미지 파일에 객체 테두리를 표시하는 등의 라벨링 작업을 하여 모델 학습에 사용할 어노테이션 데이터를 생성합니다.
 
@@ -123,7 +123,7 @@ YOLOv5 모델 학습에는 이미지 데이터를 사용하지만, 데이터 수
 
 - (라벨링) -> 라벨된 데이터(Labeled Data, 이미지 파일 + 어노테이션 파일)
 
-#### 데이터 라벨링
+## 데이터 라벨링
 
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Ff633bc2e-bf4f-45ad-809e-5cd565e40002%2FUntitled.png?table=block&id=b37adca8-45be-44de-bdad-1d62fbc35bd1&cache=v2 -->
@@ -147,7 +147,7 @@ DB에 추론할 대상이 되는 값이 들어 있는 **정형 데이터(Struct
 
 3대 클라우드 서비스(AWS, GCP, Azure)에서 제공하는 All-in-One ML 서비스 ([SageMaker](https://aws.amazon.com/ko/sagemaker/), [Vertex AI](https://cloud.google.com/vertex-ai), [AzureML](https://azure.microsoft.com/ko-kr/services/machine-learning/))에서도 모두 데이터 라벨링 기능을 제공하니 가격이나 편의성등을 고려하여 검토해 보시길 바랍니다.
 
-#### **YOLOv5 어노테이션 포맷으로 변환**
+## **YOLOv5 어노테이션 포맷으로 변환**
 
 데이터 라벨링이 완료되면 라벨링 툴에서 생성한 어노테이션 데이터를 YOLOv5 어노테이션 포맷으로 변환해야 합니다. YOLO 모델 어노테이션 파일은 이미지 파일과 동일한 파일명을 사용하는 텍스트 파일로 되어 있습니다. (`<이미지 파일명>.txt`) YOLO 어노테이션 데이터 포맷은 다음과 같습니다:
 
@@ -264,9 +264,9 @@ with open(dataset_path + "/val.txt", "w") as fp:
         fp.write(f"{image_file_path}/{file_name}\n")
 ```
 
-### **YOLOv5 모델 학습**
+## **YOLOv5 모델 학습**
 
-#### **데이터셋 설정 파일**
+## **데이터셋 설정 파일**
 
 YOLOv5 모델 학습에 기본적으로 필요한 것들은 다음과 같습니다:
 
@@ -292,7 +292,7 @@ nc: 5  # number of classes
 names: [ 'car', 'truck', 'pedestrian', 'bicyclist', 'light' ]  # class names
 ```
 
-#### **모델 선택**
+## **모델 선택**
 
 이 기사 초반부에 YOLOv5 모델 네트워크 크기에 따른 추론 속도 및 정확도에 대한 그래프를 첨부 하였습니다. 추론 속도와 정확도는 트레이드오프이므로 ML 어플리케이션에 따라 적절한 모델을 선택해서 사용하시기 바랍니다.
 
@@ -302,7 +302,7 @@ names: [ 'car', 'truck', 'pedestrian', 'bicyclist', 'light' ]  # class names
 ![notion image]()
 
 
-#### **학습 스크립트 실행**
+## **학습 스크립트 실행**
 
 YOLOv5에는 `train.py`라는 모델 학습에 사용하는 파이썬 스크립트가 포함되어 있습니다. 지금까지 준비한 커스텀 데이터셋 (`.jpg`, `.txt`)과 데이터셋 설정 파일 (`custom_dataset.yaml`)을 사용하여 `train.py` 스크립트로 모델 학습을 수행합니다:
 
@@ -318,7 +318,7 @@ python train.py --batch-size 16 --epochs 10 --data custom_dataset.yaml --weights
 
 - `-data` 옵션은 앞서 생성한 데이터셋 설정 파일 지정 옵션 입니다.
 
-### **YOLOv5 모델 학습 결과**
+## **YOLOv5 모델 학습 결과**
 
 모델 학습과 관련된 모든 파일은 `runs/train/exp[실험번호]` 경로에 저장 됩니다.
 
@@ -349,7 +349,7 @@ plot_results('./runs/train/exp/results.csv')  # plot 'results.csv' as 'results.p
 ![notion image]()
 
 
-#### **학습된 모델 추론 테스트**
+## **학습된 모델 추론 테스트**
 
 학습된 모델 체크포인트 파일은 `runs/train/exp[실험번호]/weights` 폴더에 저장됩니다. 다음과 같이 `detect.py` 스크립트 실행시 모델 체크포인트 파일(`--weights`)을 학습된 모델 체크포인트 파일로 설정하여 추론 테스트를 할 수 있습니다:
 
@@ -364,7 +364,7 @@ open runs/detect/exp2/1479503426306710339.jpg
 ![notion image]()
 
 
-### **참고링크**
+## **참고링크**
 
 - [How to Train YOLO v5 on a Custom Dataset](https://blog.paperspace.com/train-yolov5-custom-data/)
 

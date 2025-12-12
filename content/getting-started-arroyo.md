@@ -11,7 +11,7 @@ author = "김태훈"
 toc = true
 +++
 
-### 소개
+## 소개
 
 [Arroyo](https://www.arroyo.dev/)는 Rust로 개발된 분산 스트림 처리 엔진으로, 데이터 스트림 상의 상태 유지 계산에 중점을 둡니다. 고성능을 목표로 SQL을 통한 파이프라인 정의를 지원하며, 초당 수백만 개의 이벤트를 처리할 수 있도록 확장 가능합니다. 상태 유지 연산, 내결함성, 이벤트 시간 처리와 같은 기능을 제공합니다. 자체 호스팅이 가능하며, 사기 탐지, 분석, 실시간 머신러닝 피처 생성과 같은 실시간 데이터 처리 애플리케이션에 적합합니다.
 
@@ -23,7 +23,7 @@ toc = true
 
 그림 1. Arroyo UI 스크린샷 (*출처>* *<https://doc.arroyo.dev/introduction>**)*
 
-#### 핵심 기능
+## 핵심 기능
 
 - SQL로 정의된 파이프라인, 복잡한 분석 쿼리 지원
 
@@ -35,7 +35,7 @@ toc = true
 
 - 워터마크 지원을 통한 이벤트 시간 처리
 
-#### 사용 사례
+## 사용 사례
 
 - 사기 및 보안 사고 탐지
 
@@ -45,7 +45,7 @@ toc = true
 
 - 실시간 ML 피처 생성
 
-#### 왜 Arroyo 인가?
+## 왜 Arroyo 인가?
 
 [*Apache Flink*](https://flink.apache.org/)*,* [*Spark Streaming*](https://spark.apache.org/docs/latest/streaming-programming-guide.html)*,* [*Kafka Stream*](https://kafka.apache.org/documentation/streams/)등 기존 스트림 처리 엔진이 이미 많이 나와 있습니다. Arroyo를 새로 만든 이유가 뭘까요?
 
@@ -55,7 +55,7 @@ toc = true
 
 - **비전문가를 위한 설계**: Arroyo는 파이프라인 API를 내부 구현에서 깔끔하게 분리합니다. 스트리밍 전문가가 아니어도 실시간 데이터 파이프라인을 구축할 수 있습니다.
 
-#### Arroyo와 Apache Flink 비교
+## Arroyo와 Apache Flink 비교
 
 현재 스트림 처리를 위한 가장 유명한 도구는 [Apache Flink](https://flink.apache.org/) 입니다. Apache Flink는 오픈 소스 스트림 처리 엔진으로, 널리 사용되고 있습니다. 베를린 공과대학교의 연구 프로젝트에서 시작하여 전 세계 수 많은 사용자를 보유한 대규모의 성공적인 프로젝트로 성장했습니다.
 
@@ -71,7 +71,7 @@ Arroyo와 Apache Flink는 모두 오픈소스 스트림 처리 엔진입니다. 
 
 - **개발 언어**: Flink는 Java와 Scala로 개발되었으며, Arroyo는 Rust로 개발되었습니다.
 
-#### 아키텍처
+## 아키텍처
 
 
 <!-- TODO: 이미지 추가 - 파일명: arroyo_arch.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Fbf93f162-0cfb-4cca-a6ed-971c36c0b021%2Farroyo_arch.png?table=block&id=efbc892c-3fcf-4f24-9a81-ffde58787ae0&cache=v2 -->
@@ -99,9 +99,9 @@ Arroyo의 구성 요소는 다음과 같습니다:
 
 - **S3**: 체크포인트를 저장하는 데 사용됩니다.
 
-### 설치
+## 설치
 
-#### 로컬 설치 및 실행
+## 로컬 설치 및 실행
 
 로컬 설치 및 실행은 `docker` 로 할 수 있습니다.
 
@@ -111,7 +111,7 @@ docker run -p 8000:8000 ghcr.io/arroyosystems/arroyo-single:latest
 
 → 웹 브라우저에서 [`http://localhost:8000`](http://localhost:8000) 접속
 
-#### 쿠버네티스 클러스터에 배포
+## 쿠버네티스 클러스터에 배포
 
 Arroyo를 쿠버네티스 클러스터에 배포하면 아래 컴포넌트들이 설치 됩니다 ([아키텍처](/a827881328f54bc7846370bc64ea70aa#bee49c99cad348dca573743b33a16707) 참고):
 
@@ -187,9 +187,9 @@ kubectl port-forward service/arroyo-api 8000:80
 
 → 웹 브라우저에서 [`http://localhost:8000`](http://localhost:8000) 접속
 
-### 기본 사용법
+## 기본 사용법
 
-#### 연결 생성
+## 연결 생성
 
 Arroyo UI의 `Connections` 메뉴의 `Create Connection` 버튼을 클릭합니다. Arroyo는 다양한 커넥터를 지원합니다. 여기서는 데모를 위해 *Nexmark 연결*을 생성 합니다.
 
@@ -221,7 +221,7 @@ Arroyo UI의 `Connections` 메뉴의 `Create Connection` 버튼을 클릭합니�
 
 - **Connection Name**: `nexmark` → `Test Connection` 클릭 → `Create` 클릭
 
-#### 스트리밍 파이프라인 만들기
+## 스트리밍 파이프라인 만들기
 
 데이터 소스 연결을 생성 하였으므로, 이제 SQL 쿼리를 작성하여 스트리밍 파이프라인을 구축 할 수 있습니다. 좌측 메뉴의 `Pipelines` 로 가서 `Create Pipeline` 을 클릭합니다.
 
@@ -297,7 +297,7 @@ SQL 쿼리로 작성한 파이프라인이 마음에 들면, 실제로 파이프
 ![notion image]()
 
 
-### 참고자료
+## 참고자료
 
 - <https://doc.arroyo.dev/>
 
