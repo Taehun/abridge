@@ -120,23 +120,30 @@ window.onload = function () {
                     window.main = main.innerHTML
                 };
 
-                var searchValue = document.getElementById("searchinput").value.trim();
-                if (!searchValue) return false;
+                var headerDiv = document.createElement("div");// create a div element
 
-                // 모바일에서는 suggestions가 비어있으므로 직접 검색 수행
-                if (isMobile()) {
-                    var searchResults = await search(searchValue);
-                    var resultsDiv = document.createElement("div");
-                    resultsDiv.id = "results";
-
-                    for (const result of searchResults.results) {
-                        const data = await result.data();
-                        if (data.content !== '') {
-                            var entry = document.createElement('div');
-                            entry.innerHTML = '<a href="' + data.url + '"><span>' + data.meta.title + '</span><span>' + sanitise(data.excerpt) + '</span></a>';
-                            resultsDiv.appendChild(entry);
-                        }
-                    }
+                // Security: Build header using DOM methods to prevent XSS
+                var headerForm = document.createElement("form");
+                headerForm.name = "closeSearch";
+                var headerH2 = document.createElement("h2");
+                var closeButton = document.createElement("button");
+                closeButton.type = "submit";
+                closeButton.title = "Close Search";
+                var closeIcon = document.createElement("i");
+                closeIcon.className = "svgs x";
+                closeButton.appendChild(closeIcon);
+                headerH2.appendChild(closeButton);
+                headerH2.appendChild(document.createTextNode(" "));
+                var searchIcon = document.createElement("i");
+                searchIcon.className = "svgs search";
+                headerH2.appendChild(searchIcon);
+                headerH2.appendChild(document.createTextNode(" "));
+                // Use textContent to safely insert user input (prevents XSS)
+                var searchTermSpan = document.createElement("span");
+                searchTermSpan.textContent = document.getElementById("searchinput").value;
+                headerH2.appendChild(searchTermSpan);
+                headerForm.appendChild(headerH2);
+                headerDiv.appendChild(headerForm);
 
                     var headerDiv = document.createElement("div");
                     var headerContent = '<form name="closeSearch"><h2><button type="submit" title="Close Search"><i class="svgs x"></i></button> <i class="svgs search"></i> '.concat(searchValue, "</h2></form>");
