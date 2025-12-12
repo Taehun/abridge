@@ -4,7 +4,6 @@ themes
 build
 storage
 node_modules
-package-lock.json
 static/demo.html
 static/tinysearch_engine.js
 static/tinysearch_engine.d.ts
@@ -13,6 +12,9 @@ static/package.json
 static/js/pagefind.js
 static/js/pagefind-*.js
 static/js/pagefind-*.css
+static/js/pagefind-*.json
 static/js/pagefind.*.pf_meta
+static/js/wasm.*.pagefind
+static/js/pagefind_search.js
 static/js/index
 static/js/fragment

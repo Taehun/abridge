@@ -252,7 +252,7 @@ $coderoundhighlight: false !default;//round corners on highlighted code blocks
   --bw: 0.0625rem;     //border width
   --ow: 0.1875rem;     //outline width
 
-  --fs: 1.0625rem;     //font-size (17px for better readability)
+  --fs: 1rem;          //font-size (16px)
   --lh: 1.7;           //line-height
   --lhh: 1.25;         //line-height headers (tighter for headlines)
   --fw: 400;           //font-weight
@@ -262,22 +262,22 @@ $coderoundhighlight: false !default;//round corners on highlighted code blocks
   @if $enable-responsive-typography {
     @if map-get($breakpoints, "sm") {
       @media (min-width: map-get($breakpoints, "sm")) {
-        --fs: 1rem;
+        --fs: 0.9375rem;  // 15px
       }
     }
     @if map-get($breakpoints, "md") {
       @media (min-width: map-get($breakpoints, "md")) {
-        --fs: 1.04rem;
+        --fs: 0.975rem;   // ~15.6px
       }
     }
     @if map-get($breakpoints, "lg") {
       @media (min-width: map-get($breakpoints, "lg")) {
-        --fs: 1.08rem;
+        --fs: 1.02rem;    // ~16.3px
       }
     }
     @if map-get($breakpoints, "xl") {
       @media (min-width: map-get($breakpoints, "xl")) {
-        --fs: 1.12rem;
+        --fs: 1.0625rem;  // 17px
       }
     }
   }
@@ -461,19 +461,19 @@ $coderoundhighlight: false !default;//round corners on highlighted code blocks
     line-height: var(--lhh);
   }
   big,h1 {
-    font-size: 2.5rem;  // 40px - larger, more impactful
+    font-size: 2rem;      // 32px
   }
   h2 {
-    font-size: 2rem;    // 32px
+    font-size: 1.625rem;  // 26px
   }
   h3 {
-    font-size: 1.5rem;  // 24px
+    font-size: 1.25rem;   // 20px
   }
   h4 {
-    font-size: 1.25rem; // 20px
+    font-size: 1.0625rem; // 17px
   }
   h5 {
-    font-size: 1.125rem; // 18px
+    font-size: 0.9375rem; // 15px
   }
   header h1 {
     margin: 0;

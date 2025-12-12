@@ -11,7 +11,7 @@ description = "어제보다 나은 오늘을 위해 전진"
 default_language = "ko"
 compile_sass = true
 minify_html = false
-build_search_index = false
+build_search_index = true
 generate_feeds = true
 taxonomies = [
     {name = "tags", feed = true},
@@ -27,7 +27,7 @@ taxonomies = [
 
 [search]                # Options specific to elasticlunr search.
 # index format can be: elasticlunr_json or elasticlunr_javascript or fuse_json
-index_format = "elasticlunr_json"
+index_format = "fuse_json"
 include_title = true        # include title of page/section in index
 include_description = true # include description of page/section in index
 include_content = true      # include rendered content of page/section in index
@@ -82,7 +82,7 @@ footer_credit = true
 #archive_reverse = true # Set to True to sort posts chronologically per year instead of newest first on the archive page: example.com/archive/
 
 ### Uncomment one of the below lines, or neither, depending on which type of logo you want to use:
-logo = { file="avatar.png", width="44", height="44", alt="한걸음씩", text='<span style="display: inline-block; vertical-align: middle;"><span style="display: block; font-size: 1.1rem; font-weight: 700; line-height: 1.2;">한걸음씩</span><span style="display: block; font-size: 0.7rem; color: #586069; font-weight: 400; line-height: 1.2;">어제보다 나은 오늘을 위해 전진</span></span>' }
+logo = { file="avatar.webp", width="44", height="44", alt="한걸음씩", text='<span style="display: inline-block; vertical-align: middle;"><span style="display: block; font-size: 1.1rem; font-weight: 700; line-height: 1.2;">한걸음씩</span><span style="display: block; font-size: 0.7rem; color: #586069; font-weight: 400; line-height: 1.2;">어제보다 나은 오늘을 위해 전진</span></span>' }
 #textlogo = '<font color="#f90">A</font>bridge'
 #textlogo = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="32" height="32" style="vertical-align: middle; margin-right: 8px;"><circle cx="24" cy="24" r="20" fill="#0366d6" opacity="0.1"/><path d="M24 8 L32 16 L32 28 L24 36 L16 28 L16 16 Z" fill="#0366d6" stroke="#0256c7" stroke-width="1.5"/><circle cx="20" cy="20" r="2.5" fill="#fff"/><circle cx="28" cy="20" r="2.5" fill="#fff"/><path d="M20 28 Q24 30 28 28" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M14 18 L10 14 M34 18 L38 14 M14 26 L10 30 M34 26 L38 30" stroke="#0366d6" stroke-width="2" stroke-linecap="round"/></svg><span style="display: inline-block; vertical-align: middle;"><span style="font-size: 1.2rem; font-weight: 700;">한걸음씩</span><br><span style="font-size: 0.75rem; color: #586069; font-weight: 400;">어제보다 나은 오늘을 위해 전진</span></span>'
 
@@ -168,7 +168,7 @@ github = "Taehun"
 
 uglyurls = false # if set to true then links are generated with the full path. eg https://abridge.netlify.app/index.html
 integrity = true # increases site security, should normally be true. (setting to false is useful during js development)
-js_bundle = false # multiple javascript files combined into a single file (setting to false is useful during js development)
+js_bundle = true # multiple javascript files combined into a single file (setting to false is useful during js development)
 
 js_copycode = true # The copy button on code blocks that allows you to copy them to the clipboard.
 js_email_encode = true # obfuscates email address in footer
@@ -209,10 +209,11 @@ pwa_TTL_LONG = '"jpg", "jpeg", "png", "gif", "webp", "avif", "ico", "svg", "xsl"
 pwa_TTL_EXEMPT = '"js", "css", "otf", "eot", "ttf", "woff", "woff2", "mp4", "webm", "mp3", "ogg"'
 
 ### If set to true then the entire site is cached. (useful for making an entire site usable while offline)
-pwa_cache_all = true
+pwa_cache_all = false
 
 ### List of Files for the PWA to initially Cache, used if pwa_cache_all = false
-pwa_BASE_CACHE_FILES = "'/js/theme.min.js','/js/theme_light.min.js','/abridge.css','/js/abridge.min.js','/','/404.html','/offline/','/manifest.min.json'"
+### 모바일 성능 최적화: 필수 파일만 초기 캐시, 나머지는 요청 시 캐시
+pwa_BASE_CACHE_FILES = "'/','/404.html','/offline/','/abridge.css','/js/abridge.min.js','/manifest.min.json','/about/','/archive/','/tags/'"
 
 pwa_IGNORE_FILES = ["_headers","sw.min.js","sw.js"]
 #pwa_IGNORE_FILES = ["_headers","sw.min.js","sw.js","android-chrome-192x192.png","android-chrome-512x512.png","apple-touch-icon.png","favicon-16x16.png","favicon-32x32.png","favicon.ico","m48.png","m72.png","m96.png","m128.png","m192.png","m384.png","m512.png","m1024.png","mstile-150x150.png"]

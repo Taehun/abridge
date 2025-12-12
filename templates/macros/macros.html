@@ -72,7 +72,11 @@
         {#- Date #}
           {%- if config.extra.meta_post.date %} {%- if config.extra.icon_date %}<i class="{{ config.extra.icon_date }}"></i> {% endif %}
           {%- set lang_locale = macros::translate(key='date_locale', default='en_US', i18n=i18n) -%}
-          {%- set page_date = page.date | date(format="%B %d, %Y", locale=lang_locale) -%}
+          {%- if lang == "ko" -%}
+            {%- set page_date = page.date | date(format="%Y년 %m월 %d일") -%}
+          {%- else -%}
+            {%- set page_date = page.date | date(format="%B %d, %Y", locale=lang_locale) -%}
+          {%- endif -%}
           {%- if page_date %} {{ page_date }} {%- else %} {{ page.date | date(format="%B %d, %Y") }} {%- endif %}
           {#- divider #}
           {%- if config.extra.meta_post.updated or config.extra.meta_post.categories_tags %}
@@ -92,7 +96,7 @@
           {%- if page.taxonomies.categories %} {%- if config.extra.icon_info %}<i class="{{ config.extra.icon_info }}"></i> {% endif %} [{% for cat in page.taxonomies.categories %}<a href="{{ get_taxonomy_url(kind='categories', name=cat, lang=lang) | safe }}{%- if uglyurls %}index.html{%- endif %}">{{ cat }}</a>{%- if not loop.last %}, {% endif %}{% endfor %}]{% endif %}
 
         {#- Tags #}
-          {%- if page.taxonomies.tags %} {%- for tag in page.taxonomies.tags %} #<a href="{{ get_taxonomy_url(kind='tags', name=tag, lang=lang) | safe }}{%- if uglyurls %}index.html{%- endif %}">{{ tag }}</a> {% endfor -%}{%- endif %}</span>
+          {%- if page.taxonomies.tags %} {%- for tag in page.taxonomies.tags %} <span class="tag-hash">#</span><a href="{{ get_taxonomy_url(kind='tags', name=tag, lang=lang) | safe }}{%- if uglyurls %}index.html{%- endif %}">{{ tag }}</a> {% endfor -%}{%- endif %}</span>
 {%- endmacro meta_post %}
 
 
@@ -146,7 +150,11 @@
         {#- Date #}
           {%- if config.extra.meta_index.date %} {%- if config.extra.icon_date %}<i class="{{ config.extra.icon_date }}"></i> {% endif %}
           {%- set lang_locale = macros::translate(key='date_locale', default='en_US', i18n=i18n) -%}
-          {%- set page_date = page.date | date(format="%B %d, %Y", locale=lang_locale) -%}
+          {%- if lang == "ko" -%}
+            {%- set page_date = page.date | date(format="%Y년 %m월 %d일") -%}
+          {%- else -%}
+            {%- set page_date = page.date | date(format="%B %d, %Y", locale=lang_locale) -%}
+          {%- endif -%}
           {%- if page_date %} {{ page_date }} {%- else %} {{ page.date | date(format="%B %d, %Y") }} {%- endif %}
           {#- divider #}
           {%- if config.extra.meta_index.updated or config.extra.meta_index.categories_tags %}

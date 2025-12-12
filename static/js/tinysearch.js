@@ -106,6 +106,8 @@ window.onload = function () {
                 results.innerHTML = "";// clear the suggestions div popup
                 document.getElementById("searchinput").value = "";// clear the search input box
                 document.body.contains(document.closeSearch) && (document.closeSearch.onsubmit = function() { closeSearchNow() })
+                // Dispatch event to close mobile menu
+                document.dispatchEvent(new CustomEvent('search:submit'));
                 return false
             }
 

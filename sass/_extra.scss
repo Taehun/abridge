@@ -55,14 +55,14 @@ main {
 .post-grid {
   display: grid !important;
   grid-template-columns: 1fr;
-  gap: 2rem;
+  gap: 1rem;
   padding: 0;
   margin: 0;
   width: 100%;
 
   @media (min-width: $mobile-breakpoint) {
     grid-template-columns: repeat(2, 1fr);
-    gap: 2.5rem;
+    gap: 1.25rem;
   }
 }
 
@@ -76,9 +76,10 @@ main {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  padding: 1.5rem !important;
+  padding: 1rem !important;
   min-width: 0 !important;
   cursor: pointer;
+  height: 220px;
 
   @media (min-width: $mobile-breakpoint + 1) {
     transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
@@ -94,9 +95,11 @@ main {
 
 .post-card-tags {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 0.5rem;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
+  overflow: hidden;
+  max-height: 1.5rem;
 }
 
 .post-card-tag {
@@ -121,11 +124,15 @@ main {
 }
 
 .post-card-title {
-  font-size: 1.25rem !important;
+  font-size: 1.1rem !important;
   font-weight: 600 !important;
   line-height: 1.4 !important;
-  margin: 0 0 0.75rem 0 !important;
+  margin: 0 0 0.5rem 0 !important;
   padding: 0 !important;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 
   a {
     color: var(--f2) !important;
@@ -144,11 +151,15 @@ main {
 }
 
 .post-card-summary {
-  font-size: 0.9375rem;
+  font-size: 0.875rem;
   color: var(--c4);
-  line-height: 1.7;
-  margin: 0 0 1rem 0;
+  line-height: 1.5;
+  margin: 0 0 0.5rem 0;
   flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .post-card-meta {
@@ -183,8 +194,8 @@ main:has(.post-grid) .sblock {
 .pagination-container {
   display: flex;
   justify-content: center;
-  padding: 2rem 0 1rem;
-  margin-top: 1rem;
+  padding: 0.75rem 0 0.5rem;
+  margin-top: 0.5rem;
   width: 100%;
 }
 
@@ -298,10 +309,44 @@ main nav {
 main:has(article:not(.post-card)) {
   display: flex !important;
   justify-content: center;
+  align-items: stretch;  // Both article and sblock take full height for sticky to work
   gap: 2rem;
+  overflow: visible !important;  // Override overflow to allow sticky positioning
 
   @media (max-width: 1024px) {
     flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+// ============================================================================
+// Article Meta Information (author, date, tags)
+// ============================================================================
+article > span:first-of-type {
+  display: block;
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--c4);
+  margin-bottom: 1.5rem;
+
+  // Tag hash symbol - not italic, same color as meta text
+  .tag-hash {
+    font-style: normal;
+    color: var(--c4);
+  }
+
+  // Tags - keep original size and colors
+  a {
+    font-style: normal;
+    color: var(--a1);
+
+    &:hover {
+      color: var(--a2);
+    }
+
+    &:visited {
+      color: var(--a4);
+    }
   }
 }
 
@@ -380,6 +425,7 @@ article:not(.post-card) {
   display: none;
   width: 200px;
   flex-shrink: 0;
+  align-self: stretch;  // Ensure full height for sticky to work
 
   @media (min-width: 1024px) {
     display: block;
@@ -578,6 +624,23 @@ thead tr {
     color: white !important;
     transform: translateY(-2px);
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  }
+}
+
+// ============================================================================
+// Lockdown Mode - Search Disabled State
+// ============================================================================
+.search-disabled {
+  opacity: 0.5;
+  pointer-events: none;
+
+  input {
+    cursor: not-allowed;
+    background: var(--c2) !important;
+  }
+
+  button[type="submit"] {
+    cursor: not-allowed;
   }
 }
 
