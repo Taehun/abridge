@@ -11,7 +11,7 @@ author = "김태훈"
 toc = true
 +++
 
-### 개요
+## 개요
 
 어느 회사의 ML 팀은 회사의 비지니스 문제를 해결하기 위해 딥러닝 알고리즘이 가장 적합하다고 결론을 내렸습니다. 데이터 엔지니어는 데이터 과학자와 논의하여 필요한 데이터 수집하고 데이터 과학자의 데이터셋 준비를 지원합니다. 데이터 과학자는 수집된 데이터를 탐색하고 데이터 엔지니어와 협업하여 필요한 데이터셋을 준비합니다. 딥러닝을 사용하기로 하였으므로 데이터 탐색이나 피처 엔지니어링이 많이 필요하지 않습니다. 모델 학습이 완료되고 오프라인 데이터셋에서 모델 성능을 검증해보니, 비지니스 문제 해결에 충분한 하다는 것을 확인하였습니다.
 
@@ -19,7 +19,7 @@ toc = true
 
 딥러닝 모델 배포의 첫 단계는 모델 체크포인트 파일을 서빙용 모델로 변환하는 것 입니다. 학습된 딥러닝 체크포인트 파일을 변환하여, 서빙(추론)에 최적화되어 있는 다양한 딥러닝 모델 서빙용 포맷들이 있으며, 모델을 배포하는 타겟에 따라 적합한 포맷이 다릅니다.
 
-### **배포 타겟별 서빙용 모델 유형**
+## **배포 타겟별 서빙용 모델 유형**
 
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fd8489061-f828-43e7-b958-a5e6b3429a95%2FUntitled.png?table=block&id=2a8183e3-b1ab-4757-8596-0f1bd986b904&cache=v2 -->
@@ -45,7 +45,7 @@ toc = true
 
 - *YOLOv5s 모델 포맷별 성능과 추론 속도 (*[*참고링크1*](https://github.com/ultralytics/yolov5/pull/6613)*,*[*참고링크2*](https://github.com/ultralytics/yolov5/pull/6963)*)*
 
-### **클라우드 서빙용 모델 변환**
+## **클라우드 서빙용 모델 변환**
 
 [Google Colaboratory
 
@@ -61,7 +61,7 @@ https://colab.research.google.com/drive/1nv\_wCJYb\_5Vjfw4bm8xv2wU7YyGQAbDt?usp=
 
 - *TensorRT*: 모델 추론의 H/W 가속기로 NVIDIA GPU를 사용할때 가장 빠릅니다.
 
-#### **ONNX**
+## **ONNX**
 
 ONNX (Open Neural Network Exchange)는 서로 다른 프레임워크 환경 (Tensorflow, PyTorch)에서 만들어진 모델들을 서로 호환되게 사용할 수 있도록 만들어진 공개 플랫폼입니다. Tensorflow에 비해 PyTorch가 부족한 배포 최적화 부분을 ONNX가 매워주고 있습니다. 모델 파일 확장자는 `.onnx`를 사용하며, 다양한 실행 프로바이더를 지원하는 [ONNX Runtime](https://onnxruntime.ai/)을 런타임 환경으로 사용합니다.
 
@@ -103,7 +103,7 @@ model_onnx, check = onnxsim.simplify(model_onnx)
 onnx.save(model_onnx, output_model)  # Save the ONNX model
 ```
 
-#### **Saved Model**
+## **Saved Model**
 
 - *Tensorflow Saved Model 저장과 로드*
 
@@ -132,7 +132,7 @@ Saved Model은 Tensorflow의 서빙 포맷 입니다. ONNX로 인해 지금은 �
 
 > *더 읽을거리:*[*PyTorch vs TensorFlow in 2022*](https://www.assemblyai.com/blog/pytorch-vs-tensorflow-in-2022/)
 
-#### **TensorRT**
+## **TensorRT**
 
 NVIDIA GPU에서 추론 속도가 가장 빠른 포맷 입니다. A100, V100과 같은 고사양 GPU 뿐만 아니라 Jetson과 같은 에지용 GPU에도 가장 빠르게 동작합니다. 즉, 딥러닝 모델 추론 가속기로 NVIDIA GPU를 사용하시면 TensorRT 포맷이 최고의 서빙 포맷 입니다.
 
@@ -167,7 +167,7 @@ with builder.build_engine(network, config) as engine, open(output_model, 'wb') a
     t.write(engine.serialize())
 ```
 
-### **Edge 서빙용 모델 변환**
+## **Edge 서빙용 모델 변환**
 
 배포 타겟이 스마트폰과 같은 edge device라면, 해당 장치에 따라 서빙 포맷이 달라집니다. 예를들면, 안드로이드 스마트폰에서 추론 연산을 하는 안드로이드 앱에 들어가는 모델이라면 TFLite 포맷이 가장 적합합니다. 아이폰, 맥북등과 같은 애플 장치에서 추론 연산을 하는 모델이라면 CoreML 모델이 가장 좋습니다. Edge 서빙은 클라우드 서빙에 비해 다음과 같은 장점을 가지고 있습니다:
 
@@ -203,7 +203,7 @@ Edge 장치에 딥러닝 모델을 배포시에는 다음과 같은 모델 유�
 
 - *ONNX*: ONNX Runtime이 동작하고, 적합한 프로바이더가 있는 장치들
 
-#### **TFLite**
+## **TFLite**
 
 TensorFlow Lite는 TensorFlow 모델을 스마트폰이나 임베디드, IoT 기기에서 구동하기 위한 ML 툴 입니다. Tensorflow 모델이 동작하는 환경이 안드로이드 장치라면 TFLite 포맷으로 변환하여 서빙하는 것이 가장 좋습니다. 기반이 되는 모델이 Tensorflow 모델이므로, Tensorflow의 Keras 포맷이나 Saved Model 포맷에서 TFLite 포맷으로 변환 합니다.
 
@@ -226,7 +226,7 @@ open(output_model, "wb").write(tflite_model)
 
 > *TMI: 구글에서 사용하는 직렬화된 파일 포맷은*[*Proto buffer*](https://developers.google.com/protocol-buffers)*가 많습니다만,*`.tflite`*파일은*[*Flat buffer*](https://google.github.io/flatbuffers)*로 직렬화 되어 있습니다.*
 
-#### **CoreML**
+## **CoreML**
 
 CoreML은 Apple에서 사용하는 딥러닝 포맷 입니다. TensorRT 포맷이 NVIDIA GPU에서 추론 속도가 가장 빠른 것처럼, CoreML은 애플 장치들 (아이폰, 아이패드, 맥북)에서 비교적 최고의 성능(속도)를 냅니다. (*장치 개발사에서 직접 만든 포맷이 최적화가 가장 잘되어 있을수밖에….*)
 
@@ -245,7 +245,7 @@ ct_model = ct.models.neural_network.quantization_utils.quantize_weights(ct_model
 ct_model.save(output_model)
 ```
 
-### 결론
+## 결론
 
 딥러닝 모델 서빙용 포맷 변환은 머신러닝 엔지니어링의 한 부분으로 모델러 (ML 모델을 만드는 사람 — 데이터 과학자, 연구원)가 아닌 저와 같은 엔지니어가 모델러와 협업하여 주로 수행합니다. MLOps가 대중화 되기 이전 수동 프로세스로 ML 프로젝트를 수행하던 시절에는 *모델 개발* 은 학습용 체크포인트 파일을 만드는 것까지를 의미할 때가 많았습니다. 이 시절에는 *모델 최적화* 단계를 따로 두고 머신러닝 엔지니어(혹은 그와 같은 역활을 하는 사람)이 모델 최적화하는 과정을 거쳐 모델을 배포하곤 하였습니다.
 

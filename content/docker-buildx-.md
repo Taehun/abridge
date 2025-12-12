@@ -11,7 +11,7 @@ author = "김태훈"
 toc = true
 +++
 
-### 개요
+## 개요
 
 노트북이 노후되어 최근 MacBook을 새로 하나 장만했습니다. M2 칩이 탑재된 MacBook Air 모델로 구매하였는대요. 지금까지 상당히 만족하면서 사용하고 있습니다.
 
@@ -21,7 +21,7 @@ M1이나 M2와 같은 애플 칩이 탑재된 MacBook 사용시 ARM64 아키텍�
 
 문제의 원인을 파악 하였으면 해결 방법은 간단합니다. `docker buildx`로 컨테이너 빌드시 멀티 아키텍처 지원 가능한 이미지를 빌드하여 배포하시면 됩니다.
 
-### Docker Buildx
+## Docker Buildx
 
 Docker Buildx은 멀티 플랫폼 빌드 기능을 지원하는 docker CLI 확장 플러그인 입니다. Docker 19.03 이후 버전부터 사용할 수 있습니다.
 
@@ -134,6 +134,6 @@ $ docker run --rm -it briankim/buildx-test
 x86_64
 ```
 
-### 요약
+## 요약
 
 - 팀 중에 M1/M2 MacBook 사용자가 있으면 `docker buildx`로 멀티 플랫폼을 지원하도록 빌드 합시다.

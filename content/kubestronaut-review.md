@@ -59,9 +59,9 @@ CNCF의 모든 Kubernetes 자격증(CKA, CKAD, CKS, KCNA, KCSA)을 취득하면 
 
 Credly 뱃지 수집 중. 몇달 쉬었다가 연말에 몇개 더 채울 예정 입니다.
 
-### 쿠버네티스 자격증 준비 과정
+## 쿠버네티스 자격증 준비 과정
 
-#### CKA & CKAD
+## CKA & CKAD
 
 3년전이라 정확하진 않지만 CKA와 CKAD는 각각 2주, 1주 가량 준비해서 취득 했던 것으로 기억합니다. 아래 Udemy 강의들과 KodeKloud 핸즈온 실습을 하면서 준비했습니다.
 
@@ -71,11 +71,11 @@ Credly 뱃지 수집 중. 몇달 쉬었다가 연말에 몇개 더 채울 예정
 
 CKAD는 CKA와 겹치는 부분은 제외하고 필요한 부분만 공부 했던 것 같습니다.
 
-#### CKS
+## CKS
 
 **[CKS 자격증 시험 후기](https://blog.taehun.dev/review-cks-certified)**에 정리해 놓았습니다.
 
-#### KCNA
+## KCNA
 
 평일 1시간, 주말 2~3시간 가량 일주일 정도 준비 했습니다. [KCNA 소개 페이지](https://training.linuxfoundation.org/certification/kubernetes-cloud-native-associate/)에 있는 각 파트 내용을 정리하고, [examtopics.com](http://examtopics.com)의 무료 KCNA 문제들을 풀어 보았습니다.
 
@@ -93,7 +93,7 @@ CKAD는 CKA와 겹치는 부분은 제외하고 필요한 부분만 공부 했�
 
 - *Cloud Native Application Delivery (8%)*
 
-#### KCSA
+## KCSA
 
 평일 1시간, 주말 2~3시간 가량 일주일 정도 준비 했습니다. [LinkedIn의 KCSA 강의](https://www.linkedin.com/learning/cert-prep-kubernetes-and-cloud-native-security-associate-kcsa)를 듣고, [KCSA 소개 페이지](https://training.linuxfoundation.org/certification/kubernetes-and-cloud-native-security-associate-kcsa/)에 있는 각 파트 내용을 찾아서 정리하였습니다.
 

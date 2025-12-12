@@ -23,7 +23,7 @@ DevOps 성숙도가 높은 기업이나 팀이라면 *IaC (Infrastructure as Co
 
 • CDKTF 개요 (*출처>*[*https://www.terraform.io/cdktf*](https://www.terraform.io/cdktf) )
 
-### CDKTF CLI 설치
+## CDKTF CLI 설치
 
 CDKTF를 사용하시려면 `cdktf` 라는 커맨드라인 툴이 필요 합니다. `cdktf` 커맨드라인 툴 설치 방법은 다음과 같습니다. `terraform` CLI가 사전 설치 되어 있어야 합니다. (참고> [Install Terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli))
 
@@ -71,7 +71,7 @@ cdktf
 Options can be specified via environment variables with the "CDKTF_" prefix (e.g. "CDKTF_OUTPUT")
 ```
 
-### CDKTF 프로젝트 초기화
+## CDKTF 프로젝트 초기화
 
 CDKTF 프로젝트 폴더를 생성하고 초기화 합니다.
 
@@ -83,7 +83,7 @@ $ cdktf init --template=python --local
 
 Python 코드로 인프라를 정의할 것이므로 `--template` 옵션은 `python`으로 설정 하였습니다. `--local` 옵션은 `.tfstate` 파일을 로컬에서 관리한다는 설정이므로 실행시 경고 메세지를 띄웁니다. 실제 프로젝트 환경에는 `--local` 옵션을 생략하여 [Terraform Cloud](https://cloud.hashicorp.com/products/terraform)과 같은 곳에서 `.tfstate` 파일을 중앙 집중식으로 관리하시기 바랍니다.
 
-### Google provider 설치
+## Google provider 설치
 
 Terraform은 플러그인 형태로 사용할 수 있는 몇가지 사전 빌드된 provider를 제공합니다. AWS provider 예제는 많이 있으니, 여기서는 GCP (Google Cloud Platform) 인프라 생성 예제를 위해 Google provider를 추가 하겠습니다. Terraform으로 GCP 인프라 생성 및 삭제를 위해서는 필요한 API 활성화 및 서비스 계정 `.json` 키 파일이 필요 합니다. [Terraform 시작하기](https://cloud.google.com/docs/terraform/get-started-with-terraform?hl=ko) 문서와 [서비스 계정 생성 및 관리](https://cloud.google.com/iam/docs/creating-managing-service-accounts?hl=ko) 문서를 참고하시기 바랍니다.
 
@@ -104,7 +104,7 @@ imports
     └── py.typed
 ```
 
-### 인프라 코드 작성
+## 인프라 코드 작성
 
 `main.py` 파일을 열어 아래와 같이 코드를 수정 합니다. 이 예제는 `f1-micro` 머신 유형의 VM을 하나 생성하는 예제 입니다.
 
@@ -166,7 +166,7 @@ stack = MyStack(app, "gcp_instance")
 app.synth()
 ```
 
-### 인프라 프로비저닝
+## 인프라 프로비저닝
 
 안프라 코드 작성이 완료 되었으므로, 이제 인프라 코드를 배포하여 실제로 인프라를 생성할 것 입니다. `cdktf deploy` 커맨드로 인프라 코드를 배포하여 정의된 인프라를 생성 할 수 있습니다. 커맨드를 실행하면 생성하거나 삭제될 인프라에 대한 정보가 출력되고, *Approve* , *Dismiss* , *Stop* 세 가지 메뉴에서 하나를 선택해야 합니다. *Approve* 를 선택하면 인프라 코드의 변경점이 실제 인프라에 적용 됩니다.
 
@@ -189,7 +189,7 @@ Please review the diff output above for gcp_instance
 ![notion image]()
 
 
-### 인프라 정리하기
+## 인프라 정리하기
 
 CDKTF로 생성한 인프라는 `cdktf destroy` 커맨드로 삭제 할 수 있습니다. 커맨드 실행후 *Approve* 메뉴를 선택하면, CDKTF로 생성된 인프라를 삭제합니다.
 
@@ -208,7 +208,7 @@ Please review the diff output above for aws_instance
             Destroy complete! Resources: 2 destroyed.
 ```
 
-### 결론
+## 결론
 
 Terraform 사용 경험이 있는 분에게는 CDKTF를 아직 실 프로젝트에 적용하기에는 부족함을 많이 느끼실 것 입니다. CDKTF는 Terraform HCL을 대체하기 보다는 익숙한 프로그래밍 언어로 인프라 코드를 작성할 수 있도록 도와주는 일종의 래퍼 모듈 입니다. 아마 HCL 코드가 복잡하고 배우기 어려웠으면 CDKTF 사용자가 더 많아지고 프로젝트도 좀 더 활성화 되었을지도 모르겠네요. CDKTF는 아직 Terraform과 HCL에 대해 문외한이고 익숙한 Python 코드로 인프라를 생성해보고 싶으신 분들께 추천합니다.
 

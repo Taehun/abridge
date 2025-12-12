@@ -11,7 +11,7 @@ author = "김태훈"
 toc = true
 +++
 
-### 개요
+## 개요
 
 [GitHub Copilot](https://github.com/features/copilot)과 같은 AI 코딩 보조 도구들을 사용하면 개발자의 생산성 향상에 많은 도움이 됩니다. 저도 GitHub Copilot을 개인적으로 유료 결제해서 사용 중이며, 회사에서도 개발 비용으로 지원해 주고 있습니다. 하지만, GitHub Copilot의 도움을 받으려면 작성 중인 코드가 GitHub 서버로 전송되므로, 보안 정책이 엄격한 기업에서는 사용을 금지하고 있습니다. 게다가 매달 내는 GitHub Copilot 사용료도 조금 아깝기도 합니다.
 
@@ -27,7 +27,7 @@ toc = true
 
 위와 같이 GPU 서버에 ollama와 Codestral 모델을 설치하여 API로 사내 개발자들이 모두 사용할 수 있도록 구성했습니다. Codestral은 파라메터 크기가 커서 로컬에서 실행 하기엔 메모리 사용량이 부담됩니다.
 
-### Ollama 설치 및 설정
+## Ollama 설치 및 설정
 
 1. GPU 서버에 ollama를 설치 합니다.
 
@@ -91,7 +91,7 @@ curl http://192.168.1.123:11434/api/generate -d '{
 }'
 ```
 
-### VSCode 설정
+## VSCode 설정
 
 1. VSCode에서 ollama + codestral을 사용하려면 Continue라는 확장을 설치 합니다.
 
@@ -136,7 +136,7 @@ curl http://192.168.1.123:11434/api/generate -d '{
 
 이게 끝 입니다. 자세한 사용법은 **[How to use Continue](https://docs.continue.dev/how-to-use-continue)**문서를 참고하세요.
 
-### 결론 및 사용 후기
+## 결론 및 사용 후기
 
 기대가 크지 않아서 그런지, 생각보다 쓸 만합니다. 오픈소스 모델이라 무료라는 장점과 GPU 서버 및 로컬 네트워크 성능에 비례하여 코드 생성 속도도 빨라집니다. 아래와 같이 RAG로 커스터마이징도 가능합니다.
 

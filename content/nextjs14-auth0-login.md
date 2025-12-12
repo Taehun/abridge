@@ -13,7 +13,7 @@ toc = true
 
 [Auth0](https://auth0.com/)를 사용하여 NextJS 14 로그인을 구한하는 방법을 정리하였습니다.
 
-### Auth0 설정
+## Auth0 설정
 
 1. <https://auth0.com/> 계정이 없다면, 회원 가입을 먼저 해야 합니다. (우측 상단 `Sign up` 클릭)
 
@@ -61,7 +61,7 @@ SaaS(Software as a Service)에서 'Tenant' 개념은 아파트 건물에 비유�
 로컬 개발에는 `http://localhost:3000` 주소를 설정하고, 스테이징이나 프로덕션 환경은 웹 앱 URL로 설정해야 합니다. Auth0는 테넌트별로 환경 분리하는 것을 추천합니다.
 Auth0 대쉬보드 `Settings` → `General` → `Environment Tag` 에서 현재 테넌트의 환경 태그를 지정 할 수 있습니다. (*Development | Staging | Production)*
 
-### NextJS 14 설정
+## NextJS 14 설정
 
 새로운 NextJS 14 웹 앱을 생성합니다. (`nextjs-auth0-example` )
 
@@ -117,7 +117,7 @@ export const GET = handleAuth();
 
 - `/api/auth/me`: 사용자 프로필을 가져오는 경로입니다.
 
-#### UserProvider 컴포넌트 추가
+## UserProvider 컴포넌트 추가
 
 프론트엔드는 React 컨텍스트를 사용하여 사용자의 인증 상태를 관리합니다. 모든 페이지에서 해당 상태를 사용할 수 있게 하려면 루트 레이아웃 컴포넌트를 재정의하고 `app/layout.tsx` 파일에서 `<body>` 태그를 `UserProvider`로 래핑해야 합니다.
 
@@ -151,7 +151,7 @@ export default function RootLayout({
 }
 ```
 
-#### 로그인 버튼 추가
+## 로그인 버튼 추가
 
 이제 사용자는 SDK에서 제공하는 `/api/auth/login` 경로를 방문하여 애플리케이션에 로그인할 수 있습니다. 앵커 태그(`<a>` 태그)를 사용하여 로그인 경로를 가리키는 링크를 추가합니다. 이 링크를 클릭하면, Auth0이 사용자를 인증할 수 있는 Auth0 유니버설 로그인 페이지로 리디렉션됩니다. 인증에 성공하면 Auth0은 사용자를 애플리케이션으로 다시 리디렉션합니다.
 
@@ -168,7 +168,7 @@ export default function Home() {
 				(......)
 ```
 
-#### 로그인 필요한 페이지
+## 로그인 필요한 페이지
 
 로그인을 해야 접근이 가능하고, 로그인시 첫 화면인 `/dashboard` 페이지를 만들어봅시다.
 
@@ -253,7 +253,7 @@ export default async function DashbaordPager() {
 
 - 클라이언트 사이드에서 보호하기: `withPageAuthRequired` 사용
 
-#### 옵션 1. Middware에서 로그인 필요한 페이지 보호하기
+## 옵션 1. Middware에서 로그인 필요한 페이지 보호하기
 
 Next.js 미들웨어의 기능을 활용하여 Auth0을 사용하여 페이지를 보호할 수 있습니다. Next.js 미들웨어는 애플리케이션으로 들어오는 요청이 완료되기 전에 코드를 실행합니다. 그런 다음 들어오는 요청의 특성에 따라 응답을 수정하여 애플리케이션의 비즈니스 요구 사항을 충족할 수 있습니다. 응답을 다시 작성하거나 리디렉션하고, 요청 또는 응답 헤더를 수정하거나, 직접 응답할 수 있습니다.
 
@@ -279,7 +279,7 @@ export const config = {
 };
 ```
 
-#### 옵션 2. SSR (Server-Side Rendering) 페이지 보호하기
+## 옵션 2. SSR (Server-Side Rendering) 페이지 보호하기
 
 서버 사이드에서 웹 페이지 렌더링시 사용자 인증이 필요하도록 설정 할 수 있습니다. `withPageAuthRequired()` 메서드로 React 서버 컴포넌트(RSC)를 래핑하여 사용자 인증이 필요하도록 설정합니다.
 
@@ -305,7 +305,7 @@ export default withPageAuthRequired(
 }, { returnTo: '/dashboard'});
 ```
 
-#### 옵션 3. CSR (Client-Side Rendering) 페이지 보호하기
+## 옵션 3. CSR (Client-Side Rendering) 페이지 보호하기
 
 클라이언트 사이드에서 웹 페이지 렌더링시 사용자 인증이 필요하도록 설정 할 수 있습니다. `withPageAuthRequired()` 메서드로 React 클라이언트 컴포넌트(RCC)를 래핑하여 사용자 인증이 필요하도록 설정합니다.
 
@@ -339,9 +339,9 @@ export default withPageAuthRequired(
 
 클라이언트 사이드에서는 `getSession()` 메소드를 사용 할 수 없습니다. 사용자 정보를 가져오기 위한 메소드를`useUser()`로 변경하였습니다.
 
-### 소셜 로그인 추가하기
+## 소셜 로그인 추가하기
 
-#### Google 로그인
+## Google 로그인
 
 1. 사전 요구 사항
 
@@ -376,7 +376,7 @@ export default withPageAuthRequired(
 
 6. 생성된 Google 소셜 로그인을 추가할 Auth0 어플리케이션을 선택합니다.
 
-#### Github 로그인
+## Github 로그인
 
 **Github 설정**
 
@@ -416,7 +416,7 @@ export default withPageAuthRequired(
 
 이제 로그인시 Google과 GitHub 소셜 로그인을 사용 할 수 있습니다!
 
-### 테스트
+## 테스트
 
 기본 구현이 완료되었으므로, 이제 테스트 해 봅시다. 아래 커맨드로 NextJS 웹 어플리케이션을 개발 모드로 실행합니다.
 

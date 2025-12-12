@@ -17,7 +17,7 @@ toc = true
 
 그런 분들을 위해 제가 봤던 MLOps 자료 중에 좋았던 것 5개를 추려 보았습니다. 아래 순위는 매우 주간적이니, 순위에 연연치 마시고 아래 자료들은 모두 좋은 자료들이니 참고하여 MLOps 도입에 도움이 되었으면 합니다.
 
-### 1. Practitioners guide to MLOps
+## 1. Practitioners guide to MLOps
 
 - [Practitioners guide to MLOps: A framework for continuous delivery and automation of machine learning](https://services.google.com/fh/files/misc/practitioners_guide_to_mlops_whitepaper.pdf)
 
@@ -25,7 +25,7 @@ toc = true
 
 2020년도에 처음 MLOps 업무를 맡았을때 Google Cloud의 [*MLOps: 머신러닝의 지속적 배포 및 자동화 파이프라인*](https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning) 기사에서 많은 도움을 받았습니다. 2021년도에 이 기사에서 한층 업그레이드된 *MLOps 실무자 가이드* 문서가 출판되었습니다. MLOps는 빠르게 변하고 발전하고 있는 분야라 조금은 오래된 자료가 되었지만, 아직도 변함없이 좋은 자료임에는 틀림 없습니다.
 
-### 2. Designing Machine Learning Systems
+## 2. Designing Machine Learning Systems
 
 - [Designing Machine Learning Systems: An Iterative Process for Production-Ready Applications](https://www.amazon.com/Designing-Machine-Learning-Systems-Production-Ready/dp/1098107969/ref=d_pd_sbs_sccl_3_1/132-3569047-6311147?pd_rd_w=0ibEX&content-id=amzn1.sym.3676f086-9496-4fd7-8490-77cf7f43f846&pf_rd_p=3676f086-9496-4fd7-8490-77cf7f43f846&pf_rd_r=RKX1J3G22AVS8K5NBNTY&pd_rd_wg=AlVlL&pd_rd_r=e753fdc1-2b22-419a-9fed-9a2d51218d95&pd_rd_i=1098107969&psc=1)
 
@@ -33,7 +33,7 @@ toc = true
 
 스탠퍼드 [CS329S 강의](https://stanford-cs329s.github.io/) 내용을 책으로 엮은 것 입니다. 다양한 사례를 들면서 MLOps의 각 컴포넌트에 대해 설명하고 있습니다. CS329S 강의 자료와 함께 보시면 좀 더 많은 도움이 됩니다. MLOps 관련 툴과 데이터 엔지니어링에 대한 내용도 각각 한 챕터를 할당하여 정리되어 있습니다.
 
-### 3. Full Stack Deep Learning
+## 3. Full Stack Deep Learning
 
 - [Full Stack Deep Learning - Course 2022](https://fullstackdeeplearning.com/course/2022/)
 
@@ -43,7 +43,7 @@ toc = true
 
 2022년도 강의는 현재 진행 중 입니다. (2022.08 ~ 2022.10)
 
-### 4. Made With ML
+## 4. Made With ML
 
 - [Made With ML](https://madewithml.com/)
 
@@ -51,7 +51,7 @@ toc = true
 
 새로운 프로그래밍 언어나 라이브러리 사용법을 익힐때는 그것을 사용하여 실제로 무언가를 만들어 보는 것 (즉, 실습)이 가장 효과적 입니다. 이 싸이트는 실습 위주로 구성된 MLOps 학습 싸이트 입니다. MLOps의 각 항목에 사용되는 다양한 툴들을 직접 실습해 볼 수 있도록 각종 예제들을 제공하고 있습니다.
 
-### 5. Neptune Blog
+## 5. Neptune Blog
 
 - [neptuneblog](https://neptune.ai/blog)
 
@@ -63,7 +63,7 @@ Neptune 블로그 기사 중에 내용이 너무 마음에 들어 제가 번역�
 
 - [[번역] MLOps 아키텍처 가이드](https://taehun.github.io/mlops/2022/04/27/MLOps-architecture-guide.html)
 
-### 기타
+## 기타
 
 - [Awesome MLOps](https://github.com/visenger/awesome-mlops): MLOps 자료 링크 모음집
 

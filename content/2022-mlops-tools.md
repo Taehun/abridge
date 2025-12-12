@@ -21,9 +21,9 @@ toc = true
 
 최근에 [MyMLOps](https://mymlops.com/)이라는 흥미로운 사이트를 발견했습니다. MLOps의 각 항목별로 사용하는 도구를 선택하고, 선택된 도구들을 위와 같이 툴체인 형태로 시각화해주는 사이트 입니다. [MyMLOps](https://mymlops.com/)에 있는 도구들과 [MyMLOps](https://mymlops.com/)에는 없지만 도움이 될만한 MLOps 관련 도구들을 소개해 드리겠습니다. 여러 항목에 중복되는 도구들은 다양한 기능을 제공하는 통합 솔루션 입니다.
 
-### **MyMLOps의 MLOps 도구들**
+## **MyMLOps의 MLOps 도구들**
 
-#### **실험 추적 (Experiment tracking)**
+## **실험 추적 (Experiment tracking)**
 
 머신러닝 프로젝트는 다양한 모델, 파라메터 및 학습 데이터로 여러 실험을 실행해야 합니다. 실험 추적 툴은 다양한 실험에 필요한 모든 정보를 기록합니다. 이를 통해 실험 구성 요소의 버전과 결과를 추적하고 여러 실험을 비교할 수 있습니다.
 
@@ -45,7 +45,7 @@ toc = true
 
 > TensorBoard는 ML 실험 결과 분석을 위해 가장 널리 사용하는 도구 중 하나 입니다. 하지만, TensorBoard의 기능 대부분은 하나의 실험에 한정되어 있어 여러 실험을 추적하려면 다른 도구와 조합해야 합니다.
 
-#### **실험 (Experimentation)**
+## **실험 (Experimentation)**
 
 실험 (Experimentation)은 데이터를 분석하고, 프로토타입 모델을 만들며 학습을 구현하는 과정 입니다. 대부분 데이터 과학에 자주 사용하는 [Jupyter Notebook](https://jupyter.org/) 환경을 제공하는 도구들 입니다.
 
@@ -59,7 +59,7 @@ toc = true
 
 - [Apache Zepellin](https://zeppelin.apache.org/): Apache Zepellin은 SQL, Scala, Python, R 등을 사용하여 데이터 기반의 대화형 데이터 분석 및 협업 문서를 지원하는 웹 기반 노트북입니다.
 
-#### **데이터 버전 관리 (Data versioning)**
+## **데이터 버전 관리 (Data versioning)**
 
 데이터 버전 관리 도구를 사용하면 다양한 버전의 데이터 세트를 잘 구성된 방식으로 관리 할 수 있습니다. 이를 통해 ML 팀은 데이터 변경이 모델 성능에 미치는 영향을 식별하고 데이터 세트가 어떻게 변화하는지 파악하는 것과 같은 통찰력을 얻을 수 있습니다. 데이터 버전 관리는 ML 모델 계보 재현 및 추적을 지원합니다.
 
@@ -75,7 +75,7 @@ toc = true
 
 - [lakeFS](https://lakefs.io/): lakeFS는 모든 데이터 크기에서 작동하는 오브젝트 스토리지 버킷을 위한 Git입니다.
 
-#### **코드 버전 관리 (Code versioning)**
+## **코드 버전 관리 (Code versioning)**
 
 데이터 분석이나 ML 실험에 사용한 노트북 파일이나 파이썬 소스 코드 파일등의 코드 버전 관리 도구들 입니다.
 
@@ -85,7 +85,7 @@ toc = true
 
 > 요즘 코드 버전 관리에 Git을 사용하지 않는 조직은 없을것 입니다. 이 항목은 GitHub, GitLab과 같은 Git 원격 저장소 호스팅 서비스를 어떤 것을 사용하는지 선택하는 항목이라고 보시는게 좋을것 같습니다. 인기는 없지만 AWS의 AWS CodeCommit, GCP의 Cloud Source Repositories, Azure의 Azure Repos등 공용 클라우드 Git 저장소 서비스들도 있습니다.
 
-#### 머신러닝 파이프라인 (Pipeline orchestration)
+## 머신러닝 파이프라인 (Pipeline orchestration)
 
 머신러닝 파이프라인 (ML Pipeline)은 상용 환경에서 복잡한 ML 학습과 추론 작업을 단계별로 구성하고 자동화 합니다. 데이터/컨셉 드리프트 발생시 파이프라인을 자동으로 트리거하여 최신 데이터에서 모델을 재학습합니다.
 
@@ -125,7 +125,7 @@ toc = true
 
 > 이 항목에 나열된 도구들은 통합 솔루션들이 많습니다.
 
-#### **런타임 엔진 (Runtime engine)**
+## **런타임 엔진 (Runtime engine)**
 
 런타임 엔진 (Runtime engine)은 ML 코드가 실행되는 환경을 제공합니다. 멀티 노드 환경에서 병렬 실행을 위해 쿠버네티스 클러스터에 설치하여 API를 제공하거나 자체 클러스터를 런타임 환경으로 제공 합니다.
 
@@ -139,7 +139,7 @@ toc = true
 
 - [Apache Spark](https://spark.apache.org/): Apache Spark는 대규모 데이터 세트 및 분산 컴퓨팅을 위한 데이터 처리 프레임워크입니다.
 
-#### **아티팩트 추적 (Artifact tracking)**
+## **아티팩트 추적 (Artifact tracking)**
 
 실험 및 ML 파이프라인 전반에 걸쳐 데이터세트, 모델 및 중간 결과물을 저장하고 추적합니다.
 
@@ -157,7 +157,7 @@ toc = true
 
 > 아티팩트 추적 전용 툴은 없습니다. 아티팩트 추적은 ML 파이프라인 도구나 ML 실험 추적 도구의 기능에 포함되어 있습니다.
 
-#### **모델 레지스트리 (Model registry)**
+## **모델 레지스트리 (Model registry)**
 
 모델 레지스트리 (Model registry)는 중앙 집중식 모델 저장소를 의미 합니다. 학습된 모델의 버전 관리 및 추적 기능을 제공하고, 배포를 위해 모델 입/출력 인터페이스 및 런타임 패키지들에 대한 정보들을 저장 합니다.
 
@@ -171,7 +171,7 @@ toc = true
 
 - [ClearML](https://github.com/allegroai/clearml): ClearML은 ML 워크플로우 간소화하는 자동 마법 스위트가 포함된 End-to-End 플랫폼입니다.
 
-#### **모델 서빙 (Model serving)**
+## **모델 서빙 (Model serving)**
 
 REST API나 gRPC 엔드포인트를 생성하여 요청를 받으면 추론 결과를 응답합니다. 모델의 배포 타겟이 클라우드일때 사용하는 도구들 입니다.
 
@@ -201,7 +201,7 @@ REST API나 gRPC 엔드포인트를 생성하여 요청를 받으면 추론 결�
 
 - [Nuclio](https://github.com/nuclio/nuclio): Nuclio는 데이터, I/O 및 컴퓨팅 집약적 워크로드에 중점을 둔 고성능 서버리스 프레임워크 입니다.
 
-#### **모델 모니터링 (Model monitoring)**
+## **모델 모니터링 (Model monitoring)**
 
 모델 모니터링 도구는 배포된 모델의 성능 저하, 편향 및 데이터 드리프트를 감지합니다.
 
@@ -217,9 +217,9 @@ REST API나 gRPC 엔드포인트를 생성하여 요청를 받으면 추론 결�
 
 - [ClearML](https://github.com/allegroai/clearml): ClearML은 ML 워크플로우 간소화하는 자동 마법 스위트가 포함된 End-to-End 플랫폼입니다.
 
-### **기타 MLOps 도구들**
+## **기타 MLOps 도구들**
 
-#### **머신러닝/딥러닝 프레임워크 (ML/DL framework)**
+## **머신러닝/딥러닝 프레임워크 (ML/DL framework)**
 
 복잡한 머신러닝/딥러닝 모델 개발을 쉽고 효율적으로 할 수 있는 프레임워크들 입니다.
 
@@ -233,7 +233,7 @@ REST API나 gRPC 엔드포인트를 생성하여 요청를 받으면 추론 결�
 
 - [JAX](https://github.com/google/jax): JAX는 CPU, GPU 및 TPU의 NumPy이며 고성능 머신러닝 연구를 위한 자동 미분 기능을 제공합니다.
 
-#### **피처 스토어 (Feature store)**
+## **피처 스토어 (Feature store)**
 
 피처 스토어란 피처들을 위한 중앙 저장소 입니다. 피처 스토어는 미가공 데이터를 피처들로 변환하고 저장하며, 모델 학습과 추론에 제공합니다.
 
@@ -247,7 +247,7 @@ REST API나 gRPC 엔드포인트를 생성하여 요청를 받으면 추론 결�
 
 > 피처 엔지니어링이 필요하다면 피처 스토어 적용을 검토해보세요.
 
-#### **데이터 검증 (Data validation)**
+## **데이터 검증 (Data validation)**
 
 아웃라이어 (Outlier) 데이터와 유효하지 않은 데이터는 ML 모델에 악영향을 끼칩니다. 데이터 유효성 검사에 도움이 되는 도구들 입니다.
 
@@ -257,7 +257,7 @@ REST API나 gRPC 엔드포인트를 생성하여 요청를 받으면 추론 결�
 
 - [DVT](https://github.com/GoogleCloudPlatform/professional-services-data-validator): Data Validation Tool은 이기종 데이터 원본 테이블을 다단계 유효성 검사 기능과 비교하는 [Ibis 프레임워크](https://ibis-project.org/) 기반의 오픈 소스 Python CLI 도구입니다.
 
-#### **설명 가능한 AI (XAI, eXplainable AI)**
+## **설명 가능한 AI (XAI, eXplainable AI)**
 
 XAI는 AI 모델이 특정 결정을 내린 원인과 그 작동 원리를 사람들이 쉽게 파악할 수 있도록 도와주는 도구와 기술 세트입니다.
 
@@ -269,7 +269,7 @@ XAI는 AI 모델이 특정 결정을 내린 원인과 그 작동 원리를 사�
 
 > XAI는 활발히 연구가 진행되고 있고, 필요성에 대한 기사들은 많지만 실제 적용 사례는 아직 많지 않은것 같습니다.
 
-### **결론**
+## **결론**
 
 제품 등급 (Production-grade) ML 서비스에는 여기 나열된 MLOps 도구들 이외에도 많은 도구들이 같이 사용 될 것 입니다. 예를 들면, [JMeter](https://jmeter.apache.org/)나 [Locust](https://locust.io/)와 같은 툴로 부하 테스트를 해야 하며, [Logstash](https://www.elastic.co/kr/logstash)나 [Fluentd](https://www.fluentd.org/)로 로그 수집도 해야 합니다. MLOps가 포함하는 DevOps와 데이터 엔지니어링 영역까지 고려하면 훨씬 더 많은 도구들이 같이 사용 될것 입니다. (*kubernetes, kubespray, Terraform, Ansible, Helm, Kustomize, istio, jaeger, envoy, gRPC, RabbitMQ, Kafka, Keyclock, Valut, Argo CD, dbt, BigQuery, Athena, MongoDB, PostgresQL, Redis, …*)
 
@@ -293,7 +293,7 @@ XAI는 AI 모델이 특정 결정을 내린 원인과 그 작동 원리를 사�
 
 *선택 장애를 일으키는 수많은 MLOps 도구들...AI/ML 분야의 또다른 겨울이 오지 않는 이상 줄어들것 같지는 않습니다.*
 
-#### **더 읽을거리**
+## **더 읽을거리**
 
 - [MLOps 소개](https://taehun.github.io/mlops/2022/04/19/introduction-mlops.html): MLOps 컴포넌트와 핵심 요소들에 대응되는 툴은?
 

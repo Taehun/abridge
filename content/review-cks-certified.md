@@ -17,20 +17,20 @@ toc = true
 ![notion image]()
 
 
-### 계기
+## 계기
 
 > *“Your CKA Certification Expires in 3 Months”*
 
 얼마전에 CKA 자격증 만료일이 다되어 간다는 메일을 받았습니다. 응시료도 비싼데, CKA 자격증만 갱신 하려니 뭔가 허전합니다. 그래서, 그냥 이참에 CKS 자격증을 준비해서 취득했습니다.
 
-### CKS 자격증 간단 소개
+## CKS 자격증 간단 소개
 
 > *CKS(Certified Kubernetes Security Specialist)* 시험은 Kubernetes 환경에서 보안의 중요한 측면을 다루는 자격증 시험입니다. 이 시험은 Kubernetes의 클러스터 구성, 네트워크 보안, 정책 관리, 클러스터 모니터링 및 로깅, 그리고 런타임 보안과 같은 영역을 포함합니다. CKS 자격증은 Kubernetes와 관련된 보안 기술을 검증하며, 클라우드 네이티브 애플리케이션의 보안을 강화하고자 하는 전문가들에게 적합합니다. 시험 응시자는 Kubernetes의 보안 기능을 실질적으로 활용하고 문제를 해결하는 능력을 평가받습니다.
 > *- ChatGPT*
 
 CKS 자격증 시험 응시 자격이 CKA 자격증 소지자 입니다. 쿠버네티스 자격증 시험의 개인적인 체감 난이도는 CKA ≤ CKAD < CKS 입니다.
 
-### 준비 과정
+## 준비 과정
 
 ℹ️
 
@@ -71,7 +71,7 @@ CKS 자격증 시험 응시 자격이 CKA 자격증 소지자 입니다. 쿠버�
 
 *[killer.sh](http://killer.sh)*모의고사는 CKS 시험 신청시 무료 2세션이 제공 됩니다. 1세션당 36시간 동안 사용 가능 합니다.
 
-### 시험
+## 시험
 
 온라인으로 진행되는 시험이지만, 감독관분이 꼼꼼히 체크 합니다. 저는 집 근처 스터디 카페 2인실을 대여해서 시험을 치뤘습니다.
 
@@ -79,7 +79,7 @@ CKS 자격증 시험 응시 자격이 CKA 자격증 소지자 입니다. 쿠버�
 
 웹 캠으로 시험 장소 전체를 보여주고, 스마트 장치등을 착용하지 않았는지 확인합니다. 시험 장소에 책상, 의자, 노트북, 신분증 외에는 아무것도 없는 것이 깔끔합니다.
 
-#### 어려웠던 부분
+### 어려웠던 부분
 
 - 영문장 독해
 
@@ -89,7 +89,7 @@ CKS 자격증 시험 응시 자격이 CKA 자격증 소지자 입니다. 쿠버�
 
 생소한 문제가 하나 나와서 못풀었습니다 (Cipher Suites). → [참고할 링크](https://github.com/kodekloudhub/certified-kubernetes-security-specialist-cks-course/blob/main/docs/03-Cluster-Setup-and-Hardening/49-Cipher-Suites.md)
 
-### 결론 및 후기
+## 결론 및 후기
 
 - `kubectl delete` 옵션에 `--grace-period=0 --force` 사용하기
 

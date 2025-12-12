@@ -23,7 +23,7 @@ toc = true
 
 먼저, 쿠버네티스의 개념과 주요 구성 요소를 간단하게 소개합니다. 이어서 쿠버네티스 클러스터 구축을 위한 물리적 인프라 구성 방법과 클러스터 생성 도구들로 쿠버네티스 클러스터를 생성 합니다. 마지막으로 인프라 관리에 도움이 되는 도구들을 소개하며, 효율적인 클러스터 관리 및 운영 방법을 제시하면서 이 장을 마무리합니다.
 
-### 3.1 컴퓨팅 인프라: 쿠버네티스
+## 3.1 컴퓨팅 인프라: 쿠버네티스
 
 ℹ️
 
@@ -33,7 +33,7 @@ toc = true
 
 쿠버네티스를 종종 **`k8s`** 라고 부르곤 합니다. `k8s`는 `kubernetes` 의 첫 문자 `k`와 중간 문자열의 길이 (`len(’ubernete') = 8`)와 마지막 문자 `s`를 붙인 약어 입니다.
 
-#### 3.1.1 컨테이너 배포의 시대
+## 3.1.1 컨테이너 배포의 시대
 
 
 <!-- TODO: 이미지 추가 - 파일명: container_evolution.svg, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fa2095400-d16d-4c3b-8bb4-c7dbd777813c%2Fcontainer_evolution.svg?table=block&id=11c7adff-c806-4440-9f39-2de58cb499f2&cache=v2 -->
@@ -70,7 +70,7 @@ toc = true
 
 - 표 3-1. 쿠버네티스 명령형 접근법과 선언형 접근법 비교
 
-#### 3.1.2 쿠버네티스 기본
+## 3.1.2 쿠버네티스 기본
 
 
 <!-- TODO: 이미지 추가 - 파일명: Zero-to-MLOps-3-3.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fe75cc495-f39f-4f32-9816-a225f579af8c%2FZero-to-MLOps-3-3.png?table=block&id=8e8d4b80-719a-4ed9-8445-820bedb121c2&cache=v2 -->
@@ -110,7 +110,7 @@ toc = true
 
 그 외, 각종 설정 값에 사용하는 *ConfigMap*과 *Secret*, 스토리지 역활을 하는 *퍼시스턴트 볼륨*(*Persistent Volume)*과 접근 제어에 사용하는 *서비스 계정(Service Account)* 및 *역활(Role)*등 쿠버네티스에서 사용하는 용어와 항목들은 매우 많습니다. 그 모든것을 설명하는 것은 이 글의 주제를 벗어나므로 우선은 생략하고, 이후 설명이 필요하면 하나씩 살펴보겠습니다.
 
-#### 3.1.3 쿠버네티스 클러스터 구성 요소
+## 3.1.3 쿠버네티스 클러스터 구성 요소
 
 
 <!-- TODO: 이미지 추가 - 파일명: components-of-kubernetes.svg, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fb7c708f5-fad9-4717-b45c-c4895b736579%2Fcomponents-of-kubernetes.svg?table=block&id=f4bd5355-6ba2-41b4-b073-561f0b406bc7&cache=v2 -->
@@ -154,9 +154,9 @@ toc = true
 
 - 표 3-3. 노드 구성 요소
 
-### 3.2 쿠버네티스 클러스터 생성
+## 3.2 쿠버네티스 클러스터 생성
 
-#### 3.2.1 물리적 인프라
+## 3.2.1 물리적 인프라
 
 우선, 쿠버네티스 클러스터를 구성하는 노드가 있어야 합니다. MLOps를 위한 온프레미스 쿠버네티스 클러스터를 구축하기 위해서는 고려해야하는 하드웨어 사양이 있습니다. MLOps 워크로드는 모델 학습, 추론 및 대용량 데이터 처리가 빈번하다는 요구 사항으로 인해 리소스 집약적 입니다. 다음은 MLOps용 온프레미스 쿠버네티스 클러스터의 하드웨어 사양에 대한 몇 가지 권장 사항들 입니다:
 
@@ -231,7 +231,7 @@ bfloat16 형식의 특징은 다음과 같습니다:
 
 요약하면, bfloat16 데이터 유형은 고성능 딥 러닝 애플리케이션을 위해 설계된 16비트 부동 소수점 형식입니다. 이 형식은 float32의 동적 범위와 float16의 메모리 효율성 사이에서 균형을 이루기 때문에 AI 하드웨어 및 소프트웨어 구현에 널리 사용됩니다.
 
-#### 3.2.2 kubectl - 쿠버네티스 CLI 도구
+## 3.2.2 kubectl - 쿠버네티스 CLI 도구
 
 쿠버네티스 커맨드라인 도구인 `kubectl`을 사용하면 쿠버네티스 클러스터를 제어 할 수 있습니다. kubectl 커맨드를 사용하면 애플리케이션 배포, 클러스터 리소스 검사 및 로그를 확인등 다양한 작업들이 커맨드라인 환경에서 가능합니다. kubectl는 `kube-apiserver` 와 상호 작용하여 쿠버네티스 클러스터를 제어 합니다. 즉, kubectl는 쿠버네티스 API를 래핑하여 커맨드라인 인터페이스를 제공해주는 도구 입니다.
 
@@ -333,7 +333,7 @@ GUI 환경에서 쿠버네티스 클러스터를 제어하려면 [k9s](https://k
 
 > Lens 홈페이지: [https://k8slens.dev](https://k8slens.dev/)
 
-#### 3.2.3 kind로 쿠버네티스 클러스터 생성
+## 3.2.3 kind로 쿠버네티스 클러스터 생성
 
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fe7c3c3fa-31f5-4bf0-9ba8-6a0ea13094f8%2FUntitled.png?table=block&id=9cc0fb6e-0cf9-4d1f-a757-f1cb2d870ef0&cache=v2 -->
@@ -528,7 +528,7 @@ Handling connection for 8080
 
 > kind에 대한 좀 더 많은 정보는 [https://kind.sigs.k8s.io](https://kind.sigs.k8s.io/) 를 참고하시기 바랍니다.
 
-#### 3.2.4 운영체제 설치 - Ubuntu Server 22.04 LTS
+## 3.2.4 운영체제 설치 - Ubuntu Server 22.04 LTS
 
 쿠버네티스 클러스터 노드가 준비되었으면, 노드에 운영체제를 설치해야 합니다. 쿠버네티스 클러스터 노드의 운영체제는 리눅스 계열 배포판이면 어떤 것이든 상관 없지만 일반적으로 사용자 풀이 많다는 이유로 다음과 같은 운영체제가 많이 사용 됩니다.
 
@@ -650,7 +650,7 @@ $ sudo vi /etc/fstab
 
 많은 수의 노드에 운영 체제를 설치할 때는 이러한 수동 설치는 매우 비효율적입니다. UEFI의 [*PXE(Preboot eXecution Environment)*](https://en.wikipedia.org/wiki/Preboot_Execution_Environment)기능을 활용하여 네트워크 부팅을 하거나 [*autoinstall*](https://ubuntu.com/server/docs/install/autoinstall)으로상호 작용 없이 자동 설치를 할 수도 있습니다. 가상 머신 노드에는 [Vagrant](https://www.vagrantup.com/)와 같은 도구를 사용하여 가상 환경을 사전 생성하여 사용 할 수 있습니다.
 
-#### 3.2.5 RKE2로 쿠버네티스 클러스터 생성
+## 3.2.5 RKE2로 쿠버네티스 클러스터 생성
 
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F9cee217a-60b1-4a46-a72e-e36573012679%2FUntitled.png?table=block&id=bf87d38b-bc4c-4e7a-91be-1d10d62a0e92&cache=v2 -->
@@ -936,7 +936,7 @@ nginx-deployment-6595874d85-wdxpd   1/1     Running       0             54s     
 
 > RKE2에 대한 좀 더 많은 정보는 [https://docs.rke2.io](https://docs.rke2.io/) 를 참고하시기 바랍니다.
 
-#### 3.2.6 kubeadm으로 쿠버네티스 클러스터 생성
+## 3.2.6 kubeadm으로 쿠버네티스 클러스터 생성
 
 kubeadm은 쿠버네티스 클러스터를 설정하고 관리하는 프로세스를 간소화하기 위해 쿠버네티스 프로젝트에서 개발한 쿠버네티스 클러스터 생성 도구입니다. 이 도구는 컨트롤 플레인, etcd, 워커 노드 등 클러스터를 구성하는 다양한 구성 요소를 배포하고 구성하는 것과 관련된 많은 복잡성을 자동화합니다. kubeadm은 사용자에게 일관되고 간소화된 환경을 제공하여 다양한 규모와 토폴로지의 쿠버네티스 클러스터를 더 쉽게 생성 및 관리할 수 있도록 해줍니다.
 

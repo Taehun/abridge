@@ -13,7 +13,7 @@ toc = true
 
 회사에서 연구&개발에 관련된 다양한 업무를 하고 있지만, 그 중 DevOps 관련된 일을 많이 했습니다. 시리즈 A 규모의 초기 스타트업에서 GitOps를 적용한 과정을 정리해 보았습니다. 이 기사 내용은 실제 경험을 기반으로 작성 하였지만, 설명을 위해 일부 내용은 재구성하였습니다.
 
-### 단계 0 - 직접 배포
+## 단계 0 - 직접 배포
 
 
 <!-- TODO: 이미지 추가 - 파일명: GitOps_적용기-단계1png.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Ff4191333-32b9-4e81-9e8e-35dca8310cbf%2FGitOps_%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25A8%25E1%2584%258B%25E1%2585%25AD%25E1%2586%25BC%25E1%2584%2580%25E1%2585%25B5-%25E1%2584%2583%25E1%2585%25A1%25E1%2586%25AB%25E1%2584%2580%25E1%2585%25A81png.png?table=block&id=38e11ad8-62b1-4d71-827e-ba88abb3644b&cache=v2 -->
@@ -23,7 +23,7 @@ toc = true
 
 저는 직접 경험하진 않았지만, 많은 초기 스타트업이 거쳐가는 과정이지 않나 생각합니다. 한/두명의 소수의 개발자가 GitHub에 원격 저장소를 생성하고, git으로 소스 코드 버전 관리만 합니다. 배포는 조립형 PC로 구축한 사내 서버에 개발자가 직접 배포합니다. Git 브랜치 전략이나 인프라 저장소 및 CI/CD는 없습니다.
 
-### 단계 1 - Push-based 배포
+## 단계 1 - Push-based 배포
 
 
 <!-- TODO: 이미지 추가 - 파일명: push-based_(1).png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F9955a6fe-4383-48e8-8999-913612c893fb%2Fpush-based_(1).png?table=block&id=7c8234ee-84a1-4111-a7f6-5a23e55325c4&cache=v2 -->
@@ -37,7 +37,7 @@ CI/CD 워크플로우 도구는 [GitHub Action](https://github.com/features/acti
 
 ECR에 빌드된 컨테이너 이미지가 배포되면 `kubectl rollout restart deployment` 커맨드로 Pod을 재시작하여, EKS에 새 버전을 배포 합니다. Git 브랜치 전략은 변형된 [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow)을 사용하였으며, CI/CD는 GitHub Action, 아직 인프라 저장소는 없습니다.
 
-### 단계 2 - 환경 분리와 Pull-based 배포
+## 단계 2 - 환경 분리와 Pull-based 배포
 
 
 <!-- TODO: 이미지 추가 - 파일명: GitOps_적용기-단계2_(1).png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Fe0f393cc-8beb-41f3-816b-6d4f1ce3a530%2FGitOps_%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25A8%25E1%2584%258B%25E1%2585%25AD%25E1%2586%25BC%25E1%2584%2580%25E1%2585%25B5-%25E1%2584%2583%25E1%2585%25A1%25E1%2586%25AB%25E1%2584%2580%25E1%2585%25A82_(1).png?table=block&id=f8a5bc44-0f85-4c7b-af61-dc1e6c4d7d78&cache=v2 -->
@@ -57,7 +57,7 @@ Github Action의 CI/CD 워크플로우는 기존 push-based에 사용하던 kube
 
 프로덕션 환경으로 사용하는 AWS 인프라 배포는 통합 테스트와 QA가 완료되면, ArgoCD에서 수동으로 Sync 하여 배포합니다. Sync 정책과 배포 타겟이 다르므로 환경별로 ArgoCD 어플리케이션을 별도 생성하였습니다. Git 브랜치 전략은 변형된 [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow)에서 dev 환경 배포용으로 `develop` 브랜치를 추가하였습니다. CI/CD는 GitHub Action, 인프라 저장소가 추가 되었습니다.
 
-### 단계 3 - GitOps 고도화
+## 단계 3 - GitOps 고도화
 
 
 <!-- TODO: 이미지 추가 - 파일명: GitOps_적용기-단계3_(1).png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F72b46fd8-b1cb-42f4-b5ec-0e64cd807980%2FGitOps_%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25A8%25E1%2584%258B%25E1%2585%25AD%25E1%2586%25BC%25E1%2584%2580%25E1%2585%25B5-%25E1%2584%2583%25E1%2585%25A1%25E1%2586%25AB%25E1%2584%2580%25E1%2585%25A83_(1).png?table=block&id=50f6354a-b623-41aa-adf5-d6d4efbba1bd&cache=v2 -->
@@ -93,7 +93,7 @@ data:
 
 Git 브랜치 전략은 기존 브랜치 전략에서 프로덕션 환경 Hotfix 대응하기 위해 `hotfix` 브랜치가 추가 되었습니다.
 
-### Q&A
+## Q&A
 
 **Q. Staging 환경은 없나요?**
 
@@ -109,7 +109,7 @@ A. GitOps와 직접적으로 연관된 내용은 아니지만, AWS EKS 클러스
 
 나름 쿠버네티스에 익숙하다고 자부하고 있지만, 온프레미스 환경에서 쿠버네티스 클러스터 운영하는 것은 꽤나 고역입니다. 물리적 리소스 (CPU, 메모리, 스토리지)가 부족하면 단순히 노드나 HDD를 추가할 수 있는 여건이 되지 않습니다. 더이상 사용하지 않는 리소스를 찾아서 제거하거나 최적화해서 리소스를 확보해야 합니다. Dev 환경이지만 정전시 서비스 중단되는 것도 담당자 입장에선 스트레스가 상당하구요. Private ECR이나 GitHub 저장소 연동도 처음에는 꽤나 번거롭습니다. 스타트업은 빠른 개발과 배포가 중요하므로 초기에는 서버리스 솔루션을 사용하다가 서비스가 성장하고 개발팀 규모가 커지면 쿠버네티스 도입을 검토하시는 것을 추천합니다.
 
-### 후기 및 결론
+## 후기 및 결론
 
 여러 이슈들이 있었지만 YAML 파일이나 HCL 문법으로 작성된 코드대로 인프라가 구성되고, 복잡한 마이크로 서비스들이 GitOps로 통합되어 테스트와 배포가 자동화하는 것은 꽤나 흥미롭습니다. 본문에 언급하진 않았지만, Kustomize 적용하기 전 Helm Chart로 인프라 코드를 관리했던 시절도 있었습니다. Helm Chart는 Helm 패키징도 해야하고 Helm 저장소등의 추가 리소스가 필요하여 인력이 부족하고 서비스 규모가 작은 스타트업에는 맞지 않는 것 같아 Kustomize로 변경하였습니다. GitOps 솔루션으로 ArgoCD 대신 [FluxCD](https://fluxcd.io/)를 검토했던 적도 있는데, 이미 ArgoCD 편의성에 적응을 해버린 상태라 검토만 하였습니다.
 

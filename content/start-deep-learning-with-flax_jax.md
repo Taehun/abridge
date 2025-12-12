@@ -13,13 +13,13 @@ toc = true
 
 > ~~*“플렉스 해버렸지 뭐야”*~~
 
-### **개요**
+## **개요**
 
 [JAX](https://github.com/google/jax)가 출시된지 2년이 지나면서 완성도가 많이 높아졌습니다. 이제는 실험 단계를 넘어 상용 모델 개발에 JAX 도입을 검토해 볼만한 단계가 온 것 같습니다. DeepMind나 Hugging Face와 같은 AI 업계를 선도하는 회사들은 이미 JAX로 이전했거나 이전하고 있는 과정에 있기도 하구요. ([참고링크1](https://www.deepmind.com/blog/using-jax-to-accelerate-our-research), [참고링크2](https://twitter.com/huggingface/status/1331255460033400834))
 
 이 기사에는 [Flax](https://github.com/google/flax)라는 JAX용 딥러닝 라이브러리를 사용하여, 간단한 딥러닝 모델을 만드는 방법을 다룹니다. Flax의 API는 딥러닝 개발자 경험 (DX, Developer Experience) 고려하여 개발 되었기에 기존 Tensorflow나 PyTorch 경험이 있는 분이면 쉽게 익힐 수 있습니다.
 
-#### **JAX**
+## **JAX**
 
 [JAX](https://github.com/google/jax)는 자동 미분 기능 (AutoGrad)를 가지고 있는 CPU/GPU/TPU에서 동작하는 NumPy 입니다.
 
@@ -35,7 +35,7 @@ JAX는 다음과 같은 강력한 기본 요소들이 제공됩니다:
 
 - **병렬화 (**`jax.pmap`**)**: 여러 가속기(예: TPU 포드를 위한 호스트들 포함) 간에 자동으로 코드 병렬화
 
-#### **Flax**
+## **Flax**
 
 [Flax](https://github.com/google/flax)는 유연성을 위해 설계된 JAX를 위한 딥러닝 라이브러리 입니다. Flax는 프레임워크에 기능을 추가하는 것이 아니라 예제와 학습 루프를 수정하여 새로운 형태의 모델 학습을 시도합니다.
 
@@ -49,7 +49,7 @@ Flax는 JAX 팀과 긴밀히 협력하여 개발 중이며 다음과 같은 딥�
 
 - **빠르고 튜닝된 대규모 종단간 예제**: CIFAR10, ImageNet의 ResNet, Transformer LM1b
 
-#### **Flax를 배워야 하는 이유**
+## **Flax를 배워야 하는 이유**
 
 이미 PyTorch나 Tensorflow로 딥러닝 연구 & 개발을 잘하고 있는데 왜 Flax를 배워야 할까요?
 
@@ -65,7 +65,7 @@ Flax는 JAX 팀과 긴밀히 협력하여 개발 중이며 다음과 같은 딥�
 
 - Flax Transformer 예제: [Fine-tuning a 🤗 Transformers model on TPU with Flax/JAX](https://colab.research.google.com/github/huggingface/notebooks/blob/master/examples/text_classification_flax.ipynb)
 
-### **의류 이미지 분류 예제**
+## **의류 이미지 분류 예제**
 
 [Google Colaboratory
 
@@ -92,7 +92,7 @@ import tensorflow_datasets as tfds     # Fashion MNIST Dataset 가져오기 위�
 from matplotlib import pyplot as plt   # 시각화
 ```
 
-#### 데이터셋 가져오기
+## 데이터셋 가져오기
 
 10개의 범주(category)와 70,000개의 흑백 이미지로 구성된 [패션 MNIST 데이터셋](https://github.com/zalandoresearch/fashion-mnist)을 사용하겠습니다. 이미지는 해상도(28x28 픽셀)가 낮고 다음처럼 개별 옷 품목을 나타냅니다:
 
@@ -154,7 +154,7 @@ class_names = [
 ]
 ```
 
-#### **데이터 탐색**
+## **데이터 탐색**
 
 모델을 훈련하기 전에 데이터셋 구조를 살펴보죠. 다음 코드는 훈련 세트에 60,000개의 이미지가 있다는 것을 보여줍니다. 각 이미지는 28x28 픽셀로 표현됩니다:
 
@@ -216,7 +216,7 @@ plt.show()
 ![notion image]()
 
 
-#### **네트워크 정의**
+## **네트워크 정의**
 
 Flax Linen API의 Module의 서브 클래스로 CNN 네트워크를 정의 합니다. 이 예제의 모델 아키텍처는 비교적 단순하기 때문에 `__call__` 메서드 내에서 직접 인라인 서브 모듈을 정의하고 `@compact` 데코레이터로 래핑할 수 있습니다.
 
@@ -239,7 +239,7 @@ class CNN(nn.Module):
     return x
 ```
 
-#### **손실 함수 정의**
+## **손실 함수 정의**
 
 간단하게 `optax` 패키지의 `softmax_cross_entropy()`를 사용합니다. 이 함수는 *[batch, num\_classes]*
  shape을 가진 `logits`과 `labels` 파라메터를 받습니다. `labels`는 TFDS에서 정수 값으로 읽히므로 먼저 One-Hot 인코딩으로 변환해야 합니다.
@@ -250,7 +250,7 @@ def cross_entropy_loss(*, logits, labels):
   return optax.softmax_cross_entropy(logits=logits, labels=labels_onehot).mean()
 ```
 
-#### **매트릭 계산**
+## **매트릭 계산**
 
 손실 (loss) 및 정확도 (accuracy) 매트릭 계산 함수를 정의합니다.
 
@@ -265,7 +265,7 @@ def compute_metrics(*, logits, labels):
   return metrics
 ```
 
-#### **학습 상태 생성**
+## **학습 상태 생성**
 
 Flax의 일반적인 패턴은 step 번호, 파라메터 및 옵티마이저 상태를 포함하여 전체 학습 상태를 나타내는 단일 데이터 클래스를 만드는 것입니다.
 
@@ -282,7 +282,7 @@ def create_train_state(rng, learning_rate, momentum):
   return train_state.TrainState.create(apply_fn=cnn.apply, params=params, tx=tx)
 ```
 
-#### **학습 단계**
+## **학습 단계**
 
 이 함수는:
 
@@ -313,7 +313,7 @@ def train_step(state, batch):
   return state, metrics
 ```
 
-#### **평가 단계**
+## **평가 단계**
 
 [Module.apply](https://flax.readthedocs.io/en/latest/flax.linen.html#flax.linen.Module.apply)를 사용하여 테스트 세트에서 모델을 평가하는 함수를 만듭니다.
 
@@ -324,7 +324,7 @@ def eval_step(params, batch):
   return compute_metrics(logits=logits, labels=batch['label'])
 ```
 
-#### **학습 함수**
+## **학습 함수**
 
 다음과 같은 학습 함수를 정의합니다:
 
@@ -360,7 +360,7 @@ def train_epoch(state, train_ds, batch_size, epoch, rng):
   return state, epoch_metrics_np['loss'], epoch_metrics_np['accuracy']
 ```
 
-#### **평가 함수**
+## **평가 함수**
 
 다음과 같은 모델 평가 함수를 만듭니다:
 
@@ -376,7 +376,7 @@ def eval_model(params, test_ds):
   return summary['loss'], summary['accuracy']
 ```
 
-#### **학습 상태 초기화**
+## **학습 상태 초기화**
 
 하나의 PRNGKey를 가져와서 그것을 분리하여 파라메터 초기화에 사용할 두 번째 키를 가져옵니다. (자세한 내용은 [PRNG chains](https://flax.readthedocs.io/en/latest/design_notes/linen_design_principles.html#how-are-parameters-represented-and-how-do-we-handle-general-differentiable-algorithms-that-update-stateful-variables)와 [JAX PRNG Design](https://jax.readthedocs.io/en/latest/design_notes/prng.html) 문서를 참조하세요.)
 
@@ -395,7 +395,7 @@ state = create_train_state(init_rng, learning_rate, momentum)
 del init_rng  # 초기화 이후에는 사용하지 말아야 합니다.
 ```
 
-#### **모델 학습 및 평가**
+## **모델 학습 및 평가**
 
 10 epoch이 완료되면 학습 데이터셋에서 모델 정확도는 약 93%, 테스트 데이터셋에서 모델 정확도는 약 89%를 달성할 수 있습니다.
 
@@ -434,7 +434,7 @@ for epoch in range(1, num_epochs + 1):
 >
 > *Epoch [10] - Train loss: 0.18, accuracy: 93.37% / Test loss: 0.34, accuracy: 89.45%*
 
-#### **결과 확인**
+## **결과 확인**
 
 학습된 모델을 사용하여 테스트 데이터셋의 첫 25개 이미지 데이터의 추론 결과를 시각화 해보겠습니다.
 
@@ -459,7 +459,7 @@ plt.show()
 ![notion image]()
 
 
-### **결론**
+## **결론**
 
 위 예제에서 확인 할 수 있듯이 Flax 사용법은 기존 Tensorflow와 PyTorch 예제에서 많이 접했던 것들이 입니다. PRNGKey와 같이 새로운 것도 있지만, 손실 함수 및 옵티마이저 설정 하는 것은 이미 익숙한 코드 입니다. 이 기사 첫 부분에도 언급 하였지만 JAX는 이미 상용 프로젝트에 적용 할 수 있을만큼의 완성도가 많이 높아져서 지금부터라도 준비해서 JAX의 강점을 직접 경험해 보시기 바랍니다. Flax/JAX 모델의 최적화나 배포 관련 부분은 아직 부족하지만, 다른 배포 포맷으로 변환해서 사용하면 해결할 수 있습니다. 좀 더 많은 내용은 아래 JAX와 Flax 공식 문서를 참조하시기 바랍니다.
 

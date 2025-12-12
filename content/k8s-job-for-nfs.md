@@ -11,13 +11,13 @@ author = "김태훈"
 toc = true
 +++
 
-### 개요
+## 개요
 
 회사에서 컴퓨터 비전 관련 프로젝트를 하고 있습니다. 컴퓨터 비전 관련 프로젝트를 할 때마다 항상 느끼는 것이지만, 미디어 데이터를 처리하는 것은 참 고역입니다. 비디오 파일과 이미지 파일과 같은 미디어 데이터는 크기가 커서 저장 공간도 많이 차지하고, 프로세싱도 오래 걸립니다. 분산, 병렬 처리가 필요한 시점이 왔습니다.
 빅 데이터가 대두된 이래로 정말 많은 분산, 병렬 처리 솔루션이 등장했습니다. Hadoop과 Spark가 대표적입니다. 머신러닝 프로젝트에는 Ray도 많이 사용합니다. 클라우드 환경에는 AWS Glue, Amazon EMR, AWS Batch, GCP Dataflow, GCP Dataproc 등 분산, 병렬 처리 서비스들이 참 많습니다.
 미디어 데이터 처리를 위해 클라우드 서비스를 사용하기는 비용과 데이터 마이그레이션에 걸리는 시간이 부담이 됩니다. 그렇다고, 온프레미스 환경에서 Spark나 Ray Job으로 처리하려니 설치, 설정, 사용법을 익히는 과정이 매우 번거롭습니다. 온프레미스 환경에 쿠버네티스 클러스터는 있으니, 쿠버네티스 Job으로 NAS에 있는 비디오 파일을 분산, 병렬 처리하였습니다. 이 기사는 해당 경험을 정리한 것 입니다.
 
-#### 시스템 구성도
+## 시스템 구성도
 
 
 <!-- TODO: 이미지 추가 - 파일명: k8s-job-for-nfspng.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F0e3e4562-f3f8-4156-bc3b-f76d2c432fe4%2Fk8s-job-for-nfspng.png?table=block&id=17bfc5cf-1d33-478e-a28e-f4b9ff903971&cache=v2 -->
@@ -33,7 +33,7 @@ toc = true
 
 3. 다중 쿠버네티스 Job에서 처리된 미디어 파일을 NAS에 병렬로 저장합니다.
 
-### 데이터 준비
+## 데이터 준비
 
 미디어 데이터 분산, 병렬 처리을 위해 맥북에 있는 비디오 파일을 NAS에 업로드합니다. NAS는 다양한 네트워크 파일 공유 프로토콜을 지원하지만 NFS 서버를 사용하였습니다. NFS 서버 접속 정보는 아래와 같이 가정하겠습니다.
 
@@ -64,9 +64,9 @@ $ mkdir /private/nfs/video
 $ cp <비디오 파일 경로>/*.mp4 /private/nfs/video/
 ```
 
-### 쿠버네티스 NFS 설정
+## 쿠버네티스 NFS 설정
 
-#### NFS CSI 드라이버 설치
+## NFS CSI 드라이버 설치
 
 쿠버네티스 환경에서 NFS를 사용하려면 [NFS CSI(Container Storage Interface) 드라이버](https://github.com/kubernetes-csi/csi-driver-nfs)를 설치해야 합니다.
 
@@ -91,7 +91,7 @@ kubectl -n kube-system get pod -o wide -l app=csi-nfs-controller
 ![notion image]()
 
 
-#### StorageClass 생성
+## StorageClass 생성
 
 설치된 NFS CSI를 사용하는 StoageClass를 생성해야 합니다. 아래 YAML 파일을 작성하여 `nfs-csi` StorageClass를 설정합니다.
 
@@ -134,7 +134,7 @@ YAML 파일 설명
 kubectl create -f nfs-sc.yaml
 ```
 
-#### PersistentVolume 생성
+## PersistentVolume 생성
 
 `nfs-csi` StorageClass의 `reclaimPolicy` 를 Delete로 설정하였습니다. 이는 [동적 볼륨 프로비저닝](https://kubernetes.io/ko/docs/concepts/storage/dynamic-provisioning/)으로 자동 할당된 PV는 PVC를 삭제하면 PV도 같이 삭제 됩니다. 우리가 원하는 동작은 쿠버네티스 Job 실행이 완료 되더라도, 처리된 데이터는 그대로 남아 있는 것 입니다. 이를 위해, `reclaimPolicy` 정책을 재정의한 PV를 생성하고, PVC에서 PV를 바인딩하는 [정적 프로비저닝](https://kubernetes.io/ko/docs/concepts/storage/persistent-volumes/#%EC%A0%95%EC%A0%81-%ED%94%84%EB%A1%9C%EB%B9%84%EC%A0%80%EB%8B%9D)을 사용하였습니다.
 
@@ -186,7 +186,7 @@ YAML 파일 설명
 kubectl create -f nfs-pv.yaml
 ```
 
-#### PersistentVolumeClaim 생성
+## PersistentVolumeClaim 생성
 
 앞서 생성한 PV에 바인딩하는 PVC 리소스를 설정합니다.
 
@@ -213,7 +213,7 @@ spec:
 kubectl create -f nfs-pvc.yaml
 ```
 
-### 데이터 프로세싱 환경
+## 데이터 프로세싱 환경
 
 쿠버네티스 Job 실행에 필요한 패키지가 설치되어 있는 컨테이너 환경이 필요합니다. `ffmpeg` CLI 도구로 비디오 파일의 프레임을 1초 간격으로 추출하는 Job을 예시로 만들어 보겠습니다. 이 경우, Ubuntu 환경에서 `ffmpeg` CLI 도구만 추가적으로 필요합니다.
 
@@ -257,7 +257,7 @@ docker buildx create --name multi-arch-builder --driver docker-container --boots
 설명을 위해 편의상 [DockerHub](https://hub.docker.com/) 공용 레지스트리를 사용했습니다. 아마 실무에선 대부분 비공개 레지스트리를 사용하실 겁니다. 쿠버네티스 환경에서 비공개 레지스트리에 대한 내용은 아래 문서를 참고하시기 바랍니다.
 [**프라이빗 레지스트리에서 이미지 받아오기**](https://kubernetes.io/ko/docs/tasks/configure-pod-container/pull-image-private-registry/)
 
-### 쿠버네티스 Job 설정 및 실행
+## 쿠버네티스 Job 설정 및 실행
 
 분산, 병렬 처리시 데이터 처리 단위를 어떻게 분할 할 것인지 여부가 중요합니다. 즉, [파티셔닝](https://ko.wikipedia.org/wiki/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4_%EB%B6%84%ED%95%A0) 정책을 어떻게 설정하는지에 따라 처리 성능이 달라집니다. 여기서는 단순히 비디오 파일 하나당 하나의 Job이 생성되도록 설정했습니다.
 
@@ -347,13 +347,13 @@ kubectl get jobs -l jobgroup=extract-frames
 
 쿠버네티스 Job 실행이 완료되면, *<NFS 서버>/frames* 경로에 영상에서 추출된 프레임의 이미지 파일들이 저장되어 있습니다.
 
-### 결론
+## 결론
 
 쿠버네티스 Job으로 NAS에 있는 비디오 파일을 병렬 처리 해 보았습니다. NFS CSI 설치를 제외하고는 쿠버네티스 기본 기능만 사용하므로 간단한 병렬 처리에 활용하면 좋습니다. 하지만, 사용자와 Job이 많이지고 Job 관리가 필요해지는 시점에는 이와 같은 방법은 적합하지 않습니다. 확장성 있는 Job 솔루션이 필요해지면, Spark나 Ray를 쿠버네티스 환경에 설치해서 사용하시는 것을 추천합니다. 쿠버네티스 환경에서 가벼운 Job 관리 솔루션이 필요하시면 [Kueue](https://github.com/kubernetes-sigs/kueue)를 사용하는 것도 좋습니다. (Ray나 Kubeflow에는 내장되어 있습니다.)
 
 > *참고>* *[**Kueue를 사용한 일괄 시스템 배포**](https://cloud.google.com/kubernetes-engine/docs/tutorials/kueue-intro?hl=ko)*
 
-### 참고자료
+## 참고자료
 
 - [csi-driver-nfs
 

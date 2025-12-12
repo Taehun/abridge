@@ -13,7 +13,7 @@ toc = true
 
 > [****제로부터 시작하는 MLOps 도구와 활용 - 3. 컴퓨팅 인프라 - 쿠버네티스 (1/2)****](https://blog.taehun.dev/from-zero-to-hero-mlops-tools-3-1)에서 이어지는 글 입니다.
 
-### 3.3 인프라 관리 자동화
+## 3.3 인프라 관리 자동화
 
 이 절에서는 쿠버네티스 환경에서 널리 사용되는 몇가지 인프라 관리 자동화 도구들에 대해 소개합니다. 각 도구들의 주요 용도는 아래 *<표 3-4>*와 같습니다:
 
@@ -29,7 +29,7 @@ toc = true
 
 > *이 절에서 설명하는 모든 도구들은* ***로컬 환경****에서 사용하는 도구들 입니다.*
 
-#### 3.3.1 Ansible
+## 3.3.1 Ansible
 
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fa96b565b-f784-4d44-82a2-01b5f48a95f5%2FUntitled.png?table=block&id=0f792d0e-0629-4d80-b998-5eb3885de5d3&cache=v2 -->
@@ -400,7 +400,7 @@ Ansible playbook 파일의 크기가 커질수록 파일을 논리적인 단위�
 
 > *Ansible에 대한 좀 더 많은 정보는* **[*Ansible Documentation*](https://docs.ansible.com/ansible/latest/index.html)***문서를 참고하시기 바랍니다.*
 
-#### 3.3.2 Helm
+## 3.3.2 Helm
 
 Helm은 컨테이너화된 애플리케이션의 배포, 확장 및 관리를 자동화하도록 설계된 오픈소스 컨테이너 오케스트레이션 플랫폼인 쿠버네티스용 패키지 관리자로 널리 사용되고 있습니다. Helm은 리소스, 구성 및 서비스를 패키징, 공유 및 배포하는 효율적인 방법을 제공함으로써 쿠버네티스 애플리케이션 관리 프로세스를 간소화합니다. Helm은 "*Chart*"라는 패키징 형식을 사용하는데, 이는 본질적으로 관련 쿠버네티스 리소스 집합을 설명하는 파일 모음입니다. 개발자와 운영자는 이러한 차트를 사용하여 가장 복잡한 쿠버네티스 애플리케이션도 일관되고 유지 관리 가능한 방식으로 정의, 설치 및 업그레이드할 수 있습니다.
 
@@ -529,7 +529,7 @@ release "mysql" uninstalled
 
 > *Helm에 대한 좀 더 많은 정보는* [*Helm 문서*](https://helm.sh/docs)*를 참고하시기 바랍니다.*
 
-#### 3.3.3 ArgoCD
+## 3.3.3 ArgoCD
 
 ArgoCD는 오픈 소스, 쿠버네티스 네이티브 지속적 배포(CD) 도구로, 쿠버네티스 클러스터 내에서 애플리케이션의 배포, 모니터링, 관리를 간소화합니다. 대표적인 *GitOps* 도구인 ArgoCD는 Git 리포지토리에 정의된 대로 원하는 애플리케이션 상태를 쿠버네티스 환경에서 실행되는 실제 상태와 동기화하는 작업을 자동화합니다. 이 접근 방식은 전체 애플리케이션 수명 주기를 버전 제어 및 추적할 수 있도록 보장하여 신속한 롤백, 손쉬운 감사, 팀원 간의 향상된 협업을 촉진합니다. ArgoCD는 Helm, Kustomize, Jsonnet과 같은 광범위한 구성 관리 도구를 지원하므로 개발자가 선호하는 방법을 사용하여 쿠버네티스 리소스를 정의할 수 있습니다.
 
@@ -683,7 +683,7 @@ guestbook 관련 리소스가 모두 배포되어 있네요! 앞서 ArgoCD 어�
 
 > ArgoCD*에 대한 좀 더 많은 정보는* [*ArgoCD 문서*](https://argo-cd.readthedocs.io/en/latest/)*를 참고하시기 바랍니다.*
 
-#### 3.3.4 Terraform
+## 3.3.4 Terraform
 
 Terraform은 해시코프에서 개발한 오픈소스 IaC (Infrastructure as Code) 도구로, 사용자가 HCL (HashiCorp Configuration Language)이라는 선언형 언어를 통해 클라우드 인프라를 자동화하고 관리할 수 있게 해줍니다. Terraform은 코드를 사용하여 인프라 리소스를 정의하고 프로비저닝함으로써 일관되고 반복 가능한 배포를 가능하게 하여 인적 오류를 줄이고 전반적인 효율성을 개선합니다. 이 도구는 모듈식 공급자 시스템을 통해 AWS, Azure, Google Cloud 등 여러 클라우드 플랫폼을 지원하므로 확장성이 뛰어나고 다양한 인프라 요구 사항에 맞게 조정할 수 있습니다. Terraform의 협업 및 버전 제어 접근 방식은 개발, 스테이징 및 프로덕션 환경 전반의 인프라를 관리하기 위한 DevOps 실무자들 사이에서 인기 있는 선택이 되었습니다.
 
@@ -922,7 +922,7 @@ AWS 콘솔을 확인해보면, 앞서 생성한 EC2 인스턴스가 삭제되어
 
 > *Python으로 인프라를 생성하는 CDKTF(CDK for Terraform)에 대한 내용은* [*여기*](https://blog.taehun.dev/terraform-cdk)*에 있습니다.*
 
-### 3.4 요약
+## 3.4 요약
 
 이번 장에는 **쿠버네티스 클러스터를 구축**하고, **인프라 관리 도구들을 설치 및 설정**을 하였습니다. 3장에서 했던 작업들을 정리하였습니다 (MacOS 환경):
 
