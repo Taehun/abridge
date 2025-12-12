@@ -346,11 +346,16 @@ function minify(fileA, outfile) {
   if (!outfile) {// outfile parameter omitted, infer based on input
     outfile = fileA[0].slice(0, -2) + 'min.js';
   }
-  var filesContents = fileA.map(function (file) {// array input to support multiple files
-    return fs.readFileSync(file, 'utf8');
+  var filesContents = {};
+  fileA.forEach(function (file) {
+    filesContents[file] = fs.readFileSync(file, 'utf8');
   });
 
   result = UglifyJS.minify(filesContents, options);
+  if (result.error) {
+    console.error('UglifyJS error:', result.error);
+    throw result.error;
+  }
   fs.writeFileSync(outfile, result.code);
 
 }

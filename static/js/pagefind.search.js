@@ -120,48 +120,47 @@ window.onload = function () {
                     window.main = main.innerHTML
                 };
 
-                var headerDiv = document.createElement("div");// create a div element
-
                 // Security: Build header using DOM methods to prevent XSS
-                var headerForm = document.createElement("form");
-                headerForm.name = "closeSearch";
-                var headerH2 = document.createElement("h2");
-                var closeButton = document.createElement("button");
-                closeButton.type = "submit";
-                closeButton.title = "Close Search";
-                var closeIcon = document.createElement("i");
-                closeIcon.className = "svgs x";
-                closeButton.appendChild(closeIcon);
-                headerH2.appendChild(closeButton);
-                headerH2.appendChild(document.createTextNode(" "));
-                var searchIcon = document.createElement("i");
-                searchIcon.className = "svgs search";
-                headerH2.appendChild(searchIcon);
-                headerH2.appendChild(document.createTextNode(" "));
-                // Use textContent to safely insert user input (prevents XSS)
-                var searchTermSpan = document.createElement("span");
-                searchTermSpan.textContent = document.getElementById("searchinput").value;
-                headerH2.appendChild(searchTermSpan);
-                headerForm.appendChild(headerH2);
-                headerDiv.appendChild(headerForm);
-
+                function createSearchHeader() {
                     var headerDiv = document.createElement("div");
-                    var headerContent = '<form name="closeSearch"><h2><button type="submit" title="Close Search"><i class="svgs x"></i></button> <i class="svgs search"></i> '.concat(searchValue, "</h2></form>");
-                    headerDiv.innerHTML = headerContent;
-                    resultsDiv.insertBefore(headerDiv, resultsDiv.firstChild);
+                    var headerForm = document.createElement("form");
+                    headerForm.name = "closeSearch";
+                    var headerH2 = document.createElement("h2");
+                    var closeButton = document.createElement("button");
+                    closeButton.type = "submit";
+                    closeButton.title = "Close Search";
+                    var closeIcon = document.createElement("i");
+                    closeIcon.className = "svgs x";
+                    closeButton.appendChild(closeIcon);
+                    headerH2.appendChild(closeButton);
+                    headerH2.appendChild(document.createTextNode(" "));
+                    var searchIcon = document.createElement("i");
+                    searchIcon.className = "svgs search";
+                    headerH2.appendChild(searchIcon);
+                    headerH2.appendChild(document.createTextNode(" "));
+                    // Use textContent to safely insert user input (prevents XSS)
+                    var searchTermSpan = document.createElement("span");
+                    searchTermSpan.textContent = document.getElementById("searchinput").value;
+                    headerH2.appendChild(searchTermSpan);
+                    headerForm.appendChild(headerH2);
+                    headerDiv.appendChild(headerForm);
+                    return headerDiv;
+                }
 
+                if (isMobile()) {
+                    // Mobile: Create results container with search results
+                    var resultsDiv = document.createElement("div");
+                    resultsDiv.id = "results";
+                    var headerDiv = createSearchHeader();
+                    resultsDiv.appendChild(headerDiv);
                     main.innerHTML = resultsDiv.outerHTML;
                 } else {
-                    // 데스크톱: 기존 로직 (suggestions 복사)
+                    // Desktop: Clone suggestions
                     var results = document.getElementById("suggestions");
                     var ResultsClone = results.cloneNode(true);
                     ResultsClone.id = "results";
-
-                    var headerDiv = document.createElement("div");
-                    var headerContent = '<form name="closeSearch"><h2><button type="submit" title="Close Search"><i class="svgs x"></i></button> <i class="svgs search"></i> '.concat(searchValue, "</h2></form>");
-                    headerDiv.innerHTML = headerContent;
+                    var headerDiv = createSearchHeader();
                     ResultsClone.insertBefore(headerDiv, ResultsClone.firstChild);
-
                     main.innerHTML = ResultsClone.outerHTML;
                     results.innerHTML = "";
                 }
