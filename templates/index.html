@@ -35,12 +35,17 @@ This Template can also be used directly for the index eg: example.com/ or as the
 {%- block content %}
     <div class="post-grid">
     {%- for page in paginator.pages %}
-      <article class="post-card" onclick="window.location='{{ page.permalink | safe }}{%- if uglyurls %}index.html{%- endif %}'">
+      <article
+        class="post-card js-clickable-card"
+        data-href="{{ page.permalink | safe }}{%- if uglyurls %}index.html{%- endif %}"
+        tabindex="0"
+        role="link"
+      >
           {# All Tags #}
           {%- if page.taxonomies.tags %}
           <div class="post-card-tags">
             {%- for tag in page.taxonomies.tags %}
-            <a href="{{ get_taxonomy_url(kind='tags', name=tag, lang=lang) | safe }}{%- if uglyurls %}index.html{%- endif %}" class="post-card-tag" onclick="event.stopPropagation()">
+            <a href="{{ get_taxonomy_url(kind='tags', name=tag, lang=lang) | safe }}{%- if uglyurls %}index.html{%- endif %}" class="post-card-tag">
               {{ tag }}
             </a>
             {%- endfor %}
