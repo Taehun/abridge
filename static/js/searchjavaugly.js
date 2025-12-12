@@ -85,9 +85,28 @@ window.onload = function() {
 
             var headerDiv = document.createElement("div");// create a div element
 
-            var headerContent = '<form name="closeSearch"><h2><button type="submit" title="Close Search"><i class="svgs x"></i></button> <i class="svgs search"></i> '.concat(document.getElementById("searchinput").value, "</h2></form>");// header to use at top of results page
-
-            headerDiv.innerHTML = headerContent;// document element div (headerDiv), set the inner contents to our header html (headerContent)
+            // Security: Build header using DOM methods to prevent XSS
+            var headerForm = document.createElement("form");
+            headerForm.name = "closeSearch";
+            var headerH2 = document.createElement("h2");
+            var closeButton = document.createElement("button");
+            closeButton.type = "submit";
+            closeButton.title = "Close Search";
+            var closeIcon = document.createElement("i");
+            closeIcon.className = "svgs x";
+            closeButton.appendChild(closeIcon);
+            headerH2.appendChild(closeButton);
+            headerH2.appendChild(document.createTextNode(" "));
+            var searchIcon = document.createElement("i");
+            searchIcon.className = "svgs search";
+            headerH2.appendChild(searchIcon);
+            headerH2.appendChild(document.createTextNode(" "));
+            // Use textContent to safely insert user input (prevents XSS)
+            var searchTermSpan = document.createElement("span");
+            searchTermSpan.textContent = document.getElementById("searchinput").value;
+            headerH2.appendChild(searchTermSpan);
+            headerForm.appendChild(headerH2);
+            headerDiv.appendChild(headerForm);
 
             ResultsClone.insertBefore(headerDiv, ResultsClone.firstChild);//insert our header div at the top of the page
 

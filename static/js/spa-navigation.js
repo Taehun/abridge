@@ -62,6 +62,11 @@
     fetch(href)
       .then(function(response) {
         if (!response.ok) throw new Error('Network response was not ok');
+        // Security: Validate Content-Type to prevent non-HTML injection
+        var contentType = response.headers.get('content-type');
+        if (!contentType || !contentType.includes('text/html')) {
+          throw new Error('Invalid content type: expected text/html');
+        }
         return response.text();
       })
       .then(function(html) {
