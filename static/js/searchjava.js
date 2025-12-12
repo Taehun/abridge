@@ -178,6 +178,14 @@ window.onload = function() {
 
             return false;
         }
+
+        // Security: Escape HTML to prevent XSS
+        function escapeHtml(text) {
+            var div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
         // Get the string bytes from binary
         function getByteByBinary(binaryCode) {
           // Binary system, starts with `0b` in ES6
@@ -263,6 +271,9 @@ window.onload = function() {
           var NORMAL_WORD_WEIGHT = 2;
           var FIRST_WORD_WEIGHT = 8;
           var TEASER_MAX_WORDS = 30;
+
+          // Security: Escape HTML in body to prevent XSS
+          body = escapeHtml(body);
 
           var stemmedTerms = terms.map(function (w) {
             return elasticlunr.stemmer(w.toLowerCase());

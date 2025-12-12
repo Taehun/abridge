@@ -223,8 +223,17 @@ window.onload = function () {
                 }
             }
 
+            // Security: Proper HTML sanitization to prevent XSS
             function sanitise(str) {
-                return str.replace(/\{\{.*?\}\}|—|<(?!\/?mark\b).*?>|&lt;.*?&gt;/g, '');
+                // First, escape all HTML
+                var div = document.createElement('div');
+                div.textContent = str;
+                var escaped = div.innerHTML;
+                // Then restore only <mark> tags (used for highlighting search terms)
+                // The pagefind library uses <mark> tags which are safe
+                escaped = escaped.replace(/&lt;mark&gt;/gi, '<mark>');
+                escaped = escaped.replace(/&lt;\/mark&gt;/gi, '</mark>');
+                return escaped;
             }
 
 

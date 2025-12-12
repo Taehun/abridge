@@ -119,8 +119,17 @@ window.onload = function () {
                 }
             }
 
+            // Security: Escape HTML to prevent XSS
+            function escapeHtml(text) {
+                var div = document.createElement('div');
+                div.textContent = text;
+                return div.innerHTML;
+            }
+
             function markTerm(input, term) {
-                return input.replace(new RegExp('(^|)(' + term + ')(|$)','ig'), '$1<mark>$2</mark>$3');
+                // Security: Escape HTML first, then add mark tags
+                input = escapeHtml(input);
+                return input.replace(new RegExp('(^|)(' + escapeHtml(term) + ')(|$)','ig'), '$1<mark>$2</mark>$3');
             }
 
             function autocomplete(inp) {
@@ -149,8 +158,8 @@ window.onload = function () {
                         d = entry.querySelector('span:nth-child(2)');
                         a.href = `${elem[1]}?q=${encodeURIComponent(val)}`;//a link
                         //t.innerHTML = markTerm(elem[0], val);//title
-                        t.innerHTML = elem[0];//title
-                        d.innerHTML = markTerm(elem[2], val);//description
+                        t.textContent = elem[0];//title - use textContent for security
+                        d.innerHTML = markTerm(elem[2], val);//description - markTerm now escapes HTML
 
                         suggestions.appendChild(entry);
                     }
