@@ -40,13 +40,13 @@ Notion API를 사용하려면 API 키가 필요합니다. Notion API 키는 아�
 
 <!-- TODO: 이미지 추가 - 파일명: notion_api-1.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F642ebb2f-8000-40ef-ad53-cc63dd0e7a5e%2Fnotion_api-1.png?table=block&id=9d496cfc-7206-47f0-8e4d-d0374ed6b4e5&cache=v2 -->
 
-![notion image](https://img-src.io/taehun/llm-blog-search-research/2.png)
+![notion image](https://img-src.io/taehun/llm-blog-search-research/2.png?w=800)
 
 
 
 <!-- TODO: 이미지 추가 - 파일명: notion_api_2.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F11e41c14-f4df-4d11-95b6-bb7865473160%2Fnotion_api_2.png?table=block&id=50ae42d5-9bc6-48a9-aad3-be3371b86dc7&cache=v2 -->
 
-![notion image](https://img-src.io/taehun/llm-blog-search-research/3.png)
+![notion image](https://img-src.io/taehun/llm-blog-search-research/3.png?w=800)
 
 
 Notion 통합이 생성되면, **Secrets** 문자열을 복사 해 둡니다. 이 문자열을 Notion API 키로 사용합니다.
@@ -56,7 +56,7 @@ Notion 통합이 생성되면, **Secrets** 문자열을 복사 해 둡니다. �
 
 <!-- TODO: 이미지 추가 - 파일명: notion_api_3.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F8363489e-5864-48aa-9164-322fb209e099%2Fnotion_api_3.png?table=block&id=3fe5c5a0-f972-4837-8e61-2782fb4bfa8e&cache=v2 -->
 
-![notion image](https://img-src.io/taehun/llm-blog-search-research/4.png)
+![notion image](https://img-src.io/taehun/llm-blog-search-research/4.png?w=800)
 
 
 ## 데이터 처리
@@ -578,7 +578,7 @@ for idx, post in enumerate(blog_posts):
 
 <!-- TODO: 이미지 추가 - 파일명: inverted_index.jpeg, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Fa7dd1710-41ee-4ea2-becb-5b6a5e47df9c%2Finverted_index.jpeg?table=block&id=c4e6ecde-4228-4457-a5df-b29ca43464f3&cache=v2 -->
 
-![출처&gt; https://programminghistorian.org/posts/full-text-search](https://img-src.io/taehun/llm-blog-search-research/5.jpeg)
+![출처&gt; https://programminghistorian.org/posts/full-text-search](https://img-src.io/taehun/llm-blog-search-research/5.jpeg?w=800)
 
 
 *출처>* *<https://programminghistorian.org/posts/full-text-search>*

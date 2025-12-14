@@ -14,7 +14,7 @@ toc = true
 
 <!-- TODO: 이미지 추가 - 파일명: Zero-to-MLOps-3-1png.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F215e0f4f-253a-4e9d-a5d3-e1aa5545db07%2FZero-to-MLOps-3-1png.png?table=block&id=6d9c03a6-10c3-4780-a316-f7ab44579f90&cache=v2 -->
 
-![그림 3-1. 3장 컴퓨팅 인프라 - 쿠버네티스의 구성 요소와 도구들 (컴퓨팅 인프라, 클러스터 생성, 인프라 관리 자동화)](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-3-1/1.png)
+![그림 3-1. 3장 컴퓨팅 인프라 - 쿠버네티스의 구성 요소와 도구들 (컴퓨팅 인프라, 클러스터 생성, 인프라 관리 자동화)](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-3-1/1.png?w=800)
 
 
 그림 3-1. *3장 컴퓨팅 인프라 - 쿠버네티스*의구성 요소와 도구들 (컴퓨팅 인프라, 클러스터 생성, 인프라 관리 자동화)
@@ -75,7 +75,7 @@ toc = true
 
 <!-- TODO: 이미지 추가 - 파일명: Zero-to-MLOps-3-3.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fe75cc495-f39f-4f32-9816-a225f579af8c%2FZero-to-MLOps-3-3.png?table=block&id=8e8d4b80-719a-4ed9-8445-820bedb121c2&cache=v2 -->
 
-![그림 3-3. 쿠버네티스 아키텍처 예시](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-3-1/3.png)
+![그림 3-3. 쿠버네티스 아키텍처 예시](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-3-1/3.png?w=800)
 
 
 그림 3-3. 쿠버네티스 아키텍처 예시
@@ -210,7 +210,7 @@ toc = true
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F4a94a9dd-f123-416f-9ed4-42b823230d7e%2FUntitled.png?table=block&id=cde18a44-6357-4bb3-b205-6c80ec7a15e2&cache=v2 -->
 
-![그림 3-6. bfloat16 데이터 타입 (출처&gt; https://cloud.google.com/tpu/docs/bfloat16)](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-3-1/6.png)
+![그림 3-6. bfloat16 데이터 타입 (출처&gt; https://cloud.google.com/tpu/docs/bfloat16)](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-3-1/6.png?w=800)
 
 
 그림 3-6. bfloat16 데이터 타입 *(출처>* *<https://cloud.google.com/tpu/docs/bfloat16>**)*
@@ -326,7 +326,7 @@ GUI 환경에서 쿠버네티스 클러스터를 제어하려면 [k9s](https://k
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-04-22_오후_4.37.03.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F3bfa34ce-11f9-4d78-9284-8919ada13e8a%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-04-22_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_4.37.03.png?table=block&id=60125d72-bf41-4321-963f-4c3ad6cde182&cache=v2 -->
 
-![그림 3-7. Lens 실행 화면](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-3-1/7.png)
+![그림 3-7. Lens 실행 화면](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-3-1/7.png?w=800)
 
 
 그림 3-7. Lens 실행 화면
@@ -338,7 +338,7 @@ GUI 환경에서 쿠버네티스 클러스터를 제어하려면 [k9s](https://k
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fe7c3c3fa-31f5-4bf0-9ba8-6a0ea13094f8%2FUntitled.png?table=block&id=9cc0fb6e-0cf9-4d1f-a757-f1cb2d870ef0&cache=v2 -->
 
-![그림 3-8. kind 아키텍처 (출처&gt; https://kind.sigs.k8s.io/docs/design/initial)](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-3-1/8.png)
+![그림 3-8. kind 아키텍처 (출처&gt; https://kind.sigs.k8s.io/docs/design/initial)](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-3-1/8.png?w=800)
 
 
 그림 3-8. kind 아키텍처 *(출처>* *[https://kind.sigs.k8s.io/docs/design/initial](https://kind.sigs.k8s.io/docs/design/initial/)**)*
@@ -521,7 +521,7 @@ Handling connection for 8080
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-04-16_오후_9.00.44.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F497f4d4a-f24f-4c98-b490-4ae7e20190f1%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-04-16_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_9.00.44.png?table=block&id=4f94a1d6-7e93-4d07-bb61-fa0ca91ea9d1&cache=v2 -->
 
-![그림 3-9. nginx 초기 웹 페이지](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-3-1/9.png)
+![그림 3-9. nginx 초기 웹 페이지](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-3-1/9.png?w=800)
 
 
 그림 3-9. nginx 초기 웹 페이지
@@ -617,7 +617,7 @@ USB 디스크로 부팅이 먼저 되도록 BIOS 설정이 되었다면, 부팅�
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fd2c06261-7938-4c4e-a60c-7a4fb4f43eeb%2FUntitled.png?table=block&id=af2261e0-b700-4f3d-8be3-291467e55b3b&cache=v2 -->
 
-![그림 3-11. Ubuntu Server 설치 완료 화면](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-3-1/11.png)
+![그림 3-11. Ubuntu Server 설치 완료 화면](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-3-1/11.png?w=800)
 
 
 그림 3-11. Ubuntu Server 설치 완료 화면
@@ -631,7 +631,7 @@ $ sudo apt update && sudo apt upgrade -y
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-04-10_오전_4.03.14.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fdf61a33c-3736-4ddf-a5ff-a2a2b7ac8e5d%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-04-10_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25AB_4.03.14.png?table=block&id=b164e44b-e9ae-429c-8dfa-3d4cb72c2d96&cache=v2 -->
 
-![그림 3-12. Ubuntu 패키지 업데이트](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-3-1/12.png)
+![그림 3-12. Ubuntu 패키지 업데이트](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-3-1/12.png?w=800)
 
 
 그림 3-12. Ubuntu 패키지 업데이트
@@ -655,7 +655,7 @@ $ sudo vi /etc/fstab
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F9cee217a-60b1-4a46-a72e-e36573012679%2FUntitled.png?table=block&id=bf87d38b-bc4c-4e7a-91be-1d10d62a0e92&cache=v2 -->
 
-![그림 3-13. RKE2 아키텍처 (출처&gt; https://docs.rke2.io/architecture)](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-3-1/13.png)
+![그림 3-13. RKE2 아키텍처 (출처&gt; https://docs.rke2.io/architecture)](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-3-1/13.png?w=800)
 
 
 그림 3-13. RKE2 아키텍처 *(출처>* *<https://docs.rke2.io/architecture>**)*

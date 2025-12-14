@@ -439,7 +439,7 @@ Boie의 AeroGlide 울트라슬림 스마트 칫솔은 미국의 칫솔 제조업
 
 <!-- TODO: 이미지 추가 - 파일명: Iterative_prompt_dev.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F2221b3dd-e272-4514-a9f9-f12f3bb133af%2FIterative_prompt_dev.png?table=block&id=48ee36b0-bd1f-4b92-ba93-cbefc0f22c78&cache=v2 -->
 
-![notion image](https://img-src.io/taehun/chatgpt-prompt-engineering/1.png)
+![notion image](https://img-src.io/taehun/chatgpt-prompt-engineering/1.png?w=800)
 
 
 ## 제품 팩트 시트에서 마케팅 제품 소개 생성
@@ -1391,7 +1391,7 @@ AI 고객 상담원
 
 <!-- TODO: 이미지 추가 - 파일명: Temperature.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F09e51bf8-65c7-44c5-9591-e4206015595e%2FTemperature.png?table=block&id=ffc66866-7ce1-4fce-9225-83cfc3a67e3e&cache=v2 -->
 
-![notion image](https://img-src.io/taehun/chatgpt-prompt-engineering/4.png)
+![notion image](https://img-src.io/taehun/chatgpt-prompt-engineering/4.png?w=800)
 
 
 ```toml
@@ -1439,7 +1439,7 @@ AI 고객 상담원 드림.
 
 <!-- TODO: 이미지 추가 - 파일명: role.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F516690b6-de7f-4e6e-a557-04c3a1510461%2Frole.png?table=block&id=9b802245-599a-4315-b506-46e21c25579a&cache=v2 -->
 
-![notion image](https://img-src.io/taehun/chatgpt-prompt-engineering/5.png)
+![notion image](https://img-src.io/taehun/chatgpt-prompt-engineering/5.png?w=800)
 
 
 새로운 헬퍼 함수

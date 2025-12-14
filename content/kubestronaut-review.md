@@ -14,7 +14,7 @@ toc = true
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2024-08-21_오후_9.46.38.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F05111669-f615-4609-a98c-5e04c95f66d8%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2024-08-21_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_9.46.38.png?table=block&id=2b86451a-b0d2-4fd3-9b50-3a1ae1a4d636&cache=v2 -->
 
-![notion image](https://img-src.io/taehun/kubestronaut-review/1.png)
+![notion image](https://img-src.io/taehun/kubestronaut-review/1.png?w=800)
 
 
 > [Credly Kubestronaut 뱃지](https://www.credly.com/badges/a4e4a343-f144-48c3-a478-4605a0eff534/public_url)
@@ -54,7 +54,7 @@ CNCF의 모든 Kubernetes 자격증(CKA, CKAD, CKS, KCNA, KCSA)을 취득하면 
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2024-08-21_오후_10.42.59.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F716e1d45-9bb0-4c29-94ea-c9010a61eedd%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2024-08-21_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_10.42.59.png?table=block&id=a41c71ec-2426-4784-82ff-3ec643842ddf&cache=v2 -->
 
-![Credly 뱃지 수집 중. 몇달 쉬었다가 연말에 몇개 더 채울 예정 입니다.](https://img-src.io/taehun/kubestronaut-review/2.png)
+![Credly 뱃지 수집 중. 몇달 쉬었다가 연말에 몇개 더 채울 예정 입니다.](https://img-src.io/taehun/kubestronaut-review/2.png?w=800)
 
 
 Credly 뱃지 수집 중. 몇달 쉬었다가 연말에 몇개 더 채울 예정 입니다.

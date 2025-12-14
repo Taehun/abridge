@@ -72,7 +72,7 @@ DevOps가 개발/QA/운영의 교차점이라면, MLOps는 머신러닝/데이�
 
 <!-- TODO: 이미지 추가 - 파일명: pipelines-xgboost-graph.png, 원본: https://www.notion.so/image/https%3A%2F%2Fv0-6.kubeflow.org%2Fdocs%2Fimages%2Fpipelines-xgboost-graph.png?table=block&id=c975c96a-046e-40b8-bcec-3c25b98c304d&cache=v2 -->
 
-![• 그림 3. Kubeflow Pipeline](https://img-src.io/taehun/introduction-mlops/3.png)
+![• 그림 3. Kubeflow Pipeline](https://img-src.io/taehun/introduction-mlops/3.png?w=800)
 
 
 • 그림 3. Kubeflow Pipeline

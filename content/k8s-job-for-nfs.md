@@ -88,7 +88,7 @@ kubectl -n kube-system get pod -o wide -l app=csi-nfs-controller
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2024-04-10_오후_11.08.06.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F789d7504-d966-4e92-8627-dec687331503%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2024-04-10_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_11.08.06.png?table=block&id=4c3b0ec2-98bf-4324-b647-ac631df43b2e&cache=v2 -->
 
-![notion image](https://img-src.io/taehun/k8s-job-for-nfs/2.png)
+![notion image](https://img-src.io/taehun/k8s-job-for-nfs/2.png?w=800)
 
 
 ## StorageClass 생성
@@ -237,7 +237,7 @@ https://blog.taehun.dev/docker-buildx-
 
 <!-- TODO: 이미지 추가 - 파일명: social-image, 원본: https://www.notion.so/image/https%3A%2F%2Fblog.taehun.dev%2Fapi%2Fsocial-image%3Fid%3D73d3ccde-7526-497a-8e8d-c9a0c1a955ab?table=block&id=d7c8059d-b71f-43dc-8f84-2dca6a972b6e&cache=v2 -->
 
-![Docker buildx로 멀티 플랫폼 이미지 빌드하기](https://img-src.io/taehun/k8s-job-for-nfs/4.png)
+![Docker buildx로 멀티 플랫폼 이미지 빌드하기](https://img-src.io/taehun/k8s-job-for-nfs/4.png?w=800)
 ](https://blog.taehun.dev/docker-buildx-)
 
 ```bash

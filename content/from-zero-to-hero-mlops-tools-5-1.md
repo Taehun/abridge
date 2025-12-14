@@ -14,7 +14,7 @@ toc = true
 
 <!-- TODO: 이미지 추가 - 파일명: Zero-to-MLOps-5-1.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F88c4c8d2-b567-497f-8b2f-4800d27c4c6a%2FZero-to-MLOps-5-1.png?table=block&id=e9764ebc-4b78-46fd-bda0-828e93c0cfb7&cache=v2 -->
 
-![그림 5-1. 5장 머신러닝 모델 실험과 개발의 구성요소와 도구들 (머신러닝 실험 환경, 메타데이터 저장소, 소스코드 리포지토리, 분산 학습)](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-5-1/1.png)
+![그림 5-1. 5장 머신러닝 모델 실험과 개발의 구성요소와 도구들 (머신러닝 실험 환경, 메타데이터 저장소, 소스코드 리포지토리, 분산 학습)](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-5-1/1.png?w=800)
 
 
 그림 5-1. 5*장 머신러닝 모델 실험과 개발*의 구성요소와 도구들 (머신러닝 실험 환경, 메타데이터 저장소, 소스코드 리포지토리, 분산 학습)
@@ -38,7 +38,7 @@ JupyterLab은 Jupyter Notebook을 기반으로 한 확장 버전으로, 웹 기�
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-23_오후_6.53.09.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Fc6edf8f1-4f3c-4150-9b8e-dfdaea4aba14%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-23_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_6.53.09.png?table=block&id=9dab3e1a-339d-4914-9447-a6c6a6e437ab&cache=v2 -->
 
-![그림 5-2. JupyterLab 실행 화면](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-5-1/2.png)
+![그림 5-2. JupyterLab 실행 화면](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-5-1/2.png?w=800)
 
 
 그림 5-2. JupyterLab 실행 화면
@@ -82,7 +82,7 @@ $ `docker run -it --rm -p 8888:8888 -v "${PWD}":/home/jovyan/work` `quay.io/jupy
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-24_오후_3.23.01.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Fda05f8fa-7854-4c11-a9ad-8c5491a9dbac%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-24_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_3.23.01.png?table=block&id=fda5afce-f339-4242-a1e4-7b90bb4064e3&cache=v2 -->
 
-![notion image](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-5-1/3.png)
+![notion image](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-5-1/3.png?w=800)
 
 
 이 글을 읽으시는 대부분의 독자분들은 JupyterLab이나 Jupyter Notebook 사용법은 이미 익숙하실거라 생각합니다. JupyterLab에 대해 생소하시거나 자세한 사용법을 알고싶으신 분은 J[upyterLab User Guide](https://jupyterlab.readthedocs.io/en/stable/user/index.html) 문서를 참고하시기 바랍니다. 사실, Jupyter Notebook 코드 블록에서 `Shift + Enter` 단축키로 Python 코드를 실행하는 것만 알아도 충분합니다. 간단한 딥러닝 모델을 학습하고, 결과를 시각화하는 예제 노트북을 살펴보면서 이 절을 마무리 하겠습니다.
@@ -235,7 +235,7 @@ writer.add_image('four_fashion_mnist_images', img_grid)
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-24_오후_4.29.54.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F4c5f41e1-91b1-408a-93f8-8eef2445c6e2%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-24_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_4.29.54.png?table=block&id=53ed4bd9-d32e-4471-ad77-6f80af7dc672&cache=v2 -->
 
-![notion image](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-5-1/4.png)
+![notion image](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-5-1/4.png?w=800)
 
 
 모델 아키텍처를 TensorBoard에 추가합니다. TensorBoard GRAPHS 탭에서 시각화된 모델 아키텍처를 확인 할 수 있습니다.
@@ -248,7 +248,7 @@ writer.close()
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-24_오후_4.36.01.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F13acc081-beab-4f93-aaac-281c2feb1fca%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-24_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_4.36.01.png?table=block&id=a8a7cf56-0c86-46bd-a153-84ef94862bf7&cache=v2 -->
 
-![notion image](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-5-1/5.png)
+![notion image](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-5-1/5.png?w=800)
 
 
 `add_embedding` 메서드로 고차원 데이터의 저차원 표현을 시각화할 수 있습니다. TensorBoard 우측 상단 INACTIVE 메뉴에서 PROJECTOR 메뉴에서 확인 할 수 있습니다.
@@ -281,7 +281,7 @@ writer.close()
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-24_오후_4.40.32.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Fd3821dc2-f09e-4c07-a983-70690d5e27da%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-24_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_4.40.32.png?table=block&id=ffdedad2-3746-463c-98f0-1b019c06074c&cache=v2 -->
 
-![notion image](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-5-1/6.png)
+![notion image](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-5-1/6.png?w=800)
 
 
 `add_figure`메소드로샘플 이미지 예측 결과와 실제 값을 보여주는 것을 TensorBoard에 추가합니다. (TensorBoard *IMAGES* 탭에서 확인) `add_scalar`메소드로 모델 학습 loss 값을 TensorBoard에 기록합니다. (TensorBoard *SCALARS* 탭에서 확인)
@@ -360,7 +360,7 @@ print('Finished Training')
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-24_오후_4.55.02.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F20bfa561-5d1d-4471-a848-1f32582b0dfe%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-24_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_4.55.02.png?table=block&id=435353bc-be95-47a5-8921-0744f29d6628&cache=v2 -->
 
-![notion image](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-5-1/7.png)
+![notion image](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-5-1/7.png?w=800)
 
 
 로컬 JupyterLab 환경에서 머신러닝 실험을 진행하면 다양한 패키지 설치가 필요합니다. 하지만 이 과정은 시간 소모가 크며, 버전 충돌이나 환경 설정 문제를 야기할 수 있습니다. 이런 문제는 특히 여러 사람이 동일한 프로젝트에 참여하는 경우 더욱 심각해집니다. 이때 모든 팀원이 동일한 환경을 유지하는 것이 필수적입니다. 이러한 문제를 해결하기 위해 JupyterLab 환경을 중앙화된 MLOps 인프라로 통합하는 것이 좋습니다. JupyterHub를 도입하면 MLOps 인프라에서 필요한 모든 패키지와 환경을 효율적으로 관리할 수 있으며, 이를 통해 모든 팀원이 일관된 작업 환경에서 협업할 수 있게 됩니다.
@@ -370,7 +370,7 @@ print('Finished Training')
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F97528c34-7c37-4b5b-857d-416d95c99ac4%2FUntitled.png?table=block&id=410fe9ef-6196-4241-91c3-068c986b763c&cache=v2 -->
 
-![그림 5-3. JupyterHub 아키텍처 (출처&gt; https://z2jh.jupyter.org/en/3.2.1/administrator/architecture.html)](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-5-1/8.png)
+![그림 5-3. JupyterHub 아키텍처 (출처&gt; https://z2jh.jupyter.org/en/3.2.1/administrator/architecture.html)](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-5-1/8.png?w=800)
 
 
 그림 5-3. JupyterHub 아키텍처 *(출처>* *<https://z2jh.jupyter.org/en/3.2.1/administrator/architecture.html>**)*
@@ -421,7 +421,7 @@ $ kubectl get pod -l "app=jupyterhub"
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-24_오후_9.10.31.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F59207c67-caba-442e-a918-689d0ef5a56f%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-24_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_9.10.31.png?table=block&id=6b0893e0-3228-45fb-be25-6b42eba353c2&cache=v2 -->
 
-![그림 5-4. 쿠버네티스 클러스터에 JupyterHub 기본 설치 완료](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-5-1/9.png)
+![그림 5-4. 쿠버네티스 클러스터에 JupyterHub 기본 설치 완료](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-5-1/9.png?w=800)
 
 
 그림 5-4. 쿠버네티스 클러스터에 JupyterHub 기본 설치 완료
@@ -437,7 +437,7 @@ $ kubectl port-forward svc/proxy-public 8080:80
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-24_오후_9.27.38.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F540b79b2-ba66-4bc5-b5a3-d8479bd1ec70%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-24_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_9.27.38.png?table=block&id=3becda71-1ced-48f9-9573-cc7daa333031&cache=v2 -->
 
-![그림 5-5. JupyterHub 로그인 화면](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-5-1/10.png)
+![그림 5-5. JupyterHub 로그인 화면](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-5-1/10.png?w=800)
 
 
 그림 5-5. JupyterHub 로그인 화면
@@ -457,7 +457,7 @@ $ kubectl get pod -l "app=jupyterhub"
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-24_오후_9.47.44.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Fffd69df3-4803-41da-9226-47253902e9d7%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-24_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_9.47.44.png?table=block&id=5e853ad7-68bb-412d-95db-f5e7e3df71c0&cache=v2 -->
 
-![그림 5-6. admin 사용자 로그인 후 Pod 목록](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-5-1/11.png)
+![그림 5-6. admin 사용자 로그인 후 Pod 목록](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-5-1/11.png?w=800)
 
 
 그림 5-6. admin 사용자 로그인 후 Pod 목록
@@ -469,7 +469,7 @@ $ kubectl get pod -l "app=jupyterhub"
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-24_오후_9.53.24.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Fceac661e-d0cb-42e9-be32-0895e1fb42a3%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-24_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_9.53.24.png?table=block&id=55936c27-c7d3-42f4-b8e8-ac60fbd2f8bf&cache=v2 -->
 
-![그림 5-7. JupyterHub 관리자 페이지](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-5-1/12.png)
+![그림 5-7. JupyterHub 관리자 페이지](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-5-1/12.png?w=800)
 
 
 그림 5-7. JupyterHub 관리자 페이지
@@ -511,7 +511,7 @@ $ helm upgrade jupyterhub jupyterhub/jupyterhub -f config.yaml
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-24_오후_10.18.33.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F72f46d90-8a14-4aae-8743-9002a52bd906%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-24_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_10.18.33.png?table=block&id=b5095046-a5ce-4493-97c3-aa753229b310&cache=v2 -->
 
-![그림 5-8. JupyterHub 실행 환경 추가](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-5-1/13.png)
+![그림 5-8. JupyterHub 실행 환경 추가](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-5-1/13.png?w=800)
 
 
 그림 5-8. JupyterHub 실행 환경 추가

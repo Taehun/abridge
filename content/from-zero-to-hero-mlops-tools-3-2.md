@@ -35,7 +35,7 @@ toc = true
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fa96b565b-f784-4d44-82a2-01b5f48a95f5%2FUntitled.png?table=block&id=0f792d0e-0629-4d80-b998-5eb3885de5d3&cache=v2 -->
 
 ![그림 3-14. Ansible 구조
-(출처&gt; https://docs.ansible.com/ansible/latest/getting_started/index.html)](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-3-2/1.png)
+(출처&gt; https://docs.ansible.com/ansible/latest/getting_started/index.html)](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-3-2/1.png?w=800)
 
 
 그림 3-14. Ansible 구조
@@ -594,7 +594,7 @@ $ kubectl port-forward svc/argocd-server -n argocd 8080:443
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-05-06_오후_7.33.05.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F25580e53-0da8-4961-9407-c7d9e3fa9881%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-05-06_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_7.33.05.png?table=block&id=1d3d4d06-fe20-4b90-9a17-b8ca8b0b1c9f&cache=v2 -->
 
-![그림 3-16. ArgoCD 웹 UI 화면](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-3-2/3.png)
+![그림 3-16. ArgoCD 웹 UI 화면](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-3-2/3.png?w=800)
 
 
 그림 3-16. ArgoCD 웹 UI 화면
@@ -623,7 +623,7 @@ $ kubectl port-forward svc/argocd-server -n argocd 8080:443
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-05-06_오후_11.08.42.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fff5fd0b1-fb6a-4955-9a7c-380a53c00204%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-05-06_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_11.08.42.png?table=block&id=6f06271a-d6fc-4a8b-9561-1e9d0562d2e1&cache=v2 -->
 
-![그림 3-17. ArgoCD 새로운 어플리케이션 추가](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-3-2/4.png)
+![그림 3-17. ArgoCD 새로운 어플리케이션 추가](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-3-2/4.png?w=800)
 
 
 그림 3-17. ArgoCD 새로운 어플리케이션 추가
@@ -861,7 +861,7 @@ Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-05-07_오전_2.15.01.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Ff78097b0-7a21-44e5-983b-c4e54616966e%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-05-07_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25AB_2.15.01.png?table=block&id=a65ee793-d9a1-434b-9860-7b2ebad5bece&cache=v2 -->
 
-![그림 3-18 AWS 콘솔의 EC2 메뉴](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-3-2/5.png)
+![그림 3-18 AWS 콘솔의 EC2 메뉴](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-3-2/5.png?w=800)
 
 
 그림 3-18 AWS 콘솔의 EC2 메뉴

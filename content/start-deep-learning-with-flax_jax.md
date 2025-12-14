@@ -99,7 +99,7 @@ from matplotlib import pyplot as plt   # 시각화
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F06236c91-5261-4074-a381-f7b58198416e%2FUntitled.png?table=block&id=68f2b2da-3d35-408c-bec4-c6d2625cd521&cache=v2 -->
 
-![• 그림 1. 패션-MNIST 샘플](https://img-src.io/taehun/start-deep-learning-with-flax_jax/1.png)
+![• 그림 1. 패션-MNIST 샘플](https://img-src.io/taehun/start-deep-learning-with-flax_jax/1.png?w=800)
 
 
 • 그림 1. 패션-MNIST 샘플

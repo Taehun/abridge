@@ -125,7 +125,7 @@ Saved Model은 Tensorflow의 서빙 포맷 입니다. ONNX로 인해 지금은 �
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F243b30a2-2b50-41a7-8575-1fb7cb0d2f96%2FUntitled.png?table=block&id=41a7c4e5-5424-43c6-b2c3-eba03fe76188&cache=v2 -->
 
-![• Tensorflow는 꼰대들의 전유물? 라떼는 말이야… (출처&gt; Josh Tobin 트윗)](https://img-src.io/taehun/deploy-deep-learning-model/2.png)
+![• Tensorflow는 꼰대들의 전유물? 라떼는 말이야… (출처&gt; Josh Tobin 트윗)](https://img-src.io/taehun/deploy-deep-learning-model/2.png?w=800)
 
 
 • Tensorflow는 꼰대들의 전유물? ~~라떼는 말이야…~~ (출처> [Josh Tobin 트윗](https://twitter.com/josh_tobin_/status/1370198880818659328))

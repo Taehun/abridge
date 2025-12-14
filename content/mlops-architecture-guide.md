@@ -32,7 +32,7 @@ toc = true
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fe71318f5-5b61-44f7-acb3-68152453dd27%2FUntitled.png?table=block&id=7e6ea4bb-6098-407c-86e1-662e33a515ee&cache=v2 -->
 
-![출처&gt; https://dl.acm.org/doi/10.5555/2969442.2969519](https://img-src.io/taehun/mlops-architecture-guide/2.png)
+![출처&gt; https://dl.acm.org/doi/10.5555/2969442.2969519](https://img-src.io/taehun/mlops-architecture-guide/2.png?w=800)
 
 
 출처> <https://dl.acm.org/doi/10.5555/2969442.2969519>
@@ -56,7 +56,7 @@ toc = true
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F189057f1-0c47-4155-9c51-96c2bcc8309a%2FUntitled.png?table=block&id=5e9b1fd2-559b-424e-91b6-61ee27dfd8d2&cache=v2 -->
 
-![notion image](https://img-src.io/taehun/mlops-architecture-guide/3.png)
+![notion image](https://img-src.io/taehun/mlops-architecture-guide/3.png?w=800)
 
 
 사실, 이와 같은 워크플로를 사용하여 이미 모델을 개발했으며 모델을 배포하고 성능 저하, 확장성, 속도, 유지 관리등과 같은 프로덕션 문제에 대해서만 대비하고자 할수도 있습니다.
@@ -72,7 +72,7 @@ toc = true
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F05f4223a-651a-485a-8e2c-3003370bcbbd%2FUntitled.png?table=block&id=30fbe66c-629a-40d7-a6d1-2738c4751bc2&cache=v2 -->
 
-![notion image](https://img-src.io/taehun/mlops-architecture-guide/4.png)
+![notion image](https://img-src.io/taehun/mlops-architecture-guide/4.png?w=800)
 
 
 고려할 사항이 참 많네요! 보시다시피 시스템의 머신러닝(ML) 섹션과 시스템 운영(Ops) 섹션이 있습니다. 둘 다 함께 머신러닝 시스템의 아키텍처를 정의합니다.
@@ -431,7 +431,7 @@ AWS에서 개발한 Well-Architected 솔루션의 5대 요소를 채택합니다
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fbf0d6a92-3741-468d-8eba-9b94bc1500c9%2FUntitled.png?table=block&id=0d835d6c-934e-41d3-bf11-515088f44219&cache=v2 -->
 
-![notion image](https://img-src.io/taehun/mlops-architecture-guide/12.png)
+![notion image](https://img-src.io/taehun/mlops-architecture-guide/12.png?w=800)
 
 
 시스템의 구조는 비즈니스 목표에 기반한 요구사항과 스펙을 기반으로 합니다. 시스템 구조를 제대로 잡을 수 있게 되면, 이제 구현할 도구와 기술을 선택할 수 있습니다.
@@ -643,7 +643,7 @@ MLOps 아키텍처를 구현하기 위한 도구(또는 “장난감” 😉)을
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fd2749832-c1e1-414f-87ce-2eca9ba5383e%2FUntitled.png?table=block&id=1ff10179-990a-4b2e-b778-85fdfc862125&cache=v2 -->
 
-![notion image](https://img-src.io/taehun/mlops-architecture-guide/13.png)
+![notion image](https://img-src.io/taehun/mlops-architecture-guide/13.png?w=800)
 
 
 읽어주셔서 감사합니다!

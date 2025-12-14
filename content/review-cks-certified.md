@@ -14,7 +14,7 @@ toc = true
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2024-07-03_오후_11.26.53.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Fc05da5e3-2d6d-49a3-ab39-a82a9b72ac15%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2024-07-03_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_11.26.53.png?table=block&id=de220093-5e99-49ae-9ef4-0bd0a75dfd86&cache=v2 -->
 
-![notion image](https://img-src.io/taehun/review-cks-certified/1.png)
+![notion image](https://img-src.io/taehun/review-cks-certified/1.png?w=800)
 
 
 ## 계기

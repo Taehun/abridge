@@ -16,7 +16,7 @@ toc = true
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F7ab70dc1-4a7e-48ef-8e6c-4234b5f96fe4%2FUntitled.png?table=block&id=70be1c25-91c0-4304-bd17-8e246d69e3e4&cache=v2 -->
 
-![• AWS Data/MLOps 인프라 이키텍처 샘플](https://img-src.io/taehun/aws-data-mlops-infra/1.png)
+![• AWS Data/MLOps 인프라 이키텍처 샘플](https://img-src.io/taehun/aws-data-mlops-infra/1.png?w=800)
 
 
 • AWS Data/MLOps 인프라 이키텍처 샘플
@@ -28,7 +28,7 @@ AWS와 Snowflake로 Data/MLOps 인프라 아키텍처링을 해보았습니다. 
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F698a37fd-fb9b-44cc-b1ac-5cd53e294174%2FUntitled.png?table=block&id=86b96505-a963-468d-ba5d-8039b03b08be&cache=v2 -->
 
-![notion image](https://img-src.io/taehun/aws-data-mlops-infra/2.png)
+![notion image](https://img-src.io/taehun/aws-data-mlops-infra/2.png?w=800)
 
 
 데이터 분석 인프라는 Snowflake 기반의 [Lakehouse](https://www.databricks.com/glossary/data-lakehouse) 구조입니다. 순수 AWS 서비스로만 데이터 인프라를 구성하시려면 Snowflake 대신 AWS Athena를 사용하시면 됩니다.
@@ -58,7 +58,7 @@ Snowflake를 활용하여 Raw Data 분석을 수행합니다. Snowflake 계정 �
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F80958197-ec01-482d-91b2-e2111797e472%2FUntitled.png?table=block&id=5d5191d9-d0d1-4ddb-a999-2e6cf4956ffe&cache=v2 -->
 
-![notion image](https://img-src.io/taehun/aws-data-mlops-infra/3.png)
+![notion image](https://img-src.io/taehun/aws-data-mlops-infra/3.png?w=800)
 
 
 실시간 데이터 처리 인프라는 머신러닝 모델의 온라인 피처(=모델 추론의 입력 데이터)를 생성하는 것에 초점을 두고 표현하였습니다. 변환된 스트리밍 데이터를 전달하는 대상(4번)만 변경하면 다른 곳에도 활용할 수 있습니다.
@@ -84,7 +84,7 @@ Snowflake를 활용하여 Raw Data 분석을 수행합니다. Snowflake 계정 �
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F0e381e4f-eaa3-49a3-a093-ed957369799b%2FUntitled.png?table=block&id=d404adbb-d62d-4460-89d9-57018481d27d&cache=v2 -->
 
-![notion image](https://img-src.io/taehun/aws-data-mlops-infra/4.png)
+![notion image](https://img-src.io/taehun/aws-data-mlops-infra/4.png?w=800)
 
 
 MLOps 인프라는 대부분 [AWS SageMaker](https://aws.amazon.com/ko/sagemaker)를 활용하여 아키텍처링 하였습니다. SageMaker의 서브 서비스인 *Studio, Pipeline, Model Registry, Endpoint, Feature Store* 를 ML 프로세스별로 표현하였습니다. Cloud Watch에서 서비스 중인 모델 성능을 모니터링하며, 데이터 드리프트를 감지하게 되면 ML 파이프라인을 트리거하여 지속적 학습을 수행합니다.

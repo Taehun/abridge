@@ -20,7 +20,7 @@ https://colab.research.google.com/drive/1AeZKMjhWBxNUMb96lLQ-ZKAEaiypg0as](https
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F4d444235-667a-4e04-b1b2-d119b1be7ec3%2FUntitled.png?table=block&id=03fbb1ac-ff8a-4f9a-86b4-a4d8d8341792&cache=v2 -->
 
-![notion image](https://img-src.io/taehun/training-yolov5/1.png)
+![notion image](https://img-src.io/taehun/training-yolov5/1.png?w=800)
 
 
 ## **YOLOv5 설치**
@@ -299,7 +299,7 @@ names: [ 'car', 'truck', 'pedestrian', 'bicyclist', 'light' ]  # class names
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F688e5d4e-b3ed-40cb-8d9e-fcd9a070c290%2FUntitled.png?table=block&id=4ac99a29-d8a2-4345-9664-fad46a8bc627&cache=v2 -->
 
-![notion image](https://img-src.io/taehun/training-yolov5/5.png)
+![notion image](https://img-src.io/taehun/training-yolov5/5.png?w=800)
 
 
 ## **학습 스크립트 실행**
@@ -327,13 +327,13 @@ python train.py --batch-size 16 --epochs 10 --data custom_dataset.yaml --weights
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fa677ba43-db45-4632-ab18-6ddb7c2c1522%2FUntitled.png?table=block&id=4161697f-5ed5-4bff-9bd4-99f0c2a08815&cache=v2 -->
 
-![notion image](https://img-src.io/taehun/training-yolov5/6.png)
+![notion image](https://img-src.io/taehun/training-yolov5/6.png?w=800)
 
 
 
 <!-- TODO: 이미지 추가 - 파일명: train_batch0.jpg, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F4003402a-549a-4f20-acfb-c5cd764a1eb5%2Ftrain_batch0.jpg?table=block&id=70698cc3-354e-4a71-9c7c-e4c1b8ef6c41&cache=v2 -->
 
-![notion image](https://img-src.io/taehun/training-yolov5/7.jpg)
+![notion image](https://img-src.io/taehun/training-yolov5/7.jpg?w=800)
 
 
 학습 결과는 `runs/train/exp[실험번호]/results.csv` 파일에 저장되어 있습니다.
@@ -346,7 +346,7 @@ plot_results('./runs/train/exp/results.csv')  # plot 'results.csv' as 'results.p
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F4793af86-9772-4593-b94e-f62c2b697f70%2FUntitled.png?table=block&id=440c092c-1ad7-47ba-af32-b7e2cbee40d9&cache=v2 -->
 
-![notion image](https://img-src.io/taehun/training-yolov5/8.png)
+![notion image](https://img-src.io/taehun/training-yolov5/8.png?w=800)
 
 
 ## **학습된 모델 추론 테스트**

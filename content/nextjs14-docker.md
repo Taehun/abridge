@@ -24,7 +24,7 @@ npx create-next-app@latest nextjs-app --ts --use-pnpm
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2024-04-10_오후_5.11.49.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F8eb85891-a867-4cc2-be64-224eb673b0e2%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2024-04-10_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_5.11.49.png?table=block&id=33a89270-ec68-4ea6-80e2-bbe2bc7b8175&cache=v2 -->
 
-![notion image](https://img-src.io/taehun/nextjs14-docker/1.png)
+![notion image](https://img-src.io/taehun/nextjs14-docker/1.png?w=800)
 
 
 → *ESLint, Tailwind CSS,* *`src/`* *디렉토리, App Router, import alias*는 모두 디폴트 설정 입니다.
@@ -121,4 +121,4 @@ docker run -p 3000:3000 nextjs-app
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2024-04-10_오전_2.54.47.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F1c0fd74b-0782-46ce-9be9-926226168616%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2024-04-10_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25AB_2.54.47.png?table=block&id=db4f9e10-fae0-4fba-b11e-dbb2c7e0b917&cache=v2 -->
 
-![notion image](https://img-src.io/taehun/nextjs14-docker/2.png)
+![notion image](https://img-src.io/taehun/nextjs14-docker/2.png?w=800)

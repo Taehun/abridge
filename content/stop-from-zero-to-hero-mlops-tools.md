@@ -81,7 +81,7 @@ toc = true
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Fd0a4827a-ab4f-443c-b51d-6bcb885ef593%2FUntitled.png?table=block&id=041004a2-a8b5-4477-b79d-5aca3af4d8dd&cache=v2 -->
 
-![도구는 단지 도구일 뿐 입니다. MLOps 필요성과 개념을 이해하는 것이 훨씬 중요합니다. 그림 출처&gt; Hidden Technical Debt in Machine Learning Systems](https://img-src.io/taehun/stop-from-zero-to-hero-mlops-tools/1.png)
+![도구는 단지 도구일 뿐 입니다. MLOps 필요성과 개념을 이해하는 것이 훨씬 중요합니다. 그림 출처&gt; Hidden Technical Debt in Machine Learning Systems](https://img-src.io/taehun/stop-from-zero-to-hero-mlops-tools/1.png?w=800)
 
 
 도구는 단지 도구일 뿐 입니다. MLOps 필요성과 개념을 이해하는 것이 훨씬 중요합니다. *그림 출처>* *[Hidden Technical Debt in Machine Learning Systems](https://proceedings.neurips.cc/paper_files/paper/2015/file/86df7dcfd896fcaf2674f757a2463eba-Paper.pdf)*
