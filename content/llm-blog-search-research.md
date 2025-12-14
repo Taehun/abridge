@@ -18,7 +18,7 @@ toc = true
 
 <!-- TODO: 이미지 추가 - 파일명: LLM_블로그_검색_(1).png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Ffbcce5c3-bcb7-4d23-8cef-65067df34297%2FLLM_%25E1%2584%2587%25E1%2585%25B3%25E1%2586%25AF%25E1%2584%2585%25E1%2585%25A9%25E1%2584%2580%25E1%2585%25B3_%25E1%2584%2580%25E1%2585%25A5%25E1%2586%25B7%25E1%2584%2589%25E1%2585%25A2%25E1%2586%25A8_(1).png?table=block&id=89d43b52-747c-44f8-8647-2ec6c666da2d&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/llm-blog-search-research/1.png)
 
 
 > *본 기사에서 소개된 코드는 아래의 Colab 노트북에 작성되어 있습니다.*
@@ -40,13 +40,13 @@ Notion API를 사용하려면 API 키가 필요합니다. Notion API 키는 아�
 
 <!-- TODO: 이미지 추가 - 파일명: notion_api-1.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F642ebb2f-8000-40ef-ad53-cc63dd0e7a5e%2Fnotion_api-1.png?table=block&id=9d496cfc-7206-47f0-8e4d-d0374ed6b4e5&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/llm-blog-search-research/2.png)
 
 
 
 <!-- TODO: 이미지 추가 - 파일명: notion_api_2.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F11e41c14-f4df-4d11-95b6-bb7865473160%2Fnotion_api_2.png?table=block&id=50ae42d5-9bc6-48a9-aad3-be3371b86dc7&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/llm-blog-search-research/3.png)
 
 
 Notion 통합이 생성되면, **Secrets** 문자열을 복사 해 둡니다. 이 문자열을 Notion API 키로 사용합니다.
@@ -56,7 +56,7 @@ Notion 통합이 생성되면, **Secrets** 문자열을 복사 해 둡니다. �
 
 <!-- TODO: 이미지 추가 - 파일명: notion_api_3.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F8363489e-5864-48aa-9164-322fb209e099%2Fnotion_api_3.png?table=block&id=3fe5c5a0-f972-4837-8e61-2782fb4bfa8e&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/llm-blog-search-research/4.png)
 
 
 ## 데이터 처리
@@ -578,7 +578,7 @@ for idx, post in enumerate(blog_posts):
 
 <!-- TODO: 이미지 추가 - 파일명: inverted_index.jpeg, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Fa7dd1710-41ee-4ea2-becb-5b6a5e47df9c%2Finverted_index.jpeg?table=block&id=c4e6ecde-4228-4457-a5df-b29ca43464f3&cache=v2 -->
 
-![출처&gt; https://programminghistorian.org/posts/full-text-search]()
+![출처&gt; https://programminghistorian.org/posts/full-text-search](https://img-src.io/taehun/llm-blog-search-research/5.jpeg)
 
 
 *출처>* *<https://programminghistorian.org/posts/full-text-search>*
@@ -691,7 +691,7 @@ for score, doc_addr in searcher.search(query, 5).hits:
 
 <!-- TODO: 이미지 추가 - 파일명: semantic-search.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F3525c6f1-2252-4ea1-ba68-9a5afaf74df2%2Fsemantic-search.png?table=block&id=f43eb6a5-66c3-40ba-98e3-b790604af1a1&cache=v2 -->
 
-![시맨틱 검색 과정. 임베딩 모델과 벡터 DB를 사용합니다.]()
+![시맨틱 검색 과정. 임베딩 모델과 벡터 DB를 사용합니다.](https://img-src.io/taehun/llm-blog-search-research/6.png)
 
 
 시맨틱 검색 과정. 임베딩 모델과 벡터 DB를 사용합니다.
@@ -1110,7 +1110,7 @@ for query in queries:
 
 <!-- TODO: 이미지 추가 - 파일명: Screenshot-2024-02-19-at-2.41.44-PM.webp, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F08c6911f-992b-4551-b9ec-dc15ccbeead2%2FScreenshot-2024-02-19-at-2.41.44-PM.webp?table=block&id=fcfb5b73-54e4-4832-989b-1e9df68dfe1a&cache=v2 -->
 
-![그림 출처&gt; https://blog.lancedb.com/hybrid-search-combining-bm25-and-semantic-search-for-better-results-with-lan-1358038fe7e6/]()
+![그림 출처&gt; https://blog.lancedb.com/hybrid-search-combining-bm25-and-semantic-search-for-better-results-with-lan-1358038fe7e6/](https://img-src.io/taehun/llm-blog-search-research/7.webp)
 
 
 그림 출처> <https://blog.lancedb.com/hybrid-search-combining-bm25-and-semantic-search-for-better-results-with-lan-1358038fe7e6/>

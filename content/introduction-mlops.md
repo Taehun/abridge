@@ -72,7 +72,7 @@ DevOps가 개발/QA/운영의 교차점이라면, MLOps는 머신러닝/데이�
 
 <!-- TODO: 이미지 추가 - 파일명: pipelines-xgboost-graph.png, 원본: https://www.notion.so/image/https%3A%2F%2Fv0-6.kubeflow.org%2Fdocs%2Fimages%2Fpipelines-xgboost-graph.png?table=block&id=c975c96a-046e-40b8-bcec-3c25b98c304d&cache=v2 -->
 
-![• 그림 3. Kubeflow Pipeline]()
+![• 그림 3. Kubeflow Pipeline](https://img-src.io/taehun/introduction-mlops/3.png)
 
 
 • 그림 3. Kubeflow Pipeline
@@ -166,7 +166,7 @@ MLOps는 작년(2021년)부터 업계 종사자들에게 널리 알려지기 시
 
 <!-- TODO: 이미지 추가 - 파일명: mlops-continuous-delivery-and-automation-pipelines-in-machine-learning-4-ml-automation-ci-cd.svg, 원본: https://www.notion.so/image/https%3A%2F%2Fcloud.google.com%2Farchitecture%2Fimages%2Fmlops-continuous-delivery-and-automation-pipelines-in-machine-learning-4-ml-automation-ci-cd.svg?table=block&id=38aad9ec-5da4-4854-8d70-811155db46c8&cache=v2 -->
 
-![• 그림 5. ML 파이프라인 CI/CD (출처&gt; MLOps: 머신러닝의 지속적 배포 및 자동화 파이프라인 )]()
+![• 그림 5. ML 파이프라인 CI/CD](https://img-src.io/taehun/introduction-mlops/5.svg)
 
 
 • 그림 5. ML 파이프라인 CI/CD (출처> [MLOps: 머신러닝의 지속적 배포 및 자동화 파이프라인](https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning))

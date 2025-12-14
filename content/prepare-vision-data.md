@@ -28,7 +28,7 @@ AI 선도 업체들은 이미 [*반지도 학습 (Semi-supervised Learning)*](h
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F81c8b8c5-2d4a-40cd-a975-eaef8e1cff39%2FUntitled.png?table=block&id=b73282b2-696b-4a50-9c86-5555cf7a512c&cache=v2 -->
 
-![딥러닝 비전 데이터셋 아키텍처 (GCP)]()
+![딥러닝 비전 데이터셋 아키텍처 (GCP)](https://img-src.io/taehun/prepare-vision-data/1.png)
 
 
 딥러닝 비전 데이터셋 아키텍처 (GCP)
@@ -330,7 +330,7 @@ GCP에서 가장 기본적인 비전 데이터셋 아키텍처를 구성해 보�
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F8258ea88-579b-4691-83a6-5a94047b023a%2FUntitled.png?table=block&id=9fc91f32-2b51-47f7-b50b-7d46ac382523&cache=v2 -->
 
-![딥러닝 비전 데이터셋 아키텍처 (On-premise + GCP)]()
+![딥러닝 비전 데이터셋 아키텍처 (On-premise + GCP)](https://img-src.io/taehun/prepare-vision-data/2.png)
 
 
 *딥러닝 비전 데이터셋 아키텍처 (On-premise + GCP)*

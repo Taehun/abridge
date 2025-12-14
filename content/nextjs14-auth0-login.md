@@ -32,7 +32,7 @@ SaaS(Software as a Service)에서 'Tenant' 개념은 아파트 건물에 비유�
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2024-02-23_오전_12.14.32.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Fe77fbc73-b3ba-462c-a5ad-54c918efe278%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2024-02-23_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25AB_12.14.32.png?table=block&id=a075e137-1131-4ec3-a7dc-5634d47ae330&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/nextjs14-auth0-login/1.png)
 
 
 2. 어플리케이션 이름을 입력하고, `Regular Web Applications`을 선택후 `Create` 를 클릭합니다.
@@ -40,7 +40,7 @@ SaaS(Software as a Service)에서 'Tenant' 개념은 아파트 건물에 비유�
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2024-02-23_오전_12.16.58.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Ffef74f9e-c9f4-4c07-87de-518e88837b87%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2024-02-23_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25AB_12.16.58.png?table=block&id=4eb58bc0-ebaf-4e12-9531-ad53d40e5d86&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/nextjs14-auth0-login/2.png)
 
 
 3. 생성된 어플리케이션의 `Settings` 탭으로 가서 **Domain**, **Client ID**, **Client Secret**를 기록해 둡니다.
@@ -48,7 +48,7 @@ SaaS(Software as a Service)에서 'Tenant' 개념은 아파트 건물에 비유�
 
 <!-- TODO: 이미지 추가 - 파일명: auth0-settings.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Fa493dfeb-9e8d-48ba-b893-85053fb13f01%2Fauth0-settings.png?table=block&id=f3674bb2-a7d0-476e-bf9e-2d8ff79897eb&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/nextjs14-auth0-login/3.png)
 
 
 4. Settings에 필요한 설정을 추가 후 `Save Changes` 를 클릭하여 저장 합니다.
@@ -260,7 +260,7 @@ Next.js 미들웨어의 기능을 활용하여 Auth0을 사용하여 페이지�
 
 <!-- TODO: 이미지 추가 - 파일명: vercel_architecture.avif, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F4adad282-a1e3-43a0-828c-8dbf8f3088ce%2Fvercel_architecture.avif?table=block&id=d4524ec0-5b5e-4a1c-9dda-c62d3da7d389&cache=v2 -->
 
-![NextJS 호스팅 서비스인 Vercel 아키텍처. NextJS 웹 서비스의 모든 요청은 미들웨어를 거쳐서 전달됩니다. 출처&gt; https://vercel.com/docs/functions]()
+![NextJS 호스팅 서비스인 Vercel 아키텍처. NextJS 웹 서비스의 모든 요청은 미들웨어를 거쳐서 전달됩니다. 출처&gt; https://vercel.com/docs/functions](https://img-src.io/taehun/nextjs14-auth0-login/4.png)
 
 
 NextJS 호스팅 서비스인 Vercel 아키텍처. NextJS 웹 서비스의 모든 요청은 미들웨어를 거쳐서 전달됩니다. *출처>* *<https://vercel.com/docs/functions>*
@@ -359,7 +359,7 @@ export default withPageAuthRequired(
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2024-02-26_오전_1.24.26.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Fe1daddfa-aace-44bd-bd20-e3d1a213dba4%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2024-02-26_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25AB_1.24.26.png?table=block&id=22fe8d0c-a054-4b89-8af1-2f69524f23cd&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/nextjs14-auth0-login/5.png)
 
 
 3. Auth0로 접속하여, *Authentication* → *Social* 메뉴로 들어 갑니다. Social Connections 화면에서 **Create Connection** 버튼을 클릭합니다.
@@ -371,7 +371,7 @@ export default withPageAuthRequired(
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2024-02-26_오전_1.29.42.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F2146558a-cd22-4f10-96e8-e60ec6beba0e%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2024-02-26_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25AB_1.29.42.png?table=block&id=f6f250f7-7443-4093-bcb1-688e5c55622a&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/nextjs14-auth0-login/6.png)
 
 
 6. 생성된 Google 소셜 로그인을 추가할 Auth0 어플리케이션을 선택합니다.
@@ -395,7 +395,7 @@ export default withPageAuthRequired(
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2024-02-25_오후_6.55.40.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F9bf7ac23-265d-4bbe-b280-e0ec91f09f10%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2024-02-25_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_6.55.40.png?table=block&id=65faceb6-09b2-4006-8a55-5d164417b0ea&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/nextjs14-auth0-login/7.png)
 
 
 **Auth0 설정**
@@ -411,7 +411,7 @@ export default withPageAuthRequired(
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2024-02-25_오후_7.06.57.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Fc796904a-4520-4b2b-b8f2-3d579b556003%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2024-02-25_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_7.06.57.png?table=block&id=c917fccf-355a-44cd-a76f-963bb357e6c8&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/nextjs14-auth0-login/8.png)
 
 
 이제 로그인시 Google과 GitHub 소셜 로그인을 사용 할 수 있습니다!
@@ -429,7 +429,7 @@ pnpm run dev
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2024-02-25_오후_6.19.01.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F8eb6c45b-180c-4fbc-a494-e4eddcb55da5%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2024-02-25_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_6.19.01.png?table=block&id=9f92d65b-4d70-4ed8-ad3f-471b25ee12e3&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/nextjs14-auth0-login/9.png)
 
 
 **Login** 버튼을 클릭하면, Auth0 유니버셜 로그인 화면으로 넘어갑니다.
@@ -437,7 +437,7 @@ pnpm run dev
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2024-02-26_오전_1.36.48.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F9c423265-bc2f-4a02-bb4d-083675672758%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2024-02-26_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25AB_1.36.48.png?table=block&id=fafe49fd-38ec-4277-ac8c-87be4f156587&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/nextjs14-auth0-login/10.png)
 
 
 Auth0 → User Management → Users 메뉴에서 테스트용 `test@test.com` 사용자를 추가 하였습니다.
@@ -447,7 +447,7 @@ Auth0 → User Management → Users 메뉴에서 테스트용 `test@test.com` �
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2024-02-25_오후_6.25.57.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F2a992029-8d34-485a-96b8-e30e93b61474%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2024-02-25_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_6.25.57.png?table=block&id=9c207d22-faa5-4905-be2d-3bfdf3c5e7d1&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/nextjs14-auth0-login/11.png)
 
 
 로그아웃을 한 뒤, 대쉬보드 페이지가 보호되고 있는지 확인해 봅시다. 로그아웃 버튼을 클릭후, 웹 브라우저에서 [`http://localhost:3000/dashboard`](http://localhost:3000/dashboard) 주소로 대쉬보드 페이지로 접속을 시도해 보겠습니다. 대쉬보드 페이지는 사용자 인증이 필요하므로, 아래와 같이 로그인 화면으로 리디렉션 됩니다.
@@ -455,7 +455,7 @@ Auth0 → User Management → Users 메뉴에서 테스트용 `test@test.com` �
 
 <!-- TODO: 이미지 추가 - 파일명: protected_page.gif, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Fc031c470-6430-4602-8750-1ca075d2d35e%2Fprotected_page.gif?table=block&id=6ab02956-db69-4b6e-a405-6edd256a7b9d&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/nextjs14-auth0-login/12.gif)
 
 
 > 전체 예제 코드는 다음 링크를 통해 확인하실 수 있습니다.

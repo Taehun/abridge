@@ -99,7 +99,7 @@ from matplotlib import pyplot as plt   # 시각화
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F06236c91-5261-4074-a381-f7b58198416e%2FUntitled.png?table=block&id=68f2b2da-3d35-408c-bec4-c6d2625cd521&cache=v2 -->
 
-![• 그림 1. 패션-MNIST 샘플]()
+![• 그림 1. 패션-MNIST 샘플](https://img-src.io/taehun/start-deep-learning-with-flax_jax/1.png)
 
 
 • 그림 1. 패션-MNIST 샘플
@@ -213,7 +213,7 @@ plt.show()
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fe6f7862c-d5f1-4d3e-807f-fd819a27ac50%2FUntitled.png?table=block&id=3ce3fc2b-2a61-4b19-82ce-506a72fe3825&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/start-deep-learning-with-flax_jax/2.png)
 
 
 ## **네트워크 정의**
@@ -456,7 +456,7 @@ plt.show()
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fafba5122-afe6-4757-8d4c-7d3dfcc015a4%2FUntitled.png?table=block&id=f819c301-0c9f-41d5-ae1e-1cf282c66e47&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/start-deep-learning-with-flax_jax/3.png)
 
 
 ## **결론**

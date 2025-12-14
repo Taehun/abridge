@@ -68,7 +68,7 @@ Taehun • Updated Dec 16, 2023](https://github.com/Taehun/e-sports-semantic-sea
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2024-01-05_오전_12.48.54.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F2dc2e882-61a5-48d7-a03e-79bfd58d5ba7%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2024-01-05_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25AB_12.48.54.png?table=block&id=4d3d76fa-a188-4c6d-a633-53162c67b165&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/2023-last-half-review/1.png)
 
 
 ⚒️

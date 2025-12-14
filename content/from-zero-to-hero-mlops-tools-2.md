@@ -26,7 +26,7 @@ toc = true
 
 <!-- TODO: 이미지 추가 - 파일명: Zero-to-here-MLOps-2-1.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F07e1ae6b-489e-42c0-8e33-b50c8ed43147%2FZero-to-here-MLOps-2-1.png?table=block&id=ccd1f610-2329-4ad1-bed0-4d0a5a0e9f34&cache=v2 -->
 
-![그림 2-1. MLOps 시스템 아키텍처]()
+![그림 2-1. MLOps 시스템 아키텍처](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-2/1.png)
 
 
 그림 2-1. MLOps 시스템 아키텍처
@@ -216,7 +216,7 @@ MLOps 시스템에서 주요 모니터링 대상은 데이터, 모델 성능, �
 
 <!-- TODO: 이미지 추가 - 파일명: Zero-to-here-MLOps-2-2.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fae7cbff8-9a83-4ee0-98be-97858bde3255%2FZero-to-here-MLOps-2-2.png?table=block&id=7cbb8163-f214-48a0-b2fc-62b8e72d9901&cache=v2 -->
 
-![그림 2-2. MLOps 시스템 구성 요소와 도구들]()
+![그림 2-2. MLOps 시스템 구성 요소와 도구들](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-2/2.png)
 
 
 그림 2-2. MLOps 시스템 구성 요소와 도구들

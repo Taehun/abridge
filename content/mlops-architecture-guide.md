@@ -20,7 +20,7 @@ toc = true
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fdca6993c-03c8-48c0-b356-3763e23113ec%2FUntitled.png?table=block&id=86b16048-565a-4fc9-b67a-13b14c4cc22a&cache=v2 -->
 
-![출처&gt; 원본 기사]()
+![출처&gt; 원본 기사](https://img-src.io/taehun/mlops-architecture-guide/1.png)
 
 
 출처> 원본 기사
@@ -32,7 +32,7 @@ toc = true
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fe71318f5-5b61-44f7-acb3-68152453dd27%2FUntitled.png?table=block&id=7e6ea4bb-6098-407c-86e1-662e33a515ee&cache=v2 -->
 
-![출처&gt; https://dl.acm.org/doi/10.5555/2969442.2969519]()
+![출처&gt; https://dl.acm.org/doi/10.5555/2969442.2969519](https://img-src.io/taehun/mlops-architecture-guide/2.png)
 
 
 출처> <https://dl.acm.org/doi/10.5555/2969442.2969519>
@@ -56,7 +56,7 @@ toc = true
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F189057f1-0c47-4155-9c51-96c2bcc8309a%2FUntitled.png?table=block&id=5e9b1fd2-559b-424e-91b6-61ee27dfd8d2&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/mlops-architecture-guide/3.png)
 
 
 사실, 이와 같은 워크플로를 사용하여 이미 모델을 개발했으며 모델을 배포하고 성능 저하, 확장성, 속도, 유지 관리등과 같은 프로덕션 문제에 대해서만 대비하고자 할수도 있습니다.
@@ -72,7 +72,7 @@ toc = true
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F05f4223a-651a-485a-8e2c-3003370bcbbd%2FUntitled.png?table=block&id=30fbe66c-629a-40d7-a6d1-2738c4751bc2&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/mlops-architecture-guide/4.png)
 
 
 고려할 사항이 참 많네요! 보시다시피 시스템의 머신러닝(ML) 섹션과 시스템 운영(Ops) 섹션이 있습니다. 둘 다 함께 머신러닝 시스템의 아키텍처를 정의합니다.
@@ -100,7 +100,7 @@ MLOps의 아키텍처 패턴은 학습 및 서빙 설계에 관한 것입니다.
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F60c9abcc-9383-4176-9c37-a6eb703a5853%2FUntitled.png?table=block&id=e677a4f3-3e3f-4e44-aca2-c5569151ea04&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/mlops-architecture-guide/5.png)
 
 
 데이터 웨어하우스로의 데이터 스트리밍와 같은 특정 이벤트로 다음과 같은 트리거 구성 요소가 켜지는 이벤트 기반 시나리오에 대한 학습 아키텍처:
@@ -116,7 +116,7 @@ MLOps의 아키텍처 패턴은 학습 및 서빙 설계에 관한 것입니다.
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fcaa6342e-9062-4f34-930f-f44d7d7ed3f7%2FUntitled.png?table=block&id=cbd0131e-fe96-49f2-afa8-6a9a70f3dcd8&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/mlops-architecture-guide/6.png)
 
 
 일정 간격으로 모델을 재학습해야 하는 시나리오에 대한 학습 아키텍처. 데이터는 웨어하우스에서 대기하고 있으며, 워크플로우 오케스트레이션 도구를 사용하여 추출 및 처리를 예약하고, 새로운 데이터에 대한 모델의 재학습을 실시합니다. 이 아키텍처는 특히 사용자가 계정에 로그인할 때 미리 계산된 추천 사항을 제공하는 콘텐츠 추천 엔진(노래 또는 기사용)과 같이 실시간 점수가 필요하지 않은 문제에 유용합니다.
@@ -126,7 +126,7 @@ MLOps의 아키텍처 패턴은 학습 및 서빙 설계에 관한 것입니다.
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F634ef2e1-ad14-4ac3-8fa1-330698ac5769%2FUntitled.png?table=block&id=b970c745-3510-4b08-9ec9-9df83c1ed9dc&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/mlops-architecture-guide/7.png)
 
 
 이러한 학습 아키텍처는 지속적인 모델 학습이 필요할 때 유용합니다. 예를 들어:
@@ -152,7 +152,7 @@ MLOps의 아키텍처 패턴은 학습 및 서빙 설계에 관한 것입니다.
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fbd243075-128a-4870-a7db-dc6a82f83fa0%2FUntitled.png?table=block&id=1f657acd-c04b-40d8-9661-7467d5b152fd&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/mlops-architecture-guide/8.png)
 
 
 ## **서빙 아키텍처**
@@ -170,7 +170,7 @@ MLOps의 아키텍처 패턴은 학습 및 서빙 설계에 관한 것입니다.
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F0f9828ad-4282-4a97-876d-4cf4d4c8ea5d%2FUntitled.png?table=block&id=8df12fa2-3268-457a-baf1-efba0b78f892&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/mlops-architecture-guide/9.png)
 
 
 요구 사항에 몇 초 또는 몇 분 안에 클라이언트에게 추론 결과를 제공하지 않아도 되면 이러한 종류의 서빙 패턴을 사용할 수 있습니다. 일반적인 사용 사례는 콘텐츠 추천 시스템(사용자가 계정에 로그인하거나 애플리케이션을 열기 전에 추천을 미리 계산함)입니다.
@@ -180,7 +180,7 @@ MLOps의 아키텍처 패턴은 학습 및 서빙 설계에 관한 것입니다.
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F12174902-ffc4-412a-90f3-4f9b9882e4d7%2FUntitled.png?table=block&id=019ab7a6-cd3b-4734-82d0-16288091e352&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/mlops-architecture-guide/10.png)
 
 
 매우 최소한의 지연(몇 초 또는 몇 분 이내)으로 사용자에게 모델 추론 결과를 제공해야 하는 시나리오가 있습니다. 사용자가 요청할 때 실시간 추론을 제공하기 위한 온라인 서빙 아키텍처를 고려할 수 있습니다.
@@ -267,7 +267,7 @@ AWS에서 개발한 Well-Architected 솔루션의 5대 요소를 채택합니다
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F596184f6-d190-4573-ac60-a7a6124cbc1d%2FUntitled.png?table=block&id=5e7df11c-daa4-4530-b8fb-4d1e7ef214a4&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/mlops-architecture-guide/11.png)
 
 
 컨텐츠 추천 시스템은 사용자가 플랫폼에 더 많은 비용을 지출하도록 기업이 관련 컨텐츠에 계속 관여할 수 있도록 도움을 줍니다. 특히 항상 고객 참여를 높이는 것이 목표였던 미디어에서는 더욱 그렇습니다.
@@ -431,7 +431,7 @@ AWS에서 개발한 Well-Architected 솔루션의 5대 요소를 채택합니다
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fbf0d6a92-3741-468d-8eba-9b94bc1500c9%2FUntitled.png?table=block&id=0d835d6c-934e-41d3-bf11-515088f44219&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/mlops-architecture-guide/12.png)
 
 
 시스템의 구조는 비즈니스 목표에 기반한 요구사항과 스펙을 기반으로 합니다. 시스템 구조를 제대로 잡을 수 있게 되면, 이제 구현할 도구와 기술을 선택할 수 있습니다.
@@ -643,7 +643,7 @@ MLOps 아키텍처를 구현하기 위한 도구(또는 “장난감” 😉)을
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fd2749832-c1e1-414f-87ce-2eca9ba5383e%2FUntitled.png?table=block&id=1ff10179-990a-4b2e-b778-85fdfc862125&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/mlops-architecture-guide/13.png)
 
 
 읽어주셔서 감사합니다!

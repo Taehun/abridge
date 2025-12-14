@@ -439,7 +439,7 @@ Boie의 AeroGlide 울트라슬림 스마트 칫솔은 미국의 칫솔 제조업
 
 <!-- TODO: 이미지 추가 - 파일명: Iterative_prompt_dev.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F2221b3dd-e272-4514-a9f9-f12f3bb133af%2FIterative_prompt_dev.png?table=block&id=48ee36b0-bd1f-4b92-ba93-cbefc0f22c78&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/chatgpt-prompt-engineering/1.png)
 
 
 ## 제품 팩트 시트에서 마케팅 제품 소개 생성
@@ -668,7 +668,7 @@ display(HTML(response))
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-05-28_오후_7.31.46.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fdfc53727-e455-4050-98aa-211bbded56e3%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-05-28_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_7.31.46.png?table=block&id=d8d9d267-fbe8-40fb-9e5e-8d6603e910b2&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/chatgpt-prompt-engineering/2.png)
 
 
 ## 요약하기
@@ -1227,7 +1227,7 @@ display(HTML(response))
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-05-29_오후_4.21.04.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fc3bf63cb-892b-4daf-90d6-7b4811d3132b%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-05-29_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_4.21.04.png?table=block&id=0c50009a-9227-4469-a22c-f69f7e21043e&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/chatgpt-prompt-engineering/3.png)
 
 
 ## 맞춤법/문법 검사
@@ -1391,7 +1391,7 @@ AI 고객 상담원
 
 <!-- TODO: 이미지 추가 - 파일명: Temperature.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F09e51bf8-65c7-44c5-9591-e4206015595e%2FTemperature.png?table=block&id=ffc66866-7ce1-4fce-9225-83cfc3a67e3e&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/chatgpt-prompt-engineering/4.png)
 
 
 ```toml
@@ -1439,7 +1439,7 @@ AI 고객 상담원 드림.
 
 <!-- TODO: 이미지 추가 - 파일명: role.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F516690b6-de7f-4e6e-a557-04c3a1510461%2Frole.png?table=block&id=9b802245-599a-4315-b506-46e21c25579a&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/chatgpt-prompt-engineering/5.png)
 
 
 새로운 헬퍼 함수
@@ -1592,7 +1592,7 @@ dashboard
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-05-29_오후_11.01.45.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F2db24db2-69d8-49ca-812a-82cbab37b8f1%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-05-29_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_11.01.45.png?table=block&id=743da018-8142-49bb-806b-8ca2c82c9d02&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/chatgpt-prompt-engineering/6.png)
 
 
 ```python

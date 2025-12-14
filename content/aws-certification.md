@@ -85,7 +85,7 @@ https://www.credly.com/badges/3383825a-ac0c-4b51-9673-2bad79d22017/public\_url
 
 <!-- TODO: 이미지 추가 - 파일명: linkedin_thumb_image.png, 원본: https://www.notion.so/image/https%3A%2F%2Fimages.credly.com%2Fimages%2F0e284c3f-5164-4b21-8660-0d84737941bc%2Flinkedin_thumb_image.png?table=block&id=eec9ceff-a1ff-49ae-b2e9-a4075de27879&cache=v2 -->
 
-![AWS Certified Solutions Architect – Associate was issued by Amazon Web Services Training and Certification to Taehun Kim.]()
+![AWS Certified Solutions Architect – Associate was issued by Amazon Web Services Training and Certification to Taehun Kim.](https://img-src.io/taehun/aws-certification/1.png)
 ](https://www.credly.com/badges/3383825a-ac0c-4b51-9673-2bad79d22017/public_url)
 
 [AWS Certified Machine Learning – Specialty was issued by Amazon Web Services Training and Certification to Taehun Kim.
@@ -97,7 +97,7 @@ https://www.credly.com/badges/ac751e2a-634f-4015-92b9-bc9ca50fa6e4/public\_url
 
 <!-- TODO: 이미지 추가 - 파일명: linkedin_thumb_image.png, 원본: https://www.notion.so/image/https%3A%2F%2Fimages.credly.com%2Fimages%2F778bde6c-ad1c-4312-ac33-2fa40d50a147%2Flinkedin_thumb_image.png?table=block&id=f0309361-75b3-4186-9c80-9b6032b10dd6&cache=v2 -->
 
-![AWS Certified Machine Learning – Specialty was issued by Amazon Web Services Training and Certification to Taehun Kim.]()
+![AWS Certified Machine Learning – Specialty was issued by Amazon Web Services Training and Certification to Taehun Kim.](https://img-src.io/taehun/aws-certification/2.png)
 ](https://www.credly.com/badges/ac751e2a-634f-4015-92b9-bc9ca50fa6e4/public_url)
 
 결과는 두 시험 모두 800점대 중반 점수로 합격 했습니다. (750점이 합격 커트라인 입니다) 관련 강의를 들으면서, 덤프를 3번이상 풀어보면 900점은 여유롭게 넘길 수 있을것 같네요. 다른 AWS 자격증이나 직무 관련 자격증을 취득할 것인가? 는 고민 중 입니다. *‘그 시간에 차라리 사이드 프로젝트나 다른걸 하는게 더 가치 있지 않을까?’, ‘그래도, AWS Certified DevOps Engineer - Professional 는 있으면 좋을것 같은데…’, ‘요령도 생겼는데 GCP 자격증도 따볼까?’* 라는 여러가지 생각이 드네요.

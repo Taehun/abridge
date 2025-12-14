@@ -71,7 +71,7 @@ print(response)
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-12_오후_6.30.34.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F27b69474-87d9-46e5-bab7-4630de6ba65e%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-12_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_6.30.34.png?table=block&id=72730dcb-1882-48e4-98e2-50aab27411cf&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/getting-started-llamaindex/1.png)
 
 
 ### 로깅을 사용하여 쿼리 및 이벤트 보기
@@ -133,7 +133,7 @@ print(response)
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-12_오후_6.49.00.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F15ac55d4-0f51-4919-b814-4d8d76ea4722%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-12_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_6.49.00.png?table=block&id=60680dd2-afee-4eaf-b472-74dad9e4a31f&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/getting-started-llamaindex/2.png)
 
 
 ## 상위 개념
@@ -149,7 +149,7 @@ RAG에서는 데이터가 로드되고 쿼리를 위해 준비되거나 "*인덱
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Fefc5b7ce-4890-4c6e-aaff-8b1f671b224c%2FUntitled.png?table=block&id=79a54901-8b9c-4b62-85d9-79547024d8d9&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/getting-started-llamaindex/3.png)
 
 
 ### RAG 단계
@@ -169,7 +169,7 @@ RAG에는 다섯 가지 주요 단계가 있으며, 이 단계는 여러분이 �
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F165ede0f-00f2-4355-b6ad-618cb5ccecc1%2FUntitled.png?table=block&id=9ea51ead-6433-4a53-ac04-0ffc5c8796a4&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/getting-started-llamaindex/4.png)
 
 
 ### 각 단계의 중요 개념

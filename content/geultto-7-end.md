@@ -14,7 +14,7 @@ toc = true
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F787d370f-e479-4eb0-a55c-b4ccc6310149%2FUntitled.png?table=block&id=a2cc1a6d-b3e9-4725-a432-480a6b4d51d1&cache=v2 -->
 
-![글또 노션 페이지]()
+![글또 노션 페이지](https://img-src.io/taehun/geultto-7-end/1.png)
 
 
 [*글또 노션 페이지*](https://bit.ly/geultto)

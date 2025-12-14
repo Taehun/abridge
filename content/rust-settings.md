@@ -34,7 +34,7 @@ rustc --version
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-07-11_오후_10.40.23.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F5bbdfbd7-6a7d-49d7-ae4a-526e8d2a751f%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-07-11_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_10.40.23.png?table=block&id=bf59d3c9-b6d1-497a-85c4-8db7ff148c89&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/rust-settings/1.png)
 
 
 Rust는 `rustc` (컴파일러), `cargo` (프로젝트/패키지 관리자) 등이 포함된 Rust 툴체인을 관리하는 `rustup` 툴체인 관리 도구를 제공 합니다.
@@ -50,7 +50,7 @@ rustup update
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-07-11_오후_10.43.19.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fa9e3f61f-45bc-4abb-9918-2eee639027fa%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-07-11_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_10.43.19.png?table=block&id=0d84446c-e31e-456c-8b95-761014c94398&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/rust-settings/2.png)
 
 
 ## Cargo: Rust 프로젝트/패키지 관리자
@@ -88,7 +88,7 @@ cargo build
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-07-11_오후_11.10.30.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fa707e836-a7d4-4530-a2f8-77ffba389063%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-07-11_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_11.10.30.png?table=block&id=ed9c22b5-7e4a-4e9f-976b-0b4997160e90&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/rust-settings/3.png)
 
 
 실행 파일은 `./target/debug/` 폴더에 *<프로젝트 이름>*과 같은 파일로 생성 됩니다. (여기선 `rust-demo`)
@@ -104,7 +104,7 @@ cargo build
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-07-11_오후_11.14.08.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fce1761f8-c9e5-475e-b7ad-a0f24df545ef%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-07-11_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_11.14.08.png?table=block&id=9d4a314f-af9b-4625-995d-d6edd8251ff4&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/rust-settings/4.png)
 
 
 디버깅 심볼등을 제외한 릴리즈용 실행 파일은 `-r`(또는 `--release`)옵션을 추가하여 빌드 합니다.
@@ -118,7 +118,7 @@ cargo build -r
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-07-11_오후_11.16.57.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fc614b5ae-3329-4150-92de-518333bb6524%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-07-11_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_11.16.57.png?table=block&id=f33c1680-cdf7-418c-bc2a-fa729c61774e&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/rust-settings/5.png)
 
 
 `cargo run` 으로 빌드와 실행을 한번에 할 수도 있습니다.
@@ -132,7 +132,7 @@ cargo run
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-07-11_오후_11.18.35.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F2ca3b71d-ad0b-4cdd-840d-1738b924ae0e%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-07-11_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_11.18.35.png?table=block&id=51ceb96e-3934-4540-82a9-0900cc4d4317&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/rust-settings/6.png)
 
 
 `cargo run` 으로 빌드와 실행을 한번에 할 수 있습니다.
@@ -146,7 +146,7 @@ cargo run
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-07-12_오전_12.45.08.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F632305cc-e4b2-4aeb-90e3-5c8eacb57474%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-07-12_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25AB_12.45.08.png?table=block&id=4554a39e-9f85-48a2-a9fe-8a805c191753&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/rust-settings/7.png)
 
 
 ## Crate 바이너리 설치
@@ -162,7 +162,7 @@ cargo install wasm-pack
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-07-12_오전_12.56.34.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F54351304-fc8a-4eb2-9906-0db5f939b539%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-07-12_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25AB_12.56.34.png?table=block&id=4e582126-6c26-4095-a846-837b5dd5accc&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/rust-settings/8.png)
 
 
 ## 자주쓰는 Cargo 명령어 정리
@@ -234,7 +234,7 @@ nvim .
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-07-12_오후_11.49.45.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fd221956e-e290-4841-a01d-c20b9ee402b3%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-07-12_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_11.49.45.png?table=block&id=133d137f-e4dd-4c14-8ca1-dda4dfedb8ba&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/rust-settings/9.png)
 
 
 `tree-snitter` (Rust용 구문 분석기)도 설치 합니다.
@@ -314,7 +314,7 @@ cargo test
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-07-13_오전_1.12.23.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F91182eee-df23-4d16-a12e-41d966120a8d%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-07-13_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25AB_1.12.23.png?table=block&id=31765350-1443-46cb-a3fa-41185e8827e6&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/rust-settings/10.png)
 
 
 ## 생성형 AI 활용
@@ -338,7 +338,7 @@ Generate actix-web source code to inference uploaded model
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-07-13_오전_2.08.23.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fbd390cbc-8192-4023-bee7-3bde0186e0bf%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-07-13_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25AB_2.08.23.png?table=block&id=0157608e-c6e5-454c-ab25-1b4afca1d33c&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/rust-settings/11.png)
 
 
 Rust 코드로 변환 하기
@@ -367,7 +367,7 @@ Convert this code to Rust
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-07-13_오전_2.17.23.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fef11bad5-9f35-483b-bb85-18df99c60ccb%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-07-13_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25AB_2.17.23.png?table=block&id=f70a0d1b-637b-459f-b656-d8d9d2bd4278&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/rust-settings/12.png)
 
 
 개발 가이드
@@ -383,7 +383,7 @@ How to develop CLI tools using Rust?
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-07-13_오전_2.20.18.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F6ce09faf-6563-49d7-98b7-62c9445e4001%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-07-13_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25AB_2.20.18.png?table=block&id=d475ca68-f363-4548-aab9-e8a76af6adce&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/rust-settings/13.png)
 
 
 ## Copilot Labs
@@ -407,7 +407,7 @@ ChatGPT와 연동된 Copilot Labs를 사용하면 매우 편리합니다. VSCode
 
 <!-- TODO: 이미지 추가 - 파일명: 160909091-70c1d70c-2850-4483-91ed-4de87efe5285.gif, 원본: https://www.notion.so/image/https%3A%2F%2Fuser-images.githubusercontent.com%2F8978670%2F160909091-70c1d70c-2850-4483-91ed-4de87efe5285.gif?table=block&id=58f48a3d-b310-4707-a69f-06030f79e703&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/rust-settings/14.gif)
 
 
 ## 참고 링크

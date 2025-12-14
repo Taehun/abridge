@@ -18,7 +18,7 @@ DevOps 성숙도가 높은 기업이나 팀이라면 *IaC (Infrastructure as Co
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F692be476-06c8-45fe-9200-cd61070e73ad%2FUntitled.png?table=block&id=80596d4d-3a0f-4f5f-ad50-c1ec5bd44736&cache=v2 -->
 
-![• CDKTF 개요 (출처&gt; https://www.terraform.io/cdktf )]()
+![• CDKTF 개요 (출처&gt; https://www.terraform.io/cdktf )](https://img-src.io/taehun/terraform-cdk/1.png)
 
 
 • CDKTF 개요 (*출처>*[*https://www.terraform.io/cdktf*](https://www.terraform.io/cdktf) )
@@ -186,7 +186,7 @@ Please review the diff output above for gcp_instance
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fad3acd57-11c9-459b-b3dd-a7b12e651e19%2FUntitled.png?table=block&id=c351c901-9473-4e20-9fef-fe81bb215aaa&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/terraform-cdk/2.png)
 
 
 ## 인프라 정리하기

@@ -14,7 +14,7 @@ toc = true
 
 <!-- TODO: 이미지 추가 - 파일명: Zero-to-MLOps-4-1.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Ffa04a8a5-9297-402e-883b-433125f0cb9a%2FZero-to-MLOps-4-1.png?table=block&id=366e9213-ce3c-4974-8b77-14c4ee443a19&cache=v2 -->
 
-![그림 4-1. 4장 데이터 관리의 구성요소와 도구들 (데이터 라벨링, 데이터 버전 관리, 피처 스토어)]()
+![그림 4-1. 4장 데이터 관리의 구성요소와 도구들 (데이터 라벨링, 데이터 버전 관리, 피처 스토어)](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-1/1.png)
 
 
 그림 4-1. *4장 데이터 관리*의 구성요소와 도구들 (데이터 라벨링, 데이터 버전 관리, 피처 스토어)
@@ -44,7 +44,7 @@ toc = true
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fab34d8eb-ce29-4ce3-b4e4-23153ce358f3%2FUntitled.png?table=block&id=0935f577-c2f4-4a74-b428-fa861e19da17&cache=v2 -->
 
-![그림 4-2. 비정형 / 반정형 / 정형 데이터 예시 (출처&gt; Developing Dynamic Packaging Applications Using Semantic Web-Based Integration)]()
+![그림 4-2. 비정형 / 반정형 / 정형 데이터 예시 (출처&gt; Developing Dynamic Packaging Applications Using Semantic Web-Based Integration)](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-1/2.png)
 
 
 *그림 4-2. 비정형 / 반정형 / 정형 데이터 예시 (출처>* [*Developing Dynamic Packaging Applications Using Semantic Web-Based Integration*](https://jorge-cardoso.github.io/publications/Papers/BC-2005-007-Idea-Pub-Dev-Dynamic-Packaging-Apps.pdf)*)*
@@ -94,7 +94,7 @@ toc = true
 
 <!-- TODO: 이미지 추가 - 파일명: Zero-to-MLOps-4-2.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fd85fcb5c-8b5e-4d46-a9d9-514a210fdd95%2FZero-to-MLOps-4-2.png?table=block&id=8fdace8b-aed6-4c02-add5-dbe08f407c3a&cache=v2 -->
 
-![그림 4-3. AWS SageMaker의 능동적 학습 프로세스 (출처&gt; https://aws.amazon.com/ko/sagemaker/data-labeling/what-is-data-labeling)]()
+![그림 4-3. AWS SageMaker의 능동적 학습 프로세스 (출처&gt; https://aws.amazon.com/ko/sagemaker/data-labeling/what-is-data-labeling)](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-1/3.png)
 
 
 그림 4-3. AWS SageMaker의 능동적 학습 프로세스 *(출처>* *<https://aws.amazon.com/ko/sagemaker/data-labeling/what-is-data-labeling>**)*
@@ -137,7 +137,7 @@ toc = true
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F00e4ea1e-2f9d-4f8e-ab2d-f11ea35e44ac%2FUntitled.png?table=block&id=e21a6b43-c5d3-4ecb-8a68-0badf6ccef3f&cache=v2 -->
 
-![그림 4-4. 더 많은 레이블이 지정된 학습 데이터를 얻는 방법 (출처&gt; http://ai.stanford.edu/blog/weak-supervision/)]()
+![그림 4-4. 더 많은 레이블이 지정된 학습 데이터를 얻는 방법 (출처&gt; http://ai.stanford.edu/blog/weak-supervision/)](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-1/4.png)
 
 
 *그림 4-4. 더 많은 레이블이 지정된 학습 데이터를 얻는 방법 (출처>* *<http://ai.stanford.edu/blog/weak-supervision/>**)*
@@ -196,7 +196,7 @@ Handling connection for 8080
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-07-02_오후_5.38.48.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fd2aab91e-2fad-46d9-a143-c7b753c8deaf%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-07-02_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_5.38.48.png?table=block&id=7fd4b9f5-ab9d-450f-b20a-e88a542cec27&cache=v2 -->
 
-![그림 4-5. Label Studio 로그인 화면]()
+![그림 4-5. Label Studio 로그인 화면](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-1/5.png)
 
 
 그림 4-5. Label Studio 로그인 화면
@@ -210,7 +210,7 @@ Handling connection for 8080
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-07-02_오후_5.38.23.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F6305b38a-548e-47ac-b011-7c0b53d09c95%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-07-02_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_5.38.23.png?table=block&id=0e16c80e-113b-4309-8587-12329925c2af&cache=v2 -->
 
-![그림 4-6. Label Studio 첫 화면]()
+![그림 4-6. Label Studio 첫 화면](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-1/6.png)
 
 
 그림 4-6. Label Studio 첫 화면
@@ -238,7 +238,7 @@ Handling connection for 8080
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-07-02_오후_6.58.10.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F63d85604-a39e-4641-8ac9-d07f476755d7%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-07-02_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_6.58.10.png?table=block&id=d51bcfa7-510c-482a-970f-f0ba44c1a0b4&cache=v2 -->
 
-![그림 4-7. Label Studio 프로젝트 생성]()
+![그림 4-7. Label Studio 프로젝트 생성](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-1/7.png)
 
 
 그림 4-7. Label Studio 프로젝트 생성
@@ -252,7 +252,7 @@ Bounding Box 라벨링 작업은 마우스로 오른쪽 미리 보기 화면에�
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-07-02_오후_7.12.45.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Ffef82c89-439a-4cc4-a214-01e99ec4ec50%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-07-02_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_7.12.45.png?table=block&id=d66f6e82-6edd-432d-aeda-9940348034e2&cache=v2 -->
 
-![그림 4-8. Label Studio Bounding Box 라벨링 작업 화면]()
+![그림 4-8. Label Studio Bounding Box 라벨링 작업 화면](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-1/8.png)
 
 
 그림 4-8. Label Studio Bounding Box 라벨링 작업 화면
@@ -266,7 +266,7 @@ Bounding Box 라벨링 작업은 마우스로 오른쪽 미리 보기 화면에�
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-07-02_오후_7.20.32.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fc24c5bae-194c-4187-9f67-47893436c4e0%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-07-02_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_7.20.32.png?table=block&id=bfd95c72-ca6b-4509-a4d0-0300539646f4&cache=v2 -->
 
-![그림 4-9. Label Studio 라벨 데이터 추출]()
+![그림 4-9. Label Studio 라벨 데이터 추출](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-1/9.png)
 
 
 그림 4-9. Label Studio 라벨 데이터 추출

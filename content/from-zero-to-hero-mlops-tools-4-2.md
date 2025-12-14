@@ -24,7 +24,7 @@ toc = true
 
 <!-- TODO: 이미지 추가 - 파일명: Zero-to-MLOps-4-10_(1).png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Fca4e6eab-bdb4-44b9-b031-3b2d92d2f037%2FZero-to-MLOps-4-10_(1).png?table=block&id=b465b2ce-e944-4148-b5eb-e636740b5b5e&cache=v2 -->
 
-![그림 4-10. 코드, 데이터, 모델의 버전 관리]()
+![그림 4-10. 코드, 데이터, 모델의 버전 관리](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/1.png)
 
 
 그림 4-10. 코드, 데이터, 모델의 버전 관리
@@ -76,7 +76,7 @@ $ git lfs install
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-09_오후_6.41.57.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F876857f7-6639-4e17-b13f-8fbc67a945db%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-09_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_6.41.57.png?table=block&id=68231b5f-58fd-4795-b457-f5a5f50cc246&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/2.png)
 
 
 Git LFS를 사용하려는 각 Git 저장소에서 Git LFS가 관리할 파일 유형을 설정합니다 (또는 `.gitattributes` 설정 파일을 직접 편집).
@@ -93,7 +93,7 @@ $ cat .gitattributes
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-09_오후_7.00.19.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F48e96e65-5fe6-41a5-b644-4113e2303418%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-09_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_7.00.19.png?table=block&id=5d246756-da5e-472c-98be-73dac107ed25&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/3.png)
 
 
 **Git LFS 사용**
@@ -111,7 +111,7 @@ $ git commit -m "Add new train/val dataset"
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-09_오후_7.07.43.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F82322a38-f6c3-4777-8f1f-ea79f000ab47%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-09_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_7.07.43.png?table=block&id=0719ddea-1b02-4d63-ac73-48080d40895d&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/4.png)
 
 
 Git LFS를 사용하는 주요 장점은 기존 Git 방식 그대로 데이터 버전 관리를 수행할 수 있다는 점입니다. 사용자는 익숙한 Git 명령어와 워크플로를 유지하면서도 대용량 파일을 효과적으로 관리할 수 있습니다. 그러나, 한 가지 주요 제한 사항은 GitHub과 같은 원격 저장소에서는 용량 제한을 초과하는 파일을 추가할 수 없다는 점입니다. 이로 인해, 사용자는 대용량 파일을 관리하는 데 있어 추가적인 도구가 필요해 집니다.
@@ -121,7 +121,7 @@ Git LFS를 사용하는 주요 장점은 기존 Git 방식 그대로 데이터 �
 
 <!-- TODO: 이미지 추가 - 파일명: dvc-work.gif, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Fc46c9a4e-1a84-4fc8-94f9-882346b3c363%2Fdvc-work.gif?table=block&id=210e00b6-2bf3-4edd-bc69-3d2d338b4f60&cache=v2 -->
 
-![그림 4-11. DVC 동작 방식 (출처&gt; https://github.com/iterative/dvc)]()
+![그림 4-11. DVC 동작 방식 (출처&gt; https://github.com/iterative/dvc)](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/5.gif)
 
 
 그림 4-11. DVC 동작 방식 *(출처>* *<https://github.com/iterative/dvc>**)*
@@ -172,7 +172,7 @@ $ dvc init
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-09_오후_10.00.03.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F258cbf7f-7546-4c32-a54f-11d7928438d0%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-09_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_10.00.03.png?table=block&id=a4faceca-0ecf-416b-98d6-95dfff3c86aa&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/6.png)
 
 
 Git 저장소에 DVC와 관련된 몇가지 설정 파일들이 추가 됩니다:
@@ -186,7 +186,7 @@ $ git status
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-09_오후_10.00.44.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F154819a6-c6ca-4536-9102-98e33ba23dc4%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-09_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_10.00.44.png?table=block&id=c4ad9015-da1d-4f00-8ad2-f186da0f700d&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/7.png)
 
 
 생성된 DVC 설정 파일들을 커밋하면 DVC 사용 준비가 된 것 입니다.
@@ -209,7 +209,7 @@ $ dvc get https://github.com/iterative/dataset-registry \
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-09_오후_10.15.50.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F83045bb5-7d98-456b-8ee3-86033fa833ac%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-09_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_10.15.50.png?table=block&id=11a74d77-f933-43e4-ae19-6ad795beb02e&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/8.png)
 
 
 데이터 추적을 시작하려면 `dvc add` 명령어를 사용합니다:
@@ -223,7 +223,7 @@ $ dvc add data/data.xml
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-09_오후_10.18.44.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Fc5a5a31e-5258-4e86-8dba-fe4bb3a0de12%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-09_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_10.18.44.png?table=block&id=35fba67f-8d6a-4285-a624-df26c42c5d99&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/9.png)
 
 
 DVC는 추가된 파일에 대한 정보를 `data/data.xml.dvc`라는 특수한 .dvc 파일에 저장합니다. 이 작고 사람이 읽을 수 있는 (human-readable) 메타데이터 파일은 Git 추적을 위해 원본 데이터의 위치 표시자 역할을 합니다.
@@ -240,7 +240,7 @@ $ git commit -m "Add raw data"
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-09_오후_10.33.15.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Fb2f9be25-59d1-4b36-9a47-a736fc93a910%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-09_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_10.33.15.png?table=block&id=02a9a913-0052-407b-94e7-088e56518ced&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/10.png)
 
 
 데이터의 메타데이터는 소스 코드와 함께 Git으로 버전이 관리되고, `data/data.xml` 원본 데이터 파일은 `data/.gitignore`에 추가되어 추적하지 않습니다.
@@ -261,7 +261,7 @@ $ dvc remote add -d myremote /tmp/dvcstore
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-09_오후_11.10.15.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Fa3bd5429-1c4f-4fdb-957d-ad47ee429698%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-09_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_11.10.15.png?table=block&id=8b6dcb3e-d069-413f-a9f9-7b5f4878bd5c&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/11.png)
 
 
 ℹ️
@@ -285,7 +285,7 @@ $ dvc push
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-09_오후_11.16.35.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Fa6eebb93-11de-4675-8c6a-8e41064bf76d%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-09_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_11.16.35.png?table=block&id=157cd97e-50f0-49aa-806e-7a0739237984&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/12.png)
 
 
 **데이터 가져오기**
@@ -301,7 +301,7 @@ $ dvc pull
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-09_오후_11.38.16.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Fe45000f6-9bf5-4858-81f5-2e58a1f0593d%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-09_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_11.38.16.png?table=block&id=cc5d3d11-1b19-4e40-be41-f496c0f0d98c&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/13.png)
 
 
 **데이터 업데이트**
@@ -324,7 +324,7 @@ $ dvc add data/data.xml
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-09_오후_11.42.33.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F226c5623-e59e-44a3-a210-a7d8527f806f%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-09_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_11.42.33.png?table=block&id=0c451ca0-eed8-40aa-ad73-e5a898628755&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/14.png)
 
 
 이제 `dvc push`를 실행하여 원격 저장소에 변경 사항을 업로드한 다음, `git commit`을 실행하여 변경 사항을 추적할 수 있습니다:
@@ -339,7 +339,7 @@ $ git commit data/data.xml.dvc -m "Dataset updates"
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-09_오후_11.44.36.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F41ed5760-5caa-4f26-845b-6bf18341c744%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-09_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_11.44.36.png?table=block&id=24345d2d-c773-4b44-91d6-01bb3f612786&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/15.png)
 
 
 **데이터 버전 간 전환**
@@ -356,7 +356,7 @@ $ dvc checkout
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-09_오후_11.49.51.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F41d68106-88eb-43a3-b172-a14ba1d02d14%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-09_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_11.49.51.png?table=block&id=0e5b6cf7-8b0a-4dbb-92c8-3c1fb6f798be&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/16.png)
 
 
 DVC는 데이터 버전 관리뿐만 아니라 데이터 파이프라인 구축, 실험 관리, 모델 관리 등의 다양한 기능을 제공합니다. 그러나 이러한 기능들에 대해서는 DVC 대신 다른 도구들을 사용할 계획입니다. 예를 들어, 데이터 파이프라인 구축에는 Airflow를, 실험 및 모델 관리에는 MLFlow를 활용할 예정입니다. 이는 각각의 영역에서 더 특화된 기능과 유연성을 제공하기 때문입니다.
@@ -376,7 +376,7 @@ DVC는 데이터 버전 관리뿐만 아니라 데이터 파이프라인 구축,
 
 <!-- TODO: 이미지 추가 - 파일명: feature_store.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F9ad96494-2376-448f-b5f6-79504e303ecb%2Ffeature_store.png?table=block&id=cd1e43f7-66a1-48b9-98ce-390894a4bf6f&cache=v2 -->
 
-![그림 4-12. 피처 스토어 (출처&gt; https://www.featurestore.org/what-is-a-feature-store)]()
+![그림 4-12. 피처 스토어 (출처&gt; https://www.featurestore.org/what-is-a-feature-store)](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/17.png)
 
 
 그림 4-12. 피처 스토어 *(출처>* *<https://www.featurestore.org/what-is-a-feature-store>**)*
@@ -408,7 +408,7 @@ DVC는 데이터 버전 관리뿐만 아니라 데이터 파이프라인 구축,
 
 <!-- TODO: 이미지 추가 - 파일명: feast-home-hero4x.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F4b3659dd-e7cb-40b3-999f-d73451b49b9f%2Ffeast-home-hero4x.png?table=block&id=5f2cdece-327a-4159-9851-b8f1494e7d70&cache=v2 -->
 
-![그림 4-13. FEAST 아키텍처 (출처&gt; https://feast.dev)]()
+![그림 4-13. FEAST 아키텍처 (출처&gt; https://feast.dev)](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/18.png)
 
 
 그림 4-13. FEAST 아키텍처 *(출처>* *[https://feast.dev](https://feast.dev/)**)*
@@ -442,7 +442,7 @@ $ feast init some_ml_project
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-10_오후_3.18.53.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F0c060e49-c511-479b-be17-74f58dc5de37%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-10_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_3.18.53.png?table=block&id=fa478cb6-bf6b-4009-bcc2-b22d27352f14&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/19.png)
 
 
 생성된 샘플 `feature_repo` 내용을 살펴보겠습니다.
@@ -749,7 +749,7 @@ pd.read_parquet("data/driver_stats.parquet")
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Fcd1e4d81-6807-4f31-9d53-9ead4154f546%2FUntitled.png?table=block&id=197dfd48-623d-49f9-a023-034e7dff8dd1&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/20.png)
 
 
 **3 단계. 샘플 워크플로 실행**
@@ -783,7 +783,7 @@ $ feast apply
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-10_오후_4.54.35.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Ffc08d56c-01a6-4eb6-8678-ecf3ca9214eb%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-10_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_4.54.35.png?table=block&id=3b157c01-de10-422f-9166-43f78ff7112c&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/21.png)
 
 
 **3b 단계: 학습 데이터 생성 또는 일괄 예측 모델 강화하기**
@@ -851,7 +851,7 @@ print(training_df.head())
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-10_오후_5.04.06.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F94dc2104-3393-4e6c-b8b6-7fd97a257364%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-10_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_5.04.06.png?table=block&id=f3e018bd-2b75-4462-a360-ea1f2185578a&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/22.png)
 
 
 배치 예측을 실행하려면 기본적으로 `get_historical_features` 호출로 피처를 생성해야 하지만 현재 타임스탬프를 사용해야 합니다.
@@ -884,7 +884,7 @@ print(training_df.head())
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-10_오후_5.14.02.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Fced5b818-fc21-4cc1-920e-dd4f5bdde064%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-10_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_5.14.02.png?table=block&id=9034952c-b42e-45e0-a83b-94ae792a62a9&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/23.png)
 
 
 **3c 단계: 온라인 스토어에 배치 피처 수집**
@@ -901,7 +901,7 @@ $ feast materialize-incremental $CURRENT_TIME
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-10_오후_5.17.54.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Fa8e2714b-dae8-42fe-a1ac-9ba95a989b61%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-10_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_5.17.54.png?table=block&id=57f3c8b1-8843-4334-b3b3-0ff00c0be59d&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/24.png)
 
 
 **3d 단계: 추론을 위한 특징 벡터 가져오기**
@@ -937,7 +937,7 @@ pprint(feature_vector)
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-10_오후_5.21.05.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Fe3239996-4497-4338-b805-51fce8323fd4%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-10_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_5.21.05.png?table=block&id=17a46ed7-d2b8-454b-a04a-9ab4f453255c&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/25.png)
 
 
 **3e 단계: 피처 서비스를 사용하여 온라인 피처 가져오기**
@@ -980,7 +980,7 @@ pprint(feature_vector)
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-10_오후_5.31.46.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Fe898a682-97bc-40e7-b826-2249a4f3bec9%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-10_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_5.31.46.png?table=block&id=90fe92ea-e3fe-47cc-aa88-ab533d455a93&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/26.png)
 
 
 **4단계: 웹 UI로 피처 탐색하기 (experimental)**
@@ -996,7 +996,7 @@ $ feast ui
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-10_오후_5.35.33.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F51f90fed-f2cf-4345-976f-889563650f3e%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-10_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_5.35.33.png?table=block&id=2b9fda38-fece-4921-8c65-fa9419bb82fb&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/27.png)
 
 
 **5단계:** `test_workflow.py` **다시 검토하기**

@@ -20,7 +20,7 @@ toc = true
 
 <!-- TODO: 이미지 추가 - 파일명: codestral.drawio.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Ff64bdb87-0c86-4059-964b-09bc49f9fa00%2Fcodestral.drawio.png?table=block&id=44083d93-a33c-43f7-b3f7-09a04161b7c8&cache=v2 -->
 
-![시스템 구성도]()
+![시스템 구성도](https://img-src.io/taehun/ollama-codestral/1.png)
 
 
 시스템 구성도
@@ -102,7 +102,7 @@ curl http://192.168.1.123:11434/api/generate -d '{
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2024-07-14_오후_4.26.35.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F35a4bbd8-f2b4-45e3-894a-12e289ab41e1%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2024-07-14_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_4.26.35.png?table=block&id=8e328608-e49c-4ccf-9602-d97ff1f1a095&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/ollama-codestral/2.png)
 
 
 2. 우측 아래 Continue 확장을 클릭하여, 설정 파일을 수정 합니다. → *Configure autocomplete options* 메뉴 선택
@@ -110,7 +110,7 @@ curl http://192.168.1.123:11434/api/generate -d '{
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2024-07-14_오후_4.28.12.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Fbc596403-b148-4921-8984-d82c0e799d89%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2024-07-14_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_4.28.12.png?table=block&id=37cabfa2-9d3d-4f5b-8ded-9130777b8ef4&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/ollama-codestral/3.png)
 
 
 3. 설정파일의 `models` 항목과 `tabAutocompleteModel` 항목을 아래와 같이 수정합니다. GPU 서버 주소는 `192.168.1.123` 으로 가정 했습니다.
@@ -143,7 +143,7 @@ curl http://192.168.1.123:11434/api/generate -d '{
 
 <!-- TODO: 이미지 추가 - 파일명: rag-coding-architecture-tabnine.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F5a1a392d-f2f1-4817-b969-483d1ca1d214%2Frag-coding-architecture-tabnine.png?table=block&id=c552f20d-4631-4957-a108-211396e28931&cache=v2 -->
 
-![그림 출처&gt; https://thenewstack.io/enhancing-ai-coding-assistants-with-context-using-rag-and-sem-rag/]()
+![그림 출처&gt; https://thenewstack.io/enhancing-ai-coding-assistants-with-context-using-rag-and-sem-rag/](https://img-src.io/taehun/ollama-codestral/4.png)
 
 
 *그림 출처>* *<https://thenewstack.io/enhancing-ai-coding-assistants-with-context-using-rag-and-sem-rag/>*

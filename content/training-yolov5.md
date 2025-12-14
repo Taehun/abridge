@@ -20,7 +20,7 @@ https://colab.research.google.com/drive/1AeZKMjhWBxNUMb96lLQ-ZKAEaiypg0as](https
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F4d444235-667a-4e04-b1b2-d119b1be7ec3%2FUntitled.png?table=block&id=03fbb1ac-ff8a-4f9a-86b4-a4d8d8341792&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/training-yolov5/1.png)
 
 
 ## **YOLOv5 설치**
@@ -56,7 +56,7 @@ open runs/detect/exp/680e8885-1556-4710-aa94-ba80f5ab4f49.jpg # MacOS
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F36b99813-5891-4864-9aad-7c8b02067a53%2FUntitled.png?table=block&id=aa30ffb8-7a5c-4c71-b8dc-aed2477402cb&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/training-yolov5/2.png)
 
 
 YOLOv5에는 간단하게 YOLOv5 모델 추론을 테스트 할 수 있는 `detect.py` 파이썬 스크립트 파일이 포함되어 있습니다. 이 스크립트를 실행하여 모델 추론시 필요한 모델 파일은 [최신 YOLOv5 릴리즈](https://github.com/ultralytics/yolov5/releases)에서 자동으로 다운로드 됩니다. 추론 후 결과는 `runs/detect/exp[실험 번호]` 폴더에 기록됩니다. 사용법은 다음과 같습니다:
@@ -94,7 +94,7 @@ results.print()  # or .show(), .save(), .crop(), .pandas(), etc.
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F7583568b-9cb2-457c-8a8b-433220e20125%2FUntitled.png?table=block&id=6c86c942-2e02-46d6-8c55-168ce92c160f&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/training-yolov5/3.png)
 
 
 YOLOv5 객체 감지 모델 학습에 사용하는 데이터셋은 다양한 방식으로 마련할 수 있습니다. 제품에서 사용할 이미지와 유사한 공개 데이터셋을 사용하거나 비공개 데이터셋을 구매해서 사용 할 수도 있을것 입니다. (공개 데이터셋 사용시에는 라이센스 위반 여부를 반드시 확인후 사용하시기 바랍니다.) 아니면, 제품에서 사용할 데이터를 직접 수집하여 학습 할 수도 있을 것 입니다. 여기서는 커스텀 데이터셋으로 YOLOv5 모델 학습하는 내용이므로 직접 수집한 데이터라고 가정 하겠습니다.
@@ -128,7 +128,7 @@ YOLOv5 모델 학습에는 이미지 데이터를 사용하지만, 데이터 수
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Ff633bc2e-bf4f-45ad-809e-5cd565e40002%2FUntitled.png?table=block&id=b37adca8-45be-44de-bdad-1d62fbc35bd1&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/training-yolov5/4.png)
 
 
 DB에 추론할 대상이 되는 값이 들어 있는 **정형 데이터(Structured Data 또는 Tabular Data)**와 달리, 딥러닝 모델에서 사용하는 이미지나 사운드와 같은 **비정형 데이터(Unstructured Data)**는 사람이 직접 라벨링을 하여 어노테이션 데이터를 생성합니다. (라벨링이 필요한 데이터가 많아지면 딥러닝 워크플로우 중에서 가장 많은 리소스가 드는 단계가 됩니다.)
@@ -299,7 +299,7 @@ names: [ 'car', 'truck', 'pedestrian', 'bicyclist', 'light' ]  # class names
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F688e5d4e-b3ed-40cb-8d9e-fcd9a070c290%2FUntitled.png?table=block&id=4ac99a29-d8a2-4345-9664-fad46a8bc627&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/training-yolov5/5.png)
 
 
 ## **학습 스크립트 실행**
@@ -327,13 +327,13 @@ python train.py --batch-size 16 --epochs 10 --data custom_dataset.yaml --weights
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fa677ba43-db45-4632-ab18-6ddb7c2c1522%2FUntitled.png?table=block&id=4161697f-5ed5-4bff-9bd4-99f0c2a08815&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/training-yolov5/6.png)
 
 
 
 <!-- TODO: 이미지 추가 - 파일명: train_batch0.jpg, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F4003402a-549a-4f20-acfb-c5cd764a1eb5%2Ftrain_batch0.jpg?table=block&id=70698cc3-354e-4a71-9c7c-e4c1b8ef6c41&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/training-yolov5/7.jpg)
 
 
 학습 결과는 `runs/train/exp[실험번호]/results.csv` 파일에 저장되어 있습니다.
@@ -346,7 +346,7 @@ plot_results('./runs/train/exp/results.csv')  # plot 'results.csv' as 'results.p
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F4793af86-9772-4593-b94e-f62c2b697f70%2FUntitled.png?table=block&id=440c092c-1ad7-47ba-af32-b7e2cbee40d9&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/training-yolov5/8.png)
 
 
 ## **학습된 모델 추론 테스트**
@@ -361,7 +361,7 @@ open runs/detect/exp2/1479503426306710339.jpg
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fa0874edb-189e-4169-b64e-5e410a5b9a85%2FUntitled.png?table=block&id=0dc3e28e-5e43-47ad-9ed9-7177c421bfb6&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/training-yolov5/9.png)
 
 
 ## **참고링크**

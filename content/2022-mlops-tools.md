@@ -14,7 +14,7 @@ toc = true
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fd0cb508e-1028-486b-877c-d77cad6dbd23%2FUntitled.png?table=block&id=876ae6e0-8dd7-4921-9b79-af1a96f27865&cache=v2 -->
 
-![제가 선택한 MLOps 툴체인. 당신의 선택은?]()
+![제가 선택한 MLOps 툴체인. 당신의 선택은?](https://img-src.io/taehun/2022-mlops-tools/1.png)
 
 
 *제가 선택한 MLOps 툴체인. 당신의 선택은?*
@@ -288,7 +288,7 @@ XAI는 AI 모델이 특정 결정을 내린 원인과 그 작동 원리를 사�
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F8992623c-ea6e-49bc-8641-f20528ab445f%2FUntitled.png?table=block&id=eca6cb72-c4f6-45c9-a70c-81385e4c8073&cache=v2 -->
 
-![선택 장애를 일으키는 수많은 MLOps 도구들...AI/ML 분야의 또다른 겨울이 오지 않는 이상 줄어들것 같지는 않습니다.]()
+![선택 장애를 일으키는 수많은 MLOps 도구들...AI/ML 분야의 또다른 겨울이 오지 않는 이상 줄어들것 같지는 않습니다.](https://img-src.io/taehun/2022-mlops-tools/2.png)
 
 
 *선택 장애를 일으키는 수많은 MLOps 도구들...AI/ML 분야의 또다른 겨울이 오지 않는 이상 줄어들것 같지는 않습니다.*

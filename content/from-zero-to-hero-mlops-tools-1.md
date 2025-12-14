@@ -48,7 +48,7 @@ MLOps는 데이터 과학자와 운영 팀 간의 협업을 개선하고 시장 
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fdbc73115-0c10-4716-b917-0ebcf8b32a1b%2FUntitled.png?table=block&id=f524c3cd-d027-4ad2-af41-36d6a356dc56&cache=v2 -->
 
-![그림 1-1. MLOps = ML + Dev + Ops (출처&gt; https://www.phdata.io/blog/mlops-vs-devops-whats-the-difference)]()
+![그림 1-1. MLOps = ML + Dev + Ops (출처&gt; https://www.phdata.io/blog/mlops-vs-devops-whats-the-difference)](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-1/1.png)
 
 
 그림 1-1. MLOps = ML + Dev + Ops (*출처>* *[https://www.phdata.io/blog/mlops-vs-devops-whats-the-difference](https://www.phdata.io/blog/mlops-vs-devops-whats-the-difference/)**)*
@@ -83,7 +83,7 @@ MLOps와 AIOps 사이에는 몇 가지 유사점이 있지만 목표와 애플�
 
 <!-- TODO: 이미지 추가 - 파일명: mlops-process.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F21f75401-382e-4cf9-8d1c-bef9d37da06b%2Fmlops-process.png?table=block&id=6fade81d-d5a6-4fb8-8dc6-4c0acd055435&cache=v2 -->
 
-![그림 1-2. MLOps 프로세스]()
+![그림 1-2. MLOps 프로세스](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-1/2.png)
 
 
 그림 1-2. MLOps 프로세스
@@ -180,7 +180,7 @@ MLOps 프로세스에서 데이터 수집 단계는 프로젝트에서 사용할
 
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F4514ce99-eff2-4ef0-8c83-ca2c03a1e73e%2FUntitled.png?table=block&id=c655c5ed-ed08-475e-b1dd-3cd7b2d6f419&cache=v2 -->
 
-![그림 1-3. 데이터셋 분할 (출처&gt; https://itwiki.kr/w/데이터_분할)]()
+![그림 1-3. 데이터셋 분할 (출처&gt; https://itwiki.kr/w/데이터_분할)](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-1/3.png)
 
 
 그림 1-3. 데이터셋 분할 *(출처>* *[https://itwiki.kr/w/데이터\_분할](https://itwiki.kr/w/%EB%8D%B0%EC%9D%B4%ED%84%B0_%EB%B6%84%ED%95%A0)**)*
@@ -249,7 +249,7 @@ A/B 테스트에서는 실험 그룹과 제어 그룹을 구성한 후, 일정 �
 
 <!-- TODO: 이미지 추가 - 파일명: mlops-components1.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fa1e34bd5-4c96-4e00-8ea5-3d9a8d10f801%2Fmlops-components1.png?table=block&id=47240589-4c22-4140-b036-bf6e0315a4f3&cache=v2 -->
 
-![그림 1-4. MLOps 프로세스와 구성 요소]()
+![그림 1-4. MLOps 프로세스와 구성 요소](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-1/4.png)
 
 
 그림 1-4. MLOps 프로세스와 구성 요소

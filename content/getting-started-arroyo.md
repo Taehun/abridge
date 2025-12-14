@@ -18,7 +18,7 @@ toc = true
 
 <!-- TODO: 이미지 추가 - 파일명: arroyo.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Fc50ac47f-e6db-40b3-83c6-b1f50b1a52bb%2Farroyo.png?table=block&id=1d0130b9-2309-46eb-b5bf-b873532f02d3&cache=v2 -->
 
-![그림 1. Arroyo UI 스크린샷 (출처&gt; https://doc.arroyo.dev/introduction)]()
+![그림 1. Arroyo UI 스크린샷 (출처&gt; https://doc.arroyo.dev/introduction)](https://img-src.io/taehun/getting-started-arroyo/1.png)
 
 
 그림 1. Arroyo UI 스크린샷 (*출처>* *<https://doc.arroyo.dev/introduction>**)*
@@ -76,7 +76,7 @@ Arroyo와 Apache Flink는 모두 오픈소스 스트림 처리 엔진입니다. 
 
 <!-- TODO: 이미지 추가 - 파일명: arroyo_arch.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Fbf93f162-0cfb-4cca-a6ed-971c36c0b021%2Farroyo_arch.png?table=block&id=efbc892c-3fcf-4f24-9a81-ffde58787ae0&cache=v2 -->
 
-![그림 2. Arroyo 아키텍처]()
+![그림 2. Arroyo 아키텍처](https://img-src.io/taehun/getting-started-arroyo/2.png)
 
 
 그림 2. Arroyo 아키텍처
@@ -196,7 +196,7 @@ Arroyo UI의 `Connections` 메뉴의 `Create Connection` 버튼을 클릭합니�
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2024-03-03_오후_9.13.19.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Fc7bc80ed-2834-4415-85ed-8bab89c7cd9e%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2024-03-03_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_9.13.19.png?table=block&id=4f47742f-97b5-41f0-84f4-a46cdc9052c0&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/getting-started-arroyo/3.png)
 
 
 - `Connections` → `Create Connection`→ Nexmark 카드 메뉴의 `Create` 클릭
@@ -206,7 +206,7 @@ Arroyo UI의 `Connections` 메뉴의 `Create Connection` 버튼을 클릭합니�
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2024-03-03_오후_9.21.18.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Fae2f9e53-faa0-4604-b858-e74deb9c0db5%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2024-03-03_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_9.21.18.png?table=block&id=c89e095a-b2cf-4d5e-874b-d653c47606e7&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/getting-started-arroyo/4.png)
 
 
 - **Event rate (messages / sec):** `100` → `Next` 클릭
@@ -216,7 +216,7 @@ Arroyo UI의 `Connections` 메뉴의 `Create Connection` 버튼을 클릭합니�
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2024-03-03_오후_9.23.08.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F019eb491-c598-4a3f-8163-2cf5c03bae89%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2024-03-03_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_9.23.08.png?table=block&id=b1524803-a2c8-4f9c-a4d2-c7d3437f60dc&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/getting-started-arroyo/5.png)
 
 
 - **Connection Name**: `nexmark` → `Test Connection` 클릭 → `Create` 클릭
@@ -228,7 +228,7 @@ Arroyo UI의 `Connections` 메뉴의 `Create Connection` 버튼을 클릭합니�
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2024-03-03_오후_9.30.29.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F0c0f0e45-c8f5-4aa1-a48c-db5ead0f32ca%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2024-03-03_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_9.30.29.png?table=block&id=cf8e1a88-4d6e-4ee3-a6e7-125bb4e08742&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/getting-started-arroyo/6.png)
 
 
 아래와 같이 간단한 쿼리를 작성해서 테스트 해 봅시다.
@@ -242,7 +242,7 @@ SELECT bid FROM nexmark WHERE bid IS NOT NULL;
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2024-03-03_오후_9.39.23.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Fb2859520-0813-421b-8f93-04ff2c3f378c%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2024-03-03_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_9.39.23.png?table=block&id=bdcd48e5-933b-4360-bef5-856cd3f9acc3&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/getting-started-arroyo/7.png)
 
 
 스트리밍 파이프라인은 어떤 식으로든 시간을 다루는 작업을 수반합니다. Arroyo는 데이터의 시간 특성에 대한 계산을 표현하는 몇 가지 다른 방법을 지원합니다. 시간을 기준으로 집계를 수행하기 위해 슬라이딩 창(SQL에서는 hop이라고 함)을 추가해 보겠습니다:
@@ -257,7 +257,7 @@ GROUP BY hop(interval '2 seconds', interval '10 seconds');
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2024-03-03_오후_9.45.56.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F06d9a589-bd07-4cc6-b6e6-54739d723baa%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2024-03-03_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_9.45.56.png?table=block&id=d25e4418-e7ee-4c5c-b7dc-cca7378469a6&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/getting-started-arroyo/8.png)
 
 
 이 쿼리는 10초 크기의 슬라이딩 윈도우에서 집계 함수(`avg`)를 계산하여 2초마다 업데이트합니다. 이를 Preview로 확인 해보면 지난 10초 동안의 모든 입찰에 대한 평균 입찰가에 대한 결과를 2초마다 생성하는 등 예상한 대로 작동하는 것을 확인할 수 있습니다.
@@ -278,7 +278,7 @@ SELECT * FROM (
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2024-03-03_오후_9.47.13.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Faed1ad7e-8406-48c9-b2c4-a7f14def93ac%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2024-03-03_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_9.47.13.png?table=block&id=7a371a8e-e625-47c3-b176-80c94c5eab49&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/getting-started-arroyo/9.png)
 
 
 SQL 쿼리로 작성한 파이프라인이 마음에 들면, 실제로 파이프라인을 실행할 수 있습니다. `Start Pipeline` 을 클릭하고 파이프라인 이름을 지정 합니다. (ex> `top_auctions`) `Start` 버튼을 클릭하여 파이프라인을 실행 합니다.
@@ -288,13 +288,13 @@ SQL 쿼리로 작성한 파이프라인이 마음에 들면, 실제로 파이프
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2024-03-03_오후_9.58.11.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F413e1a7e-1d5b-42eb-b9f2-ab23c623bedd%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2024-03-03_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_9.58.11.png?table=block&id=7dbe1041-a5a4-4474-afd3-eb79dc20b630&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/getting-started-arroyo/10.png)
 
 
 
 <!-- TODO: 이미지 추가 - 파일명: 스크린샷_2024-03-03_오후_9.58.18.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F8136872e-a144-4926-8d74-afac92e973b5%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2024-03-03_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_9.58.18.png?table=block&id=dbc5ccec-f3ca-4955-8858-b7c6daf866f6&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/getting-started-arroyo/11.png)
 
 
 ## 참고자료

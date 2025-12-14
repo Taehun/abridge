@@ -43,7 +43,7 @@ Taehun • Updated Apr 28, 2024](https://github.com/Taehun/rsquery)
 
 <!-- TODO: 이미지 추가 - 파일명: rsquery.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F5f93c5c8-e5d2-42ae-9fcc-11c739b9c31c%2Frsquery.png?table=block&id=d570383e-3269-492f-b0d1-ff5d1707fbc7&cache=v2 -->
 
-![notion image]()
+![notion image](https://img-src.io/taehun/rsquery-review/1.png)
 
 
 - Web → Rest API Server (POST 요청)
