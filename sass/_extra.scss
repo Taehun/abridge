@@ -307,16 +307,10 @@ main nav {
 // ============================================================================
 // When article page (not post-card) exists, make main a flex container
 main:has(article:not(.post-card)) {
-  display: flex !important;
-  justify-content: center;
-  align-items: stretch;  // Both article and sblock take full height for sticky to work
-  gap: 2rem;
-  overflow: visible !important;  // Override overflow to allow sticky positioning
-
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    align-items: stretch;
-  }
+  display: block !important;
+  position: relative;
+  overflow: visible !important;
+  max-width: 100% !important;
 }
 
 // ============================================================================
@@ -355,13 +349,11 @@ article > span:first-of-type {
 // ============================================================================
 article:not(.post-card) {
   max-width: 720px;  // Optimal reading width (~65-75 chars per line)
-  flex: 0 1 720px;   // Don't grow, can shrink, base width 720px
   font-size: 0.6875rem;  // 11px
   line-height: 1.8;      // Comfortable line height
-  width: 100%;           // Ensure full width on mobile
-  min-width: 0;          // Allow shrinking below content size
   box-sizing: border-box;
   padding: 0 1rem;       // Add horizontal padding for mobile
+  margin: 0 auto;        // Center the article horizontally
 
   @media (min-width: $mobile-breakpoint) {
     padding: 0;          // Remove padding on desktop
@@ -424,16 +416,16 @@ article:not(.post-card) {
 .sblock {
   display: none;
   width: 200px;
-  flex-shrink: 0;
-  align-self: stretch;  // Ensure full height for sticky to work
 
-  @media (min-width: 1024px) {
+  // 본문(720px) + 목차(200px) + 여백 = 최소 1200px 필요
+  @media (min-width: 1200px) {
     display: block;
+    position: fixed;
+    right: calc((100vw - 720px) / 2 - 200px - 3rem);
+    top: calc(64px + 2rem);
   }
 
   .blockdiv {
-    position: sticky;
-    top: calc(64px + 1.5rem);
     background: var(--c1);
     border: 1px solid var(--c3);
     border-radius: 12px;
