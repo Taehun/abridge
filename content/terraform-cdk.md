@@ -15,13 +15,10 @@ DevOps 성숙도가 높은 기업이나 팀이라면 *IaC (Infrastructure as Co
 
 그 중 대표적인 IaC 툴인 Terraform은 많은 자료들이 있지만, *HCL (HashiCorp Configuration Language)* 이라는 전용 언어를 익혀야 하는 약간의 진입 장벽이 있습니다. 직관적이고 가독성이 높은 쉬운 언어이지만, 새로운 언어를 배운다는 것은 언제나 심리적 허들이 생기기 마련입니다. HCL을 사용하지 않고, 익숙한 Python과 같은 언어로 인프라 코드를 작성할 수 있는 **CDKTF (CDK for Terraform)** 를 소개해 드리겠습니다.
 
-
-<!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F692be476-06c8-45fe-9200-cd61070e73ad%2FUntitled.png?table=block&id=80596d4d-3a0f-4f5f-ad50-c1ec5bd44736&cache=v2 -->
-
-![• CDKTF 개요 (출처&gt; https://www.terraform.io/cdktf )](https://img-src.io/taehun/terraform-cdk/1.png?w=800)
-
-
-• CDKTF 개요 (*출처>*[*https://www.terraform.io/cdktf*](https://www.terraform.io/cdktf) )
+<p align="center">
+<img src="https://img-src.io/taehun/terraform-cdk/1.png?w=800" alt="CDKTF 개요"><br>
+<strong>CDKTF 개요</strong> <i>출처> <a href=https://www.terraform.io/cdktf>https://www.terraform.io/cdktf</a></i>
+</p>
 
 ## CDKTF CLI 설치
 
@@ -76,9 +73,9 @@ Options can be specified via environment variables with the "CDKTF_" prefix (e.g
 CDKTF 프로젝트 폴더를 생성하고 초기화 합니다.
 
 ```bash
-$ mkdir cdktf-example
-$ cd cdktf-example
-$ cdktf init --template=python --local
+mkdir cdktf-example
+cd cdktf-example
+cdktf init --template=python --local
 ```
 
 Python 코드로 인프라를 정의할 것이므로 `--template` 옵션은 `python`으로 설정 하였습니다. `--local` 옵션은 `.tfstate` 파일을 로컬에서 관리한다는 설정이므로 실행시 경고 메세지를 띄웁니다. 실제 프로젝트 환경에는 `--local` 옵션을 생략하여 [Terraform Cloud](https://cloud.hashicorp.com/products/terraform)과 같은 곳에서 `.tfstate` 파일을 중앙 집중식으로 관리하시기 바랍니다.
@@ -87,7 +84,7 @@ Python 코드로 인프라를 정의할 것이므로 `--template` 옵션은 `
 
 Terraform은 플러그인 형태로 사용할 수 있는 몇가지 사전 빌드된 provider를 제공합니다. AWS provider 예제는 많이 있으니, 여기서는 GCP (Google Cloud Platform) 인프라 생성 예제를 위해 Google provider를 추가 하겠습니다. Terraform으로 GCP 인프라 생성 및 삭제를 위해서는 필요한 API 활성화 및 서비스 계정 `.json` 키 파일이 필요 합니다. [Terraform 시작하기](https://cloud.google.com/docs/terraform/get-started-with-terraform?hl=ko) 문서와 [서비스 계정 생성 및 관리](https://cloud.google.com/iam/docs/creating-managing-service-accounts?hl=ko) 문서를 참고하시기 바랍니다.
 
-```
+```bash
 cdktf provider add "google@~>4.0"
 ```
 
@@ -183,10 +180,10 @@ Please review the diff output above for gcp_instance
 
 [GCP 콘솔](https://console.cloud.google.com/)에 접속하여 `Compute Engine` -> `VM 인스턴스` 메뉴를 클릭하면 아래와 같이 새로운 VM이 생성되어 있는 것을 확인 하실 수 있습니다.
 
-
-<!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fad3acd57-11c9-459b-b3dd-a7b12e651e19%2FUntitled.png?table=block&id=c351c901-9473-4e20-9fef-fe81bb215aaa&cache=v2 -->
-
-![notion image](https://img-src.io/taehun/terraform-cdk/2.png?w=800)
+<p align="center">
+<img src="https://img-src.io/taehun/terraform-cdk/2.png?w=800" alt="그림 2. GCP 콘솔에서 VM 인스턴스 확인"><br>
+<strong>그림 2. GCP 콘솔에서 VM 인스턴스 확인</strong>
+</p>
 
 
 ## 인프라 정리하기
@@ -215,11 +212,8 @@ Terraform 사용 경험이 있는 분에게는 CDKTF를 아직 실 프로젝트�
 그럼, 이미 Terraform HCL을 잘쓰고 있는 팀이나 엔지니어에게는 전혀 쓸모 없는 것인가?는 좀 더 고민해 봐야 할 부분입니다. [4 Use Cases for the Terraform CDK](https://medium.com/codex/4-use-cases-for-the-terraform-cdk-5864630d147e)라는 기사에서 아래와 같은 CDKTF의 4가지 사용 예를 정리하였습니다:
 
 - 동적 자원 속성 (Dynamic Resource Attributes)
-
 - 동적 모듈 구성 (Dynamic Module Composition)
-
 - 외부 구성 통합 (External Configuration Integration)
-
 - 프로비젼 후 단계 (Post Provision Steps)
 
 좀 더 완성도가 높아지고, 빅테크 기업에서 CDKTF 적용 예들이 하나 둘 씩 생기기 시작하면 인기 있는 툴이 될 것 같네요. (~~그러기엔 HCL이 너무 쉬운걸?~~)
