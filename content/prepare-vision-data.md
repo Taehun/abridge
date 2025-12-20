@@ -21,21 +21,18 @@ toc = true
 
 AI 선도 업체들은 이미 [*반지도 학습 (Semi-supervised Learning)*](https://en.wikipedia.org/wiki/Semi-supervised_learning)*,*[*능동적 학습 (Active Learning)*](https://blogs.nvidia.co.kr/2020/01/29/what-is-active-learning/)*,*[*자동 라벨링 (Auto Labeling)*](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-automated-labeling.html) 등의 현대적인 기법들을 적용하여 라벨링에 소요되는 비용을 최소화하고, 효율적으로 데이터셋 생성을 하고 있습니다. 이 글은 최신 라벨링 기법들 적용에 앞서 데이터셋 아키텍처를 어떻게 해야 할지 갈피를 잡지 못하는 분들을 위해 작성하였습니다.
 
-> [*Taehun/vision-dataset-sample-infra*](https://github.com/Taehun/vision-dataset-sample-infra)*Github 저장소에서 이 기사에서 다루는 예제 코드를 확인 하실 수 있습니다.*
+> [*Taehun/vision-dataset-sample-infra*](https://github.com/Taehun/vision-dataset-sample-infra) *Github 저장소에서 이 기사에서 다루는 예제 코드를 확인 하실 수 있습니다.*
 
-## **비전 데이터셋 아키텍처 on GCP**
+## 비전 데이터셋 아키텍처 on GCP
 
-
-<!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F81c8b8c5-2d4a-40cd-a975-eaef8e1cff39%2FUntitled.png?table=block&id=b73282b2-696b-4a50-9c86-5555cf7a512c&cache=v2 -->
-
-![딥러닝 비전 데이터셋 아키텍처 (GCP)](https://img-src.io/taehun/prepare-vision-data/1.png?w=800)
-
-
-딥러닝 비전 데이터셋 아키텍처 (GCP)
+<p align="center">
+<img src="https://img-src.io/taehun/prepare-vision-data/1.png?w=800" alt="그림 1. 딥러닝 비전 데이터셋 아키텍처 (GCP)"><br>
+<strong>그림 1. 딥러닝 비전 데이터셋 아키텍처 (GCP)</strong>
+</p>
 
 ## Raw Data
 
-> *솔루션:**[Cloud Storage](https://cloud.google.com/storage?hl=ko)*
+> *솔루션: [Cloud Storage](https://cloud.google.com/storage?hl=ko)*
 
 녹화된 비디오 파일을 GCS에 업로드 합니다. 수집 단말에 녹화가 끝난후 비디오 파일이 생성되면 아래와 같은 코드로 자동 업로드 되도록 구현할 수 있습니다. (수집 단말에 인터넷 접속 및 [GCP 서비스 계정](https://cloud.google.com/iam/docs/service-accounts?hl=ko) 필요) 이 항목에서는 프로젝트에 따라 비디오 파일명 (경로 포함)을 어떻게 할지 표준을 정하는 것이 중요합니다. `video_id`와 같은 유니크한 키 값이 있다면 `video_id.mp4`처럼 파일명을 지정할 수 있습니다.
 
@@ -59,7 +56,7 @@ blob.upload_from_filename(video_file_name)
 
 ## Trigger
 
-> *솔루션:**[Pub/Sub](https://cloud.google.com/pubsub)*
+> *솔루션: [Pub/Sub](https://cloud.google.com/pubsub)*
 
 GCS 버킷에 비디오 파일 및 이미지 파일 업로드 이벤트를 가져오기 위해 Pub/Sub 토픽을 생성합니다. 버킷에 `notification.create()` 함수로 알림을 구성 할 수 있습니다. 사용하는 [GCS 이벤트 유형](https://cloud.google.com/storage/docs/pubsub-notifications?hl=ko#events)은 `OBJECT_FINALIZE` 입니다.
 
@@ -97,7 +94,7 @@ resource "google_storage_notification" "notification" {
 
 ## Extracting
 
-> *솔루션:**[Dataflow](https://cloud.google.com/dataflow?hl=ko)*
+> *솔루션: [Dataflow](https://cloud.google.com/dataflow?hl=ko)*
 
 이 아키텍처에서 핵심이 되는 부분 입니다. 수집한 비디오 파일에서 데이터셋으로 사용할 이미지를 샘플링하는 ETL에 해당 됩니다. *능동적 학습* 알고리즘을 여기에 추가 하시면 됩니다. 먼저, 가장 단순하게 **1초마다 1 프레임을 추출**하는 예제로 ETL을 만들어 보겠습니다.
 
@@ -105,7 +102,7 @@ resource "google_storage_notification" "notification" {
 
 • Dockerfile 샘플
 
-```sql
+```Dockerfile
 FROM apache/beam_python3.8_sdk:2.40.0
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -224,7 +221,7 @@ def run(input_topic, vidoe_path, image_path, key_file, pipeline_args=None):
 
 ## Labeling Task
 
-> *솔루션:*[*Cloud Functions*](https://cloud.google.com/functions?hl=ko)
+> *솔루션: [*Cloud Functions*](https://cloud.google.com/functions?hl=ko)*
 
 Unlabeled Data 버킷에 이미지 파일이 업로드되면 Pub/Sub은 Labeling Task 함수를 트리거 합니다. 이 함수는 라벨링 업체에 업로드된 이미지 파일의 라벨링 요청을 보내는 역활을 수행 합니다. 이 항목은 라벨링 업체마다 모두 상이하므로 계약한 업체의 API에 맞게 작성하시기 바랍니다.
 
@@ -278,7 +275,7 @@ def request_labeling(event, context):
 
 ## Labeling Data
 
-> *솔루션:*[*Cloud Firestore*](https://firebase.google.com/docs/firestore?hl=ko)
+> *솔루션: [*Cloud Firestore*](https://firebase.google.com/docs/firestore?hl=ko)*
 
 라벨링 작업이 끝나면 업체에서 어노테이션 데이터를 전달해 줍니다. 업체에서 제공하는 API가 모두 다르므로 어노테이션 데이터를 받는 과정도 모두 상이합니다. 여기서는 가장 범용으로 사용할 수 있는 NoSQL 저장소인 Firestore로 어노케이션 데이터를 수신하도록 구성하였습니다. (라벨링 업체측에 Cloud Firestore에 접근이 가능한 [서비스 계정](https://cloud.google.com/iam/docs/service-accounts)이 있어야 합니다.)
 
@@ -309,11 +306,11 @@ doc_ref.set({
 
 ## Data Warehouse
 
-> 솔루션: BigQuery
+> *솔루션: BigQuery*
 
 Firestore에 저장된 어노테이션 데이터를 BigQuery로 추출하여, 데이터 과학자들께 데이터 분석 환경을 제공합니다. BigQuery를 오프라인 피처 스토어로 설정하여 이미지 데이터와 함께 딥러닝 모델 학습에 사용 할 수 있습니다.
 
-## **비전 데이터셋 아키텍처 고도화**
+## 비전 데이터셋 아키텍처 고도화
 
 GCP에서 가장 기본적인 비전 데이터셋 아키텍처를 구성해 보았습니다. 이렇게 아키텍처를 구성하면 크게 두가지 문제에 직면하게 됩니다.
 
@@ -322,18 +319,13 @@ GCP에서 가장 기본적인 비전 데이터셋 아키텍처를 구성해 보�
 비디오 데이터는 저장 장치 용량을 많이 차지하므로 수집되는 데이터가 많아질수록 클라우드 사용료가 큰 폭으로 증가하게 됩니다. 이런 문제를 해결하기 위해 아래와 같이 추출한 이미지 파일만 클라우드에 업로드하는 하이브리드 클라우드 방식으로도 아키텍처링 할 수 있습니다. 기존 GCP의 서비스와 동일한 동작을 하는 On-premise용 솔루션을 활용하여 클라우드 사용료를 절감 할 수 있습니다. On-premise로 일부 서비스가 이전됨에 따라 그만큼 인프라 관리 비용이 증가하는 점을 잊지마시기 바랍니다. (`클라우드 사용료` > `인프라 관리 비용`?)
 
 - `Cloud Storage` -> `MinIO`
-
 - `Cloud Pub/Sub` -> `RabbitMQ`
-
 - `Cloud Dataflow` -> `Apache Beam`
 
-
-<!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F8258ea88-579b-4691-83a6-5a94047b023a%2FUntitled.png?table=block&id=9fc91f32-2b51-47f7-b50b-7d46ac382523&cache=v2 -->
-
-![딥러닝 비전 데이터셋 아키텍처 (On-premise + GCP)](https://img-src.io/taehun/prepare-vision-data/2.png?w=800)
-
-
-*딥러닝 비전 데이터셋 아키텍처 (On-premise + GCP)*
+<p align="center">
+<img src="https://img-src.io/taehun/prepare-vision-data/2.png?w=800" alt="그림 2. 딥러닝 비전 데이터셋 아키텍처 (On-premise + GCP)"><br>
+<strong>그림 2. 딥러닝 비전 데이터셋 아키텍처 (On-premise + GCP)</strong>
+</p>
 
 ## 유사한 이미지 제거
 
