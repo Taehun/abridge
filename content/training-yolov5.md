@@ -11,7 +11,7 @@ author = "김태훈"
 toc = true
 +++
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1AeZKMjhWBxNUMb96lLQ-ZKAEaiypg0as?usp=sharing)
+[![Open In Colab](/images/colab-badge.svg)](https://colab.research.google.com/drive/1AeZKMjhWBxNUMb96lLQ-ZKAEaiypg0as?usp=sharing)
 
 **YOLO(You Only Look Once)** 는 빠른 속도와 높은 정확도를 가진 가장 널리 사용되는 **딥러닝 기반 객체 감지 알고리즘** 중 하나 입니다. 이 기사에서는 PyTorch 기반의 최신 YOLO 프레임웍인 [ultralytics/yolov5](https://github.com/ultralytics/yolov5) 에서 커스텀 데이터세트로 YOLOv5 모델을 학습하는 방법을 살펴보겠습니다.
 

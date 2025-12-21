@@ -58,7 +58,7 @@ Flax는 JAX 팀과 긴밀히 협력하여 개발 중이며 다음과 같은 딥�
 
 ## 의류 이미지 분류 예제
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1kUtM8o62QPP0BkzXHPmHmXgsdPOmBynd?usp=sharing)
+[![Open In Colab](/images/colab-badge.svg)](https://colab.research.google.com/drive/1kUtM8o62QPP0BkzXHPmHmXgsdPOmBynd?usp=sharing)
 
 이 장에서는 Tensorflow 공식 문서에 있는 [기본 분류: 의류 이미지 분류](https://www.tensorflow.org/tutorials/keras/classification?hl=ko) 예제를 Flax로 구현해보겠습니다.
 
