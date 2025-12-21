@@ -1,6 +1,27 @@
-# This _headers file is used to set headers on cloudflare pages: https://developers.cloudflare.com/pages/configuration/headers/
-# https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy (disabled everything except autoplay, local-fonts, screen-wake-lock, speaker-selection)
-# opt out of Federated Learning of Cohorts (aka "FLoC") - https://amifloced.org/
+# Cloudflare Pages headers: https://developers.cloudflare.com/pages/configuration/headers/
+#
+# Content-Security-Policy breakdown:
+#   default-src    : 'none'
+#   frame-ancestors: 'none'
+#   object-src     : 'none'
+#   base-uri       : 'self'
+#   manifest-src   : 'self'
+#   worker-src     : 'self'
+#   form-action    : 'self'
+#   connect-src    : 'self' data: *.hyvor.com ws://*.hyvor.com
+#   script-src     : 'wasm-unsafe-eval' 'self' talk.hyvor.com https://giscus.app
+#   img-src        : 'self' data: talk.hyvor.com cdn.cloudflare.com img-src.io
+#                    colab.research.google.com github.githubassets.com
+#                    *.githubusercontent.com github.com
+#   frame-src      : 'self' www.youtube-nocookie.com player.vimeo.com
+#                    streamable.com www.streamable.com https://giscus.app
+#   media-src      : 'self' data: cdn.cloudflare.com www.youtube-nocookie.com player.vimeo.com
+#   font-src       : 'self' cdn.cloudflare.com cdn.jsdelivr.net fonts.gstatic.com
+#   style-src      : 'unsafe-inline' 'self' talk.hyvor.com cdn.cloudflare.com
+#                    cdn.jsdelivr.net fonts.googleapis.com https://giscus.app
+#
+# Permissions-Policy: disabled all except autoplay, local-fonts, screen-wake-lock, speaker-selection
+# FLoC opt-out: https://amifloced.org/
 /*
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
@@ -8,7 +29,7 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Strict-Transport-Security: max-age=63072000; includeSubdomains
   Permissions-Policy: interest-cohort=(), accelerometer=(), ambient-light-sensor=(), battery=(), bluetooth=(), browsing-topics=(), camera=(), display-capture=(), document-domain=(), encrypted-media=(), execution-while-not-rendered=(), execution-while-out-of-viewport=(), fullscreen=(), gamepad=(), geolocation=(), gyroscope=(), hid=(), identity-credentials-get=(), idle-detection=(), magnetometer=(), microphone=(), midi=(), otp-credentials=(), payment=(), picture-in-picture=(), publickey-credentials-create=(), publickey-credentials-get=(), serial=(), storage-access=(), sync-xhr=(), usb=(), web-share=(), window-management=(), xr-spatial-tracking=()
-  Content-Security-Policy: default-src 'none'; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; manifest-src 'self'; worker-src 'self'; form-action 'self'; connect-src 'self' *.hyvor.com ws://*.hyvor.com; script-src 'wasm-unsafe-eval' 'self' talk.hyvor.com; img-src 'self' data: talk.hyvor.com cdn.cloudflare.com img-src.io; frame-src 'self' www.youtube-nocookie.com player.vimeo.com streamable.com www.streamable.com; media-src 'self' data: cdn.cloudflare.com www.youtube-nocookie.com player.vimeo.com; font-src 'self' cdn.cloudflare.com cdn.jsdelivr.net fonts.gstatic.com; style-src 'self' talk.hyvor.com cdn.cloudflare.com cdn.jsdelivr.net fonts.googleapis.com;
+  Content-Security-Policy: default-src 'none'; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; manifest-src 'self'; worker-src 'self'; form-action 'self'; connect-src 'self' data: *.hyvor.com ws://*.hyvor.com; script-src 'wasm-unsafe-eval' 'self' talk.hyvor.com https://giscus.app; img-src 'self' data: talk.hyvor.com cdn.cloudflare.com img-src.io colab.research.google.com github.githubassets.com *.githubusercontent.com github.com; frame-src 'self' www.youtube-nocookie.com player.vimeo.com streamable.com www.streamable.com https://giscus.app; media-src 'self' data: cdn.cloudflare.com www.youtube-nocookie.com player.vimeo.com; font-src 'self' cdn.cloudflare.com cdn.jsdelivr.net fonts.gstatic.com; style-src 'unsafe-inline' 'self' talk.hyvor.com cdn.cloudflare.com cdn.jsdelivr.net fonts.googleapis.com https://giscus.app;
 
 /*.js
   Cache-Control: public, max-age=604800, must-revalidate
