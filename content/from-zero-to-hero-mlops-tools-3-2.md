@@ -11,72 +11,61 @@ author = "김태훈"
 toc = true
 +++
 
-> [****제로부터 시작하는 MLOps 도구와 활용 - 3. 컴퓨팅 인프라 - 쿠버네티스 (1/2)****](https://blog.taehun.dev/from-zero-to-hero-mlops-tools-3-1)에서 이어지는 글 입니다.
+> [제로부터 시작하는 MLOps 도구와 활용 - 3. 컴퓨팅 인프라 - 쿠버네티스 (1/2)](https://blog.taehun.dev/from-zero-to-hero-mlops-tools-3-1)에서 이어지는 글 입니다.
 
 ## 3.3 인프라 관리 자동화
 
 이 절에서는 쿠버네티스 환경에서 널리 사용되는 몇가지 인프라 관리 자동화 도구들에 대해 소개합니다. 각 도구들의 주요 용도는 아래 *<표 3-4>*와 같습니다:
 
-|  |  |  |
-| --- | --- | --- |
 | 도구 | 용도 | 설명 |
-| Ansible | 서버(노드) 설정 자동화 및 선언형 관리 | Ansible은 오픈소스 자동화 도구로, 서버 구성을 선언형 언어로 기술하여 복잡한 시스템 구성 및 관리를 간소화합니다. |
-| Helm | 쿠버네티스 패키지 관리 | Helm은 쿠버네티스 애플리케이션을 위한 패키지 관리자로, 차트라는 YAML 파일 모음을 사용하여 애플리케이션에 필요한 리소스를 기술하고 배포 및 관리를 단순화합니다. |
-| ArgoCD | 선언형 GitOps 지속적 배포(CD) | ArgoCD는 쿠버네티스를 위한 선언형 GitOps 기반의 지속적 배포 도구로, 애플리케이션 배포를 간소화하고 자동화하여 환경 간 일관성을 보장합니다. |
-| Terraform | 인프라 리소스 프로비저닝 | Terraform은 오픈소스 인프라 관리 도구로, HCL(HashiCorp Configuration Language)이라는 선언형 언어를 사용하여 여러 클라우드 제공 업체의 인프라 리소스를 정의하고 관리할 수 있습니다 |
+| --- | --- | --- |
+| **Ansible** | 서버(노드) 설정 자동화 및 선언형 관리 | Ansible은 오픈소스 자동화 도구로, 서버 구성을 선언형 언어로 기술하여 복잡한 시스템 구성 및 관리를 간소화합니다. |
+| **Helm** | 쿠버네티스 패키지 관리 | Helm은 쿠버네티스 애플리케이션을 위한 패키지 관리자로, 차트라는 YAML 파일 모음을 사용하여 애플리케이션에 필요한 리소스를 기술하고 배포 및 관리를 단순화합니다. |
+| **ArgoCD** | 선언형 GitOps 지속적 배포(CD) | ArgoCD는 쿠버네티스를 위한 선언형 GitOps 기반의 지속적 배포 도구로, 애플리케이션 배포를 간소화하고 자동화하여 환경 간 일관성을 보장합니다. |
+| **Terraform** | 인프라 리소스 프로비저닝 | Terraform은 오픈소스 인프라 관리 도구로, HCL(HashiCorp Configuration Language)이라는 선언형 언어를 사용하여 여러 클라우드 제공 업체의 인프라 리소스를 정의하고 관리할 수 있습니다 |
 
-- 표 3-4. 쿠버네티스 환경 인프라 관리 도구들
+*표 3-4. 쿠버네티스 환경 인프라 관리 도구들*
 
-> *이 절에서 설명하는 모든 도구들은* ***로컬 환경****에서 사용하는 도구들 입니다.*
+> *이 절에서 설명하는 모든 도구들은 로컬 환경에서 사용하는 도구들 입니다.*
 
-## 3.3.1 Ansible
+### 3.3.1 Ansible
 
+<p align="center">
+<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-3-2/1.png?w=500" alt="그림 3-14. Ansible 구조"><br>
+<i>그림 3-14. Ansible 구조 (출처> <a href="https://docs.ansible.com/ansible/latest/getting_started/index.html">https://docs.ansible.com/ansible/latest/getting_started/index.html</a>)</i>
+</p>
 
-<!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fa96b565b-f784-4d44-82a2-01b5f48a95f5%2FUntitled.png?table=block&id=0f792d0e-0629-4d80-b998-5eb3885de5d3&cache=v2 -->
-
-![그림 3-14. Ansible 구조
-(출처&gt; https://docs.ansible.com/ansible/latest/getting_started/index.html)](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-3-2/1.png?w=800)
-
-
-그림 3-14. Ansible 구조
-*(출처>* *<https://docs.ansible.com/ansible/latest/getting_started/index.html>**)*
-
-‘[*3.2 쿠버네티스 클러스터 생성’*](https://blog.taehun.dev/from-zero-to-hero-mlops-tools-3-1#ad6fa0d2bcce45ac8dac570518e89170) 에서 Ubuntu Server가 설치된 노드를 기반으로 쿠버네티스 클러스터를 구축하는 과정을 소개하였습니다. 예를 들어, RKE2를 사용하여 쿠버네티스 클러스터를 구축할 경우, 먼저 Ubuntu Server가 설치된 노드에서 패키지를 최신으로 업데이트하고, 스왑 파티션을 비활성화하며, RKE2를 설치 및 설정하는 과정이 필요합니다. 클러스터의 노드 수가 많아질수록 이러한 과정을 모두 수동으로 하는 것은 매우 비효율적입니다.
+‘[*3.2 쿠버네티스 클러스터 생성’*](https://blog.taehun.dev/from-zero-to-hero-mlops-tools-3-1#3-2-kubeonetiseu-keulreoseuteo-saengseong) 에서 Ubuntu Server가 설치된 노드를 기반으로 쿠버네티스 클러스터를 구축하는 과정을 소개하였습니다. 예를 들어, RKE2를 사용하여 쿠버네티스 클러스터를 구축할 경우, 먼저 Ubuntu Server가 설치된 노드에서 패키지를 최신으로 업데이트하고, 스왑 파티션을 비활성화하며, RKE2를 설치 및 설정하는 과정이 필요합니다. 클러스터의 노드 수가 많아질수록 이러한 과정을 모두 수동으로 하는 것은 매우 비효율적입니다.
 
 Ansible은 서버 구성을 자동화하고 선언적으로 관리하기 위한 도구입니다. Ubuntu Server의 초기 설정부터 쿠버네티스 설정까지 Ansible을 사용하면, 노드가 증가하더라도 Ansible을 실행함으로써 자동으로 구성이 완료됩니다. 이를 통해 시스템 관리자는 대규모 클러스터의 구성과 관리에 걸리는 시간과 노력을 줄일 수 있습니다.
 
-*<그림 3-14>*의 Ansible 구조에서 각 구성 요소는 다음과 같은 역활을 합니다:
+*<그림 3-14>* 의 Ansible 구조에서 각 구성 요소는 다음과 같은 역활을 합니다:
 
-- *제어 노드 (Control node)*
-  Ansible이 설치된 시스템입니다. 제어 노드에서 `ansible` 또는 `ansible-inventory`와 같은 Ansible 명령을 실행합니다. 우리는 로컬 환경을 제어 노드로 사용 합니다.
-
-- *관리 노드 (Managed node)*
-  Ansible이 제어하는 원격 시스템 또는 호스트입니다. 쿠버네티스 클러스터 설정 자동화에는 컨트롤 플레인 노드, 워커 노드가 관리 노드가 됩니다.
-
-- *인벤토리 (Inventory)*
-  논리적으로 구성된 관리되는 노드의 목록입니다. 제어 노드에서 인벤토리를 생성하여 Ansible에 대한 호스트 배포를 설명합니다.
+- *제어 노드 (Control node)*: Ansible이 설치된 시스템입니다. 제어 노드에서 `ansible` 또는 `ansible-inventory`와 같은 Ansible 명령을 실행합니다. 우리는 로컬 환경을 제어 노드로 사용 합니다.
+- *관리 노드 (Managed node)*: Ansible이 제어하는 원격 시스템 또는 호스트입니다. 쿠버네티스 클러스터 설정 자동화에는 컨트롤 플레인 노드, 워커 노드가 관리 노드가 됩니다.
+- *인벤토리 (Inventory)*: 논리적으로 구성된 관리되는 노드의 목록입니다. 제어 노드에서 인벤토리를 생성하여 Ansible에 대한 호스트 배포를 설명합니다.
 
 **Ansible 설치 및 연결**
 
 Python `pip` 패키지 관리자로 Ansible 패키지를 설치하면, Ansible이 설치 됩니다.
 
 ```bash
-$ pip3 install --user ansible
+pip3 install --user ansible
 ```
 
 MacOS 환경에서는 `brew` 로도 설치 할 수 있습니다.
 
 ```bash
-$ brew install ansible
+brew install ansible
 ```
 
 설치 확인
 
 ```bash
-$ ansible --version
+ansible --version
 ```
 
-```
+```output
 ansible [core 2.14.5]
   config file = None
   configured module search path = ['/Users/taehun/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
@@ -92,7 +81,7 @@ ansible [core 2.14.5]
 
 - `/etc/ansible/hosts` 예시
 
-```toml
+```ini
 [control_plane]
 192.168.65.6
 
@@ -103,10 +92,10 @@ ansible [core 2.14.5]
 인벤토리에서 호스트를 확인합니다.
 
 ```bash
-$ ansible all --list-hosts
+ansible all --list-hosts
 ```
 
-```
+```output
 hosts (2):
     192.168.65.6
     192.168.65.7
@@ -125,16 +114,16 @@ $ unset SSH_PUBLIC_KEY
 만약, 로컬 환경에 사전 생성된 SSH 공용키가 없으면, `ssh-keygen` 커맨드로 SSH 키를 생성해야 합니다.
 
 ```bash
-$ ssh-keygen -t ed25519 -C "your_email@example.com"
+ssh-keygen -t ed25519 -C "your_email@example.com"
 ```
 
 모든 관리 노드에 ping을 보내 Ansible 연결을 확인 합니다.
 
 ```bash
-$ ansible all -m ping
+ansible all -m ping
 ```
 
-```
+```output
 192.168.65.7 | SUCCESS => {
     "ansible_facts": {
         "discovered_interpreter_python": "/usr/bin/python3"
@@ -159,7 +148,7 @@ Ansible playbook은 인벤토리에서 노드를 배포하고 구성하는 데 �
 
 - `playbook.yml` 파일 예시
 
-```
+```yaml
 - hosts: all
   become: yes
   tasks:
@@ -177,55 +166,45 @@ $ ansible-playbook playbook.yml -K
 BECOME password: <sudo 계정 비밀번호>
 ```
 
-```
-PLAY [all] *************************************************************************************************************
+```output
+PLAY [all] *******************************************************************************
 
-TASK [Gathering Facts] *************************************************************************************************
+TASK [Gathering Facts] ***********************************************************************
 ok: [192.168.65.6]
 ok: [192.168.65.7]
 
-TASK [apt update && apt upgrade] ***************************************************************************************
+TASK [apt update && apt upgrade] ***************************************************************
 changed: [192.168.65.7]
 changed: [192.168.65.6]
 
-PLAY RECAP *************************************************************************************************************
+PLAY RECAP *******************************************************************************
 192.168.65.6               : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 192.168.65.7               : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 ```
 
-자 이제 *‘**[****3.2.5 RKE2로 쿠버네티스 클러스터 생성****](https://blog.taehun.dev/from-zero-to-hero-mlops-tools-3-1#4232f94cb7e74de7bd41dd406d4cbd04)******’*****에서했던 작업들을 Ansible playbook으로 정의 해보겠습니다. 각 노드에 Ubuntu Server 22.04 설치 후 RKE2로 쿠버네티스 클러스터를 설정하는 과정을 정리하면 다음과 같습니다:
+자 이제 *'[3.2.5 RKE2로 쿠버네티스 클러스터 생성](https://blog.taehun.dev/from-zero-to-hero-mlops-tools-3-1#4232f94cb7e74de7bd41dd406d4cbd04)'* 에서했던 작업들을 Ansible playbook으로 정의 해보겠습니다. 각 노드에 Ubuntu Server 22.04 설치 후 RKE2로 쿠버네티스 클러스터를 설정하는 과정을 정리하면 다음과 같습니다:
 
-- **공통 작업**
-
+**공통 작업**
 1. 패키지 업데이트 → `apt update && apt upgrade`
-
 2. 스왑 파티션 비활성화 → `swapoff -a`
 
-- **컨트롤 플레인 노드 작업**
-
+**컨트롤 플레인 노드 작업**
 1. RKE2 스크립트 다운로드 및 실행 → `curl sfL` `https://get.rke2.io` `| sudo sh -`
-
 2. RKE2 설정 파일 생성 → `/etc/rancher/rke2/config.yaml`
-
 3. RKE2 서버 Systemd 서비스 활성화 → `systemctl enable rke2-server.service`
-
 4. RKE2 서버 Systemd 서비스 시작 → `systemctl start rke2-server.service`
 
-- **워커 노드 작업**
-
+**워커 노드 작업**
 1. RKE2 스크립트 다운로드 및 실행 → `curl sfL` `https://get.rke2.io` `| INSTALL_RKE2_TYPE="agent" sudo sh -`
-
 2. RKE2 설정 파일 생성 → `/etc/rancher/rke2/config.yaml` (*서버 IP/토큰 필요*)
-
 3. RKE2 에이전트 Systemd 서비스 활성화 → `systemctl enable rke2-agent.service`
-
 4. RKE2 에이전트 Systemd 서비스 시작 → `systemctl start rke2-agent.service`
 
 이를 Ansible playbook으로 표현하면 다음과 같습니다.
 
 - `playbook.yaml`
 
-```
+```yaml
 - name: Common Tasks
   hosts: all
   become: yes
@@ -312,7 +291,6 @@ PLAY RECAP *********************************************************************
 - `vars.yml`
 
 ```yaml
----
 control_plane_ip: "{{ hostvars[groups['control_plane'][0]]['ansible_host'] | default(groups['control_plane'][0]) }}"
 rke2_token: "{{ hostvars[groups['control_plane'][0]]['rke2_token'] }}"
 ```
@@ -324,72 +302,72 @@ $ ansible-playbook playbook.yml -K
 BECOME password: <sudo 계정 비밀번호 입력>
 ```
 
-```
-PLAY [Common Tasks] ************************************************************************************************************
+```output
+PLAY [Common Tasks] ******************************************************************************
 
-TASK [Gathering Facts] *********************************************************************************************************
+TASK [Gathering Facts] ***************************************************************************
 ok: [192.168.65.6]
 ok: [192.168.65.7]
 
-TASK [apt update && apt upgrade] ***********************************************************************************************
+TASK [apt update && apt upgrade] *********************************************************************
 ok: [192.168.65.6]
 ok: [192.168.65.7]
 
-TASK [Disable SWAP] ************************************************************************************************************
+TASK [Disable SWAP] ******************************************************************************
 changed: [192.168.65.6]
 changed: [192.168.65.7]
 
-TASK [Disable SWAP in fstab] ***************************************************************************************************
+TASK [Disable SWAP in fstab] ***********************************************************************
 ok: [192.168.65.6]
 ok: [192.168.65.7]
 
-PLAY [Control Plane Tasks] *****************************************************************************************************
+PLAY [Control Plane Tasks] *************************************************************************
 
-TASK [Gathering Facts] *********************************************************************************************************
+TASK [Gathering Facts] ***************************************************************************
 ok: [192.168.65.6]
 
-TASK [Download RKE2 install script] ********************************************************************************************
+TASK [Download RKE2 install script] ******************************************************************
 ok: [192.168.65.6]
 
-TASK [Run RKE2 install script] *************************************************************************************************
+TASK [Run RKE2 install script] ***********************************************************************
 changed: [192.168.65.6]
 
-TASK [Create RKE2 configuration folder] ****************************************************************************************
+TASK [Create RKE2 configuration folder] ****************************************************************
 ok: [192.168.65.6]
 
-TASK [Generate RKE2 configuration file] ****************************************************************************************
+TASK [Generate RKE2 configuration file] ****************************************************************
 ok: [192.168.65.6]
 
-TASK [Enable & start RKE2 server systemd service] ******************************************************************************
+TASK [Enable & start RKE2 server systemd service] ********************************************************
 ok: [192.168.65.6]
 
-TASK [Read node-token from file] ***********************************************************************************************
+TASK [Read node-token from file] *********************************************************************
 ok: [192.168.65.6]
 
-TASK [Store RKE2 server token] *************************************************************************************************
+TASK [Store RKE2 server token] ***********************************************************************
 ok: [192.168.65.6]
 
-PLAY [Worker Node Tasks] *******************************************************************************************************
+PLAY [Worker Node Tasks] ***************************************************************************
 
-TASK [Gathering Facts] *********************************************************************************************************
+TASK [Gathering Facts] ***************************************************************************
 ok: [192.168.65.7]
 
-TASK [Download RKE2 install script] ********************************************************************************************
+TASK [Download RKE2 install script] ******************************************************************
 ok: [192.168.65.7]
 
-TASK [Run RKE2 install script] *************************************************************************************************
+TASK [Run RKE2 install script] ***********************************************************************
 changed: [192.168.65.7]
 
-TASK [Create RKE2 configuration folder] ****************************************************************************************
+TASK [Create RKE2 configuration folder] ****************************************************************
 ok: [192.168.65.7]
 
-TASK [Generate RKE2 configuration file] ****************************************************************************************
+TASK [Generate RKE2 configuration file] ****************************************************************
 changed: [192.168.65.7]
 
-TASK [Enable & start RKE2 agent systemd service] *******************************************************************************
+TASK [Enable & start RKE2 agent systemd service] *********************************************************
 changed: [192.168.65.7]
 
-PLAY RECAP *********************************************************************************************************************
+PLAY RECAP *************************************************************************************
 192.168.65.6               : ok=12   changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 192.168.65.7               : ok=10   changed=4    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 ```
@@ -398,23 +376,19 @@ PLAY RECAP *********************************************************************
 
 Ansible playbook 파일의 크기가 커질수록 파일을 논리적인 단위로 분할하는 것이 좋습니다. Ansible은 이를 위해 [Role 단위로 playbook 파일을 분리](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_reuse_roles.html)할 수 있습니다. 예를 들어, 쿠버네티스 클러스터 생성을 위해 `common`, `control_plane`, `worker_node` 세 개의 Role로 분할할 수 있습니다. 이렇게 분할하면 코드 관리와 유지보수가 용이해지며, 코드 재사용성도 높아집니다.
 
-> *Ansible에 대한 좀 더 많은 정보는* **[*Ansible Documentation*](https://docs.ansible.com/ansible/latest/index.html)***문서를 참고하시기 바랍니다.*
+> *Ansible에 대한 좀 더 많은 정보는 [Ansible Documentation](https://docs.ansible.com/ansible/latest/index.html) 문서를 참고하시기 바랍니다.*
 
-## 3.3.2 Helm
+### 3.3.2 Helm
 
 Helm은 컨테이너화된 애플리케이션의 배포, 확장 및 관리를 자동화하도록 설계된 오픈소스 컨테이너 오케스트레이션 플랫폼인 쿠버네티스용 패키지 관리자로 널리 사용되고 있습니다. Helm은 리소스, 구성 및 서비스를 패키징, 공유 및 배포하는 효율적인 방법을 제공함으로써 쿠버네티스 애플리케이션 관리 프로세스를 간소화합니다. Helm은 "*Chart*"라는 패키징 형식을 사용하는데, 이는 본질적으로 관련 쿠버네티스 리소스 집합을 설명하는 파일 모음입니다. 개발자와 운영자는 이러한 차트를 사용하여 가장 복잡한 쿠버네티스 애플리케이션도 일관되고 유지 관리 가능한 방식으로 정의, 설치 및 업그레이드할 수 있습니다.
 
 Helm은 Chart 관리 외에도 사용자가 변수와 함수를 사용하여 배포를 사용자 정의할 수 있는 강력한 템플릿 엔진을 제공합니다. 이러한 유연성 덕분에 다양한 환경이나 구성에서 Chart를 쉽게 재사용할 수 있어 배포 프로세스가 간소화되고 오류 발생 가능성이 줄어듭니다. Helm에는 Chart 및 릴리스 관리를 간소화하는 강력한 명령줄 인터페이스(CLI)와 Tiller(Helm v2에서 사용) 또는 간단히 Helm(Helm v3에서 사용)이라는 서버 측 구성 요소가 탑재되어 있습니다. 이 구성 요소는 쿠버네티스 API 서버와 상호 작용하여 쿠버네티스 리소스를 설치, 업그레이드, 쿼리 및 제거합니다.
 
-💡
-
-**패키지 관리 도구들**
-
-- Ubuntu/Debian: `apt`
-
-- MacOS: `brew`
-
-- 쿠버네티스: `helm`
+> **패키지 관리 도구들**
+>
+> - Ubuntu/Debian: `apt`
+> - MacOS: `brew`
+> - 쿠버네티스: `helm`
 
 **Helm 설치**
 
@@ -423,15 +397,15 @@ Helm은 Chart 관리 외에도 사용자가 변수와 함수를 사용하여 배
 - 스크립트 설치
 
 ```bash
-$ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
-$ chmod 700 get_helm.sh
-$ ./get_helm.sh
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+chmod 700 get_helm.sh
+./get_helm.sh
 ```
 
 - brew
 
 ```bash
-$ brew install helm
+brew install helm
 ```
 
 **Helm Chart 저장소 추가**
@@ -441,20 +415,20 @@ Helm이 설치 되었으면 Helm Chart를 가져올 저장소를 추가해야 �
 - bitnami 저장소 추가 예시
 
 ```bash
-$ helm repo add bitnami https://charts.bitnami.com/bitnami
+helm repo add bitnami https://charts.bitnami.com/bitnami
 ```
 
-```
+```output
 "bitnami" has been added to your repositories
 ```
 
 다음과 같이 저장소에 있는 Helm Chart 목록을 확인할 수 있습니다.
 
 ```bash
-$ helm search repo bitnami
+helm search repo bitnami
 ```
 
-```
+```output
 NAME                                        	CHART VERSION	APP VERSION  	DESCRIPTION
 bitnami/airflow                             	14.1.1       	2.5.3        	Apache Airflow is a tool to express and execute...
 bitnami/apache                              	9.5.2        	2.4.57       	Apache HTTP Server is an open-source HTTP serve...
@@ -473,11 +447,11 @@ bitnami/cert-manager                        	0.9.6        	1.11.1       	cert-ma
 Helm Chart 설치는 `helm install` 커맨드로 할 수 있습니다.
 
 ```bash
-$ helm repo update   # 저장소의 최신 차트 목록으로 갱신 합니다.
-$ helm install mysql bitnami/mysql
+helm repo update   # 저장소의 최신 차트 목록으로 갱신 합니다.
+helm install mysql bitnami/mysql
 ```
 
-```
+```output
 NAME: mysql
 LAST DEPLOYED: Wed May  3 00:42:11 2023
 NAMESPACE: default
@@ -495,22 +469,22 @@ APP VERSION: 8.0.33
 `helm install` 커맨드의 포맷은 다음과 같습니다.
 
 ```bash
-$ helm install <Release 이름> <저장소/Chart>
+helm install <Release 이름> <저장소/Chart>
 ```
 
 Helm 사용시 특정 네임스페이스에 Chart를 설치하려면 `helm install -n` *`<Namepsace>`*또는 `helm install --namespace <`*`Namespace`*`>` 로 네임스페이스 옵션을 추가 하시면 됩니다.
 
 ```bash
-$ helm install -n somenamespace redis bitnami/mysql
+helm install -n somenamespace redis bitnami/mysql
 ```
 
 `helm ls` 또는 `helm list` 커맨드로 설치된 Helm Chart를 확인 할 수 있습니다.
 
 ```bash
-$ helm ls
+helm ls
 ```
 
-```
+```output
 NAME                 	NAMESPACE	REVISION	UPDATED                             	STATUS  	CHART                        	APP VERSION
 mysql                	default  	1       	2023-05-03 00:42:11.096995 +0900 KST	deployed	mysql-9.8.2                  	8.0.33
 ```
@@ -518,55 +492,50 @@ mysql                	default  	1       	2023-05-03 00:42:11.096995 +0900 KST	de
 설치된 Chart를 제거하려면 `helm uninstall` 커맨드를 사용합니다.
 
 ```bash
-$ helm uninstall mysql
+helm uninstall mysql
 ```
 
-```
+```output
 release "mysql" uninstalled
 ```
 
 앞으로 MLOps에 사용되는 많은 도구들을 Helm으로 쿠버네티스 환경에 설치하여 MLOps 인프라를 만들어 나갈 것 입니다.
 
-> *Helm에 대한 좀 더 많은 정보는* [*Helm 문서*](https://helm.sh/docs)*를 참고하시기 바랍니다.*
+> *Helm에 대한 좀 더 많은 정보는 [Helm 문서](https://helm.sh/docs)를 참고하시기 바랍니다.*
 
-## 3.3.3 ArgoCD
+### 3.3.3 ArgoCD
 
 ArgoCD는 오픈 소스, 쿠버네티스 네이티브 지속적 배포(CD) 도구로, 쿠버네티스 클러스터 내에서 애플리케이션의 배포, 모니터링, 관리를 간소화합니다. 대표적인 *GitOps* 도구인 ArgoCD는 Git 리포지토리에 정의된 대로 원하는 애플리케이션 상태를 쿠버네티스 환경에서 실행되는 실제 상태와 동기화하는 작업을 자동화합니다. 이 접근 방식은 전체 애플리케이션 수명 주기를 버전 제어 및 추적할 수 있도록 보장하여 신속한 롤백, 손쉬운 감사, 팀원 간의 향상된 협업을 촉진합니다. ArgoCD는 Helm, Kustomize, Jsonnet과 같은 광범위한 구성 관리 도구를 지원하므로 개발자가 선호하는 방법을 사용하여 쿠버네티스 리소스를 정의할 수 있습니다.
 
 ArgoCD의 핵심 강점은 애플리케이션 리소스의 실시간 시각화 및 상태 모니터링 기능을 제공하여 사용자가 원하는 상태와 실제 상태 간의 불일치를 신속하게 식별하고 수정할 수 있다는 점입니다. 직관적인 사용자 인터페이스는 명령줄 및 API 옵션과 함께 개발자와 운영자 모두에게 원활한 경험을 제공합니다. 또한 ArgoCD는 Jenkins, GitLab, CircleCI 등 널리 사용되는 지속적 통합(CI) 도구와 쉽게 통합하여 완벽한 CI/CD 파이프라인을 구축할 수 있습니다. 역할 기반 액세스 제어(RBAC) 및 싱글 사인온(SSO)과 같은 기본 제공 보안 기능을 통해 권한이 부여된 사용자만 애플리케이션 리소스를 변경할 수 있으므로 배포 프로세스 전반에 걸쳐 높은 수준의 보안을 유지할 수 있습니다.
 
-ℹ️
+> **GitOps**
+>
+> GitOps는 선언적 인프라 및 애플리케이션 코드에 대한 신뢰할 수 있는 단일 소스로 Git을 사용하는 애플리케이션 개발 및 운영에 대한 최신 접근 방식입니다. 이 방법론은 Git 리포지토리를 애플리케이션 및 인프라의 원하는 상태에 대한 변경 사항을 저장, 버전 관리 및 추적하는 중앙 허브로 취급하여 애플리케이션의 배포, 관리 및 모니터링을 간소화합니다. GitOps는 Git의 강력한 버전 제어 기능과 DevOps의 원칙을 결합하여 전체 소프트웨어 개발 라이프사이클에서 협업, 투명성 및 효율성을 개선할 수 있습니다.
+>
+> GitOps 워크플로에서 DevOps 엔지니어는 인프라의 원하는 상태를 코드로 선언하여 Git 리포지토리에 저장합니다. 그런 다음 CI(지속적 통합) 및 CD(지속적 배포) 파이프라인을 설정하여 배포 환경에서 실행 중인 실제 상태를 리포지토리에 정의된 상태와 동기화합니다. 이 접근 방식은 인프라 또는 애플리케이션에 대한 모든 변경 사항을 버전 제어, 감사 및 추적할 수 있도록 보장합니다. GitOps는 자동화 향상, 장애로부터의 빠른 복구, Pull Request 검토 및 액세스 제어를 통한 보안 강화, 팀원 간의 보다 쉬운 협업 등 여러 가지 이점을 제공합니다. GitOps 접근 방식을 용이하게 하는 인기 있는 도구로는 쿠버네티스 및 기타 클라우드 네이티브 기술과 원활하게 작동하도록 설계된 *ArgoCD, Flux, Jenkins X* 등이 있습니다.
 
-**GitOps**
-
-GitOps는 선언적 인프라 및 애플리케이션 코드에 대한 신뢰할 수 있는 단일 소스로 Git을 사용하는 애플리케이션 개발 및 운영에 대한 최신 접근 방식입니다. 이 방법론은 Git 리포지토리를 애플리케이션 및 인프라의 원하는 상태에 대한 변경 사항을 저장, 버전 관리 및 추적하는 중앙 허브로 취급하여 애플리케이션의 배포, 관리 및 모니터링을 간소화합니다. GitOps는 Git의 강력한 버전 제어 기능과 DevOps의 원칙을 결합하여 전체 소프트웨어 개발 라이프사이클에서 협업, 투명성 및 효율성을 개선할 수 있습니다.
-
-GitOps 워크플로에서 DevOps 엔지니어는 인프라의 원하는 상태를 코드로 선언하여 Git 리포지토리에 저장합니다. 그런 다음 CI(지속적 통합) 및 CD(지속적 배포) 파이프라인을 설정하여 배포 환경에서 실행 중인 실제 상태를 리포지토리에 정의된 상태와 동기화합니다. 이 접근 방식은 인프라 또는 애플리케이션에 대한 모든 변경 사항을 버전 제어, 감사 및 추적할 수 있도록 보장합니다. GitOps는 자동화 향상, 장애로부터의 빠른 복구, Pull Request 검토 및 액세스 제어를 통한 보안 강화, 팀원 간의 보다 쉬운 협업 등 여러 가지 이점을 제공합니다. GitOps 접근 방식을 용이하게 하는 인기 있는 도구로는 쿠버네티스 및 기타 클라우드 네이티브 기술과 원활하게 작동하도록 설계된 *ArgoCD, Flux, Jenkins X* 등이 있습니다.
-
-
-<!-- TODO: 이미지 추가 - 파일명: Zero-to-MLOps-3-15.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Ff27b7bfd-41f4-425f-aeff-f24de6d84b78%2FZero-to-MLOps-3-15.png?table=block&id=0fa21437-9244-4876-a01b-516f13e88763&cache=v2 -->
-
-![그림 3-15. GitOps CI/CD 워크플로우](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-3-2/2.png)
-
-
-그림 3-15. GitOps CI/CD 워크플로우
+<p align="center">
+<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-3-2/2.png" alt="그림 3-15. GitOps CI/CD 워크플로우"><br>
+<i>그림 3-15. GitOps CI/CD 워크플로우</i>
+</p>
 
 **ArgoCD 설치**
 
 쿠버네티스 클러스터에 ArgoCD를 Helm을 사용해서 설치하겠습니다. ([공식 가이드 문서](https://argo-cd.readthedocs.io/en/stable/getting_started/#1-install-argo-cd)에 따라 `install.yaml` 파일로 설치하셔도 됩니다.)
 
 ```bash
-$ helm repo add argo https://argoproj.github.io/argo-helm
-$ helm -n argocd install argocd argo/argo-cd --create-namespace
+helm repo add argo https://argoproj.github.io/argo-helm
+helm -n argocd install argocd argo/argo-cd --create-namespace
 ```
 
 설치가 완료 될 때까지 대기 합니다.
 
 ```bash
-$ kubectl wait --for=condition=available --timeout=180s -n argocd --all deployments
+kubectl wait --for=condition=available --timeout=180s -n argocd --all deployments
 ```
 
-```
+```output
 deployment.apps/argocd-applicationset-controller condition met
 deployment.apps/argocd-dex-server condition met
 deployment.apps/argocd-notifications-controller condition met
@@ -580,60 +549,47 @@ deployment.apps/argocd-server condition met
 - 초기 `admin` 비밀번호 확인
 
 ```bash
-$ kubectl get secret -n argocd argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 --decode
+kubectl get secret -n argocd argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 --decode
 ```
 
 - ArgoCD 웹 서버 포트 포워딩
 
 ```bash
-$ kubectl port-forward svc/argocd-server -n argocd 8080:443
+kubectl port-forward svc/argocd-server -n argocd 8080:443
 ```
 
 웹 브라우저에서 [`https://localhost:8080`](https://localhost:8080) 으로 접속 (Username: `admin`, Password: *`<Secret 값>`*)
 
-
-<!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-05-06_오후_7.33.05.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F25580e53-0da8-4961-9407-c7d9e3fa9881%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-05-06_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_7.33.05.png?table=block&id=1d3d4d06-fe20-4b90-9a17-b8ca8b0b1c9f&cache=v2 -->
-
-![그림 3-16. ArgoCD 웹 UI 화면](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-3-2/3.png?w=800)
-
-
-그림 3-16. ArgoCD 웹 UI 화면
+<p align="center">
+<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-3-2/3.png?w=800" alt="그림 3-16. ArgoCD 웹 UI 화면"><br>
+<i>그림 3-16. ArgoCD 웹 UI 화면</i>
+</p>
 
 샘플 어플리케이션을 하나 추가해 봅시다. 상단의 **+ NEW APP** 버튼을 클릭후 팝업 되는 입력 창에 다음과 같이 입력 합니다. 공개 Git 원격 저장소에서 Helm Chart 파일을 ArgoCD로 배포 할 것 입니다.
 
 - **GENERAL**
-
-- Application Name: `guest-book`
-- Project Name: `default`
-- SYNC POLICY: `Manual`
-
+  - Application Name: `guest-book`
+  - Project Name: `default`
+  - SYNC POLICY: `Manual`
 - **SOURCE**
-
-- Repository URL: `https://github.com/argoproj/argocd-example-apps/`
-- Revision: `HEAD`
-- Path: `helm-guestbook`
-
+  - Repository URL: `https://github.com/argoproj/argocd-example-apps/`
+  - Revision: `HEAD`
+  - Path: `helm-guestbook`
 - **DESTINATION**
-
-- Cluster URL: `https://kubernetes.default.svc`
-- Namespace: `default`
+  - Cluster URL: `https://kubernetes.default.svc`
+  - Namespace: `default`
 
 위와 같이 입력후 **CREATE** 버튼을 클릭하면 아래 *<그림 3-17>* 같이 *OutofSync* 상태로 어플리케이션이 추가되어 있습니다.
 
-
-<!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-05-06_오후_11.08.42.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fff5fd0b1-fb6a-4955-9a7c-380a53c00204%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-05-06_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_11.08.42.png?table=block&id=6f06271a-d6fc-4a8b-9561-1e9d0562d2e1&cache=v2 -->
-
-![그림 3-17. ArgoCD 새로운 어플리케이션 추가](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-3-2/4.png?w=800)
-
-
-그림 3-17. ArgoCD 새로운 어플리케이션 추가
+<p align="center">
+<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-3-2/4.png?w=800" alt="그림 3-17. ArgoCD 새로운 어플리케이션 추가"><br>
+<i>그림 3-17. ArgoCD 새로운 어플리케이션 추가</i>
+</p>
 
 ArgoCD 어플리케이션의 세 개의 버튼은 각각 다음을 의미 합니다.
 
 - *SYNC*: ArgoCD의 현재 어플리케이션 설정대로 쿠버네티스에 배포 합니다. (**ArgoCD → k8s**)
-
 - *REFRESH:* Git 저장소의 최신 어플리케이션 설정 값을 ArgoCD에 읽어 옵니다. **(Git Repo → ArgoCD)**
-
 - *DELETE*: ArgoCD 어플리케이션을 삭제 합니다.
 
 **SYNC** 버튼을 클릭하여 ArgoCD와 쿠버네티스간의 동기화가 완료되면 어플리케이션 Status 값이 *Healthy, Synced* 로 변경 됩니다.
@@ -641,10 +597,10 @@ ArgoCD 어플리케이션의 세 개의 버튼은 각각 다음을 의미 합니
 `kubectl` 로 guestbook 어플리케이션이 배포되었는지 확인해 보겠습니다.
 
 ```bash
-$ kubectl get all
+kubectl get all
 ```
 
-```
+```output
 NAME                                             READY   STATUS    RESTARTS   AGE
 pod/guest-book-helm-guestbook-6dcf44954d-v2fpf   1/1     Running   0          9m45s
 
@@ -662,44 +618,35 @@ replicaset.apps/guest-book-helm-guestbook-6dcf44954d   1         1         1    
 guestbook 관련 리소스가 모두 배포되어 있네요! 앞서 ArgoCD 어플리케이션을 추가할때 설정했던 각 항목들에 대한 내용은 다음과 같습니다.
 
 - **GENERAL:** 일반적인 설정 항목들
-
-- *Application Name*: 어플리케이션 이름
-- *Project Name*: 프로젝트 이름. 임의 기입은 되지 않고, ArgoCD에 존재하는 프로젝트에서 선택해야 합니다. 새로운 프로젝트 추가는 *Settings → Projects* 메뉴에서 추가 합니다.
-- *SYNC POLICY*: 동기화 방식
-
-- `Manual` 은 배포 담당자가 직접 SYNC를 해야 하며, 주로 Production 환경 배포에 사용
-- `Automatic` 은 ArgoCD가 변경점 감지시 자동 배포. 주로 Develop 환경 배포에 사용
-
+  - *Application Name*: 어플리케이션 이름
+  - *Project Name*: 프로젝트 이름. 임의 기입은 되지 않고, ArgoCD에 존재하는 프로젝트에서 선택해야 합니다. 새로운 프로젝트 추가는 *Settings → Projects* 메뉴에서 추가 합니다.
+  - *SYNC POLICY*: 동기화 방식
+  - `Manual` 은 배포 담당자가 직접 SYNC를 해야 하며, 주로 Production 환경 배포에 사용
+  - `Automatic` 은 ArgoCD가 변경점 감지시 자동 배포. 주로 Develop 환경 배포에 사용
 - **SOURCE:** 환경 저장소 관련 설정
-
-- *Repository URL*: Git 원격 저장소 URL. Private 저장소는 *Settings → Repositories* 메뉴에서 추가 및 설정이 필요합니다.
-- *Revision*: Git의 Revsion (HEAD 혹은 main 등의 브랜치 이름도 사용 가능)
-- *Path*: Git 원격 저장소내 어플리케이션 설정 파일의 위치
-
+  - *Repository URL*: Git 원격 저장소 URL. Private 저장소는 *Settings → Repositories* 메뉴에서 추가 및 설정이 필요합니다.
+  - *Revision*: Git의 Revsion (HEAD 혹은 main 등의 브랜치 이름도 사용 가능)
+  - *Path*: Git 원격 저장소내 어플리케이션 설정 파일의 위치
 - **DESTINATION:** 배포 대상(k8s) 관련 설정
+  - *Cluster URL*: 배포할 쿠버네티스 클러스터 URL. `https://kubernetes.default.svc` 는 현재 ArgoCD가 설치된 쿠버네티스 (즉, in-cluster)를 의미 합니다. 배포 대상이 다른 쿠버네티스 클러스터이면 argocd CLI로 클러스터를 추가해야 합니다.
+  - *Namespace*: 배포할 쿠버네티스내 네임스페이스
 
-- *Cluster URL*: 배포할 쿠버네티스 클러스터 URL. `https://kubernetes.default.svc` 는 현재 ArgoCD가 설치된 쿠버네티스 (즉, in-cluster)를 의미 합니다. 배포 대상이 다른 쿠버네티스 클러스터이면 argocd CLI로 클러스터를 추가해야 합니다.
-- *Namespace*: 배포할 쿠버네티스내 네임스페이스
+> *ArgoCD에 대한 좀 더 많은 정보는 [ArgoCD 문서](https://argo-cd.readthedocs.io/en/latest/)를 참고하시기 바랍니다.*
 
-> ArgoCD*에 대한 좀 더 많은 정보는* [*ArgoCD 문서*](https://argo-cd.readthedocs.io/en/latest/)*를 참고하시기 바랍니다.*
-
-## 3.3.4 Terraform
+### 3.3.4 Terraform
 
 Terraform은 해시코프에서 개발한 오픈소스 IaC (Infrastructure as Code) 도구로, 사용자가 HCL (HashiCorp Configuration Language)이라는 선언형 언어를 통해 클라우드 인프라를 자동화하고 관리할 수 있게 해줍니다. Terraform은 코드를 사용하여 인프라 리소스를 정의하고 프로비저닝함으로써 일관되고 반복 가능한 배포를 가능하게 하여 인적 오류를 줄이고 전반적인 효율성을 개선합니다. 이 도구는 모듈식 공급자 시스템을 통해 AWS, Azure, Google Cloud 등 여러 클라우드 플랫폼을 지원하므로 확장성이 뛰어나고 다양한 인프라 요구 사항에 맞게 조정할 수 있습니다. Terraform의 협업 및 버전 제어 접근 방식은 개발, 스테이징 및 프로덕션 환경 전반의 인프라를 관리하기 위한 DevOps 실무자들 사이에서 인기 있는 선택이 되었습니다.
 
 이 시리즈에서 설명하는 MLOps 도구는 주로 온프레미스 환경을 대상으로 하므로 Terraform을 활용하지 않습니다. 하지만 인프라 관리 도구로서 Terraform의 중요성을 고려할 때, IaC와 그 대표적인 도구인 Terraform을 언급하는 것은 필수적입니다. 게다가 실제 프로젝트에서는 클라우드와 온프레미스가 결합된 하이브리드 클라우드 환경이 널리 사용되고 있습니다. 따라서 Terraform 사용의 기본 사항을 간략히 살펴보는 것이 좋습니다.
 
-💡
+> **쿠버네티스와 IaC 도구들**
+>
+> IaC는 인프라를 코드로 관리하는 것이 핵심입니다. 대표적인 IaC 도구인 Terraform과 Ansible을 사용하여 쿠버네티스 클러스터 생성하려면 다음과 같이 합니다:
+>
+> - *Terraform* 으로 클러스터 노드를 프로비저닝 하고, (노드 생성)
+> - *Ansible* 로 각 노드를 설정하여 쿠버네티스 클러스터를 만든다. (노드 설정)
 
-**쿠버네티스와 IaC 도구들**
-
-IaC는 인프라를 코드로 관리하는 것이 핵심입니다. 대표적인 IaC 도구인 Terraform과 Ansible을 사용하여 쿠버네티스 클러스터 생성하려면 다음과 같이 합니다:
-
-- *Terraform*으로 클러스터 노드를 프로비저닝 하고, (노드 생성)
-
-- *Ansible*로 각 노드를 설정하여 쿠버네티스 클러스터를 만든다. (노드 설정)
-
-공용 클라우드 서비스는 EKS, GKE, AKS등의 관리형 쿠버네티스 환경을 Terraform에서 직접 프로비저닝하므로 Ansible이 필요 없습니다. 하지만, OpenStack등을 사용하는 사설 클라우드 환경에는 위와 같이 Terraform과 Ansible을 조합하여 쿠버네티스 클러스터를 생성합니다. 여기에 *ArgoCD*나 *Flux*같은 GitOps 도구까지 추가하면 코드로 대부분의 인프라 리소스를 관리할 수 있습니다.
+공용 클라우드 서비스는 EKS, GKE, AKS등의 관리형 쿠버네티스 환경을 Terraform에서 직접 프로비저닝하므로 Ansible이 필요 없습니다. 하지만, OpenStack등을 사용하는 사설 클라우드 환경에는 위와 같이 Terraform과 Ansible을 조합하여 쿠버네티스 클러스터를 생성합니다. 여기에 *ArgoCD* 나 *Flux* 같은 GitOps 도구까지 추가하면 코드로 대부분의 인프라 리소스를 관리할 수 있습니다.
 
 **Terraform 설치**
 
@@ -708,34 +655,34 @@ Terraform이라고 하면 `terraform` 이라는 CLI 도구를 의미 합니다. 
 - brew (MacOS)
 
 ```bash
-$ brew tap hashicorp/tap
-$ brew install hashicorp/tap/terraform
+brew tap hashicorp/tap
+brew install hashicorp/tap/terraform
 ```
 
 - apt (Ubuntu)
 
 ```bash
-$ sudo apt-get update && sudo apt-get install -y gnupg software-properties-common
-$ wget -O- https://apt.releases.hashicorp.com/gpg | \
+sudo apt-get update && sudo apt-get install -y gnupg software-properties-common
+wget -O- https://apt.releases.hashicorp.com/gpg | \
   gpg --dearmor | \
   sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
-$ gpg --no-default-keyring \
+gpg --no-default-keyring \
   --keyring /usr/share/keyrings/hashicorp-archive-keyring.gpg \
   --fingerprint
-$ echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] \
+echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] \
   https://apt.releases.hashicorp.com $(lsb_release -cs) main" | \
   sudo tee /etc/apt/sources.list.d/hashicorp.list
-$ sudo apt update
-$ sudo apt-get install terraform
+sudo apt update
+sudo apt-get install terraform
 ```
 
 설치 확인
 
 ```bash
-$ terraform -version
+terraform -version
 ```
 
-```
+```output
 Terraform v1.4.6
 on darwin_arm64
 ```
@@ -745,14 +692,14 @@ Terraform으로 AWS EC2 인스턴스를 하나 생성해 보겠습니다. 이를
 먼저, Terraform 작업 디렉토리를 만들고 그곳에 HCL 코드를 작성 합니다.
 
 ```bash
-$ mkdir terraform-aws-example
-$ cd terraform-aws-example
-$ touch main.tf
+mkdir terraform-aws-example
+cd terraform-aws-example
+touch main.tf
 ```
 
 에디터로 [`main.tf`](http://main.tf) 파일을 열고, 다음 내용을 추가 합니다.
 
-```css
+```hcl
 terraform {
   required_providers {
     aws = {
@@ -785,16 +732,15 @@ resource "aws_instance" "app_server" {
 현재 폴더에서 Terraform을 초기화 합니다. Terraform은 초기화 과정에서 필요한 프로바이더를 다운로드하여 설치합니다.
 
 ```bash
-$ terraform init
+terraform init
 ```
 
-```
+```output
 Initializing the backend...
 
 Initializing provider plugins...
 - Finding hashicorp/aws versions matching "~> 4.16"...
 - Installing hashicorp/aws v4.66.1...
-
 - Installed hashicorp/aws v4.66.1 (signed by HashiCorp)
 
 (...이하 생략)
@@ -803,20 +749,20 @@ Initializing provider plugins...
 HCL 파일이 유효한지 검증 합니다.
 
 ```bash
-$ terraform validate
+terraform validate
 ```
 
-```
+```output
 Success! The configuration is valid.
 ```
 
 HCL 파일을 적용하여 실제 인프라를 생성 합니다.
 
 ```bash
-$ terraform apply
+terraform apply
 ```
 
-```
+```output
 Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
   + create
 
@@ -858,23 +804,20 @@ Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 
 `terraform apply` 가 완료된 이후 AWS 웹 콘솔에 접속하여 EC2 서비스 `us-west-2` 리즌을 확인해보면, HCL 파일에 정의한 EC2 인스턴스가 생성되어 있습니다.
 
-
-<!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-05-07_오전_2.15.01.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Ff78097b0-7a21-44e5-983b-c4e54616966e%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-05-07_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25AB_2.15.01.png?table=block&id=a65ee793-d9a1-434b-9860-7b2ebad5bece&cache=v2 -->
-
-![그림 3-18 AWS 콘솔의 EC2 메뉴](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-3-2/5.png?w=800)
-
-
-그림 3-18 AWS 콘솔의 EC2 메뉴
+<p align="center">
+<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-3-2/5.png?w=800" alt="그림 3-18 AWS 콘솔의 EC2 메뉴"><br>
+<i>그림 3-18 AWS 콘솔의 EC2 메뉴</i>
+</p>
 
 Terraform은 HCL 파일을 적용할 때 `terraform.tfstate` 파일에 인프라 관련 내용들을 모두 기입합니다. 실제 Terraform 동작은 `.tf` 파일들에서 인프라 관련 자세한 설정이 있는 `terraform.tfstate` 파일을 생성하고, `terraform.tfstate` 파일 내용에서 실제 인프라를 생성 및 삭제합니다. `terraform.tfstate` 파일에는 인프라에 관련된 민감한 내용이 종종 포함되어 있으므로, 관리에 유의해야 합니다. (GitHub과 같은 Git 저장소에 올리지 마세요!)
 
 생성된 인프라를 삭제하는 것은 `terraform destroy` 커맨드로 할 수 있습니다. `terraform.tfstate` 파일에 기입된 인프라 리소스를 제거하고 해당 파일 내용을 갱신합니다.
 
 ```bash
-$ terraform destroy
+terraform destroy
 ```
 
-```
+```output
 aws_instance.app_server: Refreshing state... [id=i-07c4ba04f5ff58673]
 
 Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the
@@ -918,37 +861,35 @@ Destroy complete! Resources: 1 destroyed.
 
 AWS 콘솔을 확인해보면, 앞서 생성한 EC2 인스턴스가 삭제되어 있습니다.
 
-> Terraform*에 대한 좀 더 많은 정보는* [*Terraform 문서*](https://developer.hashicorp.com/terraform)*를 참고하시기 바랍니다.*
+> *Terraform에 대한 좀 더 많은 정보는 [Terraform 문서](https://developer.hashicorp.com/terraform)를 참고하시기 바랍니다.*
 
-> *Python으로 인프라를 생성하는 CDKTF(CDK for Terraform)에 대한 내용은* [*여기*](https://blog.taehun.dev/terraform-cdk)*에 있습니다.*
+> *Python으로 인프라를 생성하는 CDKTF(CDK for Terraform)에 대한 내용은 [여기](https://blog.taehun.dev/terraform-cdk)에 있습니다.*
 
 ## 3.4 요약
 
 이번 장에는 **쿠버네티스 클러스터를 구축**하고, **인프라 관리 도구들을 설치 및 설정**을 하였습니다. 3장에서 했던 작업들을 정리하였습니다 (MacOS 환경):
 
 ```bash
-$ brew install kubectl
-$ brew install kind
-$ brew install ansible
+brew install kubectl
+brew install kind
+brew install ansible
 ```
 
 - 쿠버네티스 노드에 Ubuntu Server 22.04 설치 (→ [3.2.4 운영체제 설치 - Ubuntu Server 22.04 LTS](https://blog.taehun.dev/from-zero-to-hero-mlops-tools-3-1#4bb65a80a19b410496e7238dacbeca86))
-
 - `/etc/ansible/hosts` 파일 작성 (→ [3.3.1 Ansible](/from-zero-to-hero-mlops-tools-3-2#82e114d834fa48fe94f74a91f810fbe1))
-
 - `playbook.yaml` 파일 작성 (→ [3.3.1 Ansible](/from-zero-to-hero-mlops-tools-3-2#82e114d834fa48fe94f74a91f810fbe1))
 
 ```bash
-$ SSH_PUBLIC_KEY=`cat ~/.ssh/id_ed25519.pub`
-$ ansible all --list-hosts | awk 'FNR>=2' | xargs -I {} ssh taehun@{} "echo $SSH_PUBLIC_KEY >> ~/.ssh/authorized_keys"
-$ unset SSH_PUBLIC_KEY
-$ ansible-playbook playbook.yml -K
+SSH_PUBLIC_KEY=`cat ~/.ssh/id_ed25519.pub`
+ansible all --list-hosts | awk 'FNR>=2' | xargs -I {} ssh taehun@{} "echo $SSH_PUBLIC_KEY >> ~/.ssh/authorized_keys"
+unset SSH_PUBLIC_KEY
+ansible-playbook playbook.yml -K
 ```
 
 - `${HOME}/.kube/config` 파일 설정 (→ [3.2.5 RKE2로 쿠버네티스 클러스터 생성](https://blog.taehun.dev/from-zero-to-hero-mlops-tools-3-1#4232f94cb7e74de7bd41dd406d4cbd04))
 
 ```bash
-$ brew install helm
-$ helm repo add argo https://argoproj.github.io/argo-helm
-$ helm -n argocd install argocd argo/argo-cd --create-namespace
+brew install helm
+helm repo add argo https://argoproj.github.io/argo-helm
+helm -n argocd install argocd argo/argo-cd --create-namespace
 ```
