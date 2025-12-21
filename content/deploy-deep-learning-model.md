@@ -19,49 +19,59 @@ toc = true
 
 딥러닝 모델 배포의 첫 단계는 모델 체크포인트 파일을 서빙용 모델로 변환하는 것 입니다. 학습된 딥러닝 체크포인트 파일을 변환하여, 서빙(추론)에 최적화되어 있는 다양한 딥러닝 모델 서빙용 포맷들이 있으며, 모델을 배포하는 타겟에 따라 적합한 포맷이 다릅니다.
 
-## **배포 타겟별 서빙용 모델 유형**
+## 배포 타겟별 서빙용 모델 유형
 
-
-<!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fd8489061-f828-43e7-b958-a5e6b3429a95%2FUntitled.png?table=block&id=2a8183e3-b1ab-4757-8596-0f1bd986b904&cache=v2 -->
-
-![• 배포 타겟별 서빙용 모델 유형 — ONNX, Saved Model, TensorRT, TFLite, CoreML](https://img-src.io/taehun/deploy-deep-learning-model/1.png)
-
-
-• *배포 타겟별 서빙용 모델 유형 — ONNX, Saved Model, TensorRT, TFLite, CoreML*
+<p align="center">
+  <img src="https://img-src.io/taehun/deploy-deep-learning-model/1.png" alt="배포 타겟별 서빙용 모델 유형 — ONNX, Saved Model, TensorRT, TFLite, CoreML">
+  <i>배포 타겟별 서빙용 모델 유형 — ONNX, Saved Model, TensorRT, TFLite, CoreML</i>
+</p>
 
 모델을 어디에 배포하느냐에 따라 변환해야하는 서빙용 모델의 유형이 달라집니다. 위 그림은 배포 타겟 별로 PyTorch 모델을 변환해야 하는 포맷을 정리한 그림 입니다. 여러 포맷들 중에서 많이 사용되는 5개 포맷만 정리하였습니다. 왜 위와 같이 모델을 변환해야 할까요? 모델 포맷마다 모델 성능의 차이는 거의 없고, 추론 속도는 확연히 차이가 나기 때문 입니다. (아래 표 참고)
 
-|  |  |  |  |  |  |  |
-| --- | --- | --- | --- | --- | --- | --- |
-| ㅤ | *Colab Pro+ CPU* | *Colab Pro+ CPU* | *MacOS Intel CPU* | *MacOS Intel CPU* | *Colab Pro+ GPU (V100)* | *Colab Pro+ GPU (V100)* |
-| ***모델 유형*** | ***mAP@0.5:0.95*** | ***추론 시간 (ms)*** | ***mAP@0.5:0.95*** | ***추론 시간 (ms)*** | ***mAP@0.5:0.95*** | ***추론 시간 (ms)*** |
-| PyTorch | 0.4623 | 127.61 | 0.4623 | 222.37 | 0.4623 | 10.19 |
-| TorchScript | 0.4623 | 127.61 | 0.4623 | 231.01 | 0.4623 | 6.85 |
-| ONNX | 0.4623 | 69.34 | 0.4623 | 54.41 | 0.4623 | 14.63 |
-| OpenVINO | 0.4623 | **66.52** | 0.4623 | 40.74 | NaN | NaN |
-| TensorRT | NaN | NaN | NaN | NaN | 0.4617 | **1.89** |
-| CoreML | NaN | NaN | 0.4620 | **39.09** | NaN | NaN |
-| TensorFlow SavedModel | 0.4623 | 123.79 | 0.4623 | 153.32 | 0.4623 | 21.28 |
+<table>
+  <thead>
+    <tr>
+      <th>실행 환경 →</th>
+      <th colspan="2">Colab Pro+ CPU</th>
+      <th colspan="2">MacOS Intel CPU</th>
+      <th colspan="2">Colab Pro+ GPU (V100)</th>
+    </tr>
+    <tr>
+      <th>모델 유형 ↓</th>
+      <th>mAP@0.5:0.95</th>
+      <th>추론 시간 (ms)</th>
+      <th>mAP@0.5:0.95</th>
+      <th>추론 시간 (ms)</th>
+      <th>mAP@0.5:0.95</th>
+      <th>추론 시간 (ms)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>PyTorch</td><td>0.4623</td><td>127.61</td><td>0.4623</td><td>222.37</td><td>0.4623</td><td>10.19</td></tr>
+    <tr><td>TorchScript</td><td>0.4623</td><td>127.61</td><td>0.4623</td><td>231.01</td><td>0.4623</td><td>6.85</td></tr>
+    <tr><td>ONNX</td><td>0.4623</td><td>69.34</td><td>0.4623</td><td>54.41</td><td>0.4623</td><td>14.63</td></tr>
+    <tr><td>OpenVINO</td><td>0.4623</td><td><b>66.52</b></td><td>0.4623</td><td>40.74</td><td>-</td><td>-</td></tr>
+    <tr><td>TensorRT</td><td>-</td><td>-</td><td>-</td><td>-</td><td>0.4617</td><td><b>1.89</b></td></tr>
+    <tr><td>CoreML</td><td>-</td><td>-</td><td>0.4620</td><td><b>39.09</b></td><td>-</td><td>-</td></tr>
+    <tr><td>TensorFlow SavedModel</td><td>0.4623</td><td>123.79</td><td>0.4623</td><td>153.32</td><td>0.4623</td><td>21.28</td></tr>
+  </tbody>
+</table>
 
-- *YOLOv5s 모델 포맷별 성능과 추론 속도 (*[*참고링크1*](https://github.com/ultralytics/yolov5/pull/6613)*,*[*참고링크2*](https://github.com/ultralytics/yolov5/pull/6963)*)*
+- *YOLOv5s 모델 포맷별 성능과 추론 속도 ([참고링크1](https://github.com/ultralytics/yolov5/pull/6613), [참고링크2](https://github.com/ultralytics/yolov5/pull/6963))*
 
-## **클라우드 서빙용 모델 변환**
+## 클라우드 서빙용 모델 변환
 
-[Google Colaboratory
-
-https://colab.research.google.com/drive/1nv\_wCJYb\_5Vjfw4bm8xv2wU7YyGQAbDt?usp=sharing](https://colab.research.google.com/drive/1nv_wCJYb_5Vjfw4bm8xv2wU7YyGQAbDt?usp=sharing)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1nv_wCJYb_5Vjfw4bm8xv2wU7YyGQAbDt?usp=sharing)
 
 클라우드에 배포된 모델은 일괄 처리와 실시간 처리 두 가지 유형에 사용됩니다. 일괄 처리는 주기적으로 실행되는 데이터 파이프라인 (혹은 머신러닝 파이프라인)에서 모델을 로드하여, 한번에 많은 입력 데이터를 추론 합니다. 실시간 처리에 사용되는 모델은 모델을 마치 마이크로서비스처럼 배포하여 스트림 데이터를 입력받아 추론 결과 스트림 생성하거나, 다른 마이크로서비스에서 요청을 받은 데이터를 추론하여 결과를 응답 합니다.
 
 실시간 처리에 비해 일괄 처리에 사용되는 모델은 추론 시간에 덜 민감하지만, 클라우드에서 처리 시간은 곧 비용과 직결되므로 일괄 처리도 추론이 빠르면 빠를수록 좋습니다. 클라우드 환경에 딥러닝 모델을 배포시에는 다음과 같은 모델 유형을 많이 사용 합니다:
 
 - *ONNX*: 근래 가장 인기있는 딥러닝 모델 서빙 포맷입니다. 평균적으로 대부분의 배포 환경에서 추론 속도가 준수하며, 다른 포맷으로 변환이 용이합니다.
-
 - *Saved Model*: Tensorflow로 학습된 모델을 클라우드에 배포할때 사용 합니다.
-
 - *TensorRT*: 모델 추론의 H/W 가속기로 NVIDIA GPU를 사용할때 가장 빠릅니다.
 
-## **ONNX**
+## ONNX
 
 ONNX (Open Neural Network Exchange)는 서로 다른 프레임워크 환경 (Tensorflow, PyTorch)에서 만들어진 모델들을 서로 호환되게 사용할 수 있도록 만들어진 공개 플랫폼입니다. Tensorflow에 비해 PyTorch가 부족한 배포 최적화 부분을 ONNX가 매워주고 있습니다. 모델 파일 확장자는 `.onnx`를 사용하며, 다양한 실행 프로바이더를 지원하는 [ONNX Runtime](https://onnxruntime.ai/)을 런타임 환경으로 사용합니다.
 
@@ -103,7 +113,7 @@ model_onnx, check = onnxsim.simplify(model_onnx)
 onnx.save(model_onnx, output_model)  # Save the ONNX model
 ```
 
-## **Saved Model**
+## Saved Model
 
 - *Tensorflow Saved Model 저장과 로드*
 
@@ -122,17 +132,14 @@ model = tf.saved_model.load("/tmp/some_model/1/")  # 모델 로드
 
 Saved Model은 Tensorflow의 서빙 포맷 입니다. ONNX로 인해 지금은 무색해졌지만, Tensorflow가 PyTorch에 비해 배포에 좋은 이유 중의 하나가 Saved Model과 TFLite 등의 별도의 서빙 포맷을 가지고 있다는 점 이었습니다. 아래 밈과 같이 꼰대용 프레임웍이라고 놀림을 받고 있지만, 2022년 현재에도 배포에 한정하면 Tensorflow는 여전히 최고의 프레임웍 입니다.
 
+<p align="center">
+  <img src="https://img-src.io/taehun/deploy-deep-learning-model/2.png?w=800" alt="Tensorflow는 꼰대들의 전유물?">
+  <br><i>Tensorflow는 꼰대들의 전유물? <del>라떼는 말이야…</del> (출처> <a href="https://twitter.com/josh_tobin_/status/1370198880818659328">Josh Tobin 트윗</a>)</i>
+</p>
 
-<!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F243b30a2-2b50-41a7-8575-1fb7cb0d2f96%2FUntitled.png?table=block&id=41a7c4e5-5424-43c6-b2c3-eba03fe76188&cache=v2 -->
+> *더 읽을거리:* [*PyTorch vs TensorFlow in 2022*](https://www.assemblyai.com/blog/pytorch-vs-tensorflow-in-2022/)
 
-![• Tensorflow는 꼰대들의 전유물? 라떼는 말이야… (출처&gt; Josh Tobin 트윗)](https://img-src.io/taehun/deploy-deep-learning-model/2.png?w=800)
-
-
-• Tensorflow는 꼰대들의 전유물? ~~라떼는 말이야…~~ (출처> [Josh Tobin 트윗](https://twitter.com/josh_tobin_/status/1370198880818659328))
-
-> *더 읽을거리:*[*PyTorch vs TensorFlow in 2022*](https://www.assemblyai.com/blog/pytorch-vs-tensorflow-in-2022/)
-
-## **TensorRT**
+## TensorRT
 
 NVIDIA GPU에서 추론 속도가 가장 빠른 포맷 입니다. A100, V100과 같은 고사양 GPU 뿐만 아니라 Jetson과 같은 에지용 GPU에도 가장 빠르게 동작합니다. 즉, 딥러닝 모델 추론 가속기로 NVIDIA GPU를 사용하시면 TensorRT 포맷이 최고의 서빙 포맷 입니다.
 
@@ -167,43 +174,32 @@ with builder.build_engine(network, config) as engine, open(output_model, 'wb') a
     t.write(engine.serialize())
 ```
 
-## **Edge 서빙용 모델 변환**
+## Edge 서빙용 모델 변환
 
 배포 타겟이 스마트폰과 같은 edge device라면, 해당 장치에 따라 서빙 포맷이 달라집니다. 예를들면, 안드로이드 스마트폰에서 추론 연산을 하는 안드로이드 앱에 들어가는 모델이라면 TFLite 포맷이 가장 적합합니다. 아이폰, 맥북등과 같은 애플 장치에서 추론 연산을 하는 모델이라면 CoreML 모델이 가장 좋습니다. Edge 서빙은 클라우드 서빙에 비해 다음과 같은 장점을 가지고 있습니다:
 
 1. 짧은 응답속도: 모델 추론시, 클라우드 서버에 접근이 없이 장치에서 수행하므로 응답속도가 빠름.
-
 2. 개인 정보 보호: 클라우드 서버에 개인 정보를 전달하지 않아서 개인 정보 노출 위험이 없음.
-
 3. 네트워크 불필요: 클라우드 서버에 접근이 불필요하기 때문에 네트워크 망에 연결될 필요 없음.
-
 4. 저전력: 네트워크 통신을 위한 전력 소모가 없으며, 작은 사이즈의 모델 구동으로 컴퓨팅 전력 소모가 적음
 
-Edge용 모델 변환시 신경써야하는 점이 딥러닝 모델 추론 H/W 가속기 (NPU, DSP, …)에서 추론 연산이 최적화 되도록 데이터 포맷을 변환해야 하는대요. 이것을 **양자화 (Quantization)**라고 합니다. 아래는 몇가지 기본적인 양자화 포맷 가이드라인 입니다:
-
-💡
+Edge용 모델 변환시 신경써야하는 점이 딥러닝 모델 추론 H/W 가속기 (NPU, DSP, …)에서 추론 연산이 최적화 되도록 데이터 포맷을 변환해야 하는대요. 이것을 **양자화 (Quantization)** 라고 합니다. 아래는 몇가지 기본적인 양자화 포맷 가이드라인 입니다:
 
 *From 원본 체크포인트 파일의 데이터 포맷:*`float 32bit` ->
 
 - To NVIDIA GPUs: -> `float 16bit`
-
 - To Google TPU, AWS Inferentia: -> `bfloat16`
-
 - To 연식이 조금된 스마트폰: -> `int8`
-
 - To 기타 딥러닝 추론 H/W 가속기가 탑재된 장치들: -> *칩 스팩 문서 확인* 또는 *타입별 양자화후 테스트*
 
 Edge 장치에 딥러닝 모델을 배포시에는 다음과 같은 모델 유형을 많이 사용 합니다:
 
 - *CoreML*: 애플에서 만든 장치들
-
 - *TFLite*: 구글 안드로이드 장치들
-
 - *TensorRT*: NVIDIA Jetson 장치들
-
 - *ONNX*: ONNX Runtime이 동작하고, 적합한 프로바이더가 있는 장치들
 
-## **TFLite**
+## TFLite
 
 TensorFlow Lite는 TensorFlow 모델을 스마트폰이나 임베디드, IoT 기기에서 구동하기 위한 ML 툴 입니다. Tensorflow 모델이 동작하는 환경이 안드로이드 장치라면 TFLite 포맷으로 변환하여 서빙하는 것이 가장 좋습니다. 기반이 되는 모델이 Tensorflow 모델이므로, Tensorflow의 Keras 포맷이나 Saved Model 포맷에서 TFLite 포맷으로 변환 합니다.
 
@@ -224,9 +220,9 @@ tflite_model = converter.convert()
 open(output_model, "wb").write(tflite_model)
 ```
 
-> *TMI: 구글에서 사용하는 직렬화된 파일 포맷은*[*Proto buffer*](https://developers.google.com/protocol-buffers)*가 많습니다만,*`.tflite`*파일은*[*Flat buffer*](https://google.github.io/flatbuffers)*로 직렬화 되어 있습니다.*
+> *TMI: 구글에서 사용하는 직렬화된 파일 포맷은* [*Proto buffer*](https://developers.google.com/protocol-buffers)*가 많습니다만,*`.tflite`*파일은* [*Flat buffer*](https://google.github.io/flatbuffers)*로 직렬화 되어 있습니다.*
 
-## **CoreML**
+## CoreML
 
 CoreML은 Apple에서 사용하는 딥러닝 포맷 입니다. TensorRT 포맷이 NVIDIA GPU에서 추론 속도가 가장 빠른 것처럼, CoreML은 애플 장치들 (아이폰, 아이패드, 맥북)에서 비교적 최고의 성능(속도)를 냅니다. (*장치 개발사에서 직접 만든 포맷이 최적화가 가장 잘되어 있을수밖에….*)
 
