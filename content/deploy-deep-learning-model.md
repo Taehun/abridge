@@ -61,7 +61,7 @@ toc = true
 
 ## 클라우드 서빙용 모델 변환
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1nv_wCJYb_5Vjfw4bm8xv2wU7YyGQAbDt?usp=sharing)
+[![Open In Colab](/images/colab-badge.svg)](https://colab.research.google.com/drive/1nv_wCJYb_5Vjfw4bm8xv2wU7YyGQAbDt?usp=sharing)
 
 클라우드에 배포된 모델은 일괄 처리와 실시간 처리 두 가지 유형에 사용됩니다. 일괄 처리는 주기적으로 실행되는 데이터 파이프라인 (혹은 머신러닝 파이프라인)에서 모델을 로드하여, 한번에 많은 입력 데이터를 추론 합니다. 실시간 처리에 사용되는 모델은 모델을 마치 마이크로서비스처럼 배포하여 스트림 데이터를 입력받아 추론 결과 스트림 생성하거나, 다른 마이크로서비스에서 요청을 받은 데이터를 추론하여 결과를 응답 합니다.
 
