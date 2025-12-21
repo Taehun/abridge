@@ -50,9 +50,7 @@ multi-arch-builder
 ```
 
 - `-driver`: 사용할 드라이버 설정
-
 - `-bootstrap`: 빌더 생성이 끝나면 자동 초기화 합니다.
-
 - `-use`: 새로 생성한 빌더를 사용하도록 자동 설정 합니다.
 
 샘플 `Dockerfile`
@@ -76,9 +74,9 @@ $ docker buildx build --platform linux/arm64,linux/amd64 -t buildx-test .
 
 빌드후 `docker images`로 이미지 목록을 확인해보면, 빌드된 이미지가 없습니다. 왜냐하면 빌드된 플랫폼별 이미지는 캐싱되어 있어서 그렇습니다. 이미지를 어디로 내보낼지 설정해야 합니다.
 
-**로컬로 가져오기 (테스트용)**
+### 로컬로 가져오기 (테스트용)
 
-- `-load` 옵션을 사용하여 이미지를 로컬로 가져 올 수 있습니다. 현재 로컬 플랫폼만 지원하도록 빌드가 되어서 `docker build`와 별반 차이가 없습니다. `docker buildx build`로 빌드가 되는지 여부와 빌드된 컨테이너 이미지를 로컬에서 테스트하는 목적으로 사용합니다.
+`--load` 옵션을 사용하여 이미지를 로컬로 가져 올 수 있습니다. 현재 로컬 플랫폼만 지원하도록 빌드가 되어서 `docker build`와 별반 차이가 없습니다. `docker buildx build`로 빌드가 되는지 여부와 빌드된 컨테이너 이미지를 로컬에서 테스트하는 목적으로 사용합니다.
 
 ```bash
 $ docker buildx build --load -t buildx-test .
@@ -90,9 +88,9 @@ REPOSITORY      TAG               IMAGE ID       CREATED          SIZE
 buildx-test     latest            ff1af71a52f1   19 minutes ago   9.83MB
 ```
 
-**컨테이너 레지스트리에 올리기**
+### 컨테이너 레지스트리에 올리기
 
-- `-push` 옵션을 사용하여 멀티 플랫폼 이미지 빌드와 동시에 컨테이너 레지스트리 (*Docker Hub, ECR, GCR, ACR*)에 push 합니다. 이때는 `t` 옵션에 올바른 컨테이너 레지스트리 URI를 사용해야 합니다. `docker login`으로 사용할 컨테이너 레지스트리에 로그인이 되어 있어야 합니다.
+`--push` 옵션을 사용하여 멀티 플랫폼 이미지 빌드와 동시에 컨테이너 레지스트리 (*Docker Hub, ECR, GCR, ACR*)에 push 합니다. 이때는 `t` 옵션에 올바른 컨테이너 레지스트리 URI를 사용해야 합니다. `docker login`으로 사용할 컨테이너 레지스트리에 로그인이 되어 있어야 합니다.
 
 ```bash
 docker buildx build --platform linux/arm64,linux/amd64 -t <Container Registry URI>/buildx-test --push .
