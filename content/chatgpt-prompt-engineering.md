@@ -15,22 +15,19 @@ toc = true
 
 ## 소개
 
-## 두 가지 타입의 LLM (Large Language Models)
+### 두 가지 타입의 LLM (Large Language Models)
 
-|  |  |
-| --- | --- |
 | **Base LLM** | **Instruction Tuned LLM** |
+| --- | --- |
 | 학습된 텍스트 데이터에서 다음 단어 추론 | • 지침(instruction)을 따름 • 지침에서 모델이 파인 튜닝 • **RLHF** (**Reinforcement Learning from Human Feedback)**  인간 피드백 기반 강화 학습 |
 
-ℹ️
-
-**RLHF (Reinforcement Learning from Human Feedback)** *by. ChatGPT*
-RLHF은 강화 학습 (Reinforcement Learning)에서 인간의 피드백을 활용하여 에이전트를 학습시키는 기술입니다. 일반적으로 강화 학습은 에이전트가 환경과 상호작용하여 피드백을 받고, 이를 통해 최적의 행동을 학습하는 방식입니다. 하지만 이러한 학습 과정은 실제 환경에서 실험을 반복하고 오랜 시간을 소요할 수 있습니다.
+> **RLHF (Reinforcement Learning from Human Feedback)** *by. ChatGPT*
+>
+> RLHF은 강화 학습 (Reinforcement Learning)에서 인간의 피드백을 활용하여 에이전트를 학습시키는 기술입니다. 일반적으로 강화 학습은 에이전트가 환경과 상호작용하여 피드백을 받고, 이를 통해 최적의 행동을 학습하는 방식입니다. 하지만 이러한 학습 과정은 실제 환경에서 실험을 반복하고 오랜 시간을 소요할 수 있습니다.
 
 RLHF는 이러한 문제를 해결하기 위해 인간의 지식과 피드백을 효과적으로 활용하여 학습 속도를 높이는 방법입니다. RLHF는 주로 두 가지 방식으로 구현됩니다.
 
 1. Demonstrations (시연): 먼저 인간이 원하는 결과를 달성하는 최적의 행동들을 보여줍니다. 이러한 시연을 통해 학습 데이터를 생성하고, 이를 기반으로 강화 학습 알고리즘이 에이전트를 학습시킵니다. 예를 들어, 자율 주행 자동차를 학습시킬 때, 운전자가 좋은 예시를 보여주고, 에이전트가 그 예시를 따라하도록 할 수 있습니다.
-
 2. Reward Models (보상 모델): 인간은 에이전트의 행동에 대한 평가나 보상을 제공합니다. 이 평가나 보상은 에이전트가 최적의 행동을 선택할 수 있도록 도와줍니다. 예를 들어, 게임에서 플레이어가 특정 행동을 하면 보상을 주는 방식으로 학습할 수 있습니다.
 
 이러한 RLHF 기술은 실제 환경에서의 실험을 줄이고, 에이전트의 학습 속도와 성능을 향상시킬 수 있습니다. 또한, RLHF는 인간의 지식과 전문성을 강화 학습 알고리즘에 통합하는 데에도 유용하게 활용될 수 있습니다.
@@ -39,8 +36,7 @@ RLHF는 이러한 문제를 해결하기 위해 인간의 지식과 피드백을
 
 대규모 언어 모델에 효과적인 프롬프트를 작성하기 위해 두 가지 프롬프트 원칙과 관련 전략을 연습
 
-## **OpenAI 패키지 초기화**
-
+### OpenAI 패키지 초기화
 ```python
 import openai
 import os
@@ -55,8 +51,7 @@ openai.api_key  = os.getenv('OPENAI_API_KEY')
 
 - OpenAI API 키는 <https://platform.openai.com/account/api-keys> 에서 생성 및 확인
 
-## **헬퍼 함수 작성**
-
+### 헬퍼 함수 작성
 이 강의는 OpenAI의 `gpt-3.5-turbo` 모델과 [Chat completions 엔드포인트](https://platform.openai.com/docs/guides/chat)를 사용
 
 이 헬퍼 함수를 사용하면 프롬프트를 더 쉽게 사용할 수 있고, 생성된 출력을 확인할 수 있음
@@ -72,20 +67,18 @@ def get_completion(prompt, model="gpt-3.5-turbo", temperature=0):
     return response.choices[0].message["content"]
 ```
 
-## 프롬프트 원칙
+### 프롬프트 원칙
 
 - 원칙 1: 명확하고 구체적인 지침을 작성하세요.
-
 - 원칙 2: 모델에게 "생각할" 시간을 주세요.
 
-## 원칙 1: 명확하고 구체적인 지침을 작성하세요.
+#### 원칙 1: 명확하고 구체적인 지침을 작성하세요.
 
 **전략 1: 구분 기호를 사용하여 입력의 뚜렷한 부분을 명확하게 표시하세요.**
 
-- 구분 기호는 다음과 같을 수 있습니다: ```
-` ``` ````, `"""`, `< >`, `<tag> </tag>`, `:`
+- 구분 기호는 다음과 같을 수 있습니다: ` ``` `, `"""`, `< >`, `<tag> </tag>`, `:`
 
-```toml
+````python
 text = f"""
 가능한 한 명확하고 구체적인 지침을 제공하여 모델이 수행하기를 원하는 작업을 표현해야 합니다.
 이렇게 하면 모델을 원하는 출력으로 안내하고 관련성이 없거나 잘못된 응답을 받을 가능성을 줄일 수 있습니다.
@@ -96,16 +89,16 @@ text = f"""
 
 prompt = f"""
 백틱 세 개로 구분된 텍스트를 한 문장으로 요약하세요.
-```json
+````json
 {text}```
 """
 response = get_completion(prompt)
 print(response)
-```
+````
 
-```
+```output
 모델의 작업을 명확하고 구체적으로 표현하고, 긴 프롬프트를 사용하여 모델이 더 명확하고 관련성 높은 출력을 얻을 수 있도록 해야 합니다.
-```
+````
 
 **전략 2: 구조화된 결과물 요청하기**
 
@@ -170,7 +163,7 @@ print("text_1 결과:")
 print(response)
 ```
 
-```
+```output
 text_1 결과:
 1 단계 - 물을 끓입니다.
 2 단계 - 끓는 동안 컵을 들고 티백을 넣습니다.
@@ -181,7 +174,7 @@ text_1 결과:
 7 단계 - 맛있는 차 한 잔을 즐깁니다.
 ```
 
-```
+```python
 text_2 = f"""
 오늘은 태양이 밝게 빛나고 새들이 노래하고 있습니다.
 공원에서 산책하기 좋은 날입니다.
@@ -211,7 +204,7 @@ print("text_2 결과:")
 print(response)
 ```
 
-```
+```output
 text_2 결과:
 단계 없음
 ```
@@ -232,15 +225,15 @@ response = get_completion(prompt)
 print(response)
 ```
 
-```json
+```output
 <할아버지>: 인생은 언제나 어려움과 도전으로 가득 차 있습니다. 하지만 회복탄력성이 있다면 어떤 어려움이든 극복할 수 있습니다. 회복탄력성은 어려운 상황에서도 긍정적인 마인드를 유지하고, 빠르게 회복하는 능력입니다. 이것은 자신의 강점과 약점을 인식하고, 문제를 해결하기 위해 적극적으로 행동하는 것을 의미합니다.
 ```
 
-## 원칙 2: 모델에게 '생각할 시간' 주기
+#### 원칙 2: 모델에게 '생각할 시간' 주기
 
 **전략 1: 작업 완료에 필요한 단계 지정하기**
 
-```toml
+````python
 text = f"""
 매력적인 마을에서 잭과 질 남매는 언덕 위의 우물에서 물을 길어오기 위해 모험을 떠났어요.
 즐거운 노래를 부르며 오르던 중 잭은 돌에 걸려 넘어져 언덕 아래로 굴러떨어졌고 질도 그 뒤를 따랐습니다. 
@@ -259,20 +252,20 @@ prompt_1 = f"""
 응답은 줄 바꿈으로 구분하세요.
 
 Text:
-```{text}```
+````{text}```
 """
 response = get_completion(prompt_1)
 print("프롬프트 1 결과:")
 print(response)
-```
+````
 
-```
+```output
 프롬프트 1 결과:
 1 - 잭과 질 남매는 마을에서 우물에서 물을 길어오기 위해 모험을 떠났고, 중간에 사고가 있었지만 모험심은 꺾이지 않았습니다.
 2 - Jack et Jill, frère et sœur, sont partis à l'aventure pour chercher de l'eau dans un puits sur une colline dans un charmant village. En chantant joyeusement, Jack a trébuché sur une pierre et est tombé en roulant en bas de la colline, suivi de Jill. Bien qu'ils aient été légèrement blessés, ils se sont encouragés mutuellement et sont rentrés chez eux. Malgré l'accident, leur esprit d'aventure n'a pas été brisé et ils ont continué à explorer avec joie.
 3 - Jack et Jill
 4 - {"french_summary": "Jack et Jill, frère et sœur, sont partis à l'aventure pour chercher de l'eau dans un puits sur une colline dans un charmant village. En chantant joyeusement, Jack a trébuché sur une pierre et est tombé en roulant en bas de la colline, suivi de Jill. Bien qu'ils aient été légèrement blessés, ils se sont encouragés mutuellement et sont rentrés chez eux. Malgré l'accident, leur esprit d'aventure n'a pas été brisé et ils ont continué à explorer avec joie.", "num_names": 2}
-```
+````
 
 지정된 형식의 출력 요청
 
@@ -298,7 +291,7 @@ print("\n프롬프트 2 결과:")
 print(response)
 ```
 
-```
+```output
 프롬프트 2 결과:
 요약: 잭과 질 남매는 우물에서 물을 길어오기 위해 모험을 떠났고, 사고에도 불구하고 모험심은 꺾이지 않았습니다.
 번역: Jack et Jill, frère et sœur, sont partis à l'aventure pour chercher de l'eau dans un puits sur une colline charmante. Malgré un accident, leur esprit d'aventure n'a pas été brisé et ils ont continué à explorer avec joie.
@@ -332,14 +325,14 @@ response = get_completion(prompt)
 print(response)
 ```
 
-```
+```output
 정답입니다.
 ```
 
 **학생의 솔루션이 실제로는 오답이라는 점에 유의하세요.
 모델에 먼저 자체적으로 정답을 찾도록 지시하여 이 문제를 해결할 수 있습니다.**
 
-```toml
+````python
 prompt = f"""
 당신의 역활은 학생의 정답이 실제 정답인지 판단하는 것입니다.
 문제를 해결하려면 다음을 수행합니다:
@@ -395,11 +388,12 @@ x를 평방 피트 단위의 설비 크기라고 합니다.
 
 실제 정답:
 """
+
 response = get_completion(prompt)
 print(response)
-```
+````
 
-```
+```output
 정답을 찾는 과정과 실제 정답:
 1. 토지 비용: 100x
 2. 태양광 패널 비용: 250x
@@ -414,7 +408,7 @@ print(response)
 오답
 ```
 
-## 모델 제한사항****: 환각(Hallucinations)****
+### 모델 제한사항: 환각(Hallucinations)
 
 - Boie는 실제 존재하는 회사이지만, 제품 이름은 실제가 아닙니다.
 
@@ -426,7 +420,7 @@ response = get_completion(prompt)
 print(response)
 ```
 
-```
+```output
 Boie의 AeroGlide 울트라슬림 스마트 칫솔은 미국의 칫솔 제조업체 Boie에서 출시한 제품입니다. 이 제품은 블루투스 기능을 탑재하여 스마트폰과 연동하여 사용할 수 있습니다. 이를 통해 칫솔 사용 시간, 세척 횟수, 배터리 잔량 등을 모니터링할 수 있습니다.
 
 또한, 이 제품은 울트라슬림 디자인으로 구성되어 있어 칫솔질이 더욱 편리하고 쉽습니다. 또한, 칫솔 머리는 부드러운 섬유로 만들어져 치아와 잇몸을 부드럽게 마사지하며 치아의 표면을 깨끗하게 닦아줍니다.
@@ -436,15 +430,14 @@ Boie의 AeroGlide 울트라슬림 스마트 칫솔은 미국의 칫솔 제조업
 
 ## 반복적인 프롬프트 개발
 
+<p align="center">
+<img src="https://img-src.io/taehun/chatgpt-prompt-engineering/1.png?w=600" alt="notion image">
+</p>
 
-<!-- TODO: 이미지 추가 - 파일명: Iterative_prompt_dev.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F2221b3dd-e272-4514-a9f9-f12f3bb133af%2FIterative_prompt_dev.png?table=block&id=48ee36b0-bd1f-4b92-ba93-cbefc0f22c78&cache=v2 -->
 
-![notion image](https://img-src.io/taehun/chatgpt-prompt-engineering/1.png?w=800)
+### 제품 팩트 시트에서 마케팅 제품 소개 생성
 
-
-## 제품 팩트 시트에서 마케팅 제품 소개 생성
-
-```toml
+```python
 fact_sheet_chair = """
 개요
 - 20세기 중반에서 영감을 받은 아름다운 사무용 가구 제품군의 일부입니다, 파일 캐비닛, 책상, 책장, 회의 테이블 등을 포함합니다.
@@ -485,7 +478,7 @@ SEAT
 """
 ```
 
-```
+```python
 prompt = f"""
 당신의 임무는 마케팅 팀이 기술 팩트 시트를 기반으로
 제품의 소매 웹사이트에 대한 한글 제품 소개 작성을 돕는 것입니다.
@@ -496,9 +489,9 @@ prompt = f"""
 """
 response = get_completion(prompt)
 print(response)
-```
+````
 
-```
+```output
 제품 소개:
 
 이 제품은 20세기 중반의 아름다운 사무용 가구 제품군의 일부로, 파일 캐비닛, 책상, 책장, 회의 테이블 등을 포함합니다. 다양한 쉘 색상 및 베이스 마감 옵션으로 제공되며, 플라스틱 소재의 후면 및 전면 커버 (SWC-100) 또는 10가지 패브릭 및 6가지 가죽 옵션의 풀 커버 (SWC-110)로 제공됩니다. 기본 마감 옵션은 스테인리스 스틸, 무광 블랙, 유광 화이트 또는 크롬입니다.
@@ -510,11 +503,11 @@ print(response)
 이 제품은 변형 나일론 PA6/PA66 코팅된 주조 알루미늄으로 만들어졌으며, 셸 두께는 10mm입니다. 시트는 HD36 폼으로 만들어졌으며, 원산지는 이탈리아입니다.
 ```
 
-## 이슈 1: 너무 긴 텍스트
+### 이슈 1: 너무 긴 텍스트
 
 - 단어/문장/문자 수를 제한합니다.
 
-```toml
+````python
 prompt = f"""
 당신의 임무는 마케팅 팀이 기술 팩트 시트를 기반으로
 제품의 소매 웹사이트에 대한 한글 제품 소개 작성을 돕는 것입니다.
@@ -527,17 +520,17 @@ prompt = f"""
 """
 response = get_completion(prompt)
 print(response)
-```
+````
 
-```
+```output
 이 제품군은 20세기 중반의 사무용 가구에서 영감을 받아 디자인된 제품으로, 파일 캐비닛, 책상, 책장, 회의 테이블 등을 포함합니다. 다양한 쉘 색상과 베이스 마감 옵션을 제공하며, 플라스틱 또는 패브릭/가죽 커버를 선택할 수 있습니다. 의자는 팔걸이가 있든 없든 선택 가능하며, 가정 또는 비즈니스 환경에 적합합니다. 또한, 소프트 또는 하드 플로어 캐스터 옵션과 두 가지 시트 폼 밀도 선택이 가능하며, 이 제품은 이탈리아에서 생산됩니다.
 ```
 
-## 이슈 2. 잘못된 세부 사항에 중점을 둔 텍스트
+### 이슈 2. 잘못된 세부 사항에 중점을 둔 텍스트
 
 - 대상 독자와 관련된 내용에 중점을 두도록 요청하세요.
 
-```toml
+````python
 prompt = f"""
 당신의 임무는 마케팅 팀이 기술 팩트 시트를 기반으로
 제품의 소매 웹사이트에 대한 한글 제품 소개 작성을 돕는 것입니다.
@@ -553,13 +546,13 @@ prompt = f"""
 """
 response = get_completion(prompt)
 print(response)
-```
+````
 
-```
+```output
 이 제품군은 20세기 중반의 아름다운 사무용 가구를 현대적으로 재해석한 제품입니다. 파일 캐비닛, 책상, 책장, 회의 테이블 등 다양한 제품으로 구성되며, 다양한 쉘 색상과 베이스 마감 옵션을 제공합니다. 플라스틱 소재의 후면 및 전면 커버 또는 패브릭 및 가죽 옵션의 풀 커버로 제공됩니다. 의자는 팔걸이가 있든 없든 선택할 수 있으며, 가정 또는 비즈니스 환경에 적합합니다. 이 제품은 이탈리아에서 생산되었으며, 고품질의 재료로 만들어졌습니다.
 ```
 
-```
+````python
 prompt = f"""
 당신의 임무는 마케팅 팀이 기술 팩트 시트를 기반으로
 제품의 소매 웹사이트에 대한 한글 제품 소개 작성을 돕는 것입니다.
@@ -577,17 +570,17 @@ prompt = f"""
 """
 response = get_completion(prompt)
 print(response)
-```
+````
 
-```
+```output
 20세기 중반의 아름다운 사무용 가구 제품군 중 하나인 이 제품은 파일 캐비닛, 책상, 책장, 회의 테이블 등으로 구성되어 있습니다. 다양한 쉘 색상과 베이스 마감 옵션을 제공하며, 플라스틱 소재의 후면 및 전면 커버 또는 패브릭 및 가죽 옵션의 풀 커버로 제공됩니다. 스테인리스 스틸, 무광 블랙, 유광 화이트 또는 크롬으로 마감할 수 있으며, 팔걸이가 있든 없든 선택할 수 있습니다. 이 제품은 가정 또는 비즈니스 환경에 적합하며, 계약 사용 자격이 있습니다. 제품 ID: SWC-100, SWC-110.
 ```
 
-## 이슈 3. 설명서에 치수의 표가 필요한 경우
+### 이슈 3. 설명서에 치수의 표가 필요한 경우
 
 - 정보를 추출하여 표로 정리해 달라고 요청하세요.
 
-```toml
+````python
 prompt = f"""
 당신의 임무는 마케팅 팀이 기술 팩트 시트를 기반으로
 제품의 소매 웹사이트에 대한 한글 제품 소개 작성을 돕는 것입니다.
@@ -614,9 +607,9 @@ prompt = f"""
 
 response = get_completion(prompt)
 print(response)
-```
+````
 
-```json
+```html
 <div>
 <h2>제품 소개</h2>
 <p>이 제품은 20세기 중반에서 영감을 받은 아름다운 사무용 가구 제품군의 일부입니다. 파일 캐비닛, 책상, 책장, 회의 테이블 등을 포함하며, 다양한 쉘 색상 및 베이스 마감 옵션을 제공합니다. 플라스틱 소재의 후면 및 전면 커버 (SWC-100) 또는 10가지 패브릭 및 6가지 가죽 옵션의 풀 커버 (SWC-110)로 제공됩니다. 기본 마감 옵션은 스테인리스 스틸, 무광 블랙, 유광 화이트 또는 크롬입니다. 의자는 팔걸이가 있든 없든 선택할 수 있으며, 가정 또는 비즈니스 환경에 적합합니다. 계약 사용 자격이 있습니다.</p>
@@ -665,19 +658,17 @@ from IPython.display import display, HTML
 display(HTML(response))
 ```
 
-
-<!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-05-28_오후_7.31.46.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fdfc53727-e455-4050-98aa-211bbded56e3%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-05-28_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_7.31.46.png?table=block&id=d8d9d267-fbe8-40fb-9e5e-8d6603e910b2&cache=v2 -->
-
-![notion image](https://img-src.io/taehun/chatgpt-prompt-engineering/2.png)
-
+<p align="center">
+<img src="https://img-src.io/taehun/chatgpt-prompt-engineering/2.png" alt="notion image">
+</p>
 
 ## 요약하기
 
 텍스트 요약하기
 
-## **단어/문장/문자 수 제한으로 요약하기**
+### 단어/문장/문자 수 제한으로 요약하기
 
-```toml
+```python
 prod_review = """
 딸의 생일 선물로 이 팬더 봉제 인형을 받았는데, 딸이 좋아해서 어디든 가지고 다닙니다.
 부드럽고 매우 귀엽고 얼굴이 친근한 표정을 지녔어요.
@@ -688,7 +679,7 @@ prod_review = """
 """
 ```
 
-```
+````python
 prompt = f"""
 당신의 임무는 전자 상거래 사이트에서 제품 리뷰에 대한 짧은 요약을 생성하는 것입니다.
 
@@ -699,15 +690,15 @@ prompt = f"""
 
 response = get_completion(prompt)
 print(response)
-```
+````
 
-```
+```output
 "부드럽고 귀여운 팬더 봉제 인형, 작은 크기에 비해 가격이 조금 높음. 빠른 배송."
 ```
 
-## **배송에 중점을 두고 요약하기**
+### 배송에 중점을 두고 요약하기
 
-```toml
+````python
 prompt = f"""
 당신의 임무는 전자 상거래 사이트에서 배송 부서에 피드백을 제공하기 위해
 제품 리뷰에 대한 간략한 요약을 생성하는 것입니다.
@@ -719,15 +710,15 @@ prompt = f"""
 
 response = get_completion(prompt)
 print(response)
-```
+````
 
-```
+```output
 "부드럽고 귀여운 팬더 봉제 인형, 배송은 예상보다 일찍 도착했지만 가격 대비 크기는 작음."
 ```
 
-## **가격에 중점을 두고 요약하기**
+### 가격에 중점을 두고 요약하기
 
-```toml
+````python
 prompt = f"""
 당신의 임무는 전자 상거래 사이트에서 제품 가격 결정을 담당하는 가격 책정 부서에
 피드백을 제공하기 위해 제품 리뷰에 대한 간략한 요약을 생성하는 것 입니다.
@@ -740,19 +731,17 @@ prompt = f"""
 
 response = get_completion(prompt)
 print(response)
-```
+````
 
-```
+```output
 "부드럽고 귀여운 팬더 봉제인형, 가격 대비 크기는 작음"
 ```
 
-💡
-
 요약은 중점을 두려는 주제와 관련없는 내용이 포함됩니다.
 
-## **“요약(summarize)”대신 “추출(extract)” 사용**
+### “요약(summarize)”대신 “추출(extract)” 사용
 
-```toml
+````python
 prompt = f"""
 당신의 임무는 전자 상거래 사이트의 제품 리뷰에서 배송 관련 정보를 추출하여
 배송 부서에 피드백을 제공하는 것입니다.
@@ -764,15 +753,15 @@ prompt = f"""
 """
 response = get_completion(prompt)
 print(response)
-```
+````
 
-```
+```output
 "배송은 예상보다 하루 일찍 도착"
 ```
 
-## **여러 제품 리뷰 요약**
+### 여러 제품 리뷰 요약
 
-```toml
+```python
 review_1 = prod_review 
 
 # 스탠딩 램프 리뷰
@@ -824,7 +813,7 @@ review_4 = """
 reviews = [review_1, review_2, review_3, review_4]
 ```
 
-```
+````python
 for i in range(len(reviews)):
     prompt = f"""
     당신의 임무는 전자상거래 사이트의 제품 리뷰에 대한 간단한 요약을 생성하는 것입니다. 
@@ -836,9 +825,9 @@ for i in range(len(reviews)):
 
     response = get_completion(prompt)
     print(i, response, "\n")
-```
+````
 
-```
+```output
 0 "부드럽고 귀여운 팬더 봉제인형, 가격 대비 크기는 작지만 딸이 좋아해요. 배송은 예상보다 일찍 도착했습니다."
 
 1 간단 요약: 멋진 램프, 추가 수납 공간, 빠른 배송, 누락된 부품 신속 대응, 고객 친절. 
@@ -852,9 +841,9 @@ for i in range(len(reviews)):
 
 제품 리뷰와 뉴스 기사에서 감정과 주제를 유추해보기
 
-## 제품 리뷰 텍스트
+### 제품 리뷰 텍스트
 
-```toml
+```python
 lamp_review = """
 내 침실에 멋진 램프가 필요했는데, 이 램프는 추가 수납 공간이 있고 가격대가 그리 높지 않았습니다.
 배송은 빨랐습니다 - 2일만에 도착했습니다.
@@ -865,7 +854,7 @@ Lumina는 고객과 제품을 아끼는 훌륭한 회사인 것 같습니다!!!
 """
 ```
 
-## 감성 (긍정적/부정적)
+### 감성 (긍정적/부정적)
 
 ```python
 prompt = f"""
@@ -877,11 +866,11 @@ response = get_completion(prompt)
 print(response)
 ```
 
-```
+```output
 감성: 긍정적
 ```
 
-```
+```python
 prompt = f"""
 세 개의 백틱으로 구분된 제품 리뷰의 감성은 무엇입니까?
 '긍정적' 또는 '부정적' 중 한 단어로 답하세요.
@@ -892,11 +881,11 @@ response = get_completion(prompt)
 print(response)
 ```
 
-```
+```output
 긍정적
 ```
 
-## 감성 유형 식별
+### 감성 유형 식별
 
 ```python
 prompt = f"""
@@ -910,11 +899,11 @@ response = get_completion(prompt)
 print(response)
 ```
 
-```
+```output
 만족, 감사, 놀람, 신뢰, 친절함
 ```
 
-## 불만 식별
+### 불만 식별
 
 ```python
 prompt = f"""
@@ -928,11 +917,11 @@ response = get_completion(prompt)
 print(response)
 ```
 
-```
+```output
 아니요
 ```
 
-## 고객 리뷰에서 제품 및 회사명 추출
+### 고객 리뷰에서 제품 및 회사명 추출
 
 ```python
 prompt = f"""
@@ -958,7 +947,7 @@ print(response)
 }
 ```
 
-## 한 번에 여러 작업 수행
+### 한 번에 여러 작업 수행
 
 ```python
 prompt = f"""
@@ -993,9 +982,9 @@ print(response)
 }
 ```
 
-## 주제 추론하기
+### 주제 추론하기
 
-```toml
+```python
 story = """
 최근 정부에서 실시한 설문 조사에서 공공 부문 직원들에게 자신이 근무하는 부서에 대한 직업 만족도를
 평가해 달라는 요청을 받았습니다. 조사 결과, 만족도가 95%에 달하는 가장 인기 있는 부서는 NASA로 나타났습니다.
@@ -1032,7 +1021,7 @@ response = get_completion(prompt)
 print(response)
 ```
 
-```json
+```output
 ['설문조사 결과', 'NASA의 직원 만족도', 'NASA의 경영진 반응', '사회보장국의 직원 만족도', '정부의 대응 약속']
 ```
 
@@ -1054,7 +1043,7 @@ response = get_completion(prompt)
 print(response)
 ```
 
-```
+```output
 NASA: 1
 지방 정부: 0
 Engineering: 0
@@ -1062,13 +1051,13 @@ Engineering: 0
 연방 정부: 1
 ```
 
-```
+```python
 topic_dict = {i.split(': ')[0]: int(i.split(': ')[1]) for i in response.split(sep='\n')}
 if topic_dict['NASA'] == 1:
     print("알람: 새로운 NASA 기사!")
 ```
 
-```
+```output
 알람: 새로운 NASA 기사!
 ```
 
@@ -1076,52 +1065,52 @@ if topic_dict['NASA'] == 1:
 
 언어 번역, 맞춤법 및 문법 검사, 어조 조정, 형식 변환과 같은 텍스트 변환 작업에 대규모 언어 모델을 사용하는 방법을 살펴봅니다.
 
-## 번역
+### 번역
 
 ChatGPT의 다국어 학습을 통해 다양한 언어 간 번역을 지원합니다. 다음은 이 기능을 사용하는 방법에 대한 몇 가지 예입니다.
 
-```toml
+````python
 prompt = f"""
 다음 영어 텍스트를 스페인어로 번역하세요: \ 
 ```Hi, I would like to order a blender```
 """
 response = get_completion(prompt)
 print(response)
-```
+````
 
-```
+```output
 Hola, me gustaría pedir una licuadora.
 ```
 
-```
+````python
 prompt = f"""
 어떤 언어인지 알려주세요: 
 ```Combien coûte le lampadaire?```
 """
 response = get_completion(prompt)
 print(response)
-```
+````
 
-```
+```output
 이 문장은 프랑스어입니다.
 ```
 
-```
+````python
 prompt = f"""
 다음 언어를 프랑스어, 스페인어, 영어로 번역하세요:
 ```I want to order a basketball```
 """
 response = get_completion(prompt)
 print(response)
-```
+````
 
-```
+```output
 Je veux commander un ballon de basket (프랑스어)
 Quiero pedir una pelota de baloncesto (스페인어)
 I want to order a basketball (영어)
 ```
 
-```
+```python
 prompt = f"""
 다음 텍스트를 반말과 존댓말 두 형식의 스페인어로 번역하세요:
 'Would you like to order a pillow?'
@@ -1130,16 +1119,16 @@ response = get_completion(prompt)
 print(response)
 ```
 
-```
+```output
 - 반말: ¿Quieres pedir una almohada?
 - 존댓말: ¿Le gustaría pedir una almohada?
 ```
 
-## 유니버셜 번역기
+### 유니버셜 번역기
 
 대규모 다국적 이커머스 기업에서 IT를 담당하고 있다고 가정해 보세요. 사용자들이 각자의 모국어로 IT 문제에 대해 메시지를 보내고 있습니다. 전 세계 각지에서 온 직원들은 각자의 모국어만 구사합니다. 여러분에게는 범용 번역기가 필요합니다!
 
-```toml
+````python
 user_messages = [
   "La performance du système est plus lente que d'habitude.",
   "Mi monitor tiene píxeles que no se iluminan.",
@@ -1158,9 +1147,9 @@ for issue in user_messages:
     """
     response = get_completion(prompt)
     print(response, "\n")
-```
+````
 
-```
+```output
 원본 메세지 (프랑스어 (French)): La performance du système est plus lente que d'habitude.
 English: The system performance is slower than usual.
 한국어: 시스템 성능이 평소보다 느립니다. 
@@ -1182,27 +1171,29 @@ English: My screen is flickering.
 한국어: 내 화면이 깜빡입니다.
 ```
 
-## 톤 변환
+### 톤 변환
 
 글쓰기는 대상에 따라 달라질 수 있습니다. ChatGPT는 다양한 톤을 생성할 수 있습니다.
 
-```toml
+````python
 prompt = f"""
 다음 속어 문장을 정중한 비즈니스 이메일 형식으로 변경하세요:
 ```
-나 태훈인데, 첨부한 스탠드 램프의 사양을 확인해.```
+나 태훈인데, 첨부한 스탠드 램프의 사양을 확인해.
+```
 """
+
 response = get_completion(prompt)
 print(response)
-```
+````
 
-```
+```output
 안녕하세요,
 저는 태훈입니다. 첨부된 스탠드 램프의 사양을 확인 부탁드립니다.
 감사합니다.
 ```
 
-## 포맷 변환
+### 포맷 변환
 
 ChatGPT는 형식 간 번역이 가능합니다. 프롬프트에 입력 및 출력 형식이 설명되어 있어야 합니다.
 
@@ -1224,19 +1215,17 @@ response = get_completion(prompt)
 display(HTML(response))
 ```
 
+<p align="center">
+<img src="https://img-src.io/taehun/chatgpt-prompt-engineering/3.png" alt="notion image">
+</p>
 
-<!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-05-29_오후_4.21.04.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fc3bf63cb-892b-4daf-90d6-7b4811d3132b%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-05-29_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_4.21.04.png?table=block&id=0c50009a-9227-4469-a22c-f69f7e21043e&cache=v2 -->
-
-![notion image](https://img-src.io/taehun/chatgpt-prompt-engineering/3.png)
-
-
-## 맞춤법/문법 검사
+### 맞춤법/문법 검사
 
 다음은 일반적인 문법 및 철자 문제와 LLM의 응답에 대한 몇 가지 예입니다.
 
 LLM에 텍스트를 교정해 달라는 신호를 보내려면 모델에 '교정' 또는 '교정 및 수정'을 지시합니다.
 
-```toml
+````python
 text = [ 
   "The girl with the black and white puppies have a ball.",  # 동사 오류
   "Yolanda has her notebook.", # ok
@@ -1254,9 +1243,9 @@ for t in text:
     """
     response = get_completion(prompt)
     print(response)
-```
+````
 
-```
+```output
 The girl with the black and white puppies has a ball.
 <오류 없음>
 It's going to be a long day. Does the car need its oil changed?
@@ -1266,7 +1255,7 @@ You're going to need your notebook.
 This phrase is to check ChatGPT for spelling ability.
 ```
 
-```
+````python
 text = f"""
 Got this for my daughter for her birthday cuz she keeps taking \
 mine from my room.  Yes, adults also like pandas too.  She takes \
@@ -1280,9 +1269,9 @@ to play with it myself before I gave it to my daughter.
 prompt = f"이 리뷰 교정 및 수정: ```{text}```
 response = get_completion(prompt)
 print(response)
-```
+````
 
-```
+```output
 I got this panda plushie for my daughter's birthday because she kept taking mine from my room. Yes, even adults like pandas too. She takes it everywhere with her, and it's super soft and cute. However, one of the ears is a bit lower than the other, and I don't think that was designed to be asymmetrical. Also, I feel like it's a bit small for the price I paid. I think there might be other options that are bigger for the same price. On the bright side, it arrived a day earlier than expected, so I got to play with it myself before giving it to my daughter.
 ```
 
@@ -1293,9 +1282,9 @@ diff = Redlines(text, response)
 display(Markdown(diff.output_markdown))
 ```
 
-> ~~**Got**~~**I got**this **panda plushie**for my ~~**daughter for her**~~**daughter's**birthday ~~**cuz**~~**because**she ~~**keeps**~~**kept**taking mine from my ~~**room.**~~**room.**Yes, **even**adults ~~**also**~~like pandas ~~**too.**~~**too.**She takes it everywhere with her, and it's super soft and ~~**cute. One**~~**cute. However, one**of the ears is a bit lower than the other, and I don't think that was designed to be asymmetrical. ~~**It's**~~**Also, I feel like it's**a bit small for ~~**what**~~**the price**I ~~**paid for it though.**~~**paid.**I think there might be other options that are bigger for the same ~~**price. It**~~**price. On the bright side, it**arrived a day earlier than expected, so I got to play with it myself before ~~**I gave**~~**giving**it to my ~~**daughter.**~~**daughter.**
+> ~~**Got**~~ **I got** this **panda plushie** for my ~~**daughter for her**~~ **daughter's** birthday ~~**cuz**~~ **because** she ~~**keeps**~~ **kept** taking mine from my ~~**room.**~~ **room.** Yes, **even** adults ~~**also**~~ like pandas ~~**too.**~~ **too.** She takes it everywhere with her, and it's super soft and ~~**cute. One**~~ **cute. However, one** of the ears is a bit lower than the other, and I don't think that was designed to be asymmetrical. ~~**It's**~~ **Also, I feel like it's** a bit small for ~~**what**~~ **the price** I ~~**paid for it though.**~~ **paid.** I think there might be other options that are bigger for the same ~~**price. It**~~ **price. On the bright side, it** arrived a day earlier than expected, so I got to play with it myself before ~~**I gave**~~ **giving** it to my ~~**daughter.**~~ **daughter.**
 
-```python
+````python
 from IPython.display import Markdown
 
 prompt = f"""
@@ -1306,25 +1295,25 @@ Markdown 형식으로 출력합니다.
 """
 response = get_completion(prompt)
 display(Markdown(response))
-```
+````
 
-> Title: A Cute and Soft Panda Plush Toy for All Ages
+> **Title: A Cute and Soft Panda Plush Toy for All Ages**
 >
-> Introduction: As an adult, I understand the appeal of cute and cuddly plush toys. That's why I got this panda plush toy for my daughter's birthday, as she kept taking mine from my room. In this review, I will share my thoughts on the product's quality, design, and value for money.
+> **Introduction:** As an adult, I understand the appeal of cute and cuddly plush toys. That's why I got this panda plush toy for my daughter's birthday, as she kept taking mine from my room. In this review, I will share my thoughts on the product's quality, design, and value for money.
 >
-> Body: The panda plush toy is undeniably soft and cute, making it a perfect companion for children and adults alike. My daughter takes it everywhere with her, and I have to admit that I've grown attached to it too. However, I did notice that one of the ears is a bit lower than the other, which seems to be a manufacturing flaw rather than a deliberate design choice.
+> **Body:** The panda plush toy is undeniably soft and cute, making it a perfect companion for children and adults alike. My daughter takes it everywhere with her, and I have to admit that I've grown attached to it too. However, I did notice that one of the ears is a bit lower than the other, which seems to be a manufacturing flaw rather than a deliberate design choice.
 >
 > While I appreciate the quality of the product, I do think that it's a bit small for the price I paid. I believe that there are other options available that offer better value for money in terms of size. Nonetheless, I was pleasantly surprised to receive the product a day earlier than expected, which gave me the chance to play with it myself before giving it to my daughter.
 >
-> Conclusion: Overall, I would recommend this panda plush toy to anyone who loves cute and cuddly companions. Despite its small size and minor flaw, it's a high-quality product that is sure to bring joy to anyone who receives it.
+> **Conclusion:** Overall, I would recommend this panda plush toy to anyone who loves cute and cuddly companions. Despite its small size and minor flaw, it's a high-quality product that is sure to bring joy to anyone who receives it.
 
 ## 확장하기
 
 각 고객의 리뷰에 맞는 고객 서비스 이메일을 생성하기
 
-## 고객 이메일에 대한 자동 회신 사용자 지정하기
+### 고객 이메일에 대한 자동 회신 사용자 지정하기
 
-```toml
+```python
 # 리뷰 내용에서 감성을 판단하는 것은 '추론하기' 단원 참고
 sentiment = "부정적"
 
@@ -1350,12 +1339,11 @@ review = f"""
 """
 ```
 
-```
+````python
 prompt = f"""
 당신은 고객 서비스 AI 어시스턴트입니다.
 당신의 임무는 소중한 고객에게 이메일 답장을 보내는 것입니다.
-```
-로 고객 이메일을 구분합니다.
+```로 고객 이메일을 구분합니다.
 고객의 리뷰에 대한 감사의 답장을 생성합니다.
 감정이 긍정적이거나 중립적인 경우 고객의 리뷰에 감사를 표시합니다.
 
@@ -1364,15 +1352,15 @@ prompt = f"""
 간결하고 전문적인 어조로 작성하세요.
 이메일에 'AI 고객 상담원'으로 서명합니다.
 
-고객 리뷰: ```json
-{review}```
+고객 리뷰: ```{review}```
 리뷰 감성: {sentiment}
 """
+
 response = get_completion(prompt)
 print(response)
-```
+````
 
-```
+```output
 안녕하세요,
 
 저희 제품을 구매해 주셔서 감사합니다. 그러나 고객님의 리뷰를 읽어보니 불만족스러운 경험을 하셨다는 것을 알게 되어 죄송합니다.
@@ -1386,34 +1374,31 @@ print(response)
 AI 고객 상담원
 ```
 
-## 고객 이메일의 세부 정보를 모델에서 사용
+### 고객 이메일의 세부 정보를 모델에서 사용
 
+<p align="center">
+<img src="https://img-src.io/taehun/chatgpt-prompt-engineering/4.png?w=600" alt="notion image">
+</p>
 
-<!-- TODO: 이미지 추가 - 파일명: Temperature.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F09e51bf8-65c7-44c5-9591-e4206015595e%2FTemperature.png?table=block&id=ffc66866-7ce1-4fce-9225-83cfc3a67e3e&cache=v2 -->
-
-![notion image](https://img-src.io/taehun/chatgpt-prompt-engineering/4.png?w=800)
-
-
-```toml
+````python
 prompt = f"""
 당신은 고객 서비스 AI 어시스턴트입니다.
 당신의 임무는 소중한 고객에게 이메일 답장을 보내는 것입니다.
-```
-로 구분된 고객 이메일이 주어지면, 고객의 리뷰에 대한 답장을 생성합니다.
+```로 구분된 고객 이메일이 주어지면, 고객의 리뷰에 대한 답장을 생성합니다.
 감정이 긍정적이거나 중립적인 경우, 고객의 리뷰에 감사를 표시합니다.
 부정적인 감정인 경우에는 사과하고 고객 서비스에 문의할 수 있도록 제안합니다. 
 리뷰의 구체적인 세부 정보를 사용하세요.
 간결하고 전문적인 어조로 작성하세요.
 이메일에 'AI 고객 상담원'으로 서명합니다.
-고객 리뷰: ```json
-{review}```
+
+고객 리뷰: ```{review}```
 리뷰 감성: {sentiment}
 """
 response = get_completion(prompt, temperature=0.7)
 print(response)
-```
+````
 
-```
+```output
 안녕하세요,
 
 고객님의 이메일을 받아보았습니다. 먼저 저희 제품을 구매해주셔서 감사드립니다.
@@ -1436,11 +1421,9 @@ AI 고객 상담원 드림.
 
 채팅 형식을 활용하여 특정 작업이나 행동에 맞게 맞춤화되거나 특화된 챗봇과 확장된 대화를 나누는 방법을 살펴보기
 
-
-<!-- TODO: 이미지 추가 - 파일명: role.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F516690b6-de7f-4e6e-a557-04c3a1510461%2Frole.png?table=block&id=9b802245-599a-4315-b506-46e21c25579a&cache=v2 -->
-
-![notion image](https://img-src.io/taehun/chatgpt-prompt-engineering/5.png?w=800)
-
+<p align="center">
+<img src="https://img-src.io/taehun/chatgpt-prompt-engineering/5.png?w=600" alt="notion image">
+</p>
 
 새로운 헬퍼 함수
 
@@ -1452,7 +1435,7 @@ def get_completion_from_messages(messages, model="gpt-3.5-turbo", temperature=0)
         temperature=temperature, # '확장하기' 단원 참고
     )
     return response.choices[0].message["content"]
-```
+````
 
 여러 메세지에 메세지마다 역활(role)을 지정하여 프롬프트를 생성
 
@@ -1470,11 +1453,11 @@ response = get_completion_from_messages(messages, temperature=1)
 print(response)
 ```
 
-```
+```output
 아내가 "아보카도 있으면 6개 사와"라고 했기 때문에요! 이것이 개발자 유머의 전형적인 예시죠. :)
 ```
 
-```
+```python
 messages =  [
     {'role':'system', 'content':'당신은 친근한 챗봇입니다.'},    
     {'role':'user', 'content':'안녕, 나는 태훈 이야.'}
@@ -1483,7 +1466,7 @@ response = get_completion_from_messages(messages, temperature=1)
 print(response)
 ```
 
-```
+```output
 안녕하세요, 태훈님! 반갑습니다. 무엇을 도와드릴까요?
 ```
 
@@ -1498,7 +1481,7 @@ response = get_completion_from_messages(messages, temperature=1)
 print(response)
 ```
 
-```
+```output
 안녕하세요! 당신의 이름을 무엇으로 부르면 좋을까요?
 ```
 
@@ -1515,11 +1498,11 @@ response = get_completion_from_messages(messages, temperature=1)
 print(response)
 ```
 
-```
+```output
 당신의 이름은 태훈이라고 하셨죠! :)
 ```
 
-## 주문 봇 만들기
+### 주문 봇 만들기
 
 사용자 프롬프트와 어시스턴트 응답 수집을 자동화하여 주문 봇을 구축. 주문봇이 피자 가게에서 주문을 받음.
 
@@ -1589,11 +1572,9 @@ dashboard = pn.Column(
 dashboard
 ```
 
-
-<!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-05-29_오후_11.01.45.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F2db24db2-69d8-49ca-812a-82cbab37b8f1%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-05-29_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_11.01.45.png?table=block&id=743da018-8142-49bb-806b-8ca2c82c9d02&cache=v2 -->
-
-![notion image](https://img-src.io/taehun/chatgpt-prompt-engineering/6.png)
-
+<p align="center">
+<img src="https://img-src.io/taehun/chatgpt-prompt-engineering/6.png" alt="notion image">
+</p>
 
 ```python
 messages =  context.copy()
@@ -1610,7 +1591,7 @@ response = get_completion_from_messages(messages, temperature=0)
 print(response)
 ```
 
-```
+```output
 아래는 이전 주문에 대한 JSON 형식의 요약입니다.
 
 {
