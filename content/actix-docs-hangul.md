@@ -11,13 +11,11 @@ author = "김태훈"
 toc = true
 +++
 
-ℹ️
-
-원서 링크: <https://actix.rs/docs/>
+> 원서 링크: <https://actix.rs/docs/>
 
 ## 소개
 
-### **Actix에 오신 것을 환영합니다**
+### Actix에 오신 것을 환영합니다
 
 Actix Web을 사용하면 Rust에서 웹 서비스를 빠르고 자신 있게 개발할 수 있으며 이 가이드를 통해 금방 시작할 수 있습니다.
 
@@ -43,11 +41,11 @@ Actix Web으로 개발된 애플리케이션은 기본 실행 파일에 포함�
 
 Actix Web의 현재 지원되는 최소 Rust 버전(MSRV)은 1.59입니다. 러스트업 업데이트를 실행하면 가장 최신의 Rust 버전을 사용할 수 있습니다. 따라서 이 가이드에서는 Rust 1.59 이상을 실행하고 있다고 가정합니다.
 
-#### **Hello, world!**
+#### Hello, world!
 
 먼저 바이너리 기반 Cargo 프로젝트를 새로 생성하고 새 디렉토리로 변경합니다:
 
-```rust
+```bash
 cargo new hello-world
 cd hello-world
 ```
@@ -188,7 +186,7 @@ async fn main() -> std::io::Result<()> {
 
 내부적으로 `Web::Data`는 `Arc`를 사용합니다. 따라서 두 개의 `Arc`를 생성하지 않으려면`App::app_data()`를 사용하여 데이터를 등록하기 전에 데이터를 생성해야 합니다.
 
-다음 예제에서 *변경 가능한 공유 상태(Shared Mutable State)*를 가진 애플리케이션을 작성해 보겠습니다. 먼저 상태를 정의하고 핸들러를 생성합니다:
+다음 예제에서 *변경 가능한 공유 상태(Shared Mutable State)* 를 가진 애플리케이션을 작성해 보겠습니다. 먼저 상태를 정의하고 핸들러를 생성합니다:
 
 ```rust
 use actix_web::{web, App, HttpServer};
@@ -231,7 +229,6 @@ async fn main() -> std::io::Result<()> {
 핵심 사항:
 
 - `HttpServer::new`로 전달된 클로저 내부에서 초기화된 state는 워커 스레드에 로컬이며 수정하면 동기화가 해제될 수 있습니다.
-
 - 전역적으로 공유되는 state를 얻으려면 HttpServer::new로 전달된 클로저 **외부**에서 state를 생성하고 이동/복제해야 합니다.
 
 #### 애플리케이션 범위를 사용하여 애플리케이션 구성
@@ -279,7 +276,7 @@ async fn main() -> std::io::Result<()> {
 }
 ```
 
-#### **Configure**
+#### Configure
 
 단순성과 재사용성을 위해 `App::Scope`와 `web::Scope` 모두 `configure` 메서드를 제공합니다. 이 함수는 구성의 일부를 다른 모듈이나 라이브러리로 옮길 때 유용합니다. 예를 들어, 리소스 구성의 일부를 다른 모듈로 이동할 수 있습니다.
 
@@ -323,7 +320,7 @@ async fn main() -> std::io::Result<()> {
 
 위 예제의 결과는 다음과 같습니다:
 
-```
+```output
 /         -> "/"
 /app      -> "app"
 /api/test -> "test"
@@ -331,7 +328,7 @@ async fn main() -> std::io::Result<()> {
 
 각 `ServiceConfig`는 자체 `data`, `routes`, `sevices`를 가질 수 있습니다.
 
-### **HTTP 서버**
+### HTTP 서버
 
 [HttpServer](https://docs.rs/actix-web/4.3.1/actix_web/struct.HttpServer.html) 타입은 HTTP 요청을 처리합니다.
 
@@ -386,7 +383,7 @@ fn my_handler() -> impl Responder {
 
 따라서 CPU에 바인딩되지 않는 긴 연산(예: I/O, 데이터베이스 연산 등)은 퓨처 또는 비동기 함수로 표현해야 합니다. 비동기 핸들러는 워커 스레드에서 동시에 실행되므로 실행을 블록하지 않습니다:
 
-```
+```rust
 async fn my_handler() -> impl Responder {
     tokio::time::sleep(Duration::from_secs(5)).await; // <-- Ok. 워커 스레드는 여기서 다른 요청을 처리합니다.
     "response"
@@ -395,19 +392,19 @@ async fn my_handler() -> impl Responder {
 
 추출기(extractor)에도 동일한 제한이 적용됩니다. 핸들러 함수가 `FromRequest`를 구현하는 인수를 받고 해당 구현이 현재 스레드를 차단하는 경우, 핸들러를 실행할 때 워커 스레드가 차단됩니다. 바로 이러한 이유로 추출기를 구현할 때는 특별한 주의를 기울여야 하며, 필요한 경우 비동기로 구현해야 합니다.
 
-#### **TLS / HTTPS**
+#### TLS / HTTPS
 
 Actix Web은 기본적으로 두 가지 TLS 구현, 즉 `rustls`와 `openssl`을 지원합니다.
 
 `rustls` 크레이트 기능은 `rustls` 통합을 위한 기능이며 `openssl`은 `openssl` 통합을 위한 기능입니다.
 
-```rust
+```toml
 [dependencies]
 actix-web = { version = "4", features = ["openssl"] }
 openssl = { version = "0.10" }
 ```
 
-```
+```rust
 use actix_web::{get, App, HttpRequest, HttpServer, Responder};
 use openssl::ssl::{SslAcceptor, SslFiletype, SslMethod};
 
@@ -436,26 +433,24 @@ async fn main() -> std::io::Result<()> {
 key.pem 및 cert.pem을 만들려면 다음 명령을 사용합니다. **subject를 직접 입력합니다.**
 
 ```bash
-$ openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem \
+openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem \
   -days 365 -sha256 -subj "/C=CN/ST=Fujian/L=Xiamen/O=TVlinux/OU=Org/CN=muro.lxd"
 ```
 
 비밀번호를 제거하려면 nopass.pem을 key.pem에 복사합니다.
 
 ```bash
-$ openssl rsa -in key.pem -out nopass.pem
+openssl rsa -in key.pem -out nopass.pem
 ```
 
-#### **Keep-Alive**
+#### Keep-Alive
 
 Actix Web은 후속 요청을 기다리기 위해 연결을 열어 둡니다.
 
 > keep alive 연결 동작은 서버 설정에 의해 정의됩니다.
 
 - `Duration::from_secs(75)` 또는 `KeepAlive::Timeout(75)`: 75초 킵얼라이브 타이머를 활성화합니다.
-
 - `KeepAlive::Os:` OS keep-alive를 사용합니다.
-
 - `None` 또는 `KeepAlive::Disabled:` 는 keep-alive를 비활성화합니다.
 
 ```rust
@@ -503,9 +498,7 @@ async fn index(_req: HttpRequest) -> HttpResponse {
 `HttpServer`는 여러 OS 신호를 처리합니다. *CTRL-C*는 모든 OS에서 사용할 수 있으며, 다른 신호는 유닉스 시스템에서 사용할 수 있습니다.
 
 - *SIGINT* - 강제 종료 작업자
-
 - *SIGTERM* - 유예 종료 작업자
-
 - *SIGQUIT* - 강제 종료 작업자
 
 > `HttpServer::disable_signals()` 메서드로 신호 처리를 비활성화할 수 있습니다.
@@ -711,18 +704,14 @@ async fn index(form: web::Form<FormData>) -> Result<String> {
 }
 ```
 
-#### **Other**
+#### Other
 
 Actix Web은 그 외에도 다양한 추출기를 제공하며, 다음은 몇 가지 중요한 추출기입니다:
 
 - [데이터](https://docs.rs/actix-web/4.3.1/actix_web/web/struct.Data.html) - 애플리케이션 상태의 일부에 액세스하는 데 사용됩니다.
-
 - [HttpRequest](https://docs.rs/actix-web/4.3.1/actix_web/struct.HttpRequest.html) - 요청의 다른 부분에 액세스해야 하는 경우 `HttpRequest` 자체가 추출기입니다.
-
 - `String` - 요청의 페이로드를 `String`로 변환할 수 있습니다. [예제](https://docs.rs/actix-web/4.3.1/actix_web/trait.FromRequest.html#impl-FromRequest-for-String)는 rustdoc에서 확인할 수 있습니다.
-
 - [Bytes](https://docs.rs/actix-web/4.3.1/actix_web/web/struct.Bytes.html) - 요청의 페이로드를 바이트 단위로 변환할 수 있습니다. [예제](https://docs.rs/actix-web/4.3.1/actix_web/trait.FromRequest.html#impl-FromRequest-5)는 rustdoc에서 확인할 수 있습니다.
-
 - [Payload](https://docs.rs/actix-web/4.3.1/actix_web/web/struct.Payload.html) - 주로 다른 추출기를 구축하기 위한 저수준 페이로드 추출기입니다. [예제](https://docs.rs/actix-web/4.3.1/actix_web/web/struct.Payload.html)는 rustdoc에서 확인할 수 있습니다.
 
 #### 어플리케이션 상태 추출기
@@ -843,13 +832,13 @@ async fn main() -> std::io::Result<()> {
 
 유효한 핸들러의 예시:
 
-```
+```rust
 async fn index(_req: HttpRequest) -> &'static str {
     "Hello world!"
 }
 ```
 
-```python
+```rust
 async fn index(_req: HttpRequest) -> String {
     "Hello world!".to_owned()
 }
@@ -970,7 +959,7 @@ pub trait ResponseError {
 
 `Responder`는 호환 가능한 `Result`를 HTTP 응답으로 강제 전송합니다:
 
-```
+```rust
 impl<T: Responder, E: Into<Error>> Responder for Result<T, E>
 ```
 
@@ -1083,7 +1072,7 @@ async fn index() -> actix_web::Result<String> {
 
 Actix는 모든 에러를 `WARN` 로그 레벨에 기록합니다. 애플리케이션의 로그 레벨이 `DEBUG`로 설정되어 있고 `RUST_BACKTRACE`가 활성화되어 있으면 백트레이스도 로깅됩니다. 이는 환경 변수로 설정할 수 있습니다:
 
-```
+```bash
 RUST_BACKTRACE=1 RUST_LOG=actix_web=debug cargo run
 ```
 
@@ -1168,13 +1157,13 @@ async fn index() -> Result<&'static str, UserError> {
 
 다음은 `middleware::Logger`를 사용하는 기본 예제로, `env_logger`와 `log`에 의존합니다:
 
-```rust
+```toml
 [dependencies]
 env_logger = "0.8"
 log = "0.4"
 ```
 
-```
+```rust
 use actix_web::{error, get, middleware::Logger, App, HttpServer, Result};
 use derive_more::{Display, Error};
 use log::info;
@@ -1297,9 +1286,7 @@ App::new().service(
 [*ResourceHandler::route()*](https://docs.rs/actix-web/4.3.1/actix_web/struct.Resource.html#method.route)는 [Route](https://docs.rs/actix-web/4.3.1/actix_web/struct.Route.html) 객체를 반환합니다. 빌더와 같은 패턴으로 경로를 설정할 수 있습니다. 다음 설정 방법을 사용할 수 있습니다.
 
 - *[Route::guard()](https://docs.rs/actix-web/4.3.1/actix_web/struct.Route.html#method.guard)*는 새로운 가드를 등록합니다. 각 경로에 대한 가드의 수는 얼마든지 등록할 수 있습니다.
-
 - *[Route::method()](https://docs.rs/actix-web/4.3.1/actix_web/struct.Route.html#method.method)* 메서드 가드를 등록합니다. 각 경로에 대한 가드의 수는 얼마든지 등록할 수 있습니다.
-
 - [*Route::to()*](https://docs.rs/actix-web/4.3.1/actix_web/struct.Route.html#method.to)는 이 경로에 대한 비동기 핸들러 함수를 등록합니다. 핸들러는 하나만 등록할 수 있습니다. 일반적으로 핸들러 등록은 마지막 설정 작업입니다.
 
 #### 경로 매칭
@@ -1318,13 +1305,13 @@ actix-web이 이를 수행하는 방식은 매우 간단합니다. 요청이 시
 
 경로 설정에 사용되는 패턴은 슬래시 문자(’/’)로 시작할 수 있습니다. 패턴이 슬래시 문자로 시작하지 않으면 일치할 때 암시적 슬래시가 앞에 추가됩니다. 예를 들어 다음 패턴이 이에 해당합니다:
 
-```
+```text
 {foo}/bar/baz
 ```
 
 와
 
-```
+```text
 /{foo}/bar/baz
 ```
 
@@ -1334,27 +1321,27 @@ actix-web이 이를 수행하는 방식은 매우 간단합니다. 요청이 시
 
 `match_info`는 라우팅 패턴에 따라 URL에서 추출된 동적 부분을 나타내는 `Params` 객체입니다. *request.match\_info*로 사용할 수 있습니다. 예를 들어, 다음 패턴은 하나의 리터럴 세그먼트(foo)와 두 개의 대체 마커(baz 및 bar)를 정의합니다:
 
-```
+```text
 foo/{baz}/{bar}
 ```
 
 위의 패턴은 이러한 URL과 일치하여 다음과 같은 일치 정보를 생성합니다:
 
-```
+```text
 foo/1/2        -> Params {'baz': '1', 'bar': '2'}
 foo/abc/def    -> Params {'baz': 'abc', 'bar': 'def'}
 ```
 
 그러나 다음 패턴과 일치하지는 않습니다:
 
-```
+```text
 foo/1/2/        -> 일치하지 않음(후행 슬래시)
 bar/abc/def     -> 첫 번째 세그먼트 리터럴 불일치
 ```
 
 세그먼트에서 세그먼트 대체 마커에 대한 일치는 패턴의 세그먼트에서 영숫자가 아닌 첫 번째 문자까지만 수행됩니다. 예를 들어, 아래 경로 패턴이 사용되었다면:
 
-```
+```text
 foo/{name}.html
 ```
 
@@ -1362,7 +1349,7 @@ foo/{name}.html
 
 두 세그먼트를 모두 캡처하려면 두 개의 대체 마커를 사용할 수 있습니다:
 
-```
+```text
 foo/{name}.{ext}
 ```
 
@@ -1373,20 +1360,19 @@ foo/{name}.{ext}
 세그먼트 대체 마커와 일치하려면 세그먼트에 문자가 하나 이상 포함되어야 합니다. 예를 들어, `/abc/` URL의 경우입니다:
 
 - `/abc/{foo}` 는 일치하지 않습니다.
-
 - `/{foo}/` 는 일치 합니다.
 
 > **Note**: 경로가 URL로 따옴표로 묶이지 않고 패턴과 일치하기 전에 유효한 유니코드 문자열로 디코딩되며, 일치하는 경로 세그먼트를 나타내는 값도 URL로 따옴표로 묶이지 않습니다.
 
 예를 들어 다음과 같은 패턴이 있습니다:
 
-```
+```text
 foo/{bar}
 ```
 
 다음 URL과 일치하는 경우:
 
-```
+```text
 http://example.com/foo/La%20Pe%C3%B1a
 ```
 
@@ -1398,25 +1384,25 @@ Params {'bar': 'La Pe\xf1a'}
 
 경로 세그먼트의 리터럴 문자열은 actix에 제공된 경로의 디코딩된 값을 나타내야 합니다. 패턴에 URL로 인코딩된 값을 사용하면 안 됩니다. 예를 들어, 이렇게 하지 마세요:
 
-```
+```text
 /Foo%20Bar/{baz}
 ```
 
 다음과 같이 사용하고 싶을 것입니다.
 
-```
+```text
 /Foo Bar/{baz}
 ```
 
 "tail match"를 얻을 수 있습니다. 이를 위해서는 사용자 지정 정규식을 사용해야 합니다.
 
-```
+```text
 foo/{bar}/{tail:.*}
 ```
 
 위의 패턴은 이러한 URL과 일치하여 다음과 같은 일치 정보를 생성합니다:
 
-```
+```text
 foo/1/2/           -> Params {'bar': '1', 'tail': '2/'}
 foo/abc/def/a/b/c  -> Params {'bar': 'abc', 'tail': 'def/a/b/c'}
 ```
@@ -1428,9 +1414,7 @@ foo/abc/def/a/b/c  -> Params {'bar': 'abc', 'tail': 'def/a/b/c'}
 '사용자'를 보는 데 사용되는 엔드포인트에 대한 경로를 정리하고 싶다고 가정해 보겠습니다. 이러한 경로에는 다음이 포함될 수 있습니다:
 
 - /users
-
 - /users/show
-
 - /users/show/{id}
 
 이러한 경로의 범위가 지정된 레이아웃은 다음과 같이 표시됩니다.
@@ -1612,7 +1596,6 @@ async fn main() -> std::io::Result<()> {
 정규화한다는 것은 다음을 의미합니다:
 
 - 경로에 후행 슬래시를 추가합니다.
-
 - 여러 슬래시를 하나로 바꾸기.
 
 핸들러는 올바르게 해석되는 경로를 찾으면 즉시 반환합니다. 정규화 조건의 순서는 모두 활성화된 경우 1) 병합, 2) 병합과 추가 모두, 3) 추가입니다. 경로가 이러한 조건 중 하나 이상을 충족하여 해결되면 새 경로로 리디렉션됩니다.
@@ -1763,13 +1746,13 @@ async fn main() -> std::io::Result<()> {
 
 `Any` 가드는 가드 목록을 받아들이고 제공된 가드 중 일치하는 가드가 있으면 일치 시킵니다:
 
-```
+```rust
 guard::Any(guard::Get()).or(guard::Post())
 ```
 
 `All` 가드는 제공된 가드 목록이 모두 일치하는 경우 가드 목록을 수락하고 일치합니다:
 
-```
+```rust
 guard::All(guard::Get()).and(guard::Header("content-type", "plain/text"))
 ```
 
@@ -1885,11 +1868,8 @@ async fn index_manual(mut payload: web::Payload) -> Result<HttpResponse, Error> 
 Actix Web은 페이로드의 압축을 자동으로 해제합니다. 지원되는 코덱은 다음과 같습니다:
 
 - Brotli
-
 - Gzip
-
 - Deflate
-
 - Zstd
 
 요청 헤더에 `Content-Encoding` 헤더가 포함된 경우 요청 페이로드는 헤더 값에 따라 압축을 해제합니다. 다중 코덱은 지원되지 않습니다(예: `Content-Encoding: br, gzip`).
@@ -1911,11 +1891,8 @@ Actix Web은 역직렬화된 인스턴스로 해석하는 `web::From` 추출기�
 *UrlEncoded* future는 여러 경우에 오류로 해석될 수 있습니다:
 
 - 콘텐츠 유형이 `application/x-www-form-urlencoded`가 아닙니다.
-
 - 전송 인코딩이 `chunked` 입니다.
-
 - 콘텐츠 길이가 256k보다 큽니다.
-
 - 페이로드가 오류와 함께 종료됩니다.
 
 ```rust
@@ -1986,7 +1963,7 @@ async fn index() -> HttpResponse {
 serde = { version = "1.0", features = ["derive"] }
 ```
 
-```
+```rust
 use actix_web::{get, web, Responder, Result};
 use serde::Serialize;
 
@@ -2021,11 +1998,8 @@ async fn main() -> std::io::Result<()> {
 Actix Web은 [압축 미들웨어](https://docs.rs/actix-web/4.3.1/actix_web/middleware/struct.Compress.html)를 사용하여 페이로드를 자동으로 압축할 수 있습니다. 지원되는 코덱은 다음과 같습니다:
 
 - Brotli
-
 - Gzip
-
 - Deflate
-
 - Identity
 
 응답의 `Content-Encoding` 헤더는 기본적으로 요청의 `Accept-Encoding` 헤더를 기반으로 자동 콘텐츠 압축 협상을 수행하는 `ContentEncoding::Auto`로 설정됩니다.
@@ -2300,11 +2274,8 @@ Actix Web의 미들웨어 시스템을 사용하면 요청/응답 처리에 동�
 일반적으로 미들웨어는 다음 작업에 관여합니다:
 
 - 요청 전처리
-
 - 응답 후처리
-
 - 애플리케이션 상태 수정
-
 - 외부 서비스(redis, 로깅, 세션) 접근
 
 미들웨어는 각 `App`, `scope` 또는 `Resource`에 대해 등록 되며 등록 순서와 역순으로 실행됩니다. 일반적으로 미들웨어는 [*Service trait*](https://docs.rs/actix-web/4.3.1/actix_web/dev/trait.Service.html)과 [*Transform trait*](https://docs.rs/actix-web/4.3.1/actix_web/dev/trait.Transform.html)을 구현하는 유형입니다. Trait의 각 메서드에는 기본 구현이 있습니다. 각 메서드는 결과를 즉시 반환하거나 *future* 객체를 반환할 수 있습니다.
@@ -2413,11 +2384,11 @@ async fn main() {
 
 지정된 포맷으로 `Logger` 미들웨어를 생성합니다. 디폴트 `Logger`는 `default` 메소드로 생성할 수 있으며, 디폴트 포맷을 사용합니다:
 
-```rust
+```text
 %a %t "%r" %s %b "%{Referer}i" "%{User-Agent}i" %T
 ```
 
-```
+```rust
 use actix_web::middleware::Logger;
 use env_logger::Env;
 
@@ -2440,7 +2411,7 @@ async fn main() -> std::io::Result<()> {
 
 다음은 디폴트 로깅 포맷의 예입니다:
 
-```
+```output
 INFO:actix_web::middleware::logger: 127.0.0.1:59934 [02/Dec/2017:00:21:43 -0800] "GET / HTTP/1.1" 302 0 "-" "curl/7.54.0" 0.000397
 INFO:actix_web::middleware::logger: 127.0.0.1:59947 [02/Dec/2017:00:22:40 -0800] "GET /index.html HTTP/1.1" 200 0 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:57.0) Gecko/20100101 Firefox/57.0" 0.000646
 ```
@@ -2448,27 +2419,16 @@ INFO:actix_web::middleware::logger: 127.0.0.1:59947 [02/Dec/2017:00:22:40 -0800]
 **포맷**
 
 - `%%` 퍼센트 기호
-
 - `%a` 원격 IP 주소(역방향 프록시를 사용하는 경우 프록시의 IP 주소)
-
 - `%t` 요청 처리가 시작된 시간
-
 - `%P` 요청을 서비스한 자식의 프로세스 ID
-
 - `%r` 요청의 첫 번째 줄
-
 - `%s` 응답 상태 코드
-
 - `%b` HTTP 헤더를 포함한 응답 크기(바이트)
-
 - `%T` 요청을 처리하는 데 걸린 시간(초, .06f 형식의 부동 소수점)
-
 - `%D` 요청을 처리하는 데 걸린 시간(밀리초)
-
 - `%{FOO}i` request.headers['FOO']
-
 - `%{FOO}o` response.headers['FOO']
-
 - `%{FOO}e` os.environ['FOO']
 
 #### 디폴트 헤더
@@ -2613,8 +2573,6 @@ async fn main() -> std::io::Result<()> {
 }
 ```
 
-🚫
-
 **위험**
 경로 끝 부분을 `[.*]` 정규식과 일치시키고, 이를 사용하여 `NamedFile`을 반환하는 것은 보안에 심각한 영향을 미칩니다. 공격자가 URL에 `../`를 삽입하여 서버를 실행하는 사용자가 액세스할 수 있는 호스트의 모든 파일에 액세스할 수 있는 가능성을 제공합니다.
 
@@ -2644,9 +2602,7 @@ async fn main() -> std::io::Result<()> {
 `NamedFiles`는 파일 제공을 위한 다양한 옵션을 지정할 수 있습니다:
 
 - `set_content_disposition` - 파일의 mime을 해당 `Content-Disposition` 타입에 매핑하는 데 사용되는 함수입니다.
-
 - `use_etag` - `ETag`를 계산하여 헤더에 포함할지 여부를 지정합니다.
-
 - `use_last_modified` - 파일 수정 타임스탬프를 사용하여 `Last-Modified` 헤더에 추가할지 여부를 지정합니다.
 
 위의 모든 메서드는 선택 사항이며 최상의 기본값으로 제공되지만 사용자 정의할 수 있습니다.
@@ -2753,7 +2709,7 @@ async fn main() -> std::io::Result<()> {
 
 `actix-web`은 가능한 경우 연결을 HTTP/2로 자동 업그레이드합니다.
 
-#### **Negotiation**
+#### Negotiation
 
 `rustls` 또는 `openssl` 기능 중 하나가 활성화된 경우 `HttpServer`는 각각 [bind\_rustls](https://docs.rs/actix-web/4.3.1/actix_web/struct.HttpServer.html#method.bind_rustls) 메서드와 [bind\_openssl](https://docs.rs/actix-web/4.3.1/actix_web/struct.HttpServer.html#method.bind_openssl) 메서드를 제공합니다.
 
@@ -2763,7 +2719,7 @@ actix-web = { version = "4", features = ["openssl"] }
 openssl = { version = "0.10", features = ["v110"] }
 ```
 
-```
+```rust
 use actix_web::{web, App, HttpRequest, HttpServer, Responder};
 use openssl::ssl::{SslAcceptor, SslFiletype, SslMethod};
 
@@ -2774,7 +2730,7 @@ async fn index(_req: HttpRequest) -> impl Responder {
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     // TLS 키를 로드하여 테스트용 자체 서명된 임시 인증서를 만듭니다:
-		// `openssl req -x509 -newkey rsa:4096 -nodes -keyout key.pem -out cert.pem -days 365 -subj '/CN=localhost'`
+    // `openssl req -x509 -newkey rsa:4096 -nodes -keyout key.pem -out cert.pem -days 365 -subj '/CN=localhost'`
     let mut builder = SslAcceptor::mozilla_intermediate(SslMethod::tls()).unwrap();
     builder
         .set_private_key_file("key.pem", SslFiletype::PEM)
@@ -2811,12 +2767,10 @@ cargo watch -x run
 비동기 데이터베이스 어댑터의 사용을 보여주는 몇 가지 예제 프로젝트가 있습니다:
 
 - Postgres: <https://github.com/actix/examples/tree/master/databases/postgres>
-
 - SQLite: <https://github.com/actix/examples/tree/master/databases/sqlite>
-
 - MongoDB: <https://github.com/actix/examples/tree/master/databases/mongodb>
 
-#### **Diesel**
+#### Diesel
 
 현재 버전의 Diesel (v1/v2)은 비동기 작업을 지원하지 않으므로 [`web::block`](https://docs.rs/actix-web/4.3.1/actix_web/web/fn.block.html) 함수를 사용하여 데이터베이스 작업을 Actix 런타임 스레드 풀로 오프로드 하는 것이 중요합니다.
 
@@ -2896,7 +2850,7 @@ async fn index(
 
     let user = web::block(move || {
         // 풀에서 연결을 가져오는 것도 잠재적인 차단 작업입니다.
-				// 따라서 이 작업도 `web::block` 클로저 내에서 호출해야 합니다.
+        // 따라서 이 작업도 `web::block` 클로저 내에서 호출해야 합니다.
         let mut conn = pool.get().expect("couldn't get db connection from pool");
 
         insert_new_user(&mut conn, name)
@@ -2929,53 +2883,39 @@ async fn main() -> std::io::Result<()> {
 }
 ```
 
-
-<!-- TODO: 이미지 추가 - 파일명: http_server-5354c2dfdf584123f44e726d25b949db.svg, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fe049fd45-2af6-407f-a18a-a4cee355ca93%2Fhttp_server-5354c2dfdf584123f44e726d25b949db.svg?table=block&id=7c54b414-a59b-4dd0-a8c6-b18cc769315f&cache=v2 -->
-
-![notion image](https://img-src.io/taehun/actix-docs-hangul/1.svg)
-
+<p align="center">
+<img src="https://img-src.io/taehun/actix-docs-hangul/1.svg" alt="HTTP 서버 아키텍처">
+</p>
 
 서버가 모든 소켓을 수신 대기하기 시작한 후 [`Accept`](https://github.com/actix/actix-net/blob/master/actix-server/src/accept.rs)와 [`Worker`](https://github.com/actix/actix-net/blob/master/actix-server/src/worker.rs)는 들어오는 클라이언트 연결을 처리하는 두 가지 주요 루프입니다.
-
 연결이 수락되면 애플리케이션 수준 프로토콜 처리는 [`Worker`](https://github.com/actix/actix-net/blob/master/actix-server/src/worker.rs)에서 생성된 프로토콜별 [`Dispatcher`](https://github.com/actix/actix-web/blob/master/actix-http/src/h1/dispatcher.rs) 루프에서 이루어집니다.
-
-```
 아래 다이어그램은 happy-path 시나리오만 간략하게 설명한 것입니다.
-```
 
-
-<!-- TODO: 이미지 추가 - 파일명: connection_overview-97766f50097ec4e7457e88ddf4a55f8b.svg, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F5fa3d27c-761f-45fe-a5ef-d24a22308920%2Fconnection_overview-97766f50097ec4e7457e88ddf4a55f8b.svg?table=block&id=a02ead64-f83b-492c-8707-eb87fb9da7d6&cache=v2 -->
-
-![notion image](https://img-src.io/taehun/actix-docs-hangul/2.svg)
-
+<p align="center">
+<img src="https://img-src.io/taehun/actix-docs-hangul/2.svg" alt="연결 개요">
+</p>
 
 #### Accept 루프 자세히 보기
 
-
-<!-- TODO: 이미지 추가 - 파일명: connection_accept-71d2b913dba510316a3123c2dc824c53.svg, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F98784696-a30f-450b-a72c-8a3eec18ae48%2Fconnection_accept-71d2b913dba510316a3123c2dc824c53.svg?table=block&id=0044d0b7-5667-42fa-a9e8-d8baad127204&cache=v2 -->
-
-![notion image](https://img-src.io/taehun/actix-docs-hangul/3.svg)
-
+<p align="center">
+<img src="https://img-src.io/taehun/actix-docs-hangul/3.svg" alt="Accept 루프">
+</p>
 
 대부분의 코드 구현은 구조체 [`Accept`](https://github.com/actix/actix-net/blob/master/actix-server/src/accept.rs)를 위한 [`actix-server`](https://crates.io/crates/actix-server) 크레이트에 있습니다.
 
 #### 워커 루프 자세히 보기
 
-
-<!-- TODO: 이미지 추가 - 파일명: connection_worker-716c9ff05de68638add7d3178c503637.svg, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fa43aea7f-29d6-42a5-9819-1abee5ade3dc%2Fconnection_worker-716c9ff05de68638add7d3178c503637.svg?table=block&id=b4d45d52-eff9-42c2-acd4-48a6fd242428&cache=v2 -->
-
-![notion image](https://img-src.io/taehun/actix-docs-hangul/4.svg)
-
+<p align="center">
+<img src="https://img-src.io/taehun/actix-docs-hangul/4.svg" alt="워커 루프">
+</p>
 
 대부분의 코드 구현은 구조체 [`Worker`](https://github.com/actix/actix-net/blob/master/actix-server/src/worker.rs)를 위한 [`actix-server`](https://crates.io/crates/actix-server) 크레이트에 있습니다.
 
 #### 대략적인 요청 루프
 
-
-<!-- TODO: 이미지 추가 - 파일명: connection_request-9dbd9333b5f99acf894184ad52124364.svg, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F533fc0b8-94ca-4198-a814-2a7ecae14a53%2Fconnection_request-9dbd9333b5f99acf894184ad52124364.svg?table=block&id=1b18e5ac-5bc7-4f13-9a96-ac81904a220e&cache=v2 -->
-
-![notion image](https://img-src.io/taehun/actix-docs-hangul/5.svg)
-
+<p align="center">
+<img src="https://img-src.io/taehun/actix-docs-hangul/5.svg" alt="요청 루프">
+</p>
 
 요청 루프에 대한 대부분의 코드 구현은 [`actix-web`](https://crates.io/crates/actix-web) 및 [`actix-http`](https://crates.io/crates/actix-http) 크레이트에 있습니다.
 
@@ -2995,7 +2935,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 이미 rustup이 설치되어 있는 경우 아래 명령을 실행하여 최신 버전의 Rust가 설치되어 있는지 확인하세요:
 
-```
+```bash
 rustup update
 ```
 
@@ -3005,7 +2945,7 @@ Actix 프레임워크에는 Rust 버전 1.40.0 이상이 필요합니다.
 
 actix 실험을 시작하는 가장 빠른 방법은 actix 리포지토리를 복제하고 examples/ 디렉토리에 포함된 예제를 실행하는 것입니다. 다음 명령어들은 `ping` 예제를 실행합니다:
 
-```rust
+```bash
 git clone https://github.com/actix/actix
 cd actix
 cargo run --example ping
@@ -3023,7 +2963,7 @@ cargo run --example ping
 
 첫 번째 액틱스 애플리케이션을 작성해 봅시다! 먼저 새로운 바이너리 기반 Cargo 프로젝트를 생성하고 새 디렉토리로 변경합니다:
 
-```rust
+```bash
 cargo new actor-ping
 cd actor-ping
 ```
@@ -3138,9 +3078,7 @@ Actix는 애플리케이션이 독립적으로 실행되지만 메시지를 통�
 액터의 실행 상태는 다음과 같은 상황에서 `stopping` 상태로 변경됩니다:
 
 - 액터 자체에 의해 `Context::stop`이 호출됩니다.
-
 - 액터에 대한 모든 주소가 삭제됩니다. 즉, 다른 액터가 액터를 참조하지 않습니다.
-
 - 컨텍스트에 이벤트 객체가 등록되지 않은 경우.
 
 액터는 새 주소를 생성하거나 이벤트 객체를 추가하고 `Running::Continue`를 반환하여 `stopping` 상태에서 `running` 상태로 복원할 수 있습니다.
@@ -3640,9 +3578,9 @@ fn main() {
 
         match sum_result {
             Ok(res) => {
-								// 이제 `res`는 `SumActor`가 `Value(6, 7)`에 대한 응답으로 반환한 `usize`입니다.
-								// Future가 완료되면 성공적인 응답(`usize`)을 전송합니다.
-							  // `Display`로 감싼 `DisplayActor`로 전송합니다.
+                // 이제 `res`는 `SumActor`가 `Value(6, 7)`에 대한 응답으로 반환한 `usize`입니다.
+                // Future가 완료되면 성공적인 응답(`usize`)을 전송합니다.
+                // `Display`로 감싼 `DisplayActor`로 전송합니다.
                 dis_addr.send(Display(res)).await;
             }
             Err(e) => {
@@ -3710,5 +3648,4 @@ let addr = SyncArbiter::start(2, || MySyncActor);
 ## API 문서
 
 - [actix](https://docs.rs/actix/latest/actix/)
-
 - [actix-web](https://docs.rs/actix-web/latest/actix_web/)
