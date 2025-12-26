@@ -11,17 +11,14 @@ author = "김태훈"
 toc = true
 +++
 
-
-<!-- TODO: 이미지 추가 - 파일명: Zero-to-MLOps-4-1.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Ffa04a8a5-9297-402e-883b-433125f0cb9a%2FZero-to-MLOps-4-1.png?table=block&id=366e9213-ce3c-4974-8b77-14c4ee443a19&cache=v2 -->
-
-![그림 4-1. 4장 데이터 관리의 구성요소와 도구들 (데이터 라벨링, 데이터 버전 관리, 피처 스토어)](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-1/1.png?w=800)
-
-
-그림 4-1. *4장 데이터 관리*의 구성요소와 도구들 (데이터 라벨링, 데이터 버전 관리, 피처 스토어)
+<p align="center">
+<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-1/1.png?w=800" alt="그림 4-1. 4장 데이터 관리의 구성요소와 도구들"><br>
+<i>그림 4-1. 4장 데이터 관리의 구성요소와 도구들 (데이터 라벨링, 데이터 버전 관리, 피처 스토어)</i>
+</p>
 
 이번 장에서는 MLOps 시스템에서 데이터와 관련된 구성 요소와 도구들에 대해 자세히 살펴보겠습니다. 데이터 라벨링, 데이터 버전 관리, 그리고 피처 스토어에 대한 개념과 필요성, 그리고 이와 관련된 도구들에 대해 다룰 것입니다.
 
-머신러닝은 크게 *지도 학습(supervised learning), 비지도 학습(unsupervised learning), 강화 학습(Reinforcement learning)* 세 가지 유형으로 나눌 수 있습니다. 이 중 지도 학습(supervised learning) 유형의 머신러닝 모델을 학습시키기 위해서는 데이터 라벨링 작업이 필요합니다. 이를 위해 Label Studio와 CVAT와 같은 도구들을 사용하여 데이터 라벨링하는 방법을 알아보겠습니다. 이러한 도구들은 다양한 데이터 유형에 대한 라벨링 작업을 지원하며, 웹 기반 인터페이스를 통해 효율적으로 작업할 수 있는 기능을 제공합니다.
+머신러닝은 크게 *지도 학습(supervised learning), 비지도 학습(unsupervised learning), 강화 학습(Reinforcement learning)* 세 가지 유형으로 나눌 수 있습니다. 이 중 지도 학습(supervised learning) 유형의 머신러닝 모델을 학습시키기 위해서는 데이터 라벨링 작업이 필요합니다. 이를 위해 Label Studio와 CVAT와 같은 도구들을 사용하여 데이터 라벨링하는 방법을 알아보겠습니다. 이러한 도구들은 다양한 데이터 유형에 대한 라벨  작업을 지원하며, 웹 기반 인터페이스를 통해 효율적으로 작업할 수 있는 기능을 제공합니다.
 
 데이터 버전 관리는 변화하는 데이터에 대한 효과적인 관리를 위한 중요한 요소입니다. DVC와 Git LFS와 같은 도구들을 사용하여 데이터의 변경 내역을 추적하고 대용량 데이터 파일을 Git 저장소에 효율적으로 관리할 수 있습니다. 이를 통해 데이터의 변화를 관리하고 데이터셋의 일관성과 품질을 유지할 수 있습니다.
 
@@ -29,7 +26,7 @@ toc = true
 
 ## 4.1 데이터 라벨링
 
-## 4.1.1 데이터 라벨링 개요
+### 4.1.1 데이터 라벨링 개요
 
 데이터 라벨링(데이터 어노테이션이라고도 함)은 머신러닝 모델을 위한 데이터 세트를 준비하는 데 있어 중요한 단계입니다. 여기에는 원시 데이터 세트에 의미 있는 태그 또는 레이블을 할당하여 모델이 학습할 수 있는 데이터셋을 만드는 작업이 포함됩니다. 데이터 라벨링 프로세스는 이미지를 분류하거나 음성을 텍스트로 변환하거나 텍스트 코퍼스에서 관련 엔터티를 표시하는 등 데이터의 특성과 문제에 따라 크게 달라질 수 있습니다.
 
@@ -39,81 +36,67 @@ toc = true
 
 💡
 
-**정형(structured) / 비정형(unstructured) / 반정형(semi-structured) 데이터**
-
-
-<!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fab34d8eb-ce29-4ce3-b4e4-23153ce358f3%2FUntitled.png?table=block&id=0935f577-c2f4-4a74-b428-fa861e19da17&cache=v2 -->
-
-![그림 4-2. 비정형 / 반정형 / 정형 데이터 예시 (출처&gt; Developing Dynamic Packaging Applications Using Semantic Web-Based Integration)](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-1/2.png?w=800)
-
-
-*그림 4-2. 비정형 / 반정형 / 정형 데이터 예시 (출처>* [*Developing Dynamic Packaging Applications Using Semantic Web-Based Integration*](https://jorge-cardoso.github.io/publications/Papers/BC-2005-007-Idea-Pub-Dev-Dynamic-Packaging-Apps.pdf)*)*
-
-*정형 데이터*(*structured data*)는 특정 데이터 모델 또는 스키마에 따라 구성되고 형식이 지정된 데이터를 말합니다. 정형 데이터는 일반적으로 *데이터베이스나 스프레드시트*에 저장되며 쉽게 쿼리하고 분석할 수 있습니다. 정형 데이터의 예로는 판매 거래 기록, 고객 정보, 재무 데이터, 재고 데이터 등이 있습니다. 정형 데이터는 정의된 형식과 구조를 가지고 있기 때문에 기계가 처리하기가 더 쉽습니다.
-
-*비정형 데이터(unstructured data)*는 정의되거나 미리 정의된 데이터 모델 또는 스키마가 없고 특정 방식으로 구성되지 않은 데이터를 말합니다. 비정형 데이터의 예로는 *텍스트 문서, 이미지, 비디오, 오디오 파일, 소셜 미디어 피드, 센서 데이터* 등이 있습니다. 비정형 데이터는 잘 정의된 구조와 형식이 없기 때문에 기계가 해석하고 처리하기 어려울 수 있습니다.
-
-*반정형 데이터(semi-structured data)*는 일정한 구조나 조직을 가지고 있지만 기존의 정형 데이터 모델에 깔끔하게 들어맞지 않는 데이터 유형입니다. 반정형 데이터에는 어느 정도 조직과 구조가 있지만 정형 데이터만큼 잘 정의되어 있지 않은 *XML, JSON, CSV* 파일과 같은 데이터 유형이 포함됩니다. 반정형 데이터는 정형 데이터 환경과 비정형 데이터 환경 모두에서 사용할 수 있으며, 다양한 데이터 변환 프로세스를 통해 정형 데이터를 생성하는 데 사용할 수 있습니다.
+> **정형(structured) / 비정형(unstructured) / 반정형(semi-structured) 데이터**
+> 
+> <p align="center">
+> <img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-1/2.png?w=800" alt="그림 4-2. 비정형 / 반정형 / 정형 데이터 예시"><br>
+> <i>그림 4-2. 비정형 / 반정형 / 정형 데이터 예시 (출처> <a href="https://jorge-cardoso.github.io/publications/Papers/BC-2005-007-Idea-Pub-Dev-Dynamic-Packaging-Apps.pdf">Developing Dynamic Packaging Applications Using Semantic Web-Based Integration</a>)</i>
+> </p>
+>
+> *정형 데이터(structured data)* 는 특정 데이터 모델 또는 스키마에 따라 구성되고 형식이 지정된 데이터를 말합니다. 정형 데이터는 일반적으로 *데이터베이스나 스프레드시트*에 저장되며 쉽게 쿼리하고 분석할 수 있습니다. 정형 데이터의 예로는 판매 거래 기록, 고객 정보, 재무 데이터, 재고 데이터 등이 있습니다. 정형 데이터는 정의된 형식과 구조를 가지고 있기 때문에 기계가 처리하기가 더 쉽습니다.
+>
+> *비정형 데이터(unstructured data)* 는 정의되거나 미리 정의된 데이터 모델 또는 스키마가 없고 특정 방식으로 구성되지 않은 데이터를 말합니다. 비정형 데이터의 예로는 *텍스트 문서, 이미지, 비디오, 오디오 파일, 소셜 미디어 피드, 센서 데이터* 등이 있습니다. 비정형 데이터는 잘 정의된 구조와 형식이 없기 때문에 기계가 해석하고 처리하기 어려울 수 있습니다.
+>
+> *반정형 데이터(semi-structured data)* 는 일정한 구조나 조직을 가지고 있지만 기존의 정형 데이터 모델에 깔끔하게 들어맞지 않는 데이터 유형입니다. 반정형 데이터에는 어느 정도 조직과 구조가 있지만 정형 데이터만큼 잘 정의되어 있지 않은 *XML, JSON, CSV* 파일과 같은 데이터 유형이 포함됩니다. 반정형 데이터는 정형 데이터 환경과 비정형 데이터 환경 모두에서 사용할 수 있으며, 다양한 데이터 변환 프로세스를 통해 정형 데이터를 생성하는 데 사용할 수 있습니다.
 
 전반적으로 비정형, 정형, 반정형 데이터는 각각 고유한 특성과 사용 사례를 가지고 있습니다. 이러한 다양한 데이터 유형을 이해하는 것은 머신러닝 및 기타 데이터 집약적인 애플리케이션의 맥락에서 효과적인 데이터 관리 및 처리를 위해 필수적입니다.
 
 **데이터 라벨링 전략**
 
-데이터 라벨링은 모델 학습을 위한 데이터 생성을 포함하므로 머신 러닝에서 매우 중요한 단계입니다. 그러나 *수작업 라벨링(hand labeling)*과 관련된 시간과 비용은 전체 MLOps 프로세스의 상당 부분을 차지합니다. 따라서 효과적인 데이터 라벨링 전략을 수립하는 것은 머신러닝 프로젝트에서 매우 중요하며, 프로젝트의 전반적인 효율성과 결과에 영향을 미칩니다. 다음은 데이터 라벨링 프로세스를 효과적으로 하기 위한 몇가지 고려할만한 사항들 입니다:
+데이터 라벨링은 모델 학습을 위한 데이터 생성을 포함하므로 머신 러닝에서 매우 중요한 단계입니다. 그러나 *수작업 라벨링(hand labeling)* 과 관련된 시간과 비용은 전체 MLOps 프로세스의 상당 부분을 차지합니다. 따라서 효과적인 데이터 라벨링 전략을 수립하는 것은 머신러닝 프로젝트에서 매우 중요하며, 프로젝트의 전반적인 효율성과 결과에 영향을 미칩니다. 다음은 데이터 라벨링 프로세스를 효과적으로 하기 위한 몇가지 고려할만한 사항들 입니다:
 
-*데이터 라벨링이 필요한가?*
+***데이터 라벨링이 필요한가?***
 
-모든 머신러닝 모델이 데이터 라벨링이 필요한 것은 아닙니다. 일부 머신러닝 모델은 시스템에서 학습 데이터가 자동 생성되는 *네츄럴 라벨링(Natural labeling*)을 사용합니다.
+모든 머신러닝 모델이 데이터 라벨링이 필요한 것은 아닙니다. 일부 머신러닝 모델은 시스템에서 학습 데이터가 자동 생성되는 *네츄럴 라벨링(Natural labeling)* 을 사용합니다.
 
 네츄럴 라벨링은 시스템에서 자연적으로 발생하는 정보나 사용자 상호 작용 데이터를 라벨로 활용하는 방법으로, 사람이 명시적으로 라벨링 할 필요 없이 사용할 수 있습니다. 예를 들어, 음악 앱에서 건너뛴 노래나 이메일 시스템에서 스팸 폴더로 이동한 이메일이 라벨로 사용되어 사용자 선호도를 나타내거나 이메일을 분류를 할 수 있습니다. 이러한 접근 방식은 최소한의 노력으로 대량의 라벨링된 데이터를 생성할 수 있지만, 사용자 행동이나 시스템 상태를 기반으로 하기 때문에 의도한 라벨링 체계와 항상 완벽하게 일치하지 않을 수 있습니다. 네츄럴 라벨링은 잠재적인 편향이나 부정확성을 고려하는 것이 중요합니다.
 
 다음은 네츄럴 라벨링을 사용하는 머신러닝 시스템의 예시 입니다:
 
 - *추천 시스템:* 스트리밍 플랫폼에서 동영상에 '좋아요' 또는 '싫어요' 또는 온라인 쇼핑 카트에서 항목을 추가 또는 삭제. 이는 사용자 선호도를 나타내며 모델의 향후 추천에 학습 데이터로 사용
-
 - *스팸 탐지:* 이메일에서 사용자가 수동으로 이메일을 '스팸' 또는 '스팸 아님'으로 분류
-
 - *감정 분석*: 소셜 미디어 플랫폼에서 사용자 반응(예: 좋아요, 공유, 화나거나 슬픈 이모티콘)은 감정 분석을 위한 레이블을 제공
-
 - *검색 엔진:* 검색 엔진의 클릭 데이터. 해당 결과에 대한 선호도를 나타내어 순위 알고리즘에 사용
 
 *고품질의 적은 데이터셋을 활용*
 
 머신러닝 모델은 학습 데이터가 필수적이며, 이를 위해 공개 데이터셋에서 학습한 모델 체크포인트를 사용하여 소량의 수작업으로 생성된 학습 데이터로 모델을 초기 학습하는 방법이 있습니다. 초기에는 성능이 완벽하지 않을 수 있지만, 이렇게 학습된 모델은 *능동적 학습, 반지도 학습*, 그리고 *데이터 증강*등의 기법을 적용하는 데 활용됩니다. 특히, 이러한 기법들은 퓨샷 러닝이나 전이 학습이라는 적은 데이터로부터 학습하는 방법을 활용하게 됩니다.
 
-- *퓨샷 러닝(Few-shot learning):* 퓨샷 러닝은 일반적으로 클래스당 약 5~10개의 인스턴스로부터 학습하도록 모델을 설계하여 원샷 학습을 확장합니다. 이 기술은 레이블이 지정된 데이터가 부족한 도메인에서 특히 유용하며, 제한된 예제에서 학습하는 인간의 인지 능력을 모방합니다. 최근 유행하는 ChatGPT의 프롬프트 엔지니어링에도 활용합니다.
-
-- *전이 학습(Transfer learning):* 전이 학습은 한 작업에 대해 사전 학습된 모델을 다른 관련 작업에 맞게 파인 튜닝(fine-tuning)하는 기법입니다. 전제 조건은 모델이 원래 작업에서 새 작업에 적용할 수 있는 유용한 기능을 이미 학습 했다는 것입니다. 딥러닝에서 널리 사용 되는 이 방법을 사용하면 광범위한 레이블이 지정된 데이터 없이도 강력한 모델을 개발할 수 있으며, 특히 데이터가 제한적인 경우 모델 성능을 크게 향상시킬 수 있습니다.
+- ***퓨샷 러닝(Few-shot learning)***: 퓨샷 러닝은 일반적으로 클래스당 약 5~10개의 인스턴스로부터 학습하도록 모델을 설계하여 원샷 학습을 확장합니다. 이 기술은 레이블이 지정된 데이터가 부족한 도메인에서 특히 유용하며, 제한된 예제에서 학습하는 인간의 인지 능력을 모방합니다. 최근 유행하는 ChatGPT의 프롬프트 엔지니어링에도 활용합니다.
+- ***전이 학습(Transfer learning)***: 전이 학습은 한 작업에 대해 사전 학습된 모델을 다른 관련 작업에 맞게 파인 튜닝(fine-tuning)하는 기법입니다. 전제 조건은 모델이 원래 작업에서 새 작업에 적용할 수 있는 유용한 기능을 이미 학습 했다는 것입니다. 딥러닝에서 널리 사용 되는 이 방법을 사용하면 광범위한 레이블이 지정된 데이터 없이도 강력한 모델을 개발할 수 있으며, 특히 데이터가 제한적인 경우 모델 성능을 크게 향상시킬 수 있습니다.
 
 이론적으로는 전이 학습은 퓨샷 러닝 방법 중 하나의 기법으로 분류할 수 있습니다. 그러나 실제로는 각각 다른 뉘앙스를 지니고 있습니다. 퓨샷 러닝은 일반적으로 한 클래스당 10개 내외의 적은 수의 학습 데이터로부터 효과적으로 추론할 수 있는 능력을 말합니다. 반면, 전이 학습은 데이터 세트가 작을 때뿐만 아니라 당면한 작업에 맞게 생성된 데이터 세트 전체를 사용하여 파인 튜닝을 하는 경우를 의미합니다.
 
-또한, 라벨된 데이터에서 새로운 데이터를 생성하는 *데이터 증강(data augmentation)*을 적용 할 수 있습니다. 데이터 증강은 새로운 데이터를 수집하지 않고도 학습 데이터의 다양성을 위해 데이터를 생성하는 방법입니다. 이는 훈련 세트의 데이터를 변형하여 생성하며, 이를 통해 모델이 실제 세계에서 접할 수 있는 다양한 변화를 학습하게 합니다.
+또한, 라벨된 데이터에서 새로운 데이터를 생성하는 *데이터 증강(data augmentation)* 을 적용 할 수 있습니다. 데이터 증강은 새로운 데이터를 수집하지 않고도 학습 데이터의 다양성을 위해 데이터를 생성하는 방법입니다. 이는 훈련 세트의 데이터를 변형하여 생성하며, 이를 통해 모델이 실제 세계에서 접할 수 있는 다양한 변화를 학습하게 합니다.
 
-*데이터 라벨링 최적화 기법 적용*
+***데이터 라벨링 최적화 기법 적용***
 
+<p align="center">
+<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-1/3.png" alt="그림 4-3. AWS SageMaker의 능동적 학습 프로세스"><br>
+<i>그림 4-3. AWS SageMaker의 능동적 학습 프로세스 (출처> <a href="https://aws.amazon.com/ko/sagemaker/data-labeling/what-is-data-labeling">https://aws.amazon.com/ko/sagemaker/data-labeling/what-is-data-labeling</a>)</i>
+</p>
 
-<!-- TODO: 이미지 추가 - 파일명: Zero-to-MLOps-4-2.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fd85fcb5c-8b5e-4d46-a9d9-514a210fdd95%2FZero-to-MLOps-4-2.png?table=block&id=8fdace8b-aed6-4c02-add5-dbe08f407c3a&cache=v2 -->
+대량의 고품질 라벨을 수작업으로 모두 확보하는 것은 어려움이 있기에 이를 효과적으로 하기 위한 많은 기술이 개발되었습니다. 데이터 라벨링의 어려움을 해결하는 위한 대표적인 기법으로는 *능동적 학습(active learning), 자기 지도 학습(self-supvervised learning), 반지도 학습(semi-supervised learning), 위크 수퍼비전(weak supervision)* 의 네 가지가 있습니다.
 
-![그림 4-3. AWS SageMaker의 능동적 학습 프로세스 (출처&gt; https://aws.amazon.com/ko/sagemaker/data-labeling/what-is-data-labeling)](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-1/3.png)
+- ***능동적 학습(active learning)*** 은 모델이 확실하지 않은 데이터 포인트에 레이블을 지정하도록 인간 전문가에게 반복적으로 요청하여 모델을 학습시키는 방법입니다. 이를 통해 가장 정보가 많은 데이터 포인트에 집중하여 모델이 더 빠르고 정확하게 학습할 수 있습니다.
+- ***자기 지도 학습(self-supvervised learning)*** 은 레이블이 지정된 데이터가 필요하지 않은 작업에 대해 모델을 학습시킵니다. 모델은 데이터에서 패턴을 찾아서 작업을 수행하는 방법을 학습합니다.
+- ***준지도 학습(semi-supervised learning)*** 은 레이블이 지정된 데이터와 레이블이 지정되지 않은 데이터의 조합을 사용하여 모델을 학습시킵니다. 레이블이 지정된 데이터는 모델에 원하는 출력에 대한 직접적인 정보를 제공하고, 레이블이 지정되지 않은 데이터는 모델이 데이터의 보다 일반적인 특징을 학습하는 데 도움이 됩니다.
+- ***위크 수퍼비전(weak supervision)*** 은 100% 정확하지 않은 레이블을 사용하여 모델을 학습시키는 방법입니다. 이는 크라우드 소싱을 사용하거나 다른 방법을 사용하여 정확할 가능성이 높지만 보장되지는 않는 레이블을 생성하여 수행할 수 있습니다.
 
+*<표 4-1>* 은 이들 네가지 기법들의 주요 차이점을 요약한 것 입니다.
 
-그림 4-3. AWS SageMaker의 능동적 학습 프로세스 *(출처>* *<https://aws.amazon.com/ko/sagemaker/data-labeling/what-is-data-labeling>**)*
-
-대량의 고품질 라벨을 수작업으로 모두 확보하는 것은 어려움이 있기에 이를 효과적으로 하기 위한 많은 기술이 개발되었습니다. 데이터 라벨링의 어려움을 해결하는 위한 대표적인 기법으로는 *능동적 학습(active learning), 자기 지도 학습(self-supvervised learning), 반지도 학습(semi-supervised learning), 위크 수퍼비전(weak supervision)*의 네 가지가 있습니다.
-
-- **능동적 학습(*****active learning)***은 모델이 확실하지 않은 데이터 포인트에 레이블을 지정하도록 인간 전문가에게 반복적으로 요청하여 모델을 학습시키는 방법입니다. 이를 통해 가장 정보가 많은 데이터 포인트에 집중하여 모델이 더 빠르고 정확하게 학습할 수 있습니다.
-
-- **자기 지도 학습(*****self-supvervised learning)***은 레이블이 지정된 데이터가 필요하지 않은 작업에 대해 모델을 학습시킵니다. 모델은 데이터에서 패턴을 찾아서 작업을 수행하는 방법을 학습합니다.
-
-- **준지도 학습(*****semi-supervised learning*****)**은 레이블이 지정된 데이터와 레이블이 지정되지 않은 데이터의 조합을 사용하여 모델을 학습시킵니다. 레이블이 지정된 데이터는 모델에 원하는 출력에 대한 직접적인 정보를 제공하고, 레이블이 지정되지 않은 데이터는 모델이 데이터의 보다 일반적인 특징을 학습하는 데 도움이 됩니다.
-
-- **위크 수퍼비전(*****weak supervision*****)**은 100% 정확하지 않은 레이블을 사용하여 모델을 학습시키는 방법입니다. 이는 크라우드 소싱을 사용하거나 다른 방법을 사용하여 정확할 가능성이 높지만 보장되지는 않는 레이블을 생성하여 수행할 수 있습니다.
-
-*<표 4-1>*은 이들 네가지 기법들의 주요 차이점을 요약한 것 입니다.
-
-|  |  |  |  |  |
-| --- | --- | --- | --- | --- |
 | 특징 | 능동적 학습 (**Active learning)** | 자기 지도 학습 (**Self-supervised learning)** | 반지도 학습 (**Semi-supervised learning)** | 위크 수퍼비전 (**Weak supervision)** |
+| --- | --- | --- | --- | --- |
 | 라벨된 데이터 (Labeled data) | 필요 | 필요 없음 | 필요 | 필요 없음 |
 | 라벨되지 않은 데이터 (Unlabeled data) | 필요 없음 | 필요 | 필요 | 필요 |
 | 수동 라벨링 | 필요 | 필요 없음 | 필요 없음 | 필요 |
@@ -127,29 +110,22 @@ toc = true
 다음은 능동적 학습, 자기 지도 학습, 반지도 학습 및 위크 수퍼비전의 몇 가지 예입니다:
 
 - *능동적 학습*: 이메일을 스팸으로 분류하거나 스팸이 아닌 것으로 분류하도록 모델을 학습시킵니다. 모델은 처음에 레이블이 지정된 이메일의 작은 데이터 세트로 학습됩니다. 그런 다음 모델은 라벨이 지정되지 않은 이메일의 라벨을 예측하고, 인간 전문가는 모델이 가장 확실하지 않은 이메일에 라벨을 지정합니다. 그런 다음 라벨이 지정된 이메일에 대해 모델을 재학습하고 모델이 원하는 정확도에 도달할 때까지 이 과정을 반복합니다.
-
 - *자기 지도 학습*: 문장의 다음 단어를 예측하도록 모델을 학습시킵니다. 모델은 레이블이 없는 텍스트 데이터 세트에 대해 학습됩니다.
-
 - *반지도 학습*: 고양이와 강아지의 이미지를 분류하도록 모델을 학습시킵니다. 이 모델은 100개의 레이블이 지정된 이미지와 1000개의 레이블이 지정되지 않은 이미지로 구성된 데이터 세트에 대해 학습됩니다.
-
 - *위크 수퍼비전*: 주택 가격을 예측하도록 모델을 학습시킵니다. 이 모델은 가격이 레이블이 지정된 주택 데이터 집합에 대해 학습됩니다. 그러나 레이블이 100% 정확하지는 않습니다. 이 모델은 부정확한 레이블에도 불구하고 주택 가격을 정확하게 예측하는 방법을 학습할 수 있습니다.
 
+<p align="center">
+<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-1/4.png?w=800" alt="그림 4-4. 더 많은 레이블이 지정된 학습 데이터를 얻는 방법"><br>
+<i>그림 4-4. 더 많은 레이블이 지정된 학습 데이터를 얻는 방법 (출처> <a href="http://ai.stanford.edu/blog/weak-supervision/">http://ai.stanford.edu/blog/weak-supervision/</a>)</i>
+</p>
 
-<!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F00e4ea1e-2f9d-4f8e-ab2d-f11ea35e44ac%2FUntitled.png?table=block&id=e21a6b43-c5d3-4ecb-8a68-0badf6ccef3f&cache=v2 -->
+다양한 웹 서비스와 도구가 데이터 라벨링을 위해 사용되고 있으며, 그 중에서도 유명한 오픈 소스 라벨링 도구인 Label Studio를 사용하여 데이터 라벨링하는 방법을 살펴보겠습니 .
 
-![그림 4-4. 더 많은 레이블이 지정된 학습 데이터를 얻는 방법 (출처&gt; http://ai.stanford.edu/blog/weak-supervision/)](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-1/4.png?w=800)
-
-
-*그림 4-4. 더 많은 레이블이 지정된 학습 데이터를 얻는 방법 (출처>* *<http://ai.stanford.edu/blog/weak-supervision/>**)*
-
-다양한 웹 서비스와 도구가 데이터 라벨링을 위해 사용되고 있으며, 그 중에서도 유명한 오픈 소스 라벨링 도구인 Label Studio를 사용하여 데이터 라벨링하는 방법을 살펴보겠습니다.
-
-## 4.1.2 Label Studio
+### 4.1.2 Label Studio
 
 Label Studio는 하나의 플랫폼에서 여러 프로젝트, 사용자 및 데이터 유형을 지원하는 오픈 소스 데이터 라벨링 도구 입니다. 이 도구로 다음을 수행할 수 있습니다:
 
 - 다양한 데이터 형식으로 다양한 유형의 라벨링 수행
-
 - Label Studio를 머신러닝 모델과 통합하여 라벨(사전 라벨)에 대한 예측을 제공하거나 지속적인 능동적 학습을 수행합니다.
 
 Label Studio는 향상된 보안(SSO, RBAC, SOC2), 팀 관리 기능, 분석 및 보고, 지원 SLA를 갖춘 [엔터프라이즈 클라우드 서비스](https://humansignal.com/)로도 제공됩니다.
@@ -159,23 +135,23 @@ Label Studio는 향상된 보안(SSO, RBAC, SOC2), 팀 관리 기능, 분석 및
 Label Studio Helm 저장소를 추가 합니다:
 
 ```bash
-$ helm repo add heartex https://charts.heartex.com/
-$ helm repo update heartex
+helm repo add heartex https://charts.heartex.com/
+helm repo update heartex
 ```
 
 Label Stduio Helm Chart를 쿠버네티스 클러스터에 설치 합니다:
 
 ```bash
-$ helm install labelstudio heartex/label-studio
+helm install labelstudio heartex/label-studio
 ```
 
 Label Stdio 관련 Pod들이 *Running* 상태가 되기전 까지 대기 합니다.
 
 ```bash
-$ kubectl get pod -l "app.kubernetes.io/instance=labelstudio"
+kubectl get pod -l "app.kubernetes.io/instance=labelstudio"
 ```
 
-```
+```output
 NAME                                  READY   STATUS    RESTARTS   AGE
 labelstudio-ls-app-7b85f987dd-qp8vl   2/2     Running   0          3m23s
 labelstudio-postgresql-0              1/1     Running   0          3m23s
@@ -184,22 +160,19 @@ labelstudio-postgresql-0              1/1     Running   0          3m23s
 설치가 완료되면 로컬로 포트 포워딩을 하여 Label Studio 웹 UI(`http://localhost:8080`)로 접속합니다.
 
 ```bash
-$ kubectl port-forward svc/labelstudio-ls-app 8080:80
+kubectl port-forward svc/labelstudio-ls-app 8080:80
 ```
 
-```
+```output
 Forwarding from 127.0.0.1:8080 -> 8085
 Forwarding from [::1]:8080 -> 8085
 Handling connection for 8080
 ```
 
-
-<!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-07-02_오후_5.38.48.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fd2aab91e-2fad-46d9-a143-c7b753c8deaf%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-07-02_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_5.38.48.png?table=block&id=7fd4b9f5-ab9d-450f-b20a-e88a542cec27&cache=v2 -->
-
-![그림 4-5. Label Studio 로그인 화면](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-1/5.png?w=800)
-
-
-그림 4-5. Label Studio 로그인 화면
+<p align="center">
+<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-1/5.png?w=800" alt="그림 4-5. Label Studio 로그인 화면"><br>
+<i>그림 4-5. Label Studio 로그인 화면</i>
+</p>
 
 로그인 화면에서 *SIGN UP* 탭에서 사용할 계정 이메일과 비밀번호를 설정하면 계정이 생성 되면서 로그인 됩니다.
 
@@ -207,55 +180,41 @@ Handling connection for 8080
 
 처음 로그인하면 <그림 4-6>과 같이 아무런 프로젝트가 생성되어 있지 않습니다.
 
-
-<!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-07-02_오후_5.38.23.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F6305b38a-548e-47ac-b011-7c0b53d09c95%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-07-02_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_5.38.23.png?table=block&id=0e16c80e-113b-4309-8587-12329925c2af&cache=v2 -->
-
-![그림 4-6. Label Studio 첫 화면](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-1/6.png?w=800)
-
-
-그림 4-6. Label Studio 첫 화면
+<p align="center">
+<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-1/6.png?w=800" alt="그림 4-6. Label Studio 첫 화면"><br>
+<i>그림 4-6. Label Studio 첫 화면</i>
+</p>
 
 *Create Project*를 클릭하여 프로젝트 생성을 시작 합니다. 머신러닝 프로젝트에 맞게 라벨링 프로젝트를 설정합니다. 여기서는 컴퓨터 비전 객체 감지 모델용 라벨링 프로젝트를 예시로 생성해 보겠습니다.
 
-💡
-
-**라벨링 프로젝트 정의**- 카테고리: 컴퓨터 비전, 객체 감지
-- 클래스: 3개 (순이, 유미, 렝가)
+> **라벨링 프로젝트 정의**
+>
+> - 카테고리: 컴퓨터 비전, 객체 감지
+> - 클래스: 3개 (순이, 유미, 렝가)
 
 - ***Project Name***
-
-- 프로젝트 이름을 설정합니다. 이 예시에는 `우리집 고양이` 로 하였습니다.
-
+  - 프로젝트 이름을 설정합니다. 이 예시에는 `우리집 고양이` 로 하였습니다.
 - ***Data Import***
-
-- 라벨링할 데이터를 업로드 합니다. 이미지 객체 감지 태스크는 라벨링할 이미지 파일을 업로드 합니다.
-
+  - 라벨링할 데이터를 업로드 합니다. 이미지 객체 감지 태스크는 라벨링할 이미지 파일을 업로드 합니다.
 - ***Labeling Setup***
+  - 라벨링 프로젝트 설정을 여기서 합니다. 왼쪽 대분류에서 *Computer Vision*, 카드 메뉴에서 *Object Detection with Bounding Boxes*를 선택합니다.
+  - *Add label names* 입력 상자에 추가할 클래스의 라벨을 입력 합니다. 오른쪽 *Labels*에 디폴트로 추가되어 있는 *Airplane*과 *Car* 라벨은 오른쪽 X 버튼을 클릭하여 삭제 합니다.
 
-- 라벨링 프로젝트 설정을 여기서 합니다. 왼쪽 대분류에서 *Computer Vision*, 카드 메뉴에서 *Object Detection with Bounding Boxes*를 선택합니다.
-- *Add label names* 입력 상자에 추가할 클래스의 라벨을 입력 합니다. 오른쪽 *Labels*에 디폴트로 추가되어 있는 *Airplane*과 *Car* 라벨은 오른쪽 X 버튼을 클릭하여 삭제 합니다.
-
-
-<!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-07-02_오후_6.58.10.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F63d85604-a39e-4641-8ac9-d07f476755d7%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-07-02_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_6.58.10.png?table=block&id=d51bcfa7-510c-482a-970f-f0ba44c1a0b4&cache=v2 -->
-
-![그림 4-7. Label Studio 프로젝트 생성](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-1/7.png?w=800)
-
-
-그림 4-7. Label Studio 프로젝트 생성
+<p align="center">
+<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-1/7.png?w=800" alt="그림 4-7. Label Studio 프로젝트 생성"><br>
+<i>그림 4-7. Label Studio 프로젝트 생성</i>
+</p>
 
 **라벨링 하는 방법**
 
 생성된 프로젝트를 클릭해보면, 프로젝트 생성시 import한 이미지 파일 목록이 나열됩니다. 라벨링 작업을 진행할 이미지 파일을 클릭 합니다.
 
-Bounding Box 라벨링 작업은 마우스로 오른쪽 미리 보기 화면에서 클래스를 선택후, 프리뷰 화면 내 클래스에 해당하는 이미지의 범위를 지정하는 방식으로 라벨링 합니다.
+ounding Box 라벨링 작업은 마우스로 오른쪽 미리 보기 화면에서 클래스를 선택후, 프리뷰 화면 내 클래스에 해당하  이미지의 범위를 지정하는 방식으로 라벨링 합니다.
 
-
-<!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-07-02_오후_7.12.45.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Ffef82c89-439a-4cc4-a214-01e99ec4ec50%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-07-02_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_7.12.45.png?table=block&id=d66f6e82-6edd-432d-aeda-9940348034e2&cache=v2 -->
-
-![그림 4-8. Label Studio Bounding Box 라벨링 작업 화면](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-1/8.png?w=800)
-
-
-그림 4-8. Label Studio Bounding Box 라벨링 작업 화면
+<p align="center">
+<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-1/8.png?w=800" alt="그림 4-8. Label Studio Bounding Box 라벨링 작업 화면"><br>
+<i>그림 4-8. Label Studio Bounding Box 라벨링 작업 화면</i>
+</p>
 
 해당 이미지에서 라벨링이 완료되면 우측 상단의 *Submit* 버튼을 클릭하여 제출합니다.
 
@@ -263,12 +222,9 @@ Bounding Box 라벨링 작업은 마우스로 오른쪽 미리 보기 화면에�
 
 라벨링 작업이 완료되면, 학습 데이터셋으로 사용하기 위해 라벨 데이터를 추출해야 합니다. 이미지 파일 목록이 나열되는 프로젝트 홈 메뉴에서 우측 상단 *Export*를 클릭하여, 작업 완료된 라벨 데이터를 추출 할 수 있습니다. 다양한 데이터셋 포맷을 지원합니다.
 
+<p align="center">
+<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-1/9.png?w=800" alt="그림 4-9. Label Studio 라벨 데이터 추출"><br>
+<i>그림 4-9. Label Studio 라벨 데이터 추출</i>
+</p>
 
-<!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-07-02_오후_7.20.32.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fc24c5bae-194c-4187-9f67-47893436c4e0%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-07-02_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_7.20.32.png?table=block&id=bfd95c72-ca6b-4509-a4d0-0300539646f4&cache=v2 -->
-
-![그림 4-9. Label Studio 라벨 데이터 추출](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-1/9.png?w=800)
-
-
-그림 4-9. Label Studio 라벨 데이터 추출
-
-> *Label Studio에 대한 좀 더 많은 정보는* *[Label Studio 공식 문서](https://labelstud.io/guide/)**를 참고하시기 바랍니다.*
+> *Label Studio에 대한 좀 더 많은 정보는 [**Label Studio 공식 문서**](https://labelstud.io/guide/) 를 참고하시기 바랍니다.*
