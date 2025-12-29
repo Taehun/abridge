@@ -13,35 +13,32 @@ toc = true
 
 > *‘제로부터 시작하는 MLOps 도구와 활용’* 시리즈 기사를 마지막으로 작성 했던 것이 거의 5개월 전이네요. 요즘은 MLOps 관련 업무를 하지 않아서, 솔직히 흥미가 많이 떨어졌습니다. 그래도 계획했던 내용들은 모두 마무리 짓고 싶습니다. 시간이 흘러 초기화되어 버린 내용들은 다시 예전 경험들을 곰곰이 떠올려보고, 최근 트렌드도 찾아보면서 ChatGPT와 함께 작성해 보겠습니다.
 
-> *[**제로부터 시작하는 MLOps 도구와 활용 - 4. 데이터 관리 (1/2)**](https://blog.taehun.dev/from-zero-to-hero-mlops-tools-4-1)**에서 이어지는 내용 입니다.*
+> *[**제로부터 시작하는 MLOps 도구와 활용 - 4. 데이터 관리 (1/2)**](https://blog.taehun.dev/from-zero-to-hero-mlops-tools-4-1)에서 이어지는 내용 입니다.*
 
 ## 4.2 데이터 버전 관리
 
 데이터 버전 관리는 머신러닝 모델의 학습과 평가에 사용되는 데이터 세트의 변경을 추적하고 관리하는 과정으로, 재현성과 팀 협업의 효율성을 높이는 데 중요합니다. 머신러닝 모델은 동일한 코드에도 불구하고 사용된 데이터에 따라 다른 결과를 생성하기 때문에, 정확한 데이터 세트의 사용이 필수적입니다. 이를 위해 Git Large File Storage (LFS)나 Data Version Control (DVC) 같은 도구들이 데이터의 이력을 명확하게 파악하고, 필요에 따라 이전 버전으로 쉽게 되돌아갈 수 있도록 지원합니다.
 
-## 4.2.1 데이터 버전 관리 개요
+### 4.2.1 데이터 버전 관리 개요
 
+<p align="center">
+<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/1.webp" alt="그림 4-10. 코드, 데이터, 모델의 버전 관리"><br>
+<i>그림 4-10. 코드, 데이터, 모델의 버전 관리</i>
+</p>
 
-<!-- TODO: 이미지 추가 - 파일명: Zero-to-MLOps-4-10_(1).png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Fca4e6eab-bdb4-44b9-b031-3b2d92d2f037%2FZero-to-MLOps-4-10_(1).png?table=block&id=b465b2ce-e944-4148-b5eb-e636740b5b5e&cache=v2 -->
-
-![그림 4-10. 코드, 데이터, 모델의 버전 관리](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/1.png)
-
-
-그림 4-10. 코드, 데이터, 모델의 버전 관리
-
-머신러닝 모델은 코드와 데이터의 조합에 의해 이루어집니다. 기존 소프트웨어와 달리 머신러닝 모델은 동일한 코드라도 학습 및 검증에 사용되는 데이터가 변경되면 다른 모델이 생성됩니다. 머신러닝 모델 버전 관리는 *‘5장. 머신러닝 모델 실험과 개발’*에서 자세히 살펴보겠습니다. 이 장에서는 그 중 데이터 버전 관리만 중점적으로 살펴봅니다.
+머신러닝 모델은 코드와 데이터의 조합에 의해 이루어집니다. 기존 소프트웨어와 달리 머신러닝 모델은 동일한 코드라도 학습 및 검증에 사용되는 데이터가 변경되면 다른 모델이 생성됩니다. 머신러닝 모델 버전 관리는 *‘5장. 머신러닝 모델 실험과 개발’* 에서 자세히 살펴보겠습니다. 이 장에서는 그 중 데이터 버전 관리만 중점적으로 살펴봅니다.
 
 데이터 버전 관리는 머신러닝 모델의 학습과 평가에 사용되는 데이터 세트의 변경 사항을 추적하고 관리하는 과정을 의미합니다. 소프트웨어 개발에서 소스 코드의 버전을 관리하는 것과 유사한 방식으로, 데이터 버전 관리는 데이터 과학자와 엔지니어가 데이터의 이력을 명확하게 파악하고, 필요한 경우 이전 버전으로 쉽게 되돌아갈 수 있게 합니다.
 
-데이터 버전 관리의 가장 큰 이점 중 하나는 **재현성**입니다. 머신러닝 모델의 결과를 정확하게 재현하기 위해서는 모델을 훈련시킬 때 사용된 정확한 데이터 세트를 알아야 합니다. 데이터 버전 관리를 통해 어떤 데이터가 어떤 모델의 훈련에 사용되었는지 정확히 추적할 수 있습니다. 이는 실험의 결과가 데이터의 변경 사항에 의해 영향을 받지 않도록 보장합니다.
+데이터 버전 관리의 가장 큰 이점 중 하나는 **재현성** 입니다. 머신러닝 모델의 결과를 정확하게 재현하기 위해서는 모델을 훈련시킬 때 사용된 정확한 데이터 세트를 알아야 합니다. 데이터 버전 관리를 통해 어떤 데이터가 어떤 모델의 훈련에 사용되었는지 정확히 추적할 수 있습니다. 이는 실험의 결과가 데이터의 변경 사항에 의해 영향을 받지 않도록 보장합니다.
 
 또한, 데이터 버전 관리는 팀 협업에도 중요합니다. 여러 사람이 동일한 프로젝트에서 작업할 때, 모든 팀원이 동일한 데이터 세트의 버전을 사용하고 있는지 확인하는 것이 중요합니다. 이를 통해 데이터의 일관성을 유지하고, 혼란이나 오류의 가능성을 줄일 수 있습니다.
 
-이러한 데이터 버전 관리를 지원하기 위한 도구로는 *Git Large File Storage (LFS)*나 *DVC (Data Version Control)* 같은 시스템이 있습니다. Git LFS는 대용량 파일을 효율적으로 관리할 수 있게 해주며, DVC는 데이터 세트의 버전 관리에 특화되어 있습니다. 이러한 도구들은 데이터의 변경 사항을 추적하고, 다양한 버전 간에 쉽게 전환할 수 있는 기능을 제공합니다.
+이러한 데이터 버전 관리를 지원하기 위한 도구로는 *Git Large File Storage (LFS)* 나 *DVC (Data Version Control)* 같은 시스템이 있습니다. Git LFS는 대용량 파일을 효율적으로 관리할 수 있게 해주며, DVC는 데이터 세트의 버전 관리에 특화되어 있습니다. 이러한 도구들은 데이터의 변경 사항을 추적하고, 다양한 버전 간에 쉽게 전환할 수 있는 기능을 제공합니다.
 
-## 4.2.2 Git LFS (**Git Large File Storage)**
+### 4.2.2 Git LFS (Git Large File Storage)
 
-*Git LFS (Git Large File Storage)*는 기존 Git 저장소의 한계를 극복하기 위해 고안되었습니다. 일반적인 Git 저장소는 소스 코드와 같은 작은 파일을 효과적으로 관리할 수 있지만, 대용량 파일(예: 이미지, 비디오, 데이터 세트)을 처리하는 데는 적합하지 않습니다. 이러한 대용량 파일들은 저장소의 크기를 빠르게 증가시키며, Git의 성능을 저하시킬 수 있습니다.
+*Git LFS (Git Large File Storage)* 는 기존 Git 저장소의 한계를 극복하기 위해 고안되었습니다. 일반적인 Git 저장소는 소스 코드와 같은 작은 파일을 효과적으로 관리할 수 있지만, 대용량 파일(예: 이미지, 비디오, 데이터 세트)을 처리하는 데는 적합하지 않습니다. 이러한 대용량 파일들은 저장소의 크기를 빠르게 증가시키며, Git의 성능을 저하시킬 수 있습니다.
 
 Git LFS를 사용하면, 대용량 파일들이 실제로 저장소에 직접 저장되는 대신, 이들의 참조 링크만 저장소에 포함됩니다. 실제 파일들은 별도의 서버에 저장되며, 필요한 경우 이를 다운로드하여 사용할 수 있습니다. 이 접근 방식은 저장소의 크기를 크게 줄이고, Git의 성능을 유지하며, 데이터 버전 관리를 보다 효율적으로 만들어 줍니다.
 
@@ -54,13 +51,13 @@ Git LFS를 사용하려면 Git과 별도로 패키지를 다운로드하여 설�
 - *macOS*
 
 ```bash
-$ brew install git-lfs
+brew install git-lfs
 ```
 
 - *Linux (Debian/Ubuntu)*
 
 ```bash
-$ sudo apt install git-lfs
+sudo apt install git-lfs
 ```
 
 **Git LFS 설정**
@@ -68,65 +65,56 @@ $ sudo apt install git-lfs
 사용자 계정에 대한 Git LFS를 설정합니다 (사용자 계정당 한 번만 실행):
 
 ```bash
-$ git lfs install
+git lfs install
 ```
 
 결과
 
-
-<!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-09_오후_6.41.57.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F876857f7-6639-4e17-b13f-8fbc67a945db%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-09_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_6.41.57.png?table=block&id=68231b5f-58fd-4795-b457-f5a5f50cc246&cache=v2 -->
-
-![notion image](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/2.png?w=800)
-
+<p align="center">
+<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/2.webp?w=800" alt="git lfs install 결과">
+</p>
 
 Git LFS를 사용하려는 각 Git 저장소에서 Git LFS가 관리할 파일 유형을 설정합니다 (또는 `.gitattributes` 설정 파일을 직접 편집).
 
 ```bash
-$ git lfs track "*.petastorm" "*.tfrecord" "*.csv" "*.parquet"
-$ git add .gitattributes
-$ git commit -m "Enable Git LFS for the dataset file"
-$ cat .gitattributes
+git lfs track "*.petastorm" "*.tfrecord" "*.csv" "*.parquet"
+git add .gitattributes
+git commit -m "Enable Git LFS for the dataset file"
+cat .gitattributes
 ```
 
 결과
 
-
-<!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-09_오후_7.00.19.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F48e96e65-5fe6-41a5-b644-4113e2303418%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-09_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_7.00.19.png?table=block&id=5d246756-da5e-472c-98be-73dac107ed25&cache=v2 -->
-
-![notion image](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/3.png?w=800)
-
+<p align="center">
+<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/3.webp?w=800" alt="git lfs track 결과">
+</p>
 
 **Git LFS 사용**
 
 추가나 변경된 데이터셋 파일을 기존 Git과 같이 추가하고 커밋합니다.
 
 ```bash
-$ git add datasets/train.petastorm
-$ git add datasets/val.petastorm
-$ git commit -m "Add new train/val dataset"
+git add datasets/train.petastorm
+git add datasets/val.petastorm
+git commit -m "Add new train/val dataset"
 ```
 
 결과
 
-
-<!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-09_오후_7.07.43.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F82322a38-f6c3-4777-8f1f-ea79f000ab47%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-09_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_7.07.43.png?table=block&id=0719ddea-1b02-4d63-ac73-48080d40895d&cache=v2 -->
-
-![notion image](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/4.png?w=800)
-
+<p align="center">
+<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/4.webp?w=800" alt="git lfs 사용 결과">
+</p>
 
 Git LFS를 사용하는 주요 장점은 기존 Git 방식 그대로 데이터 버전 관리를 수행할 수 있다는 점입니다. 사용자는 익숙한 Git 명령어와 워크플로를 유지하면서도 대용량 파일을 효과적으로 관리할 수 있습니다. 그러나, 한 가지 주요 제한 사항은 GitHub과 같은 원격 저장소에서는 용량 제한을 초과하는 파일을 추가할 수 없다는 점입니다. 이로 인해, 사용자는 대용량 파일을 관리하는 데 있어 추가적인 도구가 필요해 집니다.
 
-## 4.2.3 DVC
+### 4.2.3 DVC
 
+<p align="center">
+<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/5.gif" alt="그림 4-11. DVC 동작 방식"><br>
+<i>그림 4-11. DVC 동작 방식 (출처> <a href="https://github.com/iterative/dvc">https://github.com/iterative/dvc</a>)</i>
+</p>
 
-<!-- TODO: 이미지 추가 - 파일명: dvc-work.gif, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Fc46c9a4e-1a84-4fc8-94f9-882346b3c363%2Fdvc-work.gif?table=block&id=210e00b6-2bf3-4edd-bc69-3d2d338b4f60&cache=v2 -->
-
-![그림 4-11. DVC 동작 방식 (출처&gt; https://github.com/iterative/dvc)](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/5.gif)
-
-
-그림 4-11. DVC 동작 방식 *(출처>* *<https://github.com/iterative/dvc>**)*
-
-*Data Version Control (DVC)*는 데이터 버전 관리를 위한 강력한 오픈 소스 도구로, 특히 머신러닝과 데이터 과학 프로젝트에서 유용합니다. 기존의 Git 시스템을 확장하여 대용량 데이터 파일 및 머신러닝 모델의 버전 관리를 가능하게 하는 DVC는 Git과의 밀접한 통합을 통해 개발자에게 친숙한 환경을 제공합니다. 이 도구는 대용량 데이터 파일을 효과적으로 관리하면서도 저장소의 크기를 작게 유지할 수 있도록 메타데이터만을 Git 저장소에 저장하고, 실제 데이터 파일은 별도의 저장소에 보관합니다.
+*Data Version Control (DVC)* 는 데이터 버전 관리를 위한 강력한 오픈 소스 도구로, 특히 머신러닝과 데이터 과학 프로젝트에서 유용합니다. 기존의 Git 시스템을 확장하여 대용량 데이터 파일 및 머신러닝 모델의 버전 관리를 가능하게 하는 DVC는 Git과의 밀접한 통합을 통해 개발자에게 친숙한 환경을 제공합니다. 이 도구는 대용량 데이터 파일을 효과적으로 관리하면서도 저장소의 크기를 작게 유지할 수 있도록 메타데이터만을 Git 저장소에 저장하고, 실제 데이터 파일은 별도의 저장소에 보관합니다.
 
 DVC의 또 다른 중요한 기능은 데이터 파이프라인의 버전 관리입니다. 머신 러닝 프로젝트의 여러 단계를 데이터 파이프라인으로 구성하고, 이를 통해 전체 프로젝트의 재현성과 투명성을 향상시킬 수 있습니다. 이러한 기능은 특히 복잡한 데이터 처리 및 모델 훈련 과정에서 유용합니다.
 
@@ -137,26 +125,24 @@ DVC는 Amazon S3, Google Cloud Storage, Azure Blob Storage 등 다양한 클라�
 - *macOS*
 
 ```bash
-$ brew install dvc
+brew install dvc
 ```
 
 - *Linux (Debian/Ubuntu)*
 
 ```bash
-$ sudo wget \
-       https://dvc.org/deb/dvc.list \
-       -O /etc/apt/sources.list.d/dvc.list
-$ wget -qO - https://dvc.org/deb/iterative.asc | gpg --dearmor > packages.iterative.gpg
-$ sudo install -o root -g root -m 644 packages.iterative.gpg /etc/apt/trusted.gpg.d/
-$ rm -f packages.iterative.gpg
-$ sudo apt update
-$ sudo apt install dvc
+sudo wget https://dvc.org/deb/dvc.list -O /etc/apt/sources.list.d/dvc.list
+wget -qO - https://dvc.org/deb/iterative.asc | gpg --dearmor > packages.iterative.gpg
+sudo install -o root -g root -m 644 packages.iterative.gpg /etc/apt/trusted.gpg.d/
+rm -f packages.iterative.gpg
+sudo apt update
+sudo apt install dvc
 ```
 
-- pip
+- *pip*
 
 ```bash
-$ pip install dvc
+pip install dvc
 ```
 
 **프로젝트 초기화**
@@ -164,35 +150,31 @@ $ pip install dvc
 `dvc init`을 실행하여 현재 작업 디렉터리를 DVC 프로젝트로 초기화합니다:
 
 ```bash
-$ dvc init
+dvc init
 ```
 
 결과
 
-
-<!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-09_오후_10.00.03.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F258cbf7f-7546-4c32-a54f-11d7928438d0%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-09_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_10.00.03.png?table=block&id=a4faceca-0ecf-416b-98d6-95dfff3c86aa&cache=v2 -->
-
-![notion image](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/6.png?w=800)
-
+<p align="center">
+<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/6.webp?w=800" alt="DVC 설치 확인">
+</p>
 
 Git 저장소에 DVC와 관련된 몇가지 설정 파일들이 추가 됩니다:
 
 ```bash
-$ git status
+git status
 ```
 
 결과
 
-
-<!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-09_오후_10.00.44.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F154819a6-c6ca-4536-9102-98e33ba23dc4%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-09_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_10.00.44.png?table=block&id=c4ad9015-da1d-4f00-8ad2-f186da0f700d&cache=v2 -->
-
-![notion image](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/7.png?w=800)
-
+<p align="center">
+<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/7.webp?w=800" alt="dvc init 결과">
+</p>
 
 생성된 DVC 설정 파일들을 커밋하면 DVC 사용 준비가 된 것 입니다.
 
 ```bash
-$ git commit -m "Initialize DVC"
+git commit -m "Initialize DVC"
 ```
 
 **데이터 추적**
@@ -200,48 +182,41 @@ $ git commit -m "Initialize DVC"
 초기화된 프로젝트 디렉토리 내에서 작업할 데이터를 선택해 보겠습니다. 여기서는 `data.xml` 파일 예시를 사용하지만, 텍스트나 바이너리 파일(또는 디렉토리)도 괜찮습니다. `dvc get` 명령어로 샘플 데이터를 가져옵니다:
 
 ```bash
-$ dvc get https://github.com/iterative/dataset-registry \
-          get-started/data.xml -o data/data.xml
+dvc get https://github.com/iterative/dataset-registry get-started/data.xml -o data/data.xml
 ```
 
 결과
 
-
-<!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-09_오후_10.15.50.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F83045bb5-7d98-456b-8ee3-86033fa833ac%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-09_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_10.15.50.png?table=block&id=11a74d77-f933-43e4-ae19-6ad795beb02e&cache=v2 -->
-
-![notion image](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/8.png?w=800)
-
+<p align="center">
+<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/8.webp?w=800" alt="dvc remote add 결과">
+</p>
 
 데이터 추적을 시작하려면 `dvc add` 명령어를 사용합니다:
 
 ```bash
-$ dvc add data/data.xml
+dvc add data/data.xml
 ```
 
 결과
 
-
-<!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-09_오후_10.18.44.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Fc5a5a31e-5258-4e86-8dba-fe4bb3a0de12%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-09_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_10.18.44.png?table=block&id=35fba67f-8d6a-4285-a624-df26c42c5d99&cache=v2 -->
-
-![notion image](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/9.png?w=800)
-
+<p align="center">
+<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/9.webp?w=800" alt="dvc add 결과">
+</p>
 
 DVC는 추가된 파일에 대한 정보를 `data/data.xml.dvc`라는 특수한 .dvc 파일에 저장합니다. 이 작고 사람이 읽을 수 있는 (human-readable) 메타데이터 파일은 Git 추적을 위해 원본 데이터의 위치 표시자 역할을 합니다.
 
 다음 명령을 실행하여 Git의 변경 내용을 추적합니다:
 
 ```bash
-$ git add data/data.xml.dvc data/.gitignore
-$ git commit -m "Add raw data"
+git add data/data.xml.dvc data/.gitignore
+git commit -m "Add raw data"
 ```
 
 결과
 
-
-<!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-09_오후_10.33.15.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Fb2f9be25-59d1-4b36-9a47-a736fc93a910%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-09_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_10.33.15.png?table=block&id=02a9a913-0052-407b-94e7-088e56518ced&cache=v2 -->
-
-![notion image](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/10.png?w=800)
-
+<p align="center">
+<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/10.webp?w=800" alt="dvc push 결과">
+</p>
 
 데이터의 메타데이터는 소스 코드와 함께 Git으로 버전이 관리되고, `data/data.xml` 원본 데이터 파일은 `data/.gitignore`에 추가되어 추적하지 않습니다.
 
@@ -252,24 +227,20 @@ $ git commit -m "Add raw data"
 데이터를 remote로 푸시하기 전에 `dvc remote add` 명령을 사용하여 remote을 설정해야 합니다:
 
 ```bash
-$ mkdir /tmp/dvcstore
-$ dvc remote add -d myremote /tmp/dvcstore
+mkdir /tmp/dvcstore
+dvc remote add -d myremote /tmp/dvcstore
 ```
 
 결과
 
-
-<!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-09_오후_11.10.15.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Fa3bd5429-1c4f-4fdb-957d-ad47ee429698%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-09_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_11.10.15.png?table=block&id=8b6dcb3e-d069-413f-a9f9-7b5f4878bd5c&cache=v2 -->
-
-![notion image](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/11.png?w=800)
-
-
-ℹ️
+<p align="center">
+<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/11.webp?w=800" alt="DVC 메타 파일 git 커밋">
+</p>
 
 DVC remote의 가장 일반적인 사용 사례의 예는 Amazon S3 remote을 구성하는 것입니다:
 
 ```bash
-$ dvc remote add -d storage s3://mybucket/dvcstore
+dvc remote add -d storage s3://mybucket/dvcstore
 ```
 
 이 작업을 수행하려면 액세스를 허용하도록 설정된 AWS 계정과 자격 증명이 필요합니다.
@@ -277,91 +248,81 @@ $ dvc remote add -d storage s3://mybucket/dvcstore
 이제 remote 저장소가 설정되었으므로 `dvc push`를 실행하여 데이터를 업로드합니다:
 
 ```bash
-$ dvc push
+dvc push
 ```
 
 결과
 
-
-<!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-09_오후_11.16.35.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Fa6eebb93-11de-4675-8c6a-8e41064bf76d%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-09_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_11.16.35.png?table=block&id=157cd97e-50f0-49aa-806e-7a0739237984&cache=v2 -->
-
-![notion image](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/12.png?w=800)
-
+<p align="center">
+<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/12.webp?w=800" alt="dvc pull 결과">
+</p>
 
 **데이터 가져오기**
 
 DVC 추적 데이터와 모델이 remote에 저장되면 필요할 때, 다른 곳에서 `dvc pull`을 사용하여 다운로드할 수 있습니다. 보통은 `git pull` 또는 `git clone` 후에 실행합니다.
 
 ```bash
-$ dvc pull
+dvc pull
 ```
 
 결과
 
-
-<!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-09_오후_11.38.16.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Fe45000f6-9bf5-4858-81f5-2e58a1f0593d%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-09_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_11.38.16.png?table=block&id=cc5d3d11-1b19-4e40-be41-f496c0f0d98c&cache=v2 -->
-
-![notion image](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/13.png?w=800)
-
+<p align="center">
+<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/13.webp?w=800" alt="dvc checkout 결과">
+</p>
 
 **데이터 업데이트**
 
 데이터 소스에서 더 많은 데이터가 추가 되었다고 가정해 보겠습니다. 데이터 세트의 내용을 두 배로 늘려서 시뮬레이션해 보겠습니다:
 
 ```bash
-$ cp data/data.xml /tmp/data.xml
-$ cat /tmp/data.xml >> data/data.xml
+cp data/data.xml /tmp/data.xml
+cat /tmp/data.xml >> data/data.xml
 ```
 
 데이터가 변경되었으면 `dvc add`를 다시 실행하여 최신 버전을 추적합니다:
 
 ```bash
-$ dvc add data/data.xml
+dvc add data/data.xml
 ```
 
 결과
 
-
-<!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-09_오후_11.42.33.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F226c5623-e59e-44a3-a210-a7d8527f806f%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-09_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_11.42.33.png?table=block&id=0c451ca0-eed8-40aa-ad73-e5a898628755&cache=v2 -->
-
-![notion image](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/14.png?w=800)
-
+<p align="center">
+<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/14.webp?w=800" alt="git diff 결과">
+</p>
 
 이제 `dvc push`를 실행하여 원격 저장소에 변경 사항을 업로드한 다음, `git commit`을 실행하여 변경 사항을 추적할 수 있습니다:
 
 ```bash
-$ dvc push
-$ git commit data/data.xml.dvc -m "Dataset updates"
+dvc push
+git commit data/data.xml.dvc -m "Dataset updates"
 ```
 
 결과
 
-
-<!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-09_오후_11.44.36.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F41ed5760-5caa-4f26-845b-6bf18341c744%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-09_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_11.44.36.png?table=block&id=24345d2d-c773-4b44-91d6-01bb3f612786&cache=v2 -->
-
-![notion image](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/15.png?w=800)
-
+<p align="center">
+<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/15.webp?w=800" alt="dvc diff 결과">
+</p>
 
 **데이터 버전 간 전환**
 
 일반적으로 사용되는 워크플로우는 `git checkout`을 사용하여 브랜치를 전환하거나, 특정 .dvc 파일 리비전으로 체크아웃한 다음, `dvc checkout`으로 데이터를 워크스페이스에 동기화하는 것입니다. 아래는 이전 커밋으로 데이터를 되돌리는 예제 입니다:
 
 ```bash
-$ git checkout HEAD~1 data/data.xml.dvc
-$ dvc checkout
+git checkout HEAD~1 data/data.xml.dvc
+dvc checkout
 ```
 
 결과
 
-
-<!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-09_오후_11.49.51.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F41d68106-88eb-43a3-b172-a14ba1d02d14%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-09_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_11.49.51.png?table=block&id=0e5b6cf7-8b0a-4dbb-92c8-3c1fb6f798be&cache=v2 -->
-
-![notion image](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/16.png?w=800)
-
+<p align="center">
+<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/16.webp?w=800" alt="dvc checkout 후 git checkout">
+</p>
 
 DVC는 데이터 버전 관리뿐만 아니라 데이터 파이프라인 구축, 실험 관리, 모델 관리 등의 다양한 기능을 제공합니다. 그러나 이러한 기능들에 대해서는 DVC 대신 다른 도구들을 사용할 계획입니다. 예를 들어, 데이터 파이프라인 구축에는 Airflow를, 실험 및 모델 관리에는 MLFlow를 활용할 예정입니다. 이는 각각의 영역에서 더 특화된 기능과 유연성을 제공하기 때문입니다.
 
-> *DVC에 대한 좀 더 많은 정보는*[*DVC 공식 문서*](https://dvc.org/doc)*를 참고하시기 바랍니다.*
+> *DVC에 대한 좀 더 많은 정보는 [**DVC 공식 문서**](https://dvc.org/doc)를 참고하시기 바랍니다.*
 
 ## 4.3 피처 스토어 (Feature Store)
 
@@ -371,15 +332,12 @@ DVC는 데이터 버전 관리뿐만 아니라 데이터 파이프라인 구축,
 
 위와 같은 시나리오는 MLOps 도입전 머신러닝 프로젝트에서 매우 흔하게 볼 수 있는 시나리오 입니다. 초기의 머신러닝 프로젝트는 상대적으로 단순했으며, 데이터 과학자들이 개별적으로 피처를 생성하고 관리하는 것이 가능 했습니다. 하지만 머신러닝 기술의 발전과 함께 프로젝트의 규모와 복잡도가 증가하면서, 데이터와 피처 관리의 중요성이 부각되었습니다.
 
-## 4.3.1 피처 스토어 개요
+### 4.3.1 피처 스토어 개요
 
-
-<!-- TODO: 이미지 추가 - 파일명: feature_store.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F9ad96494-2376-448f-b5f6-79504e303ecb%2Ffeature_store.png?table=block&id=cd1e43f7-66a1-48b9-98ce-390894a4bf6f&cache=v2 -->
-
-![그림 4-12. 피처 스토어 (출처&gt; https://www.featurestore.org/what-is-a-feature-store)](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/17.png?w=800)
-
-
-그림 4-12. 피처 스토어 *(출처>* *<https://www.featurestore.org/what-is-a-feature-store>**)*
+<p align="center">
+<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/17.webp?w=800" alt="그림 4-12. 피처 스토어"><br>
+<i>그림 4-12. 피처 스토어 (출처> <a href="https://www.featurestore.org/what-is-a-feature-store">https://www.featurestore.org/what-is-a-feature-store</a>)</i>
+</p>
 
 피처 스토어는 피처(특성) 데이터를 중앙화하여 관리하는 시스템입니다. 피처 스토어는 데이터 과학자와 머신러닝 엔지니어가 피처를 효과적으로 재사용하고 공유할 수 있는 환경을 제공합니다. 피처 스토어의 도입은 데이터 관리 프로세스를 표준화하고, 모델의 성능과 일관성을 향상시키는 데 중요한 역할을 합니다.
 
@@ -387,33 +345,25 @@ DVC는 데이터 버전 관리뿐만 아니라 데이터 파이프라인 구축,
 
 피처 스토어의 장점으로는 데이터 품질과 일관성 유지, 효율성 향상, 모델의 예측 정확도 개선 등이 있습니다. 데이터 품질 관리를 통해 모델의 정확성과 신뢰성을 높이고, 피처의 재사용을 통해 데이터 준비 시간을 줄일 수 있습니다. 이와 함께, 일관된 피처 세트의 사용은 모델 성능의 일관성을 보장하며, 팀 간 협업을 용이하게 합니다. 이러한 점들은 팀이 더 빠르고 효과적으로 높은 품질의 ML 모델을 개발하는 데 도움이 됩니다.
 
-ℹ️
+> **온라인 스토어 Vs. 오프라인 스토어**
+>
+> 피처 스토어는 여러 데이터 소스를 결합하여 모델의 피처로 전처리 합니다. 이때, 사용하는 주요 데이터 유형은 다음과 같습니다:
+> - *배치 데이터*: 일반적으로 *데이터 레이크* 또는 *데이터 웨어하우스*에서 가져옵니다. 이는 모델에서 사용하기 위해 저장된 큰 데이터 덩어리이며 반드시 실시간으로 업데이트되는 것은 아닙니다.
+> - *실시간 데이터*: 일반적으로 *스트리밍* 및 *로그 이벤트*에서 가져옵니다. 시스템에 기록된 이벤트와 같은 소스에서 지속적으로 제공되는 온라인 데이터입니다.
+>
+> 이러한 유형의 데이터는 피처 스토어 내부에서 결합되어 두 가지 유형의 스토어를 형성합니다:
+>
+> - *오프라인 스토어*: 데이터 과학자가 **모델 학습 파이프라인**에서 사용할 수 있는 피처의 과거 원본을 구축하는 데 사용됩니다. 오프라인 스토어는 배치 데이터의 전처리된 피처로 구성된 스토어입니다. 일반적으로 BIgQuery, Redshift, Snowflake 등의 데이터 웨어하우스에 저장되지만, S3, HDFS, PostgreSQL과 같은 다른 종류의 저장소도 사용할 수 있습니다.
+> - *온라인 스토어*: 오프라인 스토어의 피처와 스트리밍 데이터 소스의 실시간 전처리 피처가 결합된 스토어 입니다. 이는 가장 최신의 정리된 피처 모음으로, **프로덕션 모델에 예측**을 위한 새로운 피처를 제공하는 데 사용합니다. 일반적으로 빠른 액세스를 위해 Redis, DynamoDB, SQLite와 같은 데이터베이스에 저장되지만, MySQL, PostgreSQL과 같은 다른 종류의 저장소도 사용할 수 있습니다.
 
-**온라인 스토어 Vs. 오프라인 스토어**
+### 4.3.2 Feast
 
-피처 스토어는 여러 데이터 소스를 결합하여 모델의 피처로 전처리 합니다. 이때, 사용하는 주요 데이터 유형은 다음과 같습니다:
+<p align="center">
+<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/18.png?w=800" alt="그림 4-13. FEAST 아키텍처"><br>
+<i>그림 4-13. FEAST 아키텍처 (출처> <a href="https://feast.dev">https://feast.dev</a>)</i>
+</p>
 
-- *배치 데이터*: 일반적으로 *데이터 레이크* 또는 *데이터 웨어하우스*에서 가져옵니다. 이는 모델에서 사용하기 위해 저장된 큰 데이터 덩어리이며 반드시 실시간으로 업데이트되는 것은 아닙니다.
-
-- *실시간 데이터*: 일반적으로 *스트리밍* 및 *로그 이벤트*에서 가져옵니다. 시스템에 기록된 이벤트와 같은 소스에서 지속적으로 제공되는 온라인 데이터입니다.
-
-이러한 유형의 데이터는 피처 스토어 내부에서 결합되어 두 가지 유형의 스토어를 형성합니다:
-
-- *오프라인 스토어*: 데이터 과학자가 **모델 학습 파이프라인**에서 사용할 수 있는 피처의 과거 원본을 구축하는 데 사용됩니다. 오프라인 스토어는 배치 데이터의 전처리된 피처로 구성된 스토어입니다. 일반적으로 BIgQuery, Redshift, Snowflake 등의 데이터 웨어하우스에 저장되지만, S3, HDFS, PostgreSQL과 같은 다른 종류의 저장소도 사용할 수 있습니다.
-
-- *온라인 스토어*: 오프라인 스토어의 피처와 스트리밍 데이터 소스의 실시간 전처리 피처가 결합된 스토어 입니다. 이는 가장 최신의 정리된 피처 모음으로, **프로덕션 모델에 예측**을 위한 새로운 피처를 제공하는 데 사용합니다. 일반적으로 빠른 액세스를 위해 Redis, DynamoDB, SQLite와 같은 데이터베이스에 저장되지만, MySQL, PostgreSQL과 같은 다른 종류의 저장소도 사용할 수 있습니다.
-
-## 4.3.2 Feast
-
-
-<!-- TODO: 이미지 추가 - 파일명: feast-home-hero4x.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F4b3659dd-e7cb-40b3-999f-d73451b49b9f%2Ffeast-home-hero4x.png?table=block&id=5f2cdece-327a-4159-9851-b8f1494e7d70&cache=v2 -->
-
-![그림 4-13. FEAST 아키텍처 (출처&gt; https://feast.dev)](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/18.png?w=800)
-
-
-그림 4-13. FEAST 아키텍처 *(출처>* *[https://feast.dev](https://feast.dev/)**)*
-
-*Feast (****Fea****ture****St****ore)*는 Gojek과 Google Cloud의 협력으로 개발되었으며, 데이터 과학자와 머신러닝 엔지니어가 피처 데이터를 효율적으로 관리하고 사용할 수 있도록 설계되었습니다.
+*Feast (**Fea**ture **St**ore)* 는 Gojek과 Google Cloud의 협력으로 개발되었으며, 데이터 과학자와 머신러닝 엔지니어가 피처 데이터를 효율적으로 관리하고 사용할 수 있도록 설계되었습니다.
 
 Feast의 핵심은 다양한 데이터 소스로부터 추출된 피처를 중앙 집중화하여 관리하는 것입니다. 이는 데이터의 재사용성을 높이고 일관성 있는 데이터 관리를 가능하게 합니다. 또한, Feast는 피처의 버전을 관리할 수 있어, 모델의 성능 변화를 추적하고, 시간에 따른 데이터의 변화를 감지하는 데 유용합니다. 이는 모델의 효율성과 정확성을 크게 향상시킬 수 있는 기능입니다.
 
@@ -426,7 +376,7 @@ Feast는 확장성과 유연성 또한 강점입니다. 클라우드 환경과 �
 - pip
 
 ```bash
-$ pip install feast
+pip install feast
 ```
 
 **2 단계. 피처 리포지토리 만들기**
@@ -434,16 +384,14 @@ $ pip install feast
 `feast init` 명령어를 사용하여 새 피처 리포지토리를 부트스트랩합니다.
 
 ```bash
-$ feast init some_ml_project
+feast init some_ml_project
 ```
 
 결과
 
-
-<!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-10_오후_3.18.53.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F0c060e49-c511-479b-be17-74f58dc5de37%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-10_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_3.18.53.png?table=block&id=fa478cb6-bf6b-4009-bcc2-b22d27352f14&cache=v2 -->
-
-![notion image](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/19.png?w=800)
-
+<p align="center">
+<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/19.webp?w=800" alt="스크린샷 19">
+</p>
 
 생성된 샘플 `feature_repo` 내용을 살펴보겠습니다.
 
@@ -582,7 +530,7 @@ driver_activity_v3 = FeatureService(
 
 `feature_store.yaml` 파일은 피처 스토어의 주요 전체 아키텍처를 설정합니다.
 
-```
+```yaml
 project: some_ml_project
 # 기본적으로 registry는 파일이지만 확장성이 뛰어난 SQL-backend registry로 전환할 수 있습니다.
 registry: data/registry.db
@@ -595,14 +543,11 @@ entity_key_serialization_version: 2
 ```
 
 - `provider`는 오프라인 및 온라인 스토어 공급자를 설정합니다. `feature_store.yaml`의 유효한 공급자 값은 다음과 같습니다:
-
 - `local`: SQL 레지스트리 또는 로컬 파일 레지스트리를 사용합니다. 기본적으로 *파일/Dask 기반 오프라인 스토어 + SQLite 온라인 스토어*를 사용합니다.
 - `gcp`: SQL 레지스트리 또는 GCS 파일 레지스트리를 사용합니다. 기본적으로 *BigQuery(오프라인 스토어) + Google Cloud 데이터스토어(온라인 스토어)*를 사용합니다.
 - `aws`: SQL 레지스트리 또는 S3 파일 레지스트리를 사용합니다. 기본적으로 *Redshift(오프라인 스토어) + DynamoDB(온라인 스토어)*를 사용합니다.
 - 커뮤니티 플러그인을 통해 Spark, Azure, Hive, Trino, PostgreSQL 등 Feast와 연동되는 다른 오프라인/온라인 스토어가 많이 있습니다. Feast 사용자 지정을 따라 사용자 지정 설정을 할 수도 있습니다.
-
 - `offline_store`는 과거 데이터를 처리하기 위한 컴퓨팅 계층을 제공합니다 (학습 데이터 및 서비스용 피처 값 생성용).
-
 - `online_store`는 최신 피처 값이 있는 지연 시간이 짧은 저장소입니다 (실시간 예측용).
 
 `test_workflow.py`는 피처 정의, 검색, 푸시 등 모든 주요 Feast 명령을 실행하는 예제 입니다.
@@ -747,9 +692,9 @@ pd.read_parquet("data/driver_stats.parquet")
 ```
 
 
-<!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Fcd1e4d81-6807-4f31-9d53-9ead4154f546%2FUntitled.png?table=block&id=197dfd48-623d-49f9-a023-034e7dff8dd1&cache=v2 -->
-
-![notion image](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/20.png?w=800)
+<p align="center">
+<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/20.png?w=800" alt="스크린샷 20">
+</p>
 
 
 **3 단계. 샘플 워크플로 실행**
@@ -757,17 +702,11 @@ pd.read_parquet("data/driver_stats.parquet")
 전체 샘플 워크플로우를 실행하는 `test_workflow.py` 파일이 포함되어 있습니다:
 
 1. `feast apply` 명령어로 피처 정의 등록
-
 2. 학습 데이터 세트 생성(`get_historical_features` 사용)
-
 3. 배치 예측을 위한 피처 생성(`get_historical_features` 사용)
-
 4. 온라인 스토어에 배치 피처 수집(`materialize_incremental` 사용)
-
 5. 실시간 예측을 강화하기 위해 온라인 피처 가져오기(`get_online_features` 사용)
-
 6. 오프라인/온라인 스토어에 스트리밍 피처 수집(푸시 사용)
-
 7. 온라인 피처가 업데이트 되었는지/새로운 피처인지 확인
 
 **3a 단계. 피처 정의 등록 및 피처 스토어 배포**
@@ -775,16 +714,14 @@ pd.read_parquet("data/driver_stats.parquet")
 `feast apply` 명령은 현재 디렉터리에 있는 Python 파일에서 FeatureView/Entity 정의를 검색하고, Entity를 등록하고, 인프라를 배포합니다. 이 예제에서는 `example_repo.py`를 읽고 SQLite 온라인 스토어 테이블을 설정합니다. `feature_store.yaml`에서 online\_store를 구성하여 SQLite를 기본 온라인 스토어로 지정했음을 참고하세요.
 
 ```bash
-$ feast apply
+feast apply
 ```
 
 결과
 
-
-<!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-10_오후_4.54.35.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Ffc08d56c-01a6-4eb6-8678-ecf3ca9214eb%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-10_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_4.54.35.png?table=block&id=3b157c01-de10-422f-9166-43f78ff7112c&cache=v2 -->
-
-![notion image](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/21.png?w=800)
-
+<p align="center">
+<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/21.webp?w=800" alt="스크린샷 21">
+</p>
 
 **3b 단계: 학습 데이터 생성 또는 일괄 예측 모델 강화하기**
 
@@ -848,11 +785,9 @@ print(training_df.head())
 
 결과
 
-
-<!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-10_오후_5.04.06.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F94dc2104-3393-4e6c-b8b6-7fd97a257364%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-10_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_5.04.06.png?table=block&id=f3e018bd-2b75-4462-a360-ea1f2185578a&cache=v2 -->
-
-![notion image](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/22.png?w=800)
-
+<p align="center">
+<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/22.webp?w=800" alt="스크린샷 22">
+</p>
 
 배치 예측을 실행하려면 기본적으로 `get_historical_features` 호출로 피처를 생성해야 하지만 현재 타임스탬프를 사용해야 합니다.
 
@@ -881,28 +816,24 @@ print(training_df.head())
 
 결과
 
-
-<!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-10_오후_5.14.02.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Fced5b818-fc21-4cc1-920e-dd4f5bdde064%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-10_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_5.14.02.png?table=block&id=9034952c-b42e-45e0-a83b-94ae792a62a9&cache=v2 -->
-
-![notion image](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/23.png?w=800)
-
+<p align="center">
+<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/23.webp?w=800" alt="스크린샷 23">
+</p>
 
 **3c 단계: 온라인 스토어에 배치 피처 수집**
 
 이제 서비스 제공을 준비하기 위해 초기부터 최신 피처 값을 직렬화합니다(참고: `materialize-incremental`은 마지막 `materialize` 호출 이후 모든 새로운 피처를 직렬화합니다).
 
 ```bash
-$ CURRENT_TIME=$(date -u +"%Y-%m-%dT%H:%M:%S")
-$ feast materialize-incremental $CURRENT_TIME
+CURRENT_TIME=$(date -u +"%Y-%m-%dT%H:%M:%S")
+feast materialize-incremental $CURRENT_TIME
 ```
 
 결과
 
-
-<!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-10_오후_5.17.54.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Fa8e2714b-dae8-42fe-a1ac-9ba95a989b61%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-10_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_5.17.54.png?table=block&id=57f3c8b1-8843-4334-b3b3-0ff00c0be59d&cache=v2 -->
-
-![notion image](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/24.png?w=800)
-
+<p align="center">
+<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/24.webp?w=800" alt="스크린샷 24">
+</p>
 
 **3d 단계: 추론을 위한 특징 벡터 가져오기**
 
@@ -934,11 +865,9 @@ pprint(feature_vector)
 
 결과
 
-
-<!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-10_오후_5.21.05.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Fe3239996-4497-4338-b805-51fce8323fd4%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-10_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_5.21.05.png?table=block&id=17a46ed7-d2b8-454b-a04a-9ab4f453255c&cache=v2 -->
-
-![notion image](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/25.png?w=800)
-
+<p align="center">
+<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/25.webp?w=800" alt="스크린샷 25">
+</p>
 
 **3e 단계: 피처 서비스를 사용하여 온라인 피처 가져오기**
 
@@ -977,59 +906,48 @@ pprint(feature_vector)
 
 결과
 
-
-<!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-10_오후_5.31.46.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Fe898a682-97bc-40e7-b826-2249a4f3bec9%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-10_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_5.31.46.png?table=block&id=90fe92ea-e3fe-47cc-aa88-ab533d455a93&cache=v2 -->
-
-![notion image](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/26.png?w=800)
-
+<p align="center">
+<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/26.webp?w=800" alt="스크린샷 26">
+</p>
 
 **4단계: 웹 UI로 피처 탐색하기 (experimental)**
 
 `feast ui` 명령어로 웹 UI로 등록된 모든 피처, 데이터 소스, 엔티티 및 피처 서비스를 볼 수 있습니다.
 
 ```bash
-$ feast ui
+feast ui
 ```
 
 → 웹 브라우저에서 [`http://localhost:8888`](http://localhost:8888) 접속
 
-
-<!-- TODO: 이미지 추가 - 파일명: 스크린샷_2023-12-10_오후_5.35.33.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F51f90fed-f2cf-4345-976f-889563650f3e%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-12-10_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_5.35.33.png?table=block&id=2b9fda38-fece-4921-8c65-fa9419bb82fb&cache=v2 -->
-
-![notion image](https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/27.png?w=800)
-
+<p align="center">
+<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/27.webp?w=800" alt="스크린샷 27">
+</p>
 
 **5단계:** `test_workflow.py` **다시 검토하기**
 
 `test_workflow.py` 코드를 다시 살펴보세요. 여기에는 Feast와 상호 작용하는 방법에 대한 많은 샘플 흐름이 나와 있습니다. 향후 개념 + 아키텍처 + 튜토리얼 페이지에서도 이러한 예시를 볼 수 있습니다.
 
-> *Feast에 대한 좀 더 많은 정보는*[*Feast 공식 문서*](https://docs.feast.dev/)*를 참고하시기 바랍니다.*
+> *Feast에 대한 좀 더 많은 정보는 [**Feast 공식 문서**](https://docs.feast.dev/)를 참고하시기 바랍니다.*
 
-**Feast** **장점**
+**Feast 장점**
 
 - **중앙화된 피처 관리**: Feast는 데이터 소스에서 추출한 피처를 중앙 집중화하여 관리함으로써 데이터의 재사용성과 일관성을 높입니다.
-
 - **피처 버전 관리**: Feast는 피처의 버전을 관리하므로 모델의 성능 변화를 추적하고, 시간에 따른 데이터의 변화를 감지하는 데 유용합니다.
-
 - **실시간 및 배치 데이터 처리 지원**: Feast는 실시간 데이터 스트리밍 처리와 배치 데이터 처리를 지원하여, 다양한 유형의 머신러닝 애플리케이션에 적용할 수 있습니다.
-
 - **확장성과 유연성**: 클라우드와 온프레미스 환경 모두에서 호환되며, 대용량 데이터와의 호환성을 제공합니다.
-
 - **프로덕션 환경에 적합**: Feast는 고성능 프로덕션 환경에 적합하게 설계되어 안정적인 데이터 서비스를 제공합니다.
 
-**Feast** **단점:**
+**Feast 단점**
 
 - **설정과 사용의 복잡성**: Feast의 설정과 사용은 초보자에게 다소 복잡하게 느껴질 수 있으며, 이로 인해 초기 학습 곡선이 가파를 수 있습니다.
-
 - **인프라 요구사항**: Feast는 특히 클라우드 환경에서 최적화되어 있으며, 이는 특정 인프라에 대한 의존성을 만들 수 있습니다.
-
 - **커뮤니티와 지원**: 비교적 새로운 도구인 만큼, Feast의 사용자 커뮤니티와 지원 자료가 다른 잘 알려진 도구들에 비해 제한적일 수 있습니다.
 
-## 4.3.3 기타 피처 스토어 도구들
+### 4.3.3 기타 피처 스토어 도구들
 
-|  |  |  |  |
-| --- | --- | --- | --- |
 | ㅤ | 설명 | 장점 | 적용 분야 |
+| --- | --- | --- | --- |
 | **Tecton** | Tecton은 엔터프라이즈급 피처 스토어로, 대규모 데이터와 실시간 피처 처리에 초점을 맞춘 관리형 서비스입니다. | 강력한 데이터 파이프라인 통합, 실시간 피처 서빙, 높은 확장성, 안정성. | 대기업 및 중대형 기업의 복잡한 머신러닝 프로젝트, 실시간 데이터 스트림 처리. |
 | **Hopsworks** | Hopsworks는 데이터 과학 및 머신러닝을 위한 오픈 소스 데이터 플랫폼으로, 피처 스토어를 포함하고 있습니다. | 오픈 소스, Apache Spark와의 통합, 사용자 친화적인 UI, 다양한 데이터 소스 지원. | 데이터 과학 및 머신러닝 프로젝트, 대용량 데이터 처리, 다양한 데이터 소스의 통합. |
 | **Feathr** | LinkedIn에서 개발된 오픈 소스 피처 스토어 | 피처 정의와 변환의 단순화, 대규모 분산 데이터 처리 지원, 오픈 소스 커뮤니티를 통한 확장성 및 유연성 제공 | 복잡한 머신러닝 파이프라인을 갖춘 조직, 대규모 데이터셋을 활용한 모델 개발, 다양한 데이터 소스를 통합하여 피처를 관리하고자 하는 기업 |
@@ -1064,14 +982,9 @@ $ feast ui
 ## 4.5 요약
 
 - **데이터 라벨링**은 원시 데이터에 의미 있는 태그를 부여해 머신러닝 모델 학습에 사용할 수 있도록 하는 과정입니다.
-
-- *Label Studio*는 다양한 데이터 유형과 프로젝트를 지원하는 유연한 오픈 소스 데이터 라벨링 도구입니다.
-
+- **Label Studio**는 다양한 데이터 유형과 프로젝트를 지원하는 유연한 오픈 소스 데이터 라벨링 도구입니다.
 - **데이터 버전 관리**는 머신러닝 모델의 학습과 평가에 사용되는 데이터 세트의 변경 사항을 추적하고 관리하는 과정으로, 재현성과 팀 협업의 효율성을 높이는 데 중요합니다.
-
-- *Git LFS*는 대용량 파일을 Git 저장소에 포함 할 수 있도록 합니다. 원격 저장소 용량 제한에 따른 제약사항이 있습니다.
-- *DVC*는 데이터 파일을 별도의 저장소에 보관하며 메타데이터만을 Git 저장소에 저장합니다.
-
+- **Git LFS**는 대용량 파일을 Git 저장소에 포함 할 수 있도록 합니다. 원격 저장소 용량 제한에 따른 제약사항이 있습니다.
+- **DVC**는 데이터 파일을 별도의 저장소에 보관하며 메타데이터만을 Git 저장소에 저장합니다.
 - **피처 스토어**는 머신러닝 모델을 위한 피처(특성) 데이터를 중앙화하여 관리하는 시스템입니다.
-
-- *Feast*는 중앙화된 피처 관리, 피처 버전 관리, 실시간 및 배치 데이터 처리를 지원하는 피처 스토어 도구입니다. 데이터 버전 관리와 피처 스토어의 효과적인 활용은 머신러닝 모델의 성능과 일관성을 향상시키는 데 기여합니다.
+- **Feast**는 중앙화된 피처 관리, 피처 버전 관리, 실시간 및 배치 데이터 처리를 지원하는 피처 스토어 도구입니다. 데이터 버전 관리와 피처 스토어의 효과적인 활용은 머신러닝 모델의 성능과 일관성을 향상시키는 데 기여합니다.
