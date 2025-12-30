@@ -16,10 +16,7 @@ toc = true
 ## Auth0 설정
 
 1. <https://auth0.com/> 계정이 없다면, 회원 가입을 먼저 해야 합니다. (우측 상단 `Sign up` 클릭)
-
 2. 테넌트(Tenant)를 생성합니다. 테넌트 이름을 입력하고, 리즌을 선택합니다. 저는 Auth0에서 제공하는 리즌 중에 한국과 가장 가까운 Japan 리즌을 선택하였습니다.
-
-ℹ️
 
 **테넌트 (Tenant)**
 
@@ -29,34 +26,24 @@ SaaS(Software as a Service)에서 'Tenant' 개념은 아파트 건물에 비유�
 
 1. 좌측 메뉴의 `Applications` → `Applications` → `Create Application` 클릭
 
-
-<!-- TODO: 이미지 추가 - 파일명: 스크린샷_2024-02-23_오전_12.14.32.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Fe77fbc73-b3ba-462c-a5ad-54c918efe278%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2024-02-23_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25AB_12.14.32.png?table=block&id=a075e137-1131-4ec3-a7dc-5634d47ae330&cache=v2 -->
-
-![notion image](https://img-src.io/taehun/nextjs14-auth0-login/1.png?w=800)
-
+<p align="center">
+<img src="https://img-src.io/taehun/nextjs14-auth0-login/1.png?w=800" alt="스크린샷">
+</p>
 
 2. 어플리케이션 이름을 입력하고, `Regular Web Applications`을 선택후 `Create` 를 클릭합니다.
 
-
-<!-- TODO: 이미지 추가 - 파일명: 스크린샷_2024-02-23_오전_12.16.58.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Ffef74f9e-c9f4-4c07-87de-518e88837b87%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2024-02-23_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25AB_12.16.58.png?table=block&id=4eb58bc0-ebaf-4e12-9531-ad53d40e5d86&cache=v2 -->
-
-![notion image](https://img-src.io/taehun/nextjs14-auth0-login/2.png?w=800)
-
+<p align="center">
+<img src="https://img-src.io/taehun/nextjs14-auth0-login/2.png?w=800" alt="스크린샷">
+</p>
 
 3. 생성된 어플리케이션의 `Settings` 탭으로 가서 **Domain**, **Client ID**, **Client Secret**를 기록해 둡니다.
-
-
-<!-- TODO: 이미지 추가 - 파일명: auth0-settings.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Fa493dfeb-9e8d-48ba-b893-85053fb13f01%2Fauth0-settings.png?table=block&id=f3674bb2-a7d0-476e-bf9e-2d8ff79897eb&cache=v2 -->
-
-![notion image](https://img-src.io/taehun/nextjs14-auth0-login/3.png?w=800)
-
+<p align="center">
+<img src="https://img-src.io/taehun/nextjs14-auth0-login/3.png?w=800" alt="스크린샷">
+</p>
 
 4. Settings에 필요한 설정을 추가 후 `Save Changes` 를 클릭하여 저장 합니다.
-
-1. **Allowed Callback URLs:** `http://localhost:3000/api/auth/callback`
-2. **Allowed Logout URLs**: [`http://localhost:3000`](http://localhost:3000)
-
-💡
+  - **Allowed Callback URLs:** `http://localhost:3000/api/auth/callback`
+  - **Allowed Logout URLs**: `http://localhost:3000`
 
 로컬 개발에는 `http://localhost:3000` 주소를 설정하고, 스테이징이나 프로덕션 환경은 웹 앱 URL로 설정해야 합니다. Auth0는 테넌트별로 환경 분리하는 것을 추천합니다.
 Auth0 대쉬보드 `Settings` → `General` → `Environment Tag` 에서 현재 테넌트의 환경 태그를 지정 할 수 있습니다. (*Development | Staging | Production)*
@@ -69,19 +56,19 @@ Auth0 대쉬보드 `Settings` → `General` → `Environment Tag` 에서 현재 
 npx create-next-app@latest nextjs-auth0-example --use-pnpm --ts --tailwind --eslint --app --no-src-dir --import-alias "@/*"
 ```
 
-```
+```bash
 cd nextjs-auth0-example
 ```
 
 Auth0 Next.js SDK를 설치 합니다.
 
-```
+```bash
 pnpm install @auth0/nextjs-auth0
 ```
 
 아래 커맨드로 Secret 문자열 생성해서 복사합니다.
 
-```
+```bash
 openssl rand -hex 32
 ```
 
@@ -89,7 +76,7 @@ openssl rand -hex 32
 
 - `.env.local` 파일
 
-```html
+```text
 AUTH0_SECRET='use [openssl rand -hex 32] to generate a 32 bytes value'
 AUTH0_BASE_URL='http://localhost:3000'
 AUTH0_ISSUER_BASE_URL='https://<Auth0의 Domain>'
@@ -101,7 +88,7 @@ AUTH0_CLIENT_SECRET='<Auth0의 Client Secret>'
 
 - `app/api/auth/[auth0]/route.ts`
 
-```python
+```typescript
 import { handleAuth } from '@auth0/nextjs-auth0';
 
 export const GET = handleAuth();
@@ -110,20 +97,17 @@ export const GET = handleAuth();
 그러면 다음과 같은 경로가 자동 생성됩니다:
 
 - `/api/auth/login`: Auth0으로 로그인에 사용되는 경로입니다.
-
 - `/api/auth/logout`: 로그아웃에 사용되는 경로입니다.
-
 - `/api/auth/callback`: 로그인 성공 후 사용자를 리디렉션하는 경로입니다.
-
 - `/api/auth/me`: 사용자 프로필을 가져오는 경로입니다.
 
-## UserProvider 컴포넌트 추가
+### UserProvider 컴포넌트 추가
 
 프론트엔드는 React 컨텍스트를 사용하여 사용자의 인증 상태를 관리합니다. 모든 페이지에서 해당 상태를 사용할 수 있게 하려면 루트 레이아웃 컴포넌트를 재정의하고 `app/layout.tsx` 파일에서 `<body>` 태그를 `UserProvider`로 래핑해야 합니다.
 
 - `app/layout.tsx`
 
-```python
+```typescript
 import { UserProvider } from '@auth0/nextjs-auth0/client';
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -151,30 +135,30 @@ export default function RootLayout({
 }
 ```
 
-## 로그인 버튼 추가
+### 로그인 버튼 추가
 
 이제 사용자는 SDK에서 제공하는 `/api/auth/login` 경로를 방문하여 애플리케이션에 로그인할 수 있습니다. 앵커 태그(`<a>` 태그)를 사용하여 로그인 경로를 가리키는 링크를 추가합니다. 이 링크를 클릭하면, Auth0이 사용자를 인증할 수 있는 Auth0 유니버설 로그인 페이지로 리디렉션됩니다. 인증에 성공하면 Auth0은 사용자를 애플리케이션으로 다시 리디렉션합니다.
 
 - `app/page.tsx`
 
-```javascript
+```typescript
 export default function Home() {
-	return (
+  return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
           <a href='/api/auth/login'>Login</a>
         </button>
-				(......)
+  (......)
 ```
 
-## 로그인 필요한 페이지
+### 로그인 필요한 페이지
 
 로그인을 해야 접근이 가능하고, 로그인시 첫 화면인 `/dashboard` 페이지를 만들어봅시다.
 
 - `app/dashboard/page.tsx`
 
-```javascript
+```typescript
 export default function DashbaordPager() {
 	return <div>로그인이 필요한 대쉬보드 페이지 입니다.</div>;
 }
@@ -184,7 +168,7 @@ export default function DashbaordPager() {
 
 - `app/page.tsx`
 
-```python
+```typescript
 import { getSession } from '@auth0/nextjs-auth0';
 import { redirect } from "next/navigation";
 
@@ -204,11 +188,12 @@ export default async function Home() {
 
 - `app/dashboard/page.tsx`
 
-```python
+```typescript
 import { getSession } from '@auth0/nextjs-auth0';
 
 export default async function DashbaordPager() {
   const session = await getSession();
+
 	return <div>
     {!!session?.user && (
       <div>
@@ -224,11 +209,12 @@ export default async function DashbaordPager() {
 
 - `app/dashboard/page.tsx`
 
-```python
+```typescript
 import { getSession } from '@auth0/nextjs-auth0';
 
 export default async function DashbaordPager() {
   const session = await getSession();
+
 	return <div>
     {!!session?.user && (
       <div>
@@ -247,29 +233,26 @@ export default async function DashbaordPager() {
 
 이제 대쉬보드 페이지를 로그인한 사용자만 접근가능하도록 보호 설정을 해야 합니다. NextJS에서 Auth0 SDK로 로그인이 필요한 페이지를 보호하는 것은 세 가지 방법이 있습니다:
 
-- Middware에서 보호하기: `withMiddlewareAuthRequired` 사용
-
+- Middleware에서 보호하기: `withMiddlewareAuthRequired` 사용
 - 서버 사이드에서 보호하기: `withPageAuthRequired` 사용
-
 - 클라이언트 사이드에서 보호하기: `withPageAuthRequired` 사용
 
-## 옵션 1. Middware에서 로그인 필요한 페이지 보호하기
+### 옵션 1. Middleware에서 로그인 필요한 페이지 보호하기
 
 Next.js 미들웨어의 기능을 활용하여 Auth0을 사용하여 페이지를 보호할 수 있습니다. Next.js 미들웨어는 애플리케이션으로 들어오는 요청이 완료되기 전에 코드를 실행합니다. 그런 다음 들어오는 요청의 특성에 따라 응답을 수정하여 애플리케이션의 비즈니스 요구 사항을 충족할 수 있습니다. 응답을 다시 작성하거나 리디렉션하고, 요청 또는 응답 헤더를 수정하거나, 직접 응답할 수 있습니다.
 
+<p align="center">
+<img src="https://img-src.io/taehun/nextjs14-auth0-login/4.png?w=800" alt="스크린샷">
+</p>
 
-<!-- TODO: 이미지 추가 - 파일명: vercel_architecture.avif, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F4adad282-a1e3-43a0-828c-8dbf8f3088ce%2Fvercel_architecture.avif?table=block&id=d4524ec0-5b5e-4a1c-9dda-c62d3da7d389&cache=v2 -->
-
-![NextJS 호스팅 서비스인 Vercel 아키텍처. NextJS 웹 서비스의 모든 요청은 미들웨어를 거쳐서 전달됩니다. 출처&gt; https://vercel.com/docs/functions](https://img-src.io/taehun/nextjs14-auth0-login/4.png?w=800)
-
-
-NextJS 호스팅 서비스인 Vercel 아키텍처. NextJS 웹 서비스의 모든 요청은 미들웨어를 거쳐서 전달됩니다. *출처>* *<https://vercel.com/docs/functions>*
+> NextJS 호스팅 서비스인 Vercel 아키텍처. NextJS 웹 서비스의 모든 요청은 미들웨어를 거쳐서 전달됩니다.
+> *출처> <https://vercel.com/docs/functions>*
 
 NextJS 미들웨어 로직은 소스코드 루트 경로에 `middlware.ts` (JS 프로젝트는 `middleware.js` ) 파일에 정의합니다. 미들웨어에 `/dashboard` 경로 접근시 사용자 인증이 필요하도록 설정 합니다.
 
 - `middleware.ts`
 
-```python
+```typescript
 import { withMiddlewareAuthRequired } from "@auth0/nextjs-auth0/edge";
 
 export default withMiddlewareAuthRequired();
@@ -279,19 +262,20 @@ export const config = {
 };
 ```
 
-## 옵션 2. SSR (Server-Side Rendering) 페이지 보호하기
+### 옵션 2. SSR (Server-Side Rendering) 페이지 보호하기
 
 서버 사이드에서 웹 페이지 렌더링시 사용자 인증이 필요하도록 설정 할 수 있습니다. `withPageAuthRequired()` 메서드로 React 서버 컴포넌트(RSC)를 래핑하여 사용자 인증이 필요하도록 설정합니다.
 
 - `app/dashboard/page.tsx`
 
-```python
+```typescript
 import { getSession, withPageAuthRequired } from '@auth0/nextjs-auth0';
 
 export default withPageAuthRequired(
   async function DashbaordPager() {
   const session = await getSession();
-	return <div>
+
+  return <div>
     {!!session?.user && (
       <div>
         <p>안녕하세요. {session.user.name} 님! 👋</p>
@@ -305,13 +289,13 @@ export default withPageAuthRequired(
 }, { returnTo: '/dashboard'});
 ```
 
-## 옵션 3. CSR (Client-Side Rendering) 페이지 보호하기
+### 옵션 3. CSR (Client-Side Rendering) 페이지 보호하기
 
 클라이언트 사이드에서 웹 페이지 렌더링시 사용자 인증이 필요하도록 설정 할 수 있습니다. `withPageAuthRequired()` 메서드로 React 클라이언트 컴포넌트(RCC)를 래핑하여 사용자 인증이 필요하도록 설정합니다.
 
 - `app/dashboard/page.tsx`
 
-```python
+```typescript
 'use client';
 
 import { useUser, withPageAuthRequired } from '@auth0/nextjs-auth0/client';
@@ -337,30 +321,25 @@ export default withPageAuthRequired(
 );
 ```
 
-클라이언트 사이드에서는 `getSession()` 메소드를 사용 할 수 없습니다. 사용자 정보를 가져오기 위한 메소드를`useUser()`로 변경하였습니다.
+클라이언트 사이드에서는 `getSession()` 메소드를 사용 할 수 없습니다. 사용자 정보를 가져오기 위한 메소드를 `useUser()`로 변경하였습니다.
 
 ## 소셜 로그인 추가하기
 
-## Google 로그인
+### Google 로그인
 
 1. 사전 요구 사항
-
-1. [구글 개발자 콘솔](https://console.developers.google.com/)에서 구글 개발자 계정을 생성해야 합니다.
-2. [이 문서](https://support.google.com/googleapi/answer/6251787?ref_topic=7014522)를 참고하여 프로젝트를 하나 생성합니다.
-
+   1.1. [구글 개발자 콘솔](https://console.developers.google.com/)에서 구글 개발자 계정을 생성해야 합니다.
+   1.2. [이 문서](https://support.google.com/googleapi/answer/6251787?ref_topic=7014522)를 참고하여 프로젝트를  하나 생성합니다.
 2. Google 자격 증명 만들기
+   2.1. Google 개발자 콘솔에서 **APIs & Services** → **Creadentials** → **CREATE CREDENTIALS** 를 클릭하여 새 Google 자격 증명을 생성 합니다.
+   2.2. **OAuth client ID** 타입으로 생성합니다.
+   2.3. **Application type**은 **Web application**을 선택합니다.
+   2.4. **Authorized JavaScript origins** 항목에 `https://<Auth0 Domain>`을 입력합니다.
+   2.5. **Authorized redirect URIs** 항목에 `https://<Auth0 Domain>/login/callback` 을 입력합니다.
 
-1. Google 개발자 콘솔에서 **APIs & Services** → **Creadentials** → **CREATE CREDENTIALS** 를 클릭하여 새 Google 자격 증명을 생성 합니다.
-2. **OAuth client ID** 타입으로 생성합니다.
-3. **Application type**은 **Web application**을 선택합니다.
-4. **Authorized JavaScript origins** 항목에 `https://<Auth0 Domain>`을 입력합니다.
-5. **Authorized redirect URIs** 항목에 `https://<Auth0 Domain>/login/callback` 을 입력합니다.
-
-
-<!-- TODO: 이미지 추가 - 파일명: 스크린샷_2024-02-26_오전_1.24.26.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Fe1daddfa-aace-44bd-bd20-e3d1a213dba4%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2024-02-26_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25AB_1.24.26.png?table=block&id=22fe8d0c-a054-4b89-8af1-2f69524f23cd&cache=v2 -->
-
-![notion image](https://img-src.io/taehun/nextjs14-auth0-login/5.png?w=800)
-
+<p align="center">
+<img src="https://img-src.io/taehun/nextjs14-auth0-login/5.png?w=800" alt="스크린샷">
+</p>
 
 3. Auth0로 접속하여, *Authentication* → *Social* 메뉴로 들어 갑니다. Social Connections 화면에서 **Create Connection** 버튼을 클릭합니다.
 
@@ -368,35 +347,28 @@ export default withPageAuthRequired(
 
 5. **Client ID** 항목과 **Client Secret** 항목을 Google 개발자 콘솔에 생성된 OAuth 2.0 Client ID의ID와 Secret으로 설정후 **Save Changes** 버튼을 클릭하여 저장합니다.
 
-
-<!-- TODO: 이미지 추가 - 파일명: 스크린샷_2024-02-26_오전_1.29.42.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F2146558a-cd22-4f10-96e8-e60ec6beba0e%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2024-02-26_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25AB_1.29.42.png?table=block&id=f6f250f7-7443-4093-bcb1-688e5c55622a&cache=v2 -->
-
-![notion image](https://img-src.io/taehun/nextjs14-auth0-login/6.png?w=800)
-
+<p align="center">
+<img src="https://img-src.io/taehun/nextjs14-auth0-login/6.png?w=800" alt="스크린샷">
+</p>
 
 6. 생성된 Google 소셜 로그인을 추가할 Auth0 어플리케이션을 선택합니다.
 
-## Github 로그인
+### Github 로그인
 
 **Github 설정**
 
 1. `https://github.com/settings/developers` 에 접속하여 새로운 OAuth App을 추가합니다.
-
-- *OAuth Apps* → *New OAuth App* 클릭
+   - *OAuth Apps* → *New OAuth App* 클릭
 
 2. 아래와 같이 Homepage URL과 Authorization callback URL을 Auth0 어플리케이션 도메인 주소로 입력합니다.
-
-- Homepage URL: `https://<Auth0의 Domain>`
-
-- Authorization callback URL: `https://<Auth0의 Domain>/login/callback`
+   - Homepage URL: `https://<Auth0의 Domain>`
+   - Authorization callback URL: `https://<Auth0의 Domain>/login/callback`
 
 3. 생성된 OAuth 앱의 **Client ID**와 **Client Secret** (없으면 생성)을 복사해 둡니다.
 
-
-<!-- TODO: 이미지 추가 - 파일명: 스크린샷_2024-02-25_오후_6.55.40.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F9bf7ac23-265d-4bbe-b280-e0ec91f09f10%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2024-02-25_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_6.55.40.png?table=block&id=65faceb6-09b2-4006-8a55-5d164417b0ea&cache=v2 -->
-
-![notion image](https://img-src.io/taehun/nextjs14-auth0-login/7.png?w=800)
-
+<p align="center">
+<img src="https://img-src.io/taehun/nextjs14-auth0-login/7.png?w=800" alt="스크린샷">
+</p>
 
 **Auth0 설정**
 
@@ -408,11 +380,9 @@ export default withPageAuthRequired(
 
 4. 생성된 GitHub 소셜 로그인을 추가할 Auth0 어플리케이션을 선택합니다.
 
-
-<!-- TODO: 이미지 추가 - 파일명: 스크린샷_2024-02-25_오후_7.06.57.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Fc796904a-4520-4b2b-b8f2-3d579b556003%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2024-02-25_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_7.06.57.png?table=block&id=c917fccf-355a-44cd-a76f-963bb357e6c8&cache=v2 -->
-
-![notion image](https://img-src.io/taehun/nextjs14-auth0-login/8.png?w=800)
-
+<p align="center">
+<img src="https://img-src.io/taehun/nextjs14-auth0-login/8.png?w=800" alt="스크린샷">
+</p>
 
 이제 로그인시 Google과 GitHub 소셜 로그인을 사용 할 수 있습니다!
 
@@ -420,42 +390,34 @@ export default withPageAuthRequired(
 
 기본 구현이 완료되었으므로, 이제 테스트 해 봅시다. 아래 커맨드로 NextJS 웹 어플리케이션을 개발 모드로 실행합니다.
 
-```
+```bash
 pnpm run dev
 ```
 
 웹 브라우저에서 `http://localhost:3000` 주소로 접속하면, `create-next-app` 으로 생성된 NextJS 기본 홈페이지에 로그인 버튼이 추가 되어 있습니다.
 
-
-<!-- TODO: 이미지 추가 - 파일명: 스크린샷_2024-02-25_오후_6.19.01.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F8eb6c45b-180c-4fbc-a494-e4eddcb55da5%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2024-02-25_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_6.19.01.png?table=block&id=9f92d65b-4d70-4ed8-ad3f-471b25ee12e3&cache=v2 -->
-
-![notion image](https://img-src.io/taehun/nextjs14-auth0-login/9.png?w=800)
-
+<p align="center">
+<img src="https://img-src.io/taehun/nextjs14-auth0-login/9.png?w=800" alt="스크린샷">
+</p>
 
 **Login** 버튼을 클릭하면, Auth0 유니버셜 로그인 화면으로 넘어갑니다.
 
-
-<!-- TODO: 이미지 추가 - 파일명: 스크린샷_2024-02-26_오전_1.36.48.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F9c423265-bc2f-4a02-bb4d-083675672758%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2024-02-26_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25AB_1.36.48.png?table=block&id=fafe49fd-38ec-4277-ac8c-87be4f156587&cache=v2 -->
-
-![notion image](https://img-src.io/taehun/nextjs14-auth0-login/10.png?w=800)
-
+<p align="center">
+<img src="https://img-src.io/taehun/nextjs14-auth0-login/10.png?w=800" alt="스크린샷">
+</p>
 
 Auth0 → User Management → Users 메뉴에서 테스트용 `test@test.com` 사용자를 추가 하였습니다.
 
 로그인을 하면, 대쉬보드 페이지로 넘어갑니다.
 
-
-<!-- TODO: 이미지 추가 - 파일명: 스크린샷_2024-02-25_오후_6.25.57.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F2a992029-8d34-485a-96b8-e30e93b61474%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2024-02-25_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_6.25.57.png?table=block&id=9c207d22-faa5-4905-be2d-3bfdf3c5e7d1&cache=v2 -->
-
-![notion image](https://img-src.io/taehun/nextjs14-auth0-login/11.png?w=800)
-
+<p align="center">
+<img src="https://img-src.io/taehun/nextjs14-auth0-login/11.png?w=800" alt="스크린샷">
+</p>
 
 로그아웃을 한 뒤, 대쉬보드 페이지가 보호되고 있는지 확인해 봅시다. 로그아웃 버튼을 클릭후, 웹 브라우저에서 [`http://localhost:3000/dashboard`](http://localhost:3000/dashboard) 주소로 대쉬보드 페이지로 접속을 시도해 보겠습니다. 대쉬보드 페이지는 사용자 인증이 필요하므로, 아래와 같이 로그인 화면으로 리디렉션 됩니다.
 
+<p align="center">
+<img src="https://img-src.io/taehun/nextjs14-auth0-login/12.gif" alt="스크린샷">
+</p>
 
-<!-- TODO: 이미지 추가 - 파일명: protected_page.gif, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Fc031c470-6430-4602-8750-1ca075d2d35e%2Fprotected_page.gif?table=block&id=6ab02956-db69-4b6e-a405-6edd256a7b9d&cache=v2 -->
-
-![notion image](https://img-src.io/taehun/nextjs14-auth0-login/12.gif)
-
-
-> 전체 예제 코드는 다음 링크를 통해 확인하실 수 있습니다.
+> 전체 예제 코드는 다음 [링크](https://github.com/Taehun/nextjs-auth0-example)를 통해 확인하실 수 있습니다.
