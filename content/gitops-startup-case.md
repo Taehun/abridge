@@ -15,21 +15,17 @@ toc = true
 
 ## 단계 0 - 직접 배포
 
-
-<!-- TODO: 이미지 추가 - 파일명: GitOps_적용기-단계1png.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Ff4191333-32b9-4e81-9e8e-35dca8310cbf%2FGitOps_%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25A8%25E1%2584%258B%25E1%2585%25AD%25E1%2586%25BC%25E1%2584%2580%25E1%2585%25B5-%25E1%2584%2583%25E1%2585%25A1%25E1%2586%25AB%25E1%2584%2580%25E1%2585%25A81png.png?table=block&id=38e11ad8-62b1-4d71-827e-ba88abb3644b&cache=v2 -->
-
-![notion image](https://img-src.io/taehun/gitops-startup-case/1.png)
-
+<p align="center">
+<img src="https://img-src.io/taehun/gitops-startup-case/1.png" alt="스크린샷">
+</p>
 
 저는 직접 경험하진 않았지만, 많은 초기 스타트업이 거쳐가는 과정이지 않나 생각합니다. 한/두명의 소수의 개발자가 GitHub에 원격 저장소를 생성하고, git으로 소스 코드 버전 관리만 합니다. 배포는 조립형 PC로 구축한 사내 서버에 개발자가 직접 배포합니다. Git 브랜치 전략이나 인프라 저장소 및 CI/CD는 없습니다.
 
 ## 단계 1 - Push-based 배포
 
-
-<!-- TODO: 이미지 추가 - 파일명: push-based_(1).png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F9955a6fe-4383-48e8-8999-913612c893fb%2Fpush-based_(1).png?table=block&id=7c8234ee-84a1-4111-a7f6-5a23e55325c4&cache=v2 -->
-
-![notion image](https://img-src.io/taehun/gitops-startup-case/2.png)
-
+<p align="center">
+<img src="https://img-src.io/taehun/gitops-startup-case/2.png" alt="스크린샷">
+</p>
 
 서비스가 성장하면서 투자 유치에 성공하였습니다! 사업 확장을 위해 신규 개발 인력 채용을 하였습니다. 새로 합류한 개발 인력들은 서비스 안정성과 확장성을 위하여 클라우드 도입을 주장합니다. 회사는 클라우드 비용이 아직은 부담스럽지만, AWS 무료 크레딧과 클라우드 비용 지원 프로그램에 선정되어 클라우드 도입을 결정하였습니다. 클라우드내 서비스 배포 환경은 VM, AppRunner, Lambda, ECS등 여러 솔루션을 검토 해 본 결과, 사내 쿠버네티스 전문 인력도 있으니 EKS로 결정되었습니다.
 
@@ -39,11 +35,9 @@ ECR에 빌드된 컨테이너 이미지가 배포되면 `kubectl rollout restart
 
 ## 단계 2 - 환경 분리와 Pull-based 배포
 
-
-<!-- TODO: 이미지 추가 - 파일명: GitOps_적용기-단계2_(1).png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Fe0f393cc-8beb-41f3-816b-6d4f1ce3a530%2FGitOps_%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25A8%25E1%2584%258B%25E1%2585%25AD%25E1%2586%25BC%25E1%2584%2580%25E1%2585%25B5-%25E1%2584%2583%25E1%2585%25A1%25E1%2586%25AB%25E1%2584%2580%25E1%2585%25A82_(1).png?table=block&id=f8a5bc44-0f85-4c7b-af61-dc1e6c4d7d78&cache=v2 -->
-
-![notion image](https://img-src.io/taehun/gitops-startup-case/3.png)
-
+<p align="center">
+<img src="https://img-src.io/taehun/gitops-startup-case/3.png" alt="스크린샷">
+</p>
 
 서비스에 기능이 하나씩 추가되고, 복잡도가 증가하면서, 모놀리딕 구조로는 서비스가 너무 비대해졌습니다. [마이크로서비스 아키텍처](https://cloud.google.com/learn/what-is-microservices-architecture?hl=ko)를 도입하여, 비대해진 서비스를 분리하기로 하였습니다. 한명의 개발자가 하나의 마이크로 서비스 개발을 담당하므로 개발 업무를 나누기도 편해졌습니다.
 
@@ -59,11 +53,9 @@ Github Action의 CI/CD 워크플로우는 기존 push-based에 사용하던 kube
 
 ## 단계 3 - GitOps 고도화
 
-
-<!-- TODO: 이미지 추가 - 파일명: GitOps_적용기-단계3_(1).png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F72b46fd8-b1cb-42f4-b5ec-0e64cd807980%2FGitOps_%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25A8%25E1%2584%258B%25E1%2585%25AD%25E1%2586%25BC%25E1%2584%2580%25E1%2585%25B5-%25E1%2584%2583%25E1%2585%25A1%25E1%2586%25AB%25E1%2584%2580%25E1%2585%25A83_(1).png?table=block&id=50f6354a-b623-41aa-adf5-d6d4efbba1bd&cache=v2 -->
-
-![notion image](https://img-src.io/taehun/gitops-startup-case/4.png)
-
+<p align="center">
+<img src="https://img-src.io/taehun/gitops-startup-case/4.png" alt="스크린샷">
+</p>
 
 앞서 설정한 GitOps 설정으로 운영을 지속해왔습니다. 회사에서 프로젝트는 점점 늘어나고, Dev 환경 리소스는 점차 부족해져 갑니다. 클러스터 노드를 추가 하기에는 예산이 빠듯하여, Dev 환경 배포시에는 할당된 리소스(CPU, 메모리)를 줄이기로 하였습니다. 즉, 환경별로 달라지는 설정들이 생기기 시작하였습니다.
 
@@ -97,15 +89,15 @@ Git 브랜치 전략은 기존 브랜치 전략에서 프로덕션 환경 Hotfix
 
 **Q. Staging 환경은 없나요?**
 
-A. 프로젝트마다 다른데, 규모가 작은 프로젝트는 (초기 스타트업 특성상) 비용 절감을 위해 *Local, Dev, Prod* 환경만 운영합니다. 프론트엔드단에서 Prod 환경에 배포된 백엔드와 연동하여, 최종 QA 및 확장성 테스트를 위한 Staging 환경을 설정해서 쓰기도 합니다.
+**A.** 프로젝트마다 다른데, 규모가 작은 프로젝트는 (초기 스타트업 특성상) 비용 절감을 위해 *Local, Dev, Prod* 환경만 운영합니다. 프론트엔드단에서 Prod 환경에 배포된 백엔드와 연동하여, 최종 QA 및 확장성 테스트를 위한 Staging 환경을 설정해서 쓰기도 합니다.
 
 **Q. 처음부터 단계 3으로 하면 되지 않나요?**
 
-A. 제 주요 담당 업무는 *‘MLOps와 머신러닝 엔지니어링’* 입니다. 지금 회사에서 하고 있는 프로젝트에 머신러닝 관련 업무가 많지 않고, 사내 DevOps 전문 인력이 없어서 어쩌다보니 DevOps도 같이 하고 있습니다. 그때그때 요구사항에 맞는 최소한으로 만들어 나가다보니 단계별 적용이 되었습니다.
+**A.** 제 주요 담당 업무는 *‘MLOps와 머신러닝 엔지니어링’* 입니다. 지금 회사에서 하고 있는 프로젝트에 머신러닝 관련 업무가 많지 않고, 사내 DevOps 전문 인력이 없어서 어쩌다보니 DevOps도 같이 하고 있습니다. 그때그때 요구사항에 맞는 최소한으로 만들어 나가다보니 단계별 적용이 되었습니다.
 
 **Q. GitOps하면서 생각나는 이슈들은 뭐가 있었나요?**
 
-A. GitOps와 직접적으로 연관된 내용은 아니지만, AWS EKS 클러스터 설정은 매번 삽질을 하는 것 같습니다. AWS 웹 콘솔, `eksctl` 커맨드, `terraform apply` IaC등 다양한 방법으로 여러 EKS 클러스터를 프로비저닝 해봤는데, 매번 이슈가 있었습니다. (특히, IAM 권한 부여와 Karpenter나 CA와 같은 노드 자동 확장 설정)
+**A.** GitOps와 직접적으로 연관된 내용은 아니지만, AWS EKS 클러스터 설정은 매번 삽질을 하는 것 같습니다. AWS 웹 콘솔, `eksctl` 커맨드, `terraform apply` IaC등 다양한 방법으로 여러 EKS 클러스터를 프로비저닝 해봤는데, 매번 이슈가 있었습니다. (특히, IAM 권한 부여와 Karpenter나 CA와 같은 노드 자동 확장 설정)
 
 나름 쿠버네티스에 익숙하다고 자부하고 있지만, 온프레미스 환경에서 쿠버네티스 클러스터 운영하는 것은 꽤나 고역입니다. 물리적 리소스 (CPU, 메모리, 스토리지)가 부족하면 단순히 노드나 HDD를 추가할 수 있는 여건이 되지 않습니다. 더이상 사용하지 않는 리소스를 찾아서 제거하거나 최적화해서 리소스를 확보해야 합니다. Dev 환경이지만 정전시 서비스 중단되는 것도 담당자 입장에선 스트레스가 상당하구요. Private ECR이나 GitHub 저장소 연동도 처음에는 꽤나 번거롭습니다. 스타트업은 빠른 개발과 배포가 중요하므로 초기에는 서버리스 솔루션을 사용하다가 서비스가 성장하고 개발팀 규모가 커지면 쿠버네티스 도입을 검토하시는 것을 추천합니다.
 
