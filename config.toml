@@ -103,12 +103,12 @@ copyright_override = '© $CURRENT_YEAR 김태훈'
 ###############################################################################
 
 title_separator = "|"  # Separator between title and title_addition, set as |, -, _, etc
-title_addition = "임베디드 개발자 출신의 머신러닝 엔지니어 블로그" # a default value for title addition (for SEO aim for 50-70 characters including the title and separator 'Abridge | title_addition')
+title_addition = "김태훈 블로그" # a default value for title addition (for SEO aim for 50-70 characters including the title and separator 'Abridge | title_addition')
 author = "김태훈" # Put Your Name here
 keywords = "MLOps, DevOps, AI, Cloud, Kubernetes, AWS, Web Development, Rust" # used for the primary site index
 banner = "avatar.png" # Used as default image for OpenGraph/Twitter if page specific image is undefined.
 #twitter_meta = "taehun_kim" # for SEO: twitter:site and twitter:creator
-#google = "Your Google Site verification code."
+google = "2xLkEmFwzptzQyMYz09TpQJGaJ_Gx2VTc_OwY9TbNok"
 #bing = "Your Bing Site verification code."
 seo = true  # enable or disable seo-related meta tags: opengraph, facebook, twitter
 #dev = false # development mode, if true then robots.txt should prevent search indexing.
