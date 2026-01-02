@@ -8,7 +8,7 @@ tags = ['MLOps', 'Zero-to-MLOps']
 
 [extra]
 author = "김태훈"
-toc = true
+toc = false
 +++
 
 작년 2월부터 연재하던 *‘제로부터 시작하는 MLOps 도구와 활용’* 시리즈 기사 연재 중단 합니다.
@@ -24,64 +24,43 @@ toc = true
 #### 지금까지 작성한 **‘제로부터 시작하는 MLOps 도구와 활용’ 시리즈 기사**
 
 - [**제로부터 시작하는 MLOps 도구와 활용 - 1. MLOps 개요**](https://blog.taehun.dev/from-zero-to-hero-mlops-tools-1)
-
 - [**제로부터 시작하는 MLOps 도구와 활용 - 2. MLOps 시스템 아키텍처**](https://blog.taehun.dev/from-zero-to-hero-mlops-tools-2)
-
 - [**제로부터 시작하는 MLOps 도구와 활용 - 3. 컴퓨팅 인프라 - 쿠버네티스 (1/2)**](https://blog.taehun.dev/from-zero-to-hero-mlops-tools-3-1)
-
 - [**제로부터 시작하는 MLOps 도구와 활용 - 3. 컴퓨팅 인프라 - 쿠버네티스 (2/2)**](https://blog.taehun.dev/from-zero-to-hero-mlops-tools-3-2)
-
 - [**제로부터 시작하는 MLOps 도구와 활용 - 4. 데이터 관리 (1/2)**](https://blog.taehun.dev/from-zero-to-hero-mlops-tools-4-1)
-
 - [**제로부터 시작하는 MLOps 도구와 활용 - 4. 데이터 관리 (2/2)**](https://blog.taehun.dev/from-zero-to-hero-mlops-tools-4-2)
-
 - [**제로부터 시작하는 MLOps 도구와 활용 - 5. 머신러닝 모델 실험과 개발 (1/4)**](https://blog.taehun.dev/from-zero-to-hero-mlops-tools-5-1)
 
 #### **미처 작성하지 못했던 MLOps 도구들 링크**
 
 - All-in-one, End-to-end 파이프라인
-
-- [kubeflow](https://www.kubeflow.org/)
-- [TFX](https://www.tensorflow.org/tfx?hl=ko)
-
+  - [kubeflow](https://www.kubeflow.org/)
+  - [TFX](https://www.tensorflow.org/tfx?hl=ko)
 - ML 실험 및 모델 관리
-
-- [MLflow](https://mlflow.org/)
-- [TensorBoard](https://www.tensorflow.org/tensorboard?hl=ko)
-
+  - [MLflow](https://mlflow.org/)
+  - [TensorBoard](https://www.tensorflow.org/tensorboard?hl=ko)
 - ML 모델 서빙
-
-- [BentoML](https://www.bentoml.com/)
-- [TorchServe](https://pytorch.org/serve/)
-- [Seldon Core](https://github.com/SeldonIO/seldon-core)
-- [NVIDIA Triton Inference Server](https://developer.nvidia.com/triton-inference-server)
-
+  - [BentoML](https://www.bentoml.com/)
+  - [TorchServe](https://pytorch.org/serve/)
+  - [Seldon Core](https://github.com/SeldonIO/seldon-core)
+  - [NVIDIA Triton Inference Server](https://developer.nvidia.com/triton-inference-server)
 - CI/CD
-
-- [Github Action](https://github.com/features/actions)
-- [Jenkins](https://www.jenkins.io/)
-
+  - [Github Action](https://github.com/features/actions)
+  - [Jenkins](https://www.jenkins.io/)
 - CT
-
-- [Airflow](https://airflow.apache.org/)
-- [Kubeflow Pipeline](https://www.kubeflow.org/docs/components/pipelines/v2/introduction/)
-
+  - [Airflow](https://airflow.apache.org/)
+  - [Kubeflow Pipeline](https://www.kubeflow.org/docs/components/pipelines/v2/introduction/)
 - 모니터링
-
-- [Prometheus](https://prometheus.io/) / [Grafana](https://grafana.com/)
-- [ELK (Elasticsearch, Logstash, Kibana) 스택](https://www.elastic.co/kr/)
-
+  - [Prometheus](https://prometheus.io/) / [Grafana](https://grafana.com/)
+  - [ELK (Elasticsearch, Logstash, Kibana) 스택](https://www.elastic.co/kr/)
 - 기타
+  - 쿠버네티스 기본 컴포넌트들…
 
-- 쿠버네티스 기본 컴포넌트들…
+> neptune.ai에서 최근에 MLOps Landscape를 정리한 기사도 있습니다.
+> 
+> - *[**MLOps Landscape in 2024: Top Tools and Platforms**](https://neptune.ai/blog/mlops-tools-platforms-landscape)*
 
-> *neptune.ai에서 최근에 MLOps Landscape를 정리한 기사도 있습니다.
-> -* *[**MLOps Landscape in 2024: Top Tools and Platforms**](https://neptune.ai/blog/mlops-tools-platforms-landscape)*
-
-
-<!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Fd0a4827a-ab4f-443c-b51d-6bcb885ef593%2FUntitled.png?table=block&id=041004a2-a8b5-4477-b79d-5aca3af4d8dd&cache=v2 -->
-
-![도구는 단지 도구일 뿐 입니다. MLOps 필요성과 개념을 이해하는 것이 훨씬 중요합니다. 그림 출처&gt; Hidden Technical Debt in Machine Learning Systems](https://img-src.io/taehun/stop-from-zero-to-hero-mlops-tools/1.png?w=800)
-
-
-도구는 단지 도구일 뿐 입니다. MLOps 필요성과 개념을 이해하는 것이 훨씬 중요합니다. *그림 출처>* *[Hidden Technical Debt in Machine Learning Systems](https://proceedings.neurips.cc/paper_files/paper/2015/file/86df7dcfd896fcaf2674f757a2463eba-Paper.pdf)*
+<p align="center">
+<img src="https://img-src.io/taehun/stop-from-zero-to-hero-mlops-tools/1.png?w=600" alt="MLOps Tools"><br>
+<i>도구는 단지 도구일 뿐 입니다. MLOps 필요성과 개념을 이해하는 것이 훨씬 중요합니다.(그림 출처> <a href="https://proceedings.neurips.cc/paper_files/paper/2015/file/86df7dcfd896fcaf2674f757a2463eba-Paper.pdf">Hidden Technical Debt in Machine Learning Systems</a>)</i>
+</p>
