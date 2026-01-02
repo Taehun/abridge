@@ -1,6 +1,15 @@
 // Load More Button Pagination
 (function() {
   'use strict';
+
+  // Force fresh navigation for home links (bypass bfcache)
+  document.querySelectorAll('a.home-link').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      location.href = this.href;
+    });
+  });
+
   var btn = document.getElementById('load-more-btn');
   if (!btn) return;
 
@@ -15,6 +24,15 @@
     var url = baseUrl + page + '/';
     return uglyUrls ? url + 'index.html' : url;
   }
+
+  function resetLoadingState() {
+    loading = false;
+    btn.classList.remove('loading');
+    btn.disabled = false;
+  }
+
+  // Reset loading state on page show (handles bfcache)
+  window.addEventListener('pageshow', resetLoadingState);
 
   btn.addEventListener('click', function() {
     if (loading || currentPage >= totalPages) return;
@@ -41,10 +59,6 @@
         }
       })
       .catch(function(e) { console.error('Load more error:', e); })
-      .finally(function() {
-        loading = false;
-        btn.classList.remove('loading');
-        btn.disabled = false;
-      });
+      .finally(resetLoadingState);
   });
 })();
