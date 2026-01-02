@@ -15,51 +15,42 @@ toc = true
 
 블로그에 검색창은 있지만 아직 동작하지 않아서 이참에 검색 기능을 추가해보려고 합니다. 개인 블로그라 데이터가 많지 않으므로 블로그 기사 제목의 **키워드 검색**만으로도 충분할 것 입니다. 그래도 명색이 머신러닝 엔지니어이므로 기왕이면 LLM을 활용한 **시맨틱 검색** 기능도 추가해보겠습니다.
 
-
-<!-- TODO: 이미지 추가 - 파일명: LLM_블로그_검색_(1).png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Ffbcce5c3-bcb7-4d23-8cef-65067df34297%2FLLM_%25E1%2584%2587%25E1%2585%25B3%25E1%2586%25AF%25E1%2584%2585%25E1%2585%25A9%25E1%2584%2580%25E1%2585%25B3_%25E1%2584%2580%25E1%2585%25A5%25E1%2586%25B7%25E1%2584%2589%25E1%2585%25A2%25E1%2586%25A8_(1).png?table=block&id=89d43b52-747c-44f8-8647-2ec6c666da2d&cache=v2 -->
-
-![notion image](https://img-src.io/taehun/llm-blog-search-research/1.png)
-
+<p align="center">
+<img src="https://img-src.io/taehun/llm-blog-search-research/1.png" alt="스크린샷">
+</p>
 
 > *본 기사에서 소개된 코드는 아래의 Colab 노트북에 작성되어 있습니다.*
 
-[Google Colab
-
-https://colab.research.google.com/drive/16b5B\_277YPUON7yuXZB\_gBHO5nkPwnGZ?usp=sharing](https://colab.research.google.com/drive/16b5B_277YPUON7yuXZB_gBHO5nkPwnGZ?usp=sharing)
+[![Open In Colab](/images/colab-badge.svg)](https://colab.research.google.com/drive/16b5B_277YPUON7yuXZB_gBHO5nkPwnGZ?usp=sharing)
 
 ## 데이터 탐색
 
 이 블로그는 [Notion](https://www.notion.so/)에서 기사를 작성합니다. Notion에서 작성된 기사는 Next.js에서 HTML 페이지로 렌더링 되어 제공됩니다. 실험에 필요한 데이터를 준비하기 위해, Notion API을 사용하여 Notion에 있는 원본 데이터를 가져와야 합니다.
 
-## Notion API 설정
+### Notion API 설정
 
 Notion API를 사용하려면 API 키가 필요합니다. Notion API 키는 아래 링크에서 *통합 (integration)*을 생성하여 발급 받을 수 있습니다.
 
 - <https://www.notion.so/my-integrations>
 
+<p align="center">
+<img src="https://img-src.io/taehun/llm-blog-search-research/2.png?w=800" alt="스크린샷">
+</p>
 
-<!-- TODO: 이미지 추가 - 파일명: notion_api-1.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F642ebb2f-8000-40ef-ad53-cc63dd0e7a5e%2Fnotion_api-1.png?table=block&id=9d496cfc-7206-47f0-8e4d-d0374ed6b4e5&cache=v2 -->
-
-![notion image](https://img-src.io/taehun/llm-blog-search-research/2.png?w=800)
-
-
-
-<!-- TODO: 이미지 추가 - 파일명: notion_api_2.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F11e41c14-f4df-4d11-95b6-bb7865473160%2Fnotion_api_2.png?table=block&id=50ae42d5-9bc6-48a9-aad3-be3371b86dc7&cache=v2 -->
-
-![notion image](https://img-src.io/taehun/llm-blog-search-research/3.png?w=800)
-
+<p align="center">
+<img src="https://img-src.io/taehun/llm-blog-search-research/3.png?w=800" alt="스크린샷">
+</p>
 
 Notion 통합이 생성되면, **Secrets** 문자열을 복사 해 둡니다. 이 문자열을 Notion API 키로 사용합니다.
 
-아래와 같이, 생성된 Notion 통합을 사용할 노션 페이지와 연결합니다. 노션 우측 상단 메뉴 (…)에서 Connections → Connect to 메뉴에서 생성한 통합을 선택하여 연결 합니다.
+아래와 같이, 생성된 Notion 통합을 사용할 노션 페이지와 연결합니다. 노션 우측 상단 메뉴 (`…`)에서 Connections → Connect to 메뉴에서 생성한 통합을 선택하여 연결 합니다.
+
+<p align="center">
+<img src="https://img-src.io/taehun/llm-blog-search-research/4.png?w=800" alt="스크린샷">
+</p>
 
 
-<!-- TODO: 이미지 추가 - 파일명: notion_api_3.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F8363489e-5864-48aa-9164-322fb209e099%2Fnotion_api_3.png?table=block&id=3fe5c5a0-f972-4837-8e61-2782fb4bfa8e&cache=v2 -->
-
-![notion image](https://img-src.io/taehun/llm-blog-search-research/4.png?w=800)
-
-
-## 데이터 처리
+### 데이터 처리
 
 제 블로그의 글은 테이블 형태의 [Notion 데이터베이스](https://www.notion.so/help/intro-to-databases)에 저장되어 있습니다. 블로그 최상위 노션 페이지에서 아래와 같이 데이터베이스를 찾습니다:
 
@@ -80,11 +71,11 @@ headers = {'Authorization': f"Bearer {NOTION_KEY}",
 
 출력
 
-```toml
+```output
 Notion API Key:··········
 ```
 
-```
+```python
 page_id = "1a64aad6a8d9466e9a49c2a1e38ea384"  # 최상위 Notion 페이지 ID
 blocks_response = requests.get(
     f"https://api.notion.com/v1/blocks/{page_id}/children",
@@ -99,7 +90,7 @@ for block in blocks_response.json()['results']:
 
 출력
 
-```
+```output
 {'archived': False,
  'child_database': {'title': '블로그 포스트'},
  'created_by': {'id': '4379a593-9b04-4876-91fc-40f08fe802f3', 'object': 'user'},
@@ -147,7 +138,7 @@ for result in query_results.json()['results']:
 
 출력
 
-```
+```output
 {'id': '588335e5-f000-4e53-8117-6187861e8c8b', 'title': '쿠버네티스 Job을 이용한 NAS 데이터 병렬 처리', 'tags': ['Kubernetes', 'Data Engineering']}
 {'id': 'f7fee315-c39f-4ad3-848e-d1214a6b27a4', 'title': 'Next.js 14 Docker 컨테이너 패키징', 'tags': ['NextJS', 'Docker']}
 {'id': 'f1bbd851-cfa6-46ea-9f1a-c8a7e1501a23', 'title': '초기 스타트업의 GitOps 적용기', 'tags': ['GitOps', 'ArgoCD']}
@@ -185,7 +176,7 @@ for result in query_results.json()['results']:
 
 샘플 기사 하나를 가져와서 블로그 기사를 작성하는데 어떤 Block 타입이 사용되었는지 확인해 봅시다. LLM 모델로 시맨틱 검색을 추가하려면 블로그 기사 내용은 모두 텍스트로 변환해야 합니다.
 
-```toml
+```python
 page_id = blog_posts[0]['id']
 blocks_response = requests.get(
     f"https://api.notion.com/v1/blocks/{page_id}/children",
@@ -199,7 +190,7 @@ block_types
 
 출력
 
-```
+```output
 {'bookmark',
  'bulleted_list_item',
  'callout',
@@ -213,9 +204,9 @@ block_types
  'toggle'}
 ```
 
-Block 페이지를 참고하여 텍스트 컨텐츠가 포함된 Block들은 모두 텍스트로 추출하였습니다. Code Block의 코드 내용은 앞 뒤로 \`\`\` 문자를 추가하여 구분하였습니다. 텍스트만 추출하기 위해 테이블과 이미지 컨텐츠는 일단 포함하지 않습니다.
+Block 페이지를 참고하여 텍스트 컨텐츠가 포함된 Block들은 모두 텍스트로 추출하였습니다. Code Block의 코드 내용은 앞 뒤로  ` ``` ` 문자를 추가하여 구분하였습니다. 텍스트만 추출하기 위해 테이블과 이미지 컨텐츠는 일단 포함하지 않습니다.
 
-```toml
+````python
 # 텍스트 컨텐츠가 포함된 Block 타입들
 text_types = {"heading_1", "heading_2", "heading_3", "paragraph", "bulleted_list_item","numbered_list_item", "code"}
 
@@ -232,8 +223,7 @@ for block in blocks_response.json()['results']:
             base_content = obj['plain_text'] + "\n"
             if block["type"][:7] == "heading":  # 제목 블록은 한 줄 공백을 추가
                 content = "\n" + base_content if len(contents) > 0 else base_content
-            elif block["type"] == "code":  # 코드 블럭은 앞 뒤로 ```
-문자를 추가
+            elif block["type"] == "code":  # 코드 블럭은 앞 뒤로 ``` 문자를 추가
                 lang = block[block["type"]]['language']
                 content = f"```{lang}\n{base_content}```
             elif block["type"][-9:] == "list_item":  # List item 블럭은 앞에 '- ' 문자 추가
@@ -243,11 +233,11 @@ for block in blocks_response.json()['results']:
             contents += content
 
 print(contents)
-```
+````
 
 출력
 
-```
+````output
 개요
 회사에서 컴퓨터 비전 관련 프로젝트를 하고 있습니다. 컴퓨터 비전 관련 프로젝트를 할 때마다 항상 느끼는 것이지만, 미디어 데이터를 처리하는 것은 참 고역입니다. 비디오 파일과 이미지 파일과 같은 미디어 데이터는 크기가 커서 저장 공간도 많이 차지하고, 프로세싱도 오래 걸립니다. 분산, 병렬 처리가 필요한 시점이 왔습니다.
 빅 데이터가 대두된 이래로 정말 많은 분산, 병렬 처리 솔루션이 등장했습니다. Hadoop과 Spark가 대표적입니다. 머신러닝 프로젝트에는 Ray도 많이 사용합니다. 클라우드 환경에는 AWS Glue, Amazon EMR, AWS Batch, GCP Dataflow, GCP Dataproc 등 분산, 병렬 처리 서비스들이 참 많습니다.
@@ -273,9 +263,11 @@ NFS에 비디오 파일을 복사할 경로를 생성하고, 비디오 파일을
 ```bash
 $ mkdir /private/nfs/video
 $ cp 
-bash
+```
+```bash
 <비디오 파일 경로>
-bash
+```
+```bash
 /*.mp4 /private/nfs/video/
 ```
 
@@ -292,7 +284,8 @@ curl -skSL https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/v4.6.
 - NFS CSI 드라이버 설치 확인
 ```bash
 kubectl -n kube-system get pod -o wide -l app=csi-nfs-controller
-bash
+```
+```bash
 kubectl -n kube-system get pod -o wide -l app=csi-nfs-node
 ```
 
@@ -397,7 +390,7 @@ ffmpeg
 ffmpeg
  CLI 도구만 추가적으로 필요합니다.
 - Dockerfile
-```bash
+```docker
 FROM ubuntu:24.04
 RUN apt-get update && apt-get install -y ffmpeg
 ```
@@ -494,7 +487,7 @@ Kueue
 참고자료
 - https://github.com/kubernetes-csi/csi-driver-nfs
 - 확장을 사용한 병렬 처리
-```
+````
 
 블로그 기사의 내용이 그럭저럭 텍스트로 잘 변환된 것처럼 보입니다. 제목이 나오면 한 줄 공백을 추가하여 파트별 분리도 되고, 코드 블록의 코드도 모두 포함되어 있습니다. 표나 이미지가 빠진 것이 조금 아쉽지만 우선 이것을 실험 데이터로 사용하겠습니다.
 
@@ -521,7 +514,7 @@ def notion_block_to_text(block: list) -> str:
     return contents
 ```
 
-```
+```python
 blog_datas = []
 
 for idx, post in enumerate(blog_posts):
@@ -535,7 +528,7 @@ for idx, post in enumerate(blog_posts):
 
 출력
 
-```
+```output
 제목: 쿠버네티스 Job을 이용한 NAS 데이터 병렬 처리 , 내용 길이: 6180
 제목: Next.js 14 Docker 컨테이너 패키징 , 내용 길이: 2073
 제목: 초기 스타트업의 GitOps 적용기 , 내용 길이: 5383
@@ -571,17 +564,14 @@ for idx, post in enumerate(blog_posts):
 
 ## 인덱싱과 LLM을 이용한 검색
 
-## 키워드 검색
+### 키워드 검색
 
 먼저, 블로그 기사의 제목과 내용을 키워드로 검색하는 키워드 검색부터 살펴 봅시다. *FTS(Full-Text Search)* 기능을 구현한 대부분의 도구는 검색의 대상이 되는 문서를 [역색인(Inverted Index)](https://ko.wikipedia.org/wiki/%EC%97%AD%EC%83%89%EC%9D%B8)으로 저장합니다. (책 뒷면의 색인 같은 것) 사용자가 검색 키워드를 입력하면 해당 키워드가 포함된 모든 문서를 찾습니다. 찾은 문서에서 [BM25](https://en.wikipedia.org/wiki/Okapi_BM25)라는 알고리즘을 사용하여 가장 연관도가 높은 문서를 반환합니다.
 
-
-<!-- TODO: 이미지 추가 - 파일명: inverted_index.jpeg, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2Fa7dd1710-41ee-4ea2-becb-5b6a5e47df9c%2Finverted_index.jpeg?table=block&id=c4e6ecde-4228-4457-a5df-b29ca43464f3&cache=v2 -->
-
-![출처&gt; https://programminghistorian.org/posts/full-text-search](https://img-src.io/taehun/llm-blog-search-research/5.jpeg?w=800)
-
-
-*출처>* *<https://programminghistorian.org/posts/full-text-search>*
+<p align="center">
+<img src="https://img-src.io/taehun/llm-blog-search-research/5.jpeg?w=800" alt="출처&gt; https://programminghistorian.org/posts/full-text-search">
+<i>출처> <a href="https://programminghistorian.org/posts/full-text-search">https://programminghistorian.org/posts/full-text-search</a></i>
+</p>
 
 키워드 검색에 사용하는 가장 유명한 도구로는 [Elasticsearch](https://www.elastic.co/kr/elasticsearch)가 있습니다. 하지만 여기서는 [벤치마크 결과](https://tantivy-search.github.io/bench/)도 우수하고, 제가 좋아하는 언어인 Rust로 구현한 [tantivy](https://github.com/quickwit-oss/tantivy)를 사용하겠습니다.
 
@@ -610,7 +600,7 @@ index = tantivy.Index(schema)
 
 앞서 생성한 블로그 데이터를 인덱스에 tantivy 문서로 추가합니다.
 
-```toml
+```python
 # 인덱싱
 writer = index.writer()
 for blog_data in blog_datas:
@@ -636,7 +626,7 @@ for score, doc_addr in searcher.search(query, 10).hits:
 
 출력
 
-```
+```output
 1.6204864978790283 ['MLOps 소개']
 1.5968784093856812 ['MLOps 도구와 활용 - 1. MLOps 개요']
 1.5177857875823975 ['MLOps 도구와 활용 - 2. MLOps 시스템 아키텍처']
@@ -650,7 +640,7 @@ for score, doc_addr in searcher.search(query, 10).hits:
 
 `GitOps` 태그가 설정된 기사도 찾아보겠습니다.
 
-```toml
+```python
 query = index.parse_query("GitOps", ["tags"])  # 'GitOps' 키워드로 태그 검색
 (best_score, best_doc_address) = searcher.search(query, 3).hits[0]
 best_doc = searcher.doc(best_doc_address)
@@ -659,7 +649,7 @@ best_doc["title"]
 
 출력
 
-```
+```output
 ['초기 스타트업의 GitOps 적용기']
 ```
 
@@ -673,7 +663,7 @@ for score, doc_addr in searcher.search(query, 5).hits:
 
 출력
 
-```
+```output
 2.652600049972534 ['글쓰는 개발자 모임, 글또 8기를 시작하면서']
 2.344245672225952 ['2023년 상반기 회고']
 2.076092481613159 ['Python으로 인프라 생성하기 - CDKTF']
@@ -682,17 +672,15 @@ for score, doc_addr in searcher.search(query, 5).hits:
 
 총 4개의 기사에서 Ansible을 언급하였습니다.
 
-## 시맨틱 검색
+### 시맨틱 검색
 
 > *시맨틱 검색은 검색 쿼리의 단어나 키워드가 아닌 의미(semantic)를 이해하여 검색하는 기술 입니다.*
 
 시맨틱 검색은 딥러닝 기술이 대중화 되기 이전부터 존재 했지만, LLM 등장이후부터는 고성능의 시맨틱 검색을 쉽게 구현 할 수 있게 되었습니다. 먼저, 검색 대상이 되는 컨텐츠 (문서, 이미지, 동영상)를 *임베딩 모델*로 벡터로 변환하여 *벡터 DB*에 저장합니다. 사용자가 검색 쿼리를 입력하면, 검색 쿼리도 벡터로 변환후 벡터 DB에서 가장 인접한 벡터 값을 가진 컨텐츠를 리턴합니다.
 
-
-<!-- TODO: 이미지 추가 - 파일명: semantic-search.png, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F3525c6f1-2252-4ea1-ba68-9a5afaf74df2%2Fsemantic-search.png?table=block&id=f43eb6a5-66c3-40ba-98e3-b790604af1a1&cache=v2 -->
-
-![시맨틱 검색 과정. 임베딩 모델과 벡터 DB를 사용합니다.](https://img-src.io/taehun/llm-blog-search-research/6.png)
-
+<p align="center">
+<img src="https://img-src.io/taehun/llm-blog-search-research/6.png" alt="시맨틱 검색 과정. 임베딩 모델과 벡터 DB를 사용합니다.">
+</p>
 
 시맨틱 검색 과정. 임베딩 모델과 벡터 DB를 사용합니다.
 
@@ -700,7 +688,7 @@ for score, doc_addr in searcher.search(query, 5).hits:
 
 시맨틱 검색에 사용할 수 있는 다양한 도구들이 있지만, 그 중 비교적 간단하게 구현할 수 있는 LangChain과 OpenAI 임베딩 모델을 사용해서 실험해 보겠습니다. OpenAI API를 사용하려면 [이곳](https://platform.openai.com/api-keys)에서 API 키를 생성해야 합니다.
 
-```
+```python
 !pip install -q langchain langchain-openai tiktoken
 ```
 
@@ -717,13 +705,13 @@ embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
 
 출력
 
-```
+```output
 OpenAI API Key:··········
 ```
 
 블로그 각 기사 내용을 임베딩하여 벡터로 변환합니다.
 
-```toml
+```python
 contents_vectors = embeddings.embed_documents([data["contents"] for data in blog_datas])
 ```
 
@@ -748,9 +736,7 @@ def similarity_search(contents_vectors, query_vector, top_k=5):
 벡터 유사도 검사에는 다음과 같은 세 가지 매트릭을 많이 사용 합니다:
 
 - [유클리드 거리(Euclidean distance)](https://en.wikipedia.org/wiki/Euclidean_distance)
-
 - [코사인 유사도(Cosine similarity)](https://en.wikipedia.org/wiki/Cosine_similarity)
-
 - [내적 유사도(Dot Product similarity)](https://en.wikipedia.org/wiki/Dot_product)
 
 이 중 코사인 유사도는 벡터의 방향(즉, 문서의 전체 내용)을 비교할 수 있기 때문에 시맨틱 검색에 사용하기에 적합합니다.
@@ -779,7 +765,7 @@ for query in queries:
 
 출력
 
-```
+```output
 쿼리: 'MLOps 정의와 소개에 대한 글을 찾아줘'
 < Top-5 검색 결과 >
 -> 제목: ‘제로부터 시작하는 MLOps 도구와 활용’ 연재 중단
@@ -848,7 +834,7 @@ print(f"총 {total_token} 토큰")
 
 출력
 
-```toml
+```output
 쿠버네티스 Job을 이용한 NAS 데이터 병렬 처리: 3082
 Next.js 14 Docker 컨테이너 패키징: 856
 초기 스타트업의 GitOps 적용기: 3920
@@ -883,7 +869,7 @@ MLOps 소개: 5137
 총 124417 토큰
 ```
 
-총 `124417` 토큰 입니다. `text-embedding-3-small` 모델을 사용하면, 1M 토큰당 $0.02이므로 컨텐츠 임베딩에는 $0.0025이라는 매우 적은 금액이 부과됩니다. (참고> [OpenAI 가격](https://openai.com/pricing)의 **Embedding models**)
+총 `124417` 토큰 입니다. `text-embedding-3-small` 모델을 사용하면, 1M 토큰당 $0.02이므로 컨텐츠 임베딩에는 $0.0025이라는 매우 적은 금액이 부과됩니다. (참고> [OpenAI 가격](https://openai.com/pricing)의 *Embedding models*)
 
 - *`0.02 * 124417 / 1000000 = $0.0024883400000000003`*
 
@@ -899,7 +885,7 @@ MLOps 소개: 5137
 
 - [LangChain 컴포넌트 - 임베딩 모델](https://python.langchain.com/docs/integrations/text_embedding/)
 
-```
+```python
 !pip install -q sentence-transformers langchain-community
 ```
 
@@ -921,7 +907,7 @@ Sentence Transformers의 장점은 Hugging Face에 있는 다양한 오픈 소�
 contents_vectors_hf = hf_embeddings.embed_documents([data["contents"] for data in blog_datas])
 ```
 
-```
+```python
 for query in queries:
     query_vector = hf_embeddings.embed_query(query)
     query_results = similarity_search(contents_vectors_hf, query_vector)
@@ -934,7 +920,7 @@ for query in queries:
 
 출력
 
-```
+```output
 쿼리: 'MLOps 정의와 소개에 대한 글을 찾아줘'
 < Top-5 검색 결과 >
 -> 제목: 제로부터 시작하는 MLOps 도구와 활용 - 3. 컴퓨팅 인프라 - 쿠버네티스 (1/2)
@@ -990,30 +976,26 @@ for query in queries:
 첫 번째 원인은 임베딩 결과 *벡터의 차원 (dimension)* 크기 차이로 인해 발생한 정확도 차이 입니다. OpenAI 모델은 유료 모델인만큼 고차원 벡터로 임베딩 할 수 있습니다.
 
 - OpenAI `text-embedding-3-small` 모델의 최대 차원 = `1536`
-
 - OpenAI `text-embedding-3-large` 모델의 최대 차원 = `3072`
-
 - `multi-qa-mpnet-base-cos-v1` 모델의 최대 차원 = `768`
 
 두 번째 원인은 *최대 입력 토큰 (max input token)* 크기의 차이 입니다. Sentence Transformer 패키지는 임베딩 모델의 최대 입력 토큰을 넘는 입력이 들어오면 자동으로 잘라냅니다. (참고로 LangChain OpenAI 임베딩은 최대 토큰이 넘는 입력이 들어오면 자동 분할 합니다.)
 
 - OpenAI `text-embedding-3-small` 모델의 최대 입력 = `8192`
-
 - OpenAI `text-embedding-3-large` 모델의 최대 입력 = `8192`
-
 - `multi-qa-mpnet-base-cos-v1` 모델의 최대 입력 = `512`
 
 이를 위해, 다양한 *텍스트 분할 (Text Split)* 기법들이 있습니다. LLM에서 큰 입력 데이터를 모델이 처리할 수 있는 단위로 분할한 것을 *청크 (Chunk)* 라고 합니다. LangChain에는 다양한 [Text Splitter](https://python.langchain.com/docs/modules/data_connection/document_transformers/) 기능을 제공하고 있으니, 이를 사용하면 편리하게 텍스트를 분할 할 수 있습니다.
 
 블로그 기사 본문을 청킹하고, 청크와 원본 기사 매핑도 하려니 실험 단계가 너무 길어지는것 같습니다. 그냥 OpenAI 모델로 임베딩 하겠습니다. 더미 요청 이슈는 구현 단계에서 처리하겠습니다.
 
-## 벡터 DB
+### 벡터 DB
 
 시맨틱 검색 실험에 사용한 벡터 값은 모두 메모리에 있습니다. 이제 벡터 DB에 벡터를 저장하고, 검색 해보겠습니다.
 
 [Langchain에서 지원하는 벡터 DB](https://python.langchain.com/docs/integrations/vectorstores/)만 해도 수십 가지가 넘습니다. LLM 대중화 이후로 정말 많은 벡터 DB가 등장했습니다. 마치 2년전 MLOps 도구들을 보는 것 같습니다. 이 중에서도 오픈소스 벡터 DB인 [LanceDB](https://lancedb.com/)를 사용해보겠습니다.
 
-```
+```python
 !pip install -q lancedb
 ```
 
@@ -1028,7 +1010,7 @@ db = lancedb.connect(uri)
 
 블로그 데이터에 벡터 컬럼을 추가하고, 벡터 테이블을 생성 합니다.
 
-```toml
+```python
 for data, vector in zip(blog_datas, contents_vectors):
     data['vector'] = vector  # 'vector' 컬럼을 추가 합니다.
 
@@ -1052,7 +1034,7 @@ for query in queries:
 
 출력
 
-```
+```output
 쿼리: 'MLOps 정의와 소개에 대한 글을 찾아줘'
 < Top-5 검색 결과 >
 -> 제목: ‘제로부터 시작하는 MLOps 도구와 활용’ 연재 중단
@@ -1103,17 +1085,14 @@ for query in queries:
 ====================
 ```
 
-## 하이브리드 검색
+### 하이브리드 검색
 
-하이브리드 검색은 텍스트 기반 검색과 벡터 기반 검색을 결합한 검색 방식입니다. 하이브리드 검색은 키워드 검색과 시맨틱 검색 장점을 결합하여, 사용자가 입력한 키워드에 정확하게 일치하는 문서를 찾으면서도, 동시에 문서의 의미적 맥락을 고려하여 유사한 내용을 포함한 문서도 제시할 수 있습니다. 예를 들어, 사용자가 *"태양의 도시"*로 검색했을 때, 하이브리드 검색은 이 키워드를 포함하는 문서와 함께 *"태양의 도시"*가 은유적으로 사용된 문맥에서 관련된 다른 문서들도 함께 제공할 수 있습니다.
+하이브리드 검색은 텍스트 기반 검색과 벡터 기반 검색을 결합한 검색 방식입니다. 하이브리드 검색은 키워드 검색과 시맨틱 검색 장점을 결합하여, 사용자가 입력한 키워드에 정확하게 일치하는 문서를 찾으면서도, 동시에 문서의 의미적 맥락을 고려하여 유사한 내용을 포함한 문서도 제시할 수 있습니다. 예를 들어, 사용자가 *"태양의 도시"* 로 검색했을 때, 하이브리드 검색은 이 키워드를 포함하는 문서와 함께 *"태양의 도시"* 가 은유적으로 사용된 문맥에서 관련된 다른 문서들도 함께 제공할 수 있습니다.
 
-
-<!-- TODO: 이미지 추가 - 파일명: Screenshot-2024-02-19-at-2.41.44-PM.webp, 원본: https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fd16ab49b-c880-41d3-8de9-a0ddfb671740%2F08c6911f-992b-4551-b9ec-dc15ccbeead2%2FScreenshot-2024-02-19-at-2.41.44-PM.webp?table=block&id=fcfb5b73-54e4-4832-989b-1e9df68dfe1a&cache=v2 -->
-
-![그림 출처&gt; https://blog.lancedb.com/hybrid-search-combining-bm25-and-semantic-search-for-better-results-with-lan-1358038fe7e6/](https://img-src.io/taehun/llm-blog-search-research/7.webp)
-
-
-그림 출처> <https://blog.lancedb.com/hybrid-search-combining-bm25-and-semantic-search-for-better-results-with-lan-1358038fe7e6/>
+<p align="center">
+<img src="https://img-src.io/taehun/llm-blog-search-research/7.webp" alt="그림 출처&gt; https://blog.lancedb.com/hybrid-search-combining-bm25-and-semantic-search-for-better-results-with-lan-1358038fe7e6/">
+<i>그림 출처> <a href="https://blog.lancedb.com/hybrid-search-combining-bm25-and-semantic-search-for-better-results-with-lan-1358038fe7e6/">LancdDB Blog</a> </i>
+</p>
 
 블로그 검색에서 사용자가 기대하는 결과는 블로그 기사 제목의 *키워드 검색* 결과 입니다. 여기에 더해 검색 쿼리 의미를 파악하여, 기사 내용에서 *시맨틱 검색*이 조금 가미되면 좋겠습니다. 이러한 블로그 검색 특성에 맞게 하이브리드 검색을 추가해 봅시다.
 
@@ -1137,7 +1116,7 @@ tlb2 = db.create_table("blog_articles2", schema=BlogArticle)
 
 새로 생성한 테이블에 블로그 데이터를 추가 합니다.
 
-```toml
+```python
 data = [
     {
         "contents": data["contents"],
@@ -1172,7 +1151,7 @@ for query in queries:
 
 출력
 
-```
+```output
 쿼리: 'MLOps 정의와 소개에 대한 글을 찾아줘'
 < Top-5 검색 결과 >
 -> 제목: MLOps 소개
