@@ -84,12 +84,22 @@ This Template can also be used directly for the index eg: example.com/ or as the
     {%- endfor %}
     </div>
 
-    {# Pagination #}
+    {# Pagination - Load More Button #}
     <div class="pagination-container">
-    {%- if config.extra.arrow_pagination %}
-    {{- macros::pagination(paginator=paginator, config=config) }}
-    {%- else %}
-    {{- macros::numpagination(paginator=paginator, config=config) }}
+    {%- if paginator.number_pagers > 1 %}
+      <button
+        id="load-more-btn"
+        class="load-more-btn"
+        data-current-page="{{ paginator.current_index }}"
+        data-total-pages="{{ paginator.number_pagers }}"
+        data-base-url="{{ paginator.base_url | safe }}"
+        data-ugly-urls="{{ uglyurls }}"
+      >
+        {{ macros::translate(key="more", default="Load More", i18n=i18n) }}
+      </button>
+      <noscript>
+        {{- macros::numpagination(paginator=paginator, config=config) }}
+      </noscript>
     {%- endif %}
     </div>
   {%- if config.extra.recent | default(value=true) %}

@@ -112,6 +112,7 @@
 
 {%- endif %}
 
+  <script defer src="{{ get_url(path='js/loadmore.js', trailing_slash=false, cachebust=true) | safe }}"{%- if integrity %} integrity="sha384-{{ get_hash(path='js/loadmore.js', sha_type=384, base64=true) | safe }}"{%- endif %}></script>
 
 
 
