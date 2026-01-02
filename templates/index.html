@@ -30,6 +30,11 @@ This Template can also be used directly for the index eg: example.com/ or as the
   {{- macros_seo::seo(config=config, title=title, title_addition=title_addition, description=description, is_home=true) }}
 {%- endblock seo %}
 
+{%- block jsonld %}
+  {{- macros_jsonld::website(config=config) }}
+  {{- macros_jsonld::person(config=config) }}
+{%- endblock jsonld %}
+
 
 
 {%- block content %}

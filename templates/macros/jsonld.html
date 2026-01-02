@@ -1,0 +1,116 @@
+{#- JSON-LD Structured Data Macros for SEO #}
+
+{#- WebSite Schema for homepage #}
+{%- macro website(config) %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": {{ config.title | json_encode() | safe }},
+  "description": {{ config.description | json_encode() | safe }},
+  "url": {{ config.base_url | json_encode() | safe }}
+  {%- if config.build_search_index %},
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "{{ config.base_url }}/?search={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+  {%- endif %}
+}
+</script>
+{%- endmacro website %}
+
+{#- Person Schema for author #}
+{%- macro person(config) %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": {{ config.extra.author | json_encode() | safe }},
+  "url": {{ config.base_url | json_encode() | safe }}
+  {%- if config.extra.mail %},
+  "email": {{ config.extra.mail | json_encode() | safe }}
+  {%- endif %}
+  {%- set same_as = [] %}
+  {%- if config.extra.github %}
+    {%- set_global same_as = same_as | concat(with="https://github.com/" ~ config.extra.github) %}
+  {%- endif %}
+  {%- if config.extra.linkedin %}
+    {%- set_global same_as = same_as | concat(with="https://linkedin.com/in/" ~ config.extra.linkedin) %}
+  {%- endif %}
+  {%- if config.extra.twitter %}
+    {%- set_global same_as = same_as | concat(with="https://twitter.com/" ~ config.extra.twitter) %}
+  {%- endif %}
+  {%- if same_as | length > 0 %},
+  "sameAs": {{ same_as | json_encode() | safe }}
+  {%- endif %}
+}
+</script>
+{%- endmacro person %}
+
+{#- BlogPosting Schema for blog posts #}
+{%- macro blogposting(page, config) %}
+{%- set author_name = config.extra.author | default(value="Author") %}
+{%- if page.extra.authors %}
+  {%- set author_name = page.extra.authors | first | default(value=config.extra.author) %}
+{%- endif %}
+
+{%- set image_url = "" %}
+{%- if page.extra.thumbnail %}
+  {%- set image_url = get_url(path=page.path ~ page.extra.thumbnail, trailing_slash=false) %}
+{%- elif page.extra.static_thumbnail %}
+  {%- if page.extra.static_thumbnail is matching("^http[s]?://") %}
+    {%- set image_url = page.extra.static_thumbnail %}
+  {%- else %}
+    {%- set image_url = get_url(path=page.extra.static_thumbnail, trailing_slash=false) %}
+  {%- endif %}
+{%- elif config.extra.banner %}
+  {%- set image_url = get_url(path=config.extra.banner, trailing_slash=false) %}
+{%- endif %}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": {{ page.title | json_encode() | safe }},
+  "url": {{ page.permalink | json_encode() | safe }},
+  {%- if page.description %}
+  "description": {{ page.description | json_encode() | safe }},
+  {%- endif %}
+  {%- if page.date %}
+  "datePublished": "{{ page.date | date(format='%Y-%m-%dT%H:%M:%S+00:00') }}",
+  {%- endif %}
+  {%- if page.updated %}
+  "dateModified": "{{ page.updated | date(format='%Y-%m-%dT%H:%M:%S+00:00') }}",
+  {%- elif page.date %}
+  "dateModified": "{{ page.date | date(format='%Y-%m-%dT%H:%M:%S+00:00') }}",
+  {%- endif %}
+  {%- if image_url %}
+  "image": {{ image_url | json_encode() | safe }},
+  {%- endif %}
+  {%- if page.reading_time %}
+  "timeRequired": "PT{{ page.reading_time }}M",
+  {%- endif %}
+  {%- if page.taxonomies.tags %}
+  "keywords": {{ page.taxonomies.tags | json_encode() | safe }},
+  {%- endif %}
+  "author": {
+    "@type": "Person",
+    "name": {{ author_name | json_encode() | safe }},
+    "url": {{ config.base_url | json_encode() | safe }}
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": {{ config.extra.author | default(value=config.title) | json_encode() | safe }},
+    "url": {{ config.base_url | json_encode() | safe }}
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": {{ page.permalink | json_encode() | safe }}
+  }
+}
+</script>
+{%- endmacro blogposting %}

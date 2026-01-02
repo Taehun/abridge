@@ -1,4 +1,5 @@
 {%- import 'macros/seo.html' as macros_seo %}
+{%- import 'macros/jsonld.html' as macros_jsonld %}
 {%- import "macros/macros.html" as macros %}
 {# Load current language i18n data from .toml files in user's '/i18n' folder, use theme as fallback. #}
 {%- set i18n = load_data(path="i18n/" ~ lang ~ '.toml', required=false) -%}
@@ -19,6 +20,10 @@
       {%- set title_separator = " | " -%}
     {%- endif %}
   {%- endblock seo %}
+
+  {#- JSON-LD Structured Data #}
+  {%- block jsonld %}
+  {%- endblock jsonld %}
 
   {%- block comments_init %}
   {%- endblock comments_init %}
