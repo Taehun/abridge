@@ -42,7 +42,7 @@ This Template can also be used directly for the index eg: example.com/ or as the
     {%- for page in paginator.pages %}
       <article
         class="post-card js-clickable-card"
-        data-href="{{ page.permalink | safe }}{%- if uglyurls %}index.html{%- endif %}"
+        data-href="{{ page.permalink | trim_end_matches(pat='/') | safe }}{%- if uglyurls %}index.html{%- endif %}"
         tabindex="0"
         role="link"
       >
@@ -50,7 +50,7 @@ This Template can also be used directly for the index eg: example.com/ or as the
           {%- if page.taxonomies.tags %}
           <div class="post-card-tags">
             {%- for tag in page.taxonomies.tags %}
-            <a href="{{ get_taxonomy_url(kind='tags', name=tag, lang=lang) | safe }}{%- if uglyurls %}index.html{%- endif %}" class="post-card-tag">
+            <a href="{{ get_taxonomy_url(kind='tags', name=tag, lang=lang) | trim_end_matches(pat='/') | safe }}{%- if uglyurls %}index.html{%- endif %}" class="post-card-tag">
               {{ tag }}
             </a>
             {%- endfor %}
@@ -59,7 +59,7 @@ This Template can also be used directly for the index eg: example.com/ or as the
 
           {# Title #}
           <h2 class="post-card-title">
-            <a href="{{ page.permalink | safe }}{%- if uglyurls %}index.html{%- endif %}">
+            <a href="{{ page.permalink | trim_end_matches(pat='/') | safe }}{%- if uglyurls %}index.html{%- endif %}">
               {{ page.title | markdown(inline=true) | safe }}
             </a>
           </h2>

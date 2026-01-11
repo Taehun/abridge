@@ -41,7 +41,7 @@ render_emoji = false
 external_links_target_blank = true # rel="noopener"
 external_links_no_follow = false   # rel="nofollow"
 external_links_no_referrer = false # rel="noreferrer"
-smart_punctuation = false          # `...` to `…`, `"quote"` to `“curly”` etc
+smart_punctuation = false          # `...` to `…`, `"quote"` to `"curly"` etc
 
 # Any Extra language you do not use, delete or comment out the extra language sections:
 # English is the default language, no need for [languages.en] section
@@ -55,9 +55,9 @@ smart_punctuation = false          # `...` to `…`, `"quote"` to `“curly”` 
 ###############################################################################
 
 menu = [
-    {url = "about", name = "About", slash = true, blank = false, size="s110"},
-    {url = "archive", name = "Posts", slash = true, blank = false, size="s110"},
-    {url = "tags", name = "Tags", slash = true, blank = false, size="s110"},
+    {url = "about", name = "About", slash = false, blank = false, size="s110"},
+    {url = "archive", name = "Posts", slash = false, blank = false, size="s110"},
+    {url = "tags", name = "Tags", slash = false, blank = false, size="s110"},
 ]
 menu_footer = []
 
@@ -213,7 +213,7 @@ pwa_cache_all = false
 
 ### List of Files for the PWA to initially Cache, used if pwa_cache_all = false
 ### 모바일 성능 최적화: 필수 파일만 초기 캐시, 나머지는 요청 시 캐시
-pwa_BASE_CACHE_FILES = "'/','/404.html','/offline/','/abridge.css','/js/abridge.min.js','/manifest.min.json','/about/','/archive/','/tags/'"
+pwa_BASE_CACHE_FILES = "'/','/404.html','/offline','/abridge.css','/js/abridge.min.js','/manifest.min.json','/about','/archive','/tags'"
 
 pwa_IGNORE_FILES = ["_headers","sw.min.js","sw.js"]
 #pwa_IGNORE_FILES = ["_headers","sw.min.js","sw.js","android-chrome-192x192.png","android-chrome-512x512.png","apple-touch-icon.png","favicon-16x16.png","favicon-32x32.png","favicon.ico","m48.png","m72.png","m96.png","m128.png","m192.png","m384.png","m512.png","m1024.png","mstile-150x150.png"]

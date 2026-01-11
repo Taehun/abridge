@@ -76,7 +76,7 @@
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "headline": {{ page.title | json_encode() | safe }},
-  "url": {{ page.permalink | json_encode() | safe }},
+  "url": {{ page.permalink | trim_end_matches(pat='/') | json_encode() | safe }},
   {%- if page.description %}
   "description": {{ page.description | json_encode() | safe }},
   {%- endif %}
@@ -109,7 +109,7 @@
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": {{ page.permalink | json_encode() | safe }}
+    "@id": {{ page.permalink | trim_end_matches(pat='/') | json_encode() | safe }}
   }
 }
 </script>
