@@ -35,7 +35,7 @@ toc = false
 
 - 자격증 공부
   - 클라우드 자격증: _AWS Certified Solutions Architect - Professional_, _AWS Certified AI Practitioner_ 취득
-  - 쿠버네티스 자격증: 쿠버네티스 자격증의 종착점인 Golden Kubestronaut 자격증을 취득했습니다. ([취득 후기](https://www.linkedin.com/posts/taehun-brian-kim_goldenkubestronaut-kubestronaut-activity-7380786410326458368-a_rL?utm_source=share&utm_medium=member_desktop&rcm=ACoAACI4Sn0Bvo2EyZwiW90lhX_ZpvYtutSIZ5U), 링크드인 포스트)
+  - 쿠버네티스 자격증: 쿠버네티스 자격증의 종착점인 Golden Kubestronaut 자격을 취득했습니다. ([취득 후기](https://www.linkedin.com/posts/taehun-brian-kim_goldenkubestronaut-kubestronaut-activity-7380786410326458368-a_rL?utm_source=share&utm_medium=member_desktop&rcm=ACoAACI4Sn0Bvo2EyZwiW90lhX_ZpvYtutSIZ5U), 링크드인 포스트)
   - 정보관리기술사: 2025년 상반기, 약 5개월간 정보관리기술사 자격증을 공부했습니다. 기술사 준비 기간 동안 하루도 빠짐없이 주중 2~4시간, 주말 5시간 이상 공부했습니다. 개인 사정상 중도 하차하였지만, 기술사 공부하면서 전반적인 IT 지식을 많이 배웠습니다.
 - 영어 공부: [Duolingo](https://www.duolingo.com/) 연속 485일
 - 코딩 에이전트 도구 사용법 익히기
@@ -43,7 +43,7 @@ toc = false
   - *Claude Code*: 요즘 대부분의 코딩은 Claude Code로 하고 있습니다.
   - *GitHub Copilot*: 코드 리뷰에 활용 중입니다.
 
-> AI 코딩 시대가 오면서 LeetCode 코딩 테스트 연습은 이제 하지 않습니다.
+> AI 코딩 시대가 오면서 LeetCode 코딩 테스트 연습은 더이상 하지 않습니다.
 
 ## 2026년 신년 목표
 
