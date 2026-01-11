@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     {%- for sitemap_entry in entries %}
+    {%- if not sitemap_entry.permalink is containing("/page/") %}
     <url>
         <loc>{{ sitemap_entry.permalink | trim_end_matches(pat='/') | safe }}</loc>
         {%- if sitemap_entry.updated %}
@@ -9,5 +10,6 @@
         <lastmod>{{ sitemap_entry.date | date(format="%+") }}</lastmod>
         {%- endif %}
     </url>
+    {%- endif %}
     {%- endfor %}
 </urlset>
