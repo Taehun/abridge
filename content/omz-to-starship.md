@@ -124,7 +124,7 @@ style = "bold purple"
 format = "[$symbol$branch(:$remote_branch)]($style) "
 
 [git_status]
-format = '([$ahead_behind]($style) )'
+format = '([$untracked](yellow)[$stashed](cyan)[$modified](yellow)[$staged](green)[$deleted](red)[$conflicted](red bold)[$ahead_behind](blue) )'
 style = "bold red"
 conflicted = "="
 ahead = "⇡${count}"
