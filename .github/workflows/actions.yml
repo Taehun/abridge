@@ -8,8 +8,28 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      changed_urls: ${{ steps.changed-files.outputs.urls }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Get changed content files
+        id: changed-files
+        run: |
+          CHANGED_FILES=$(git diff --name-only HEAD^ HEAD -- 'content/*.md' 2>/dev/null || echo "")
+          ARTICLE_FILES=$(echo "$CHANGED_FILES" | grep -v '^content/pages/' | grep -v '_index.md' || echo "")
+          URLS=""
+          for file in $ARTICLE_FILES; do
+            if [ -n "$file" ]; then
+              slug=$(basename "$file" .md)
+              URLS="${URLS}https://blog.taehun.dev/${slug},"
+            fi
+          done
+          URLS=${URLS%,}
+          echo "urls=$URLS" >> $GITHUB_OUTPUT
+          echo "Changed article URLs: $URLS"
 
       - name: Install Zola
         uses: taiki-e/install-action@v2
@@ -48,8 +68,20 @@ jobs:
         uses: actions/deploy-pages@v4
 
       - name: Purge Cloudflare Cache
+        env:
+          CHANGED_URLS: ${{ needs.build.outputs.changed_urls }}
         run: |
+          BASE_URLS='"https://blog.taehun.dev/","https://blog.taehun.dev/archive","https://blog.taehun.dev/tags","https://blog.taehun.dev/atom.xml","https://blog.taehun.dev/sitemap.xml"'
+
+          if [ -n "$CHANGED_URLS" ]; then
+            ARTICLE_URLS=$(echo "$CHANGED_URLS" | tr ',' '\n' | sed 's/.*/"&"/' | tr '\n' ',' | sed 's/,$//')
+            ALL_URLS="[$BASE_URLS,$ARTICLE_URLS]"
+          else
+            ALL_URLS="[$BASE_URLS]"
+          fi
+
+          echo "Purging URLs: $ALL_URLS"
           curl -X POST "https://api.cloudflare.com/client/v4/zones/${{ secrets.CLOUDFLARE_ZONE_ID }}/purge_cache" \
             -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}" \
             -H "Content-Type: application/json" \
-            --data '{"files":["https://blog.taehun.dev/","https://blog.taehun.dev/archive/","https://blog.taehun.dev/tags/","https://blog.taehun.dev/atom.xml","https://blog.taehun.dev/sitemap.xml"]}'
+            --data "{\"files\":$ALL_URLS}"
