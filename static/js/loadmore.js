@@ -32,7 +32,16 @@
   }
 
   // Reset loading state on page show (handles bfcache)
-  window.addEventListener('pageshow', resetLoadingState);
+  window.addEventListener('pageshow', function(event) {
+    resetLoadingState();
+    // If page was restored from cache, also reset currentPage
+    if (event.persisted) {
+      currentPage = +btn.dataset.currentPage || 1;
+      if (currentPage < totalPages) {
+        btn.style.display = '';
+      }
+    }
+  });
 
   btn.addEventListener('click', function() {
     if (loading || currentPage >= totalPages) return;
