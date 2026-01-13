@@ -130,12 +130,12 @@ class Pwa {
         });
 
         this.scope.addEventListener('fetch', event => {
+            // Don't intercept cross-origin requests - let browser handle them natively
+            if (!this.canCache(event.request.url)) {
+                return;
+            }
             event.respondWith(
                 caches.open(this.CACHE_NAME).then(async cache => {
-                    // check if this is NOT a resource we allow cacheing (some other domain), if so fetch it instead of cache.
-                    if (!this.canCache(event.request.url)) {
-                        return fetch(event.request);
-                    }
                     // check the cache for the requested resource
                     const response = await cache.match(event.request);
                     if (response) {
