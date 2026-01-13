@@ -239,9 +239,6 @@ async function _headersWASM() {
   // running WASM in the browser requires wasm-unsafe-eval if using Content-Security-Policy:
   // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src#unsafe_webassembly_execution
   // This function adds wasm-unsafe-eval to the pagefind and tinysearch demos without adding it to the elasticlunr demo.
-  if (!fs.existsSync('static/_headers')) {
-    return;
-  }
   const { replaceInFileSync } = await import('replace-in-file');
   if (search_library === 'pagefind') {
     replaceInFileSync({ files: 'static/_headers', from: /script-src 'self'/g, to: "script-src 'wasm-unsafe-eval' 'self'" });
