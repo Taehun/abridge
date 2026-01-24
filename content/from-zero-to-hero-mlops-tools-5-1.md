@@ -12,7 +12,7 @@ toc = true
 +++
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-5-1/1.png?w=800" alt="그림 5-1. 5장 머신러닝 모델 실험과 개발의 구성요소와 도구들 (머신러닝 실험 환경, 메타데이터 저장소, 소스코드 리포지토리, 분산 학습)">
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-5-1/1.png?w=800" alt="그림 5-1. 5장 머신러닝 모델 실험과 개발의 구성요소와 도구들 (머신러닝 실험 환경, 메타데이터 저장소, 소스코드 리포지토리, 분산 학습)">
 <i>그림 5-1. 5장 머신러닝 모델 실험과 개발의 구성요소와 도구들 (머신러닝 실험 환경, 메타데이터 저장소, 소스코드 리포지토리, 분산 학습)</i>
 </p>
 
@@ -33,7 +33,7 @@ JupyterLab은 Jupyter Notebook을 기반으로 한 확장 버전으로, 웹 기�
 ### 5.1.1 JupyterLab
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-5-1/2.png?w=800" alt="그림 5-2. JupyterLab 실행 화면">
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-5-1/2.png?w=800" alt="그림 5-2. JupyterLab 실행 화면">
 <i>그림 5-2. JupyterLab 실행 화면</i>
 </p>
 
@@ -78,7 +78,7 @@ jupyter lab
 > 웹 브라우저에서 `http://localhost:8888/` 접속하면, `Password or token:` 을 입력하는 페이지가 나옵니다. docker 실행시 출력한 아래와 같은 콘슬 메세지의 출력한 토큰을 복사하여 입력합니다. (또는 콘솔에 출력된 URL로 바로 접속)
 >
 > <p align="center">
-> <img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-5-1/3.png?w=800" alt="스크린샷">
+> <img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-5-1/3.png?w=800" alt="스크린샷">
 > </p>
 
 
@@ -231,7 +231,7 @@ writer.add_image('four_fashion_mnist_images', img_grid)
 ```
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-5-1/4.png?w=800" alt="스크린샷">
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-5-1/4.png?w=800" alt="스크린샷">
 </p>
 
 모델 아키텍처를 TensorBoard에 추가합니다. TensorBoard GRAPHS 탭에서 시각화된 모델 아키텍처를 확인 할 수 있습니다.
@@ -242,7 +242,7 @@ writer.close()
 ```
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-5-1/5.png?w=800" alt="스크린샷">
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-5-1/5.png?w=800" alt="스크린샷">
 </p>
 
 `add_embedding` 메서드로 고차원 데이터의 저차원 표현을 시각화할 수 있습니다. TensorBoard 우측 상단 INACTIVE 메뉴에서 PROJECTOR 메뉴에서 확인 할 수 있습니다.
@@ -273,7 +273,7 @@ writer.close()
 ```
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-5-1/6.png?w=800" alt="스크린샷">
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-5-1/6.png?w=800" alt="스크린샷">
 </p>
 
 `add_figure`메소드로샘플 이미지 예측 결과와 실제 값을 보여주는 것을 TensorBoard에 추가합니다. (TensorBoard *IMAGES* 탭에서 확인) `add_scalar`메소드로 모델 학습 loss 값을 TensorBoard에 기록합니다. (TensorBoard *SCALARS* 탭에서 확인)
@@ -351,7 +351,7 @@ print('Finished Training')
 ```
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-5-1/7.png?w=800" alt="스크린샷">
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-5-1/7.png?w=800" alt="스크린샷">
 </p>
 
 로컬 JupyterLab 환경에서 머신러닝 실험을 진행하면 다양한 패키지 설치가 필요합니다. 하지만 이 과정은 시간 소모가 크며, 버전 충돌이나 환경 설정 문제를 야기할 수 있습니다. 이런 문제는 특히 여러 사람이 동일한 프로젝트에 참여하는 경우 더욱 심각해집니다. 이때 모든 팀원이 동일한 환경을 유지하는 것이 필수적입니다. 이러한 문제를 해결하기 위해 JupyterLab 환경을 중앙화된 MLOps 인프라로 통합하는 것이 좋습니다. JupyterHub를 도입하면 MLOps 인프라에서 필요한 모든 패키지와 환경을 효율적으로 관리할 수 있으며, 이를 통해 모든 팀원이 일관된 작업 환경에서 협업할 수 있게 됩니다.
@@ -359,7 +359,7 @@ print('Finished Training')
 ### 5.1.2 JupyterHub
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-5-1/8.png?w=800" alt="그림 5-3. JupyterHub 아키텍처 (출처&gt; https://z2jh.jupyter.org/en/3.2.1/administrator/architecture.html)">
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-5-1/8.png?w=800" alt="그림 5-3. JupyterHub 아키텍처 (출처&gt; https://z2jh.jupyter.org/en/3.2.1/administrator/architecture.html)">
 <i>그림 5-3. JupyterHub 아키텍처 (출처> <a href="https://z2jh.jupyter.org/en/3.2.1/administrator/architecture.html">https://z2jh.jupyter.org/en/3.2.1/administrator/architecture.html</a>)</i>
 </p>
 
@@ -405,7 +405,7 @@ kubectl get pod -l "app=jupyterhub"
 ```
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-5-1/9.png?w=800" alt="그림 5-4. 쿠버네티스 클러스터에 JupyterHub 기본 설치 완료">
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-5-1/9.png?w=800" alt="그림 5-4. 쿠버네티스 클러스터에 JupyterHub 기본 설치 완료">
 <i>그림 5-4. 쿠버네티스 클러스터에 JupyterHub 기본 설치 완료</i>
 </p>
 
@@ -418,7 +418,7 @@ kubectl port-forward svc/proxy-public 8080:80
 → 웹 브라우저에서 [`http://localhost:8080`](http://localhost:8080) 접속
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-5-1/10.png?w=800" alt="그림 5-5. JupyterHub 로그인 화면">
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-5-1/10.png?w=800" alt="그림 5-5. JupyterHub 로그인 화면">
 <i>그림 5-5. JupyterHub 로그인 화면</i>
 </p>
 
@@ -434,7 +434,7 @@ kubectl get pod -l "app=jupyterhub"
 ```
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-5-1/11.png?w=800" alt="그림 5-6. admin 사용자 로그인 후 Pod 목록">
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-5-1/11.png?w=800" alt="그림 5-6. admin 사용자 로그인 후 Pod 목록">
 <i>그림 5-6. admin 사용자 로그인 후 Pod 목록</i>
 </p>
 
@@ -443,7 +443,7 @@ kubectl get pod -l "app=jupyterhub"
 관리자 계정으로 로그인 후 *`<JupyterHub 주소>`*`/hub/admin` 주소로 접속하면, 아래 <그림 5-7>과 같이 관리자 페이지에 접속 할 수 있습니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-5-1/12.png?w=800" alt="그림 5-7. JupyterHub 관리자 페이지">
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-5-1/12.png?w=800" alt="그림 5-7. JupyterHub 관리자 페이지">
 <i>그림 5-7. JupyterHub 관리자 페이지</i>
 </p>
 
@@ -482,7 +482,7 @@ helm upgrade jupyterhub jupyterhub/jupyterhub -f config.yaml
 업그레이드 완료후 JupyterHub에 로그인을 하면, 실행 환경 선택 화면이 추가 되어 있습니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-5-1/13.png?w=800" alt="그림 5-8. JupyterHub 실행 환경 추가">
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-5-1/13.png?w=800" alt="그림 5-8. JupyterHub 실행 환경 추가">
 <i>그림 5-8. JupyterHub 실행 환경 추가</i>
 </p>
 

@@ -22,7 +22,7 @@ toc = true
 ### 4.2.1 데이터 버전 관리 개요
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/1.webp" alt="그림 4-10. 코드, 데이터, 모델의 버전 관리"><br>
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-4-2/1.webp" alt="그림 4-10. 코드, 데이터, 모델의 버전 관리"><br>
 <i>그림 4-10. 코드, 데이터, 모델의 버전 관리</i>
 </p>
 
@@ -71,7 +71,7 @@ git lfs install
 결과
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/2.webp?w=800" alt="git lfs install 결과">
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-4-2/2.webp?w=800" alt="git lfs install 결과">
 </p>
 
 Git LFS를 사용하려는 각 Git 저장소에서 Git LFS가 관리할 파일 유형을 설정합니다 (또는 `.gitattributes` 설정 파일을 직접 편집).
@@ -86,7 +86,7 @@ cat .gitattributes
 결과
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/3.webp?w=800" alt="git lfs track 결과">
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-4-2/3.webp?w=800" alt="git lfs track 결과">
 </p>
 
 **Git LFS 사용**
@@ -102,7 +102,7 @@ git commit -m "Add new train/val dataset"
 결과
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/4.webp?w=800" alt="git lfs 사용 결과">
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-4-2/4.webp?w=800" alt="git lfs 사용 결과">
 </p>
 
 Git LFS를 사용하는 주요 장점은 기존 Git 방식 그대로 데이터 버전 관리를 수행할 수 있다는 점입니다. 사용자는 익숙한 Git 명령어와 워크플로를 유지하면서도 대용량 파일을 효과적으로 관리할 수 있습니다. 그러나, 한 가지 주요 제한 사항은 GitHub과 같은 원격 저장소에서는 용량 제한을 초과하는 파일을 추가할 수 없다는 점입니다. 이로 인해, 사용자는 대용량 파일을 관리하는 데 있어 추가적인 도구가 필요해 집니다.
@@ -110,7 +110,7 @@ Git LFS를 사용하는 주요 장점은 기존 Git 방식 그대로 데이터 �
 ### 4.2.3 DVC
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/5.gif" alt="그림 4-11. DVC 동작 방식"><br>
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-4-2/5.gif" alt="그림 4-11. DVC 동작 방식"><br>
 <i>그림 4-11. DVC 동작 방식 (출처> <a href="https://github.com/iterative/dvc">https://github.com/iterative/dvc</a>)</i>
 </p>
 
@@ -156,7 +156,7 @@ dvc init
 결과
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/6.webp?w=800" alt="DVC 설치 확인">
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-4-2/6.webp?w=800" alt="DVC 설치 확인">
 </p>
 
 Git 저장소에 DVC와 관련된 몇가지 설정 파일들이 추가 됩니다:
@@ -168,7 +168,7 @@ git status
 결과
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/7.webp?w=800" alt="dvc init 결과">
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-4-2/7.webp?w=800" alt="dvc init 결과">
 </p>
 
 생성된 DVC 설정 파일들을 커밋하면 DVC 사용 준비가 된 것 입니다.
@@ -188,7 +188,7 @@ dvc get https://github.com/iterative/dataset-registry get-started/data.xml -o da
 결과
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/8.webp?w=800" alt="dvc remote add 결과">
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-4-2/8.webp?w=800" alt="dvc remote add 결과">
 </p>
 
 데이터 추적을 시작하려면 `dvc add` 명령어를 사용합니다:
@@ -200,7 +200,7 @@ dvc add data/data.xml
 결과
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/9.webp?w=800" alt="dvc add 결과">
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-4-2/9.webp?w=800" alt="dvc add 결과">
 </p>
 
 DVC는 추가된 파일에 대한 정보를 `data/data.xml.dvc`라는 특수한 .dvc 파일에 저장합니다. 이 작고 사람이 읽을 수 있는 (human-readable) 메타데이터 파일은 Git 추적을 위해 원본 데이터의 위치 표시자 역할을 합니다.
@@ -215,7 +215,7 @@ git commit -m "Add raw data"
 결과
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/10.webp?w=800" alt="dvc push 결과">
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-4-2/10.webp?w=800" alt="dvc push 결과">
 </p>
 
 데이터의 메타데이터는 소스 코드와 함께 Git으로 버전이 관리되고, `data/data.xml` 원본 데이터 파일은 `data/.gitignore`에 추가되어 추적하지 않습니다.
@@ -234,7 +234,7 @@ dvc remote add -d myremote /tmp/dvcstore
 결과
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/11.webp?w=800" alt="DVC 메타 파일 git 커밋">
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-4-2/11.webp?w=800" alt="DVC 메타 파일 git 커밋">
 </p>
 
 DVC remote의 가장 일반적인 사용 사례의 예는 Amazon S3 remote을 구성하는 것입니다:
@@ -254,7 +254,7 @@ dvc push
 결과
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/12.webp?w=800" alt="dvc pull 결과">
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-4-2/12.webp?w=800" alt="dvc pull 결과">
 </p>
 
 **데이터 가져오기**
@@ -268,7 +268,7 @@ dvc pull
 결과
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/13.webp?w=800" alt="dvc checkout 결과">
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-4-2/13.webp?w=800" alt="dvc checkout 결과">
 </p>
 
 **데이터 업데이트**
@@ -289,7 +289,7 @@ dvc add data/data.xml
 결과
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/14.webp?w=800" alt="git diff 결과">
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-4-2/14.webp?w=800" alt="git diff 결과">
 </p>
 
 이제 `dvc push`를 실행하여 원격 저장소에 변경 사항을 업로드한 다음, `git commit`을 실행하여 변경 사항을 추적할 수 있습니다:
@@ -302,7 +302,7 @@ git commit data/data.xml.dvc -m "Dataset updates"
 결과
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/15.webp?w=800" alt="dvc diff 결과">
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-4-2/15.webp?w=800" alt="dvc diff 결과">
 </p>
 
 **데이터 버전 간 전환**
@@ -317,7 +317,7 @@ dvc checkout
 결과
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/16.webp?w=800" alt="dvc checkout 후 git checkout">
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-4-2/16.webp?w=800" alt="dvc checkout 후 git checkout">
 </p>
 
 DVC는 데이터 버전 관리뿐만 아니라 데이터 파이프라인 구축, 실험 관리, 모델 관리 등의 다양한 기능을 제공합니다. 그러나 이러한 기능들에 대해서는 DVC 대신 다른 도구들을 사용할 계획입니다. 예를 들어, 데이터 파이프라인 구축에는 Airflow를, 실험 및 모델 관리에는 MLFlow를 활용할 예정입니다. 이는 각각의 영역에서 더 특화된 기능과 유연성을 제공하기 때문입니다.
@@ -335,7 +335,7 @@ DVC는 데이터 버전 관리뿐만 아니라 데이터 파이프라인 구축,
 ### 4.3.1 피처 스토어 개요
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/17.webp?w=800" alt="그림 4-12. 피처 스토어"><br>
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-4-2/17.webp?w=800" alt="그림 4-12. 피처 스토어"><br>
 <i>그림 4-12. 피처 스토어 (출처> <a href="https://www.featurestore.org/what-is-a-feature-store">https://www.featurestore.org/what-is-a-feature-store</a>)</i>
 </p>
 
@@ -359,7 +359,7 @@ DVC는 데이터 버전 관리뿐만 아니라 데이터 파이프라인 구축,
 ### 4.3.2 Feast
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/18.png?w=800" alt="그림 4-13. FEAST 아키텍처"><br>
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-4-2/18.png?w=800" alt="그림 4-13. FEAST 아키텍처"><br>
 <i>그림 4-13. FEAST 아키텍처 (출처> <a href="https://feast.dev">https://feast.dev</a>)</i>
 </p>
 
@@ -390,7 +390,7 @@ feast init some_ml_project
 결과
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/19.webp?w=800" alt="스크린샷 19">
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-4-2/19.webp?w=800" alt="스크린샷 19">
 </p>
 
 생성된 샘플 `feature_repo` 내용을 살펴보겠습니다.
@@ -693,7 +693,7 @@ pd.read_parquet("data/driver_stats.parquet")
 
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/20.png?w=800" alt="스크린샷 20">
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-4-2/20.png?w=800" alt="스크린샷 20">
 </p>
 
 
@@ -720,7 +720,7 @@ feast apply
 결과
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/21.webp?w=800" alt="스크린샷 21">
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-4-2/21.webp?w=800" alt="스크린샷 21">
 </p>
 
 **3b 단계: 학습 데이터 생성 또는 일괄 예측 모델 강화하기**
@@ -786,7 +786,7 @@ print(training_df.head())
 결과
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/22.webp?w=800" alt="스크린샷 22">
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-4-2/22.webp?w=800" alt="스크린샷 22">
 </p>
 
 배치 예측을 실행하려면 기본적으로 `get_historical_features` 호출로 피처를 생성해야 하지만 현재 타임스탬프를 사용해야 합니다.
@@ -817,7 +817,7 @@ print(training_df.head())
 결과
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/23.webp?w=800" alt="스크린샷 23">
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-4-2/23.webp?w=800" alt="스크린샷 23">
 </p>
 
 **3c 단계: 온라인 스토어에 배치 피처 수집**
@@ -832,7 +832,7 @@ feast materialize-incremental $CURRENT_TIME
 결과
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/24.webp?w=800" alt="스크린샷 24">
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-4-2/24.webp?w=800" alt="스크린샷 24">
 </p>
 
 **3d 단계: 추론을 위한 특징 벡터 가져오기**
@@ -866,7 +866,7 @@ pprint(feature_vector)
 결과
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/25.webp?w=800" alt="스크린샷 25">
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-4-2/25.webp?w=800" alt="스크린샷 25">
 </p>
 
 **3e 단계: 피처 서비스를 사용하여 온라인 피처 가져오기**
@@ -907,7 +907,7 @@ pprint(feature_vector)
 결과
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/26.webp?w=800" alt="스크린샷 26">
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-4-2/26.webp?w=800" alt="스크린샷 26">
 </p>
 
 **4단계: 웹 UI로 피처 탐색하기 (experimental)**
@@ -921,7 +921,7 @@ feast ui
 → 웹 브라우저에서 [`http://localhost:8888`](http://localhost:8888) 접속
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-2/27.webp?w=800" alt="스크린샷 27">
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-4-2/27.webp?w=800" alt="스크린샷 27">
 </p>
 
 **5단계:** `test_workflow.py` **다시 검토하기**

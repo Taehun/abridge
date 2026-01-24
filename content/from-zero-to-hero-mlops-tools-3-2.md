@@ -31,7 +31,7 @@ toc = true
 ### 3.3.1 Ansible
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-3-2/1.png?w=500" alt="그림 3-14. Ansible 구조"><br>
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-3-2/1.png?w=500" alt="그림 3-14. Ansible 구조"><br>
 <i>그림 3-14. Ansible 구조 (출처> <a href="https://docs.ansible.com/ansible/latest/getting_started/index.html">https://docs.ansible.com/ansible/latest/getting_started/index.html</a>)</i>
 </p>
 
@@ -516,7 +516,7 @@ ArgoCD의 핵심 강점은 애플리케이션 리소스의 실시간 시각화 �
 > GitOps 워크플로에서 DevOps 엔지니어는 인프라의 원하는 상태를 코드로 선언하여 Git 리포지토리에 저장합니다. 그런 다음 CI(지속적 통합) 및 CD(지속적 배포) 파이프라인을 설정하여 배포 환경에서 실행 중인 실제 상태를 리포지토리에 정의된 상태와 동기화합니다. 이 접근 방식은 인프라 또는 애플리케이션에 대한 모든 변경 사항을 버전 제어, 감사 및 추적할 수 있도록 보장합니다. GitOps는 자동화 향상, 장애로부터의 빠른 복구, Pull Request 검토 및 액세스 제어를 통한 보안 강화, 팀원 간의 보다 쉬운 협업 등 여러 가지 이점을 제공합니다. GitOps 접근 방식을 용이하게 하는 인기 있는 도구로는 쿠버네티스 및 기타 클라우드 네이티브 기술과 원활하게 작동하도록 설계된 *ArgoCD, Flux, Jenkins X* 등이 있습니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-3-2/2.png" alt="그림 3-15. GitOps CI/CD 워크플로우"><br>
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-3-2/2.png" alt="그림 3-15. GitOps CI/CD 워크플로우"><br>
 <i>그림 3-15. GitOps CI/CD 워크플로우</i>
 </p>
 
@@ -561,7 +561,7 @@ kubectl port-forward svc/argocd-server -n argocd 8080:443
 웹 브라우저에서 [`https://localhost:8080`](https://localhost:8080) 으로 접속 (Username: `admin`, Password: *`<Secret 값>`*)
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-3-2/3.png?w=800" alt="그림 3-16. ArgoCD 웹 UI 화면"><br>
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-3-2/3.png?w=800" alt="그림 3-16. ArgoCD 웹 UI 화면"><br>
 <i>그림 3-16. ArgoCD 웹 UI 화면</i>
 </p>
 
@@ -582,7 +582,7 @@ kubectl port-forward svc/argocd-server -n argocd 8080:443
 위와 같이 입력후 **CREATE** 버튼을 클릭하면 아래 *<그림 3-17>* 같이 *OutofSync* 상태로 어플리케이션이 추가되어 있습니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-3-2/4.png?w=800" alt="그림 3-17. ArgoCD 새로운 어플리케이션 추가"><br>
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-3-2/4.png?w=800" alt="그림 3-17. ArgoCD 새로운 어플리케이션 추가"><br>
 <i>그림 3-17. ArgoCD 새로운 어플리케이션 추가</i>
 </p>
 
@@ -805,7 +805,7 @@ Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 `terraform apply` 가 완료된 이후 AWS 웹 콘솔에 접속하여 EC2 서비스 `us-west-2` 리즌을 확인해보면, HCL 파일에 정의한 EC2 인스턴스가 생성되어 있습니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-3-2/5.png?w=800" alt="그림 3-18 AWS 콘솔의 EC2 메뉴"><br>
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-3-2/5.png?w=800" alt="그림 3-18 AWS 콘솔의 EC2 메뉴"><br>
 <i>그림 3-18 AWS 콘솔의 EC2 메뉴</i>
 </p>
 

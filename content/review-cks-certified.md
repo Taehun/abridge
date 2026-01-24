@@ -12,7 +12,7 @@ toc = false
 +++
 
 <pa lign="center">
-<img src="https://img-src.io/taehun/review-cks-certified/1.png?w=800" alt="CKS 자격증">
+<img src="https://img-src.io/i/taehun/review-cks-certified/1.png?w=800" alt="CKS 자격증">
 </p>
 
 ## 계기

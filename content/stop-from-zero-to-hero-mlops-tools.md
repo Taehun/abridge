@@ -61,6 +61,6 @@ toc = false
 > - *[**MLOps Landscape in 2024: Top Tools and Platforms**](https://neptune.ai/blog/mlops-tools-platforms-landscape)*
 
 <p align="center">
-<img src="https://img-src.io/taehun/stop-from-zero-to-hero-mlops-tools/1.png?w=600" alt="MLOps Tools"><br>
+<img src="https://img-src.io/i/taehun/stop-from-zero-to-hero-mlops-tools/1.png?w=600" alt="MLOps Tools"><br>
 <i>도구는 단지 도구일 뿐 입니다. MLOps 필요성과 개념을 이해하는 것이 훨씬 중요합니다.(그림 출처> <a href="https://proceedings.neurips.cc/paper_files/paper/2015/file/86df7dcfd896fcaf2674f757a2463eba-Paper.pdf">Hidden Technical Debt in Machine Learning Systems</a>)</i>
 </p>

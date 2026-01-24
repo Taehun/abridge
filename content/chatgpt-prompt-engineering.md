@@ -431,7 +431,7 @@ Boie의 AeroGlide 울트라슬림 스마트 칫솔은 미국의 칫솔 제조업
 ## 반복적인 프롬프트 개발
 
 <p align="center">
-<img src="https://img-src.io/taehun/chatgpt-prompt-engineering/1.png?w=600" alt="notion image">
+<img src="https://img-src.io/i/taehun/chatgpt-prompt-engineering/1.png?w=600" alt="notion image">
 </p>
 
 
@@ -659,7 +659,7 @@ display(HTML(response))
 ```
 
 <p align="center">
-<img src="https://img-src.io/taehun/chatgpt-prompt-engineering/2.png" alt="notion image">
+<img src="https://img-src.io/i/taehun/chatgpt-prompt-engineering/2.png" alt="notion image">
 </p>
 
 ## 요약하기
@@ -1216,7 +1216,7 @@ display(HTML(response))
 ```
 
 <p align="center">
-<img src="https://img-src.io/taehun/chatgpt-prompt-engineering/3.png" alt="notion image">
+<img src="https://img-src.io/i/taehun/chatgpt-prompt-engineering/3.png" alt="notion image">
 </p>
 
 ### 맞춤법/문법 검사
@@ -1377,7 +1377,7 @@ AI 고객 상담원
 ### 고객 이메일의 세부 정보를 모델에서 사용
 
 <p align="center">
-<img src="https://img-src.io/taehun/chatgpt-prompt-engineering/4.png?w=600" alt="notion image">
+<img src="https://img-src.io/i/taehun/chatgpt-prompt-engineering/4.png?w=600" alt="notion image">
 </p>
 
 ````python
@@ -1422,7 +1422,7 @@ AI 고객 상담원 드림.
 채팅 형식을 활용하여 특정 작업이나 행동에 맞게 맞춤화되거나 특화된 챗봇과 확장된 대화를 나누는 방법을 살펴보기
 
 <p align="center">
-<img src="https://img-src.io/taehun/chatgpt-prompt-engineering/5.png?w=600" alt="notion image">
+<img src="https://img-src.io/i/taehun/chatgpt-prompt-engineering/5.png?w=600" alt="notion image">
 </p>
 
 새로운 헬퍼 함수
@@ -1573,7 +1573,7 @@ dashboard
 ```
 
 <p align="center">
-<img src="https://img-src.io/taehun/chatgpt-prompt-engineering/6.png" alt="notion image">
+<img src="https://img-src.io/i/taehun/chatgpt-prompt-engineering/6.png" alt="notion image">
 </p>
 
 ```python

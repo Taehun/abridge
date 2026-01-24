@@ -12,7 +12,7 @@ toc = false
 +++
 
 <p align="center">
-<img src="https://img-src.io/taehun/kubestronaut-review/1.png?w=800" alt="Kubestronaut 뱃지">
+<img src="https://img-src.io/i/taehun/kubestronaut-review/1.png?w=800" alt="Kubestronaut 뱃지">
 <a href="https://www.credly.com/badges/a4e4a343-f144-48c3-a478-4605a0eff534/public_url">Credly Kubestronaut 뱃지</a>
 </p>
 
@@ -39,7 +39,7 @@ CNCF의 모든 Kubernetes 자격증(CKA, CKAD, CKS, KCNA, KCSA)을 취득하면 
 > 엔지니어 직군의 직무 관련 자격증은 사실 자격증 자체로는 커리어에 크게 도움이 되지 않습니다. 기술 직군은 어차피 항상 공부해야하므로 '자격증 취득'이라는 중간 목표로 설정하고, 더 큰 목표 달성을 위한 과정으로 생각하시는 것이 좋습니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/kubestronaut-review/2.png?w=800" alt="Credly 뱃지 수집">
+<img src="https://img-src.io/i/taehun/kubestronaut-review/2.png?w=800" alt="Credly 뱃지 수집">
 <br><i>Credly 뱃지 수집 중. 몇달 쉬었다가 연말에 몇개 더 채울 예정 입니다.</i>
 </p>
 

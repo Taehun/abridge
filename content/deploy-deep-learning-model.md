@@ -22,7 +22,7 @@ toc = true
 ## 배포 타겟별 서빙용 모델 유형
 
 <p align="center">
-  <img src="https://img-src.io/taehun/deploy-deep-learning-model/1.png" alt="배포 타겟별 서빙용 모델 유형 — ONNX, Saved Model, TensorRT, TFLite, CoreML">
+  <img src="https://img-src.io/i/taehun/deploy-deep-learning-model/1.png" alt="배포 타겟별 서빙용 모델 유형 — ONNX, Saved Model, TensorRT, TFLite, CoreML">
   <i>배포 타겟별 서빙용 모델 유형 — ONNX, Saved Model, TensorRT, TFLite, CoreML</i>
 </p>
 
@@ -133,7 +133,7 @@ model = tf.saved_model.load("/tmp/some_model/1/")  # 모델 로드
 Saved Model은 Tensorflow의 서빙 포맷 입니다. ONNX로 인해 지금은 무색해졌지만, Tensorflow가 PyTorch에 비해 배포에 좋은 이유 중의 하나가 Saved Model과 TFLite 등의 별도의 서빙 포맷을 가지고 있다는 점 이었습니다. 아래 밈과 같이 꼰대용 프레임웍이라고 놀림을 받고 있지만, 2022년 현재에도 배포에 한정하면 Tensorflow는 여전히 최고의 프레임웍 입니다.
 
 <p align="center">
-  <img src="https://img-src.io/taehun/deploy-deep-learning-model/2.png?w=800" alt="Tensorflow는 꼰대들의 전유물?">
+  <img src="https://img-src.io/i/taehun/deploy-deep-learning-model/2.png?w=800" alt="Tensorflow는 꼰대들의 전유물?">
   <br><i>Tensorflow는 꼰대들의 전유물? <del>라떼는 말이야…</del> (출처> <a href="https://twitter.com/josh_tobin_/status/1370198880818659328">Josh Tobin 트윗</a>)</i>
 </p>
 

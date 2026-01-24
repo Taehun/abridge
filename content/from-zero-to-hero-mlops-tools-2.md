@@ -24,7 +24,7 @@ toc = true
 ## 2.2 MLOps 시스템 구성 요소
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-2/1.png" alt="그림 2-1. MLOps 시스템 아키텍처"><br>
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-2/1.png" alt="그림 2-1. MLOps 시스템 아키텍처"><br>
 <i>그림 2-1. MLOps 시스템 아키텍처</i>
 </p>
 
@@ -193,7 +193,7 @@ MLOps 시스템에서 주요 모니터링 대상은 데이터, 모델 성능, �
 ## 2.7 MLOps 시스템과 도구들
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-2/2.png?w=800" alt="그림 2-2. MLOps 시스템 구성 요소와 도구들"><br>
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-2/2.png?w=800" alt="그림 2-2. MLOps 시스템 구성 요소와 도구들"><br>
 <i>그림 2-2. MLOps 시스템 구성 요소와 도구들</i>
 </p>
 

@@ -14,7 +14,7 @@ toc = true
 ## 개요
 
 <p align="center">
-<img src="https://img-src.io/taehun/aws-data-mlops-infra/1.png?w=800" alt="AWS Data/MLOps 인프라 아키텍처 샘플"><br>
+<img src="https://img-src.io/i/taehun/aws-data-mlops-infra/1.png?w=800" alt="AWS Data/MLOps 인프라 아키텍처 샘플"><br>
 <i>AWS Data/MLOps 인프라 아키텍처 샘플</i>
 </p>
 
@@ -23,7 +23,7 @@ AWS와 Snowflake로 Data/MLOps 인프라 아키텍처링을 해보았습니다. 
 ## 데이터 분석 인프라
 
 <p align="center">
-<img src="https://img-src.io/taehun/aws-data-mlops-infra/2.png?w=800" alt="데이터 분석 인프라">
+<img src="https://img-src.io/i/taehun/aws-data-mlops-infra/2.png?w=800" alt="데이터 분석 인프라">
 </p>
 
 데이터 분석 인프라는 Snowflake 기반의 [Lakehouse](https://www.databricks.com/glossary/data-lakehouse) 구조입니다. 순수 AWS 서비스로만 데이터 인프라를 구성하시려면 Snowflake 대신 AWS Athena를 사용하시면 됩니다.
@@ -51,7 +51,7 @@ Snowflake를 활용하여 Raw Data 분석을 수행합니다. Snowflake 계정 �
 ## 실시간 데이터 처리 인프라
 
 <p align="center">
-<img src="https://img-src.io/taehun/aws-data-mlops-infra/3.png?w=800" alt="실시간 데이터 처리 인프라">
+<img src="https://img-src.io/i/taehun/aws-data-mlops-infra/3.png?w=800" alt="실시간 데이터 처리 인프라">
 </p>
 
 실시간 데이터 처리 인프라는 머신러닝 모델의 온라인 피처(=모델 추론의 입력 데이터)를 생성하는 것에 초점을 두고 표현하였습니다. 변환된 스트리밍 데이터를 전달하는 대상(4번)만 변경하면 다른 곳에도 활용할 수 있습니다.
@@ -75,7 +75,7 @@ Snowflake를 활용하여 Raw Data 분석을 수행합니다. Snowflake 계정 �
 ## MLOps 인프라
 
 <p align="center">
-<img src="https://img-src.io/taehun/aws-data-mlops-infra/4.png?w=800" alt="MLOps 인프라">
+<img src="https://img-src.io/i/taehun/aws-data-mlops-infra/4.png?w=800" alt="MLOps 인프라">
 </p>
 
 MLOps 인프라는 대부분 [AWS SageMaker](https://aws.amazon.com/ko/sagemaker)를 활용하여 아키텍처링 하였습니다. SageMaker의 서브 서비스인 *Studio, Pipeline, Model Registry, Endpoint, Feature Store* 를 ML 프로세스별로 표현하였습니다. Cloud Watch에서 서비스 중인 모델 성능을 모니터링하며, 데이터 드리프트를 감지하게 되면 ML 파이프라인을 트리거하여 지속적 학습을 수행합니다.

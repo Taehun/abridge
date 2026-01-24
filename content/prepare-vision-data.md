@@ -26,7 +26,7 @@ AI 선도 업체들은 이미 [*반지도 학습 (Semi-supervised Learning)*](h
 ## 비전 데이터셋 아키텍처 on GCP
 
 <p align="center">
-<img src="https://img-src.io/taehun/prepare-vision-data/1.png?w=800" alt="그림 1. 딥러닝 비전 데이터셋 아키텍처 (GCP)"><br>
+<img src="https://img-src.io/i/taehun/prepare-vision-data/1.png?w=800" alt="그림 1. 딥러닝 비전 데이터셋 아키텍처 (GCP)"><br>
 <strong>그림 1. 딥러닝 비전 데이터셋 아키텍처 (GCP)</strong>
 </p>
 
@@ -323,7 +323,7 @@ GCP에서 가장 기본적인 비전 데이터셋 아키텍처를 구성해 보�
 - `Cloud Dataflow` -> `Apache Beam`
 
 <p align="center">
-<img src="https://img-src.io/taehun/prepare-vision-data/2.png?w=800" alt="그림 2. 딥러닝 비전 데이터셋 아키텍처 (On-premise + GCP)"><br>
+<img src="https://img-src.io/i/taehun/prepare-vision-data/2.png?w=800" alt="그림 2. 딥러닝 비전 데이터셋 아키텍처 (On-premise + GCP)"><br>
 <strong>그림 2. 딥러닝 비전 데이터셋 아키텍처 (On-premise + GCP)</strong>
 </p>
 

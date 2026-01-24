@@ -12,7 +12,7 @@ toc = true
 +++
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-1/1.png?w=800" alt="그림 4-1. 4장 데이터 관리의 구성요소와 도구들"><br>
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-4-1/1.png?w=800" alt="그림 4-1. 4장 데이터 관리의 구성요소와 도구들"><br>
 <i>그림 4-1. 4장 데이터 관리의 구성요소와 도구들 (데이터 라벨링, 데이터 버전 관리, 피처 스토어)</i>
 </p>
 
@@ -39,7 +39,7 @@ toc = true
 > **정형(structured) / 비정형(unstructured) / 반정형(semi-structured) 데이터**
 > 
 > <p align="center">
-> <img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-1/2.png?w=800" alt="그림 4-2. 비정형 / 반정형 / 정형 데이터 예시"><br>
+> <img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-4-1/2.png?w=800" alt="그림 4-2. 비정형 / 반정형 / 정형 데이터 예시"><br>
 > <i>그림 4-2. 비정형 / 반정형 / 정형 데이터 예시 (출처> <a href="https://jorge-cardoso.github.io/publications/Papers/BC-2005-007-Idea-Pub-Dev-Dynamic-Packaging-Apps.pdf">Developing Dynamic Packaging Applications Using Semantic Web-Based Integration</a>)</i>
 > </p>
 >
@@ -82,7 +82,7 @@ toc = true
 ***데이터 라벨링 최적화 기법 적용***
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-1/3.png" alt="그림 4-3. AWS SageMaker의 능동적 학습 프로세스"><br>
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-4-1/3.png" alt="그림 4-3. AWS SageMaker의 능동적 학습 프로세스"><br>
 <i>그림 4-3. AWS SageMaker의 능동적 학습 프로세스 (출처> <a href="https://aws.amazon.com/ko/sagemaker/data-labeling/what-is-data-labeling">https://aws.amazon.com/ko/sagemaker/data-labeling/what-is-data-labeling</a>)</i>
 </p>
 
@@ -115,7 +115,7 @@ toc = true
 - *위크 수퍼비전*: 주택 가격을 예측하도록 모델을 학습시킵니다. 이 모델은 가격이 레이블이 지정된 주택 데이터 집합에 대해 학습됩니다. 그러나 레이블이 100% 정확하지는 않습니다. 이 모델은 부정확한 레이블에도 불구하고 주택 가격을 정확하게 예측하는 방법을 학습할 수 있습니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-1/4.png?w=800" alt="그림 4-4. 더 많은 레이블이 지정된 학습 데이터를 얻는 방법"><br>
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-4-1/4.png?w=800" alt="그림 4-4. 더 많은 레이블이 지정된 학습 데이터를 얻는 방법"><br>
 <i>그림 4-4. 더 많은 레이블이 지정된 학습 데이터를 얻는 방법 (출처> <a href="http://ai.stanford.edu/blog/weak-supervision/">http://ai.stanford.edu/blog/weak-supervision/</a>)</i>
 </p>
 
@@ -170,7 +170,7 @@ Handling connection for 8080
 ```
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-1/5.png?w=800" alt="그림 4-5. Label Studio 로그인 화면"><br>
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-4-1/5.png?w=800" alt="그림 4-5. Label Studio 로그인 화면"><br>
 <i>그림 4-5. Label Studio 로그인 화면</i>
 </p>
 
@@ -181,7 +181,7 @@ Handling connection for 8080
 처음 로그인하면 <그림 4-6>과 같이 아무런 프로젝트가 생성되어 있지 않습니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-1/6.png?w=800" alt="그림 4-6. Label Studio 첫 화면"><br>
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-4-1/6.png?w=800" alt="그림 4-6. Label Studio 첫 화면"><br>
 <i>그림 4-6. Label Studio 첫 화면</i>
 </p>
 
@@ -201,7 +201,7 @@ Handling connection for 8080
   - *Add label names* 입력 상자에 추가할 클래스의 라벨을 입력 합니다. 오른쪽 *Labels*에 디폴트로 추가되어 있는 *Airplane*과 *Car* 라벨은 오른쪽 X 버튼을 클릭하여 삭제 합니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-1/7.png?w=800" alt="그림 4-7. Label Studio 프로젝트 생성"><br>
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-4-1/7.png?w=800" alt="그림 4-7. Label Studio 프로젝트 생성"><br>
 <i>그림 4-7. Label Studio 프로젝트 생성</i>
 </p>
 
@@ -212,7 +212,7 @@ Handling connection for 8080
 ounding Box 라벨링 작업은 마우스로 오른쪽 미리 보기 화면에서 클래스를 선택후, 프리뷰 화면 내 클래스에 해당하  이미지의 범위를 지정하는 방식으로 라벨링 합니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-1/8.png?w=800" alt="그림 4-8. Label Studio Bounding Box 라벨링 작업 화면"><br>
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-4-1/8.png?w=800" alt="그림 4-8. Label Studio Bounding Box 라벨링 작업 화면"><br>
 <i>그림 4-8. Label Studio Bounding Box 라벨링 작업 화면</i>
 </p>
 
@@ -223,7 +223,7 @@ ounding Box 라벨링 작업은 마우스로 오른쪽 미리 보기 화면에�
 라벨링 작업이 완료되면, 학습 데이터셋으로 사용하기 위해 라벨 데이터를 추출해야 합니다. 이미지 파일 목록이 나열되는 프로젝트 홈 메뉴에서 우측 상단 *Export*를 클릭하여, 작업 완료된 라벨 데이터를 추출 할 수 있습니다. 다양한 데이터셋 포맷을 지원합니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-4-1/9.png?w=800" alt="그림 4-9. Label Studio 라벨 데이터 추출"><br>
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-4-1/9.png?w=800" alt="그림 4-9. Label Studio 라벨 데이터 추출"><br>
 <i>그림 4-9. Label Studio 라벨 데이터 추출</i>
 </p>
 

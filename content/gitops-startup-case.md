@@ -16,7 +16,7 @@ toc = true
 ## 단계 0 - 직접 배포
 
 <p align="center">
-<img src="https://img-src.io/taehun/gitops-startup-case/1.png" alt="스크린샷">
+<img src="https://img-src.io/i/taehun/gitops-startup-case/1.png" alt="스크린샷">
 </p>
 
 저는 직접 경험하진 않았지만, 많은 초기 스타트업이 거쳐가는 과정이지 않나 생각합니다. 한/두명의 소수의 개발자가 GitHub에 원격 저장소를 생성하고, git으로 소스 코드 버전 관리만 합니다. 배포는 조립형 PC로 구축한 사내 서버에 개발자가 직접 배포합니다. Git 브랜치 전략이나 인프라 저장소 및 CI/CD는 없습니다.
@@ -24,7 +24,7 @@ toc = true
 ## 단계 1 - Push-based 배포
 
 <p align="center">
-<img src="https://img-src.io/taehun/gitops-startup-case/2.png" alt="스크린샷">
+<img src="https://img-src.io/i/taehun/gitops-startup-case/2.png" alt="스크린샷">
 </p>
 
 서비스가 성장하면서 투자 유치에 성공하였습니다! 사업 확장을 위해 신규 개발 인력 채용을 하였습니다. 새로 합류한 개발 인력들은 서비스 안정성과 확장성을 위하여 클라우드 도입을 주장합니다. 회사는 클라우드 비용이 아직은 부담스럽지만, AWS 무료 크레딧과 클라우드 비용 지원 프로그램에 선정되어 클라우드 도입을 결정하였습니다. 클라우드내 서비스 배포 환경은 VM, AppRunner, Lambda, ECS등 여러 솔루션을 검토 해 본 결과, 사내 쿠버네티스 전문 인력도 있으니 EKS로 결정되었습니다.
@@ -36,7 +36,7 @@ ECR에 빌드된 컨테이너 이미지가 배포되면 `kubectl rollout restart
 ## 단계 2 - 환경 분리와 Pull-based 배포
 
 <p align="center">
-<img src="https://img-src.io/taehun/gitops-startup-case/3.png" alt="스크린샷">
+<img src="https://img-src.io/i/taehun/gitops-startup-case/3.png" alt="스크린샷">
 </p>
 
 서비스에 기능이 하나씩 추가되고, 복잡도가 증가하면서, 모놀리딕 구조로는 서비스가 너무 비대해졌습니다. [마이크로서비스 아키텍처](https://cloud.google.com/learn/what-is-microservices-architecture?hl=ko)를 도입하여, 비대해진 서비스를 분리하기로 하였습니다. 한명의 개발자가 하나의 마이크로 서비스 개발을 담당하므로 개발 업무를 나누기도 편해졌습니다.
@@ -54,7 +54,7 @@ Github Action의 CI/CD 워크플로우는 기존 push-based에 사용하던 kube
 ## 단계 3 - GitOps 고도화
 
 <p align="center">
-<img src="https://img-src.io/taehun/gitops-startup-case/4.png" alt="스크린샷">
+<img src="https://img-src.io/i/taehun/gitops-startup-case/4.png" alt="스크린샷">
 </p>
 
 앞서 설정한 GitOps 설정으로 운영을 지속해왔습니다. 회사에서 프로젝트는 점점 늘어나고, Dev 환경 리소스는 점차 부족해져 갑니다. 클러스터 노드를 추가 하기에는 예산이 빠듯하여, Dev 환경 배포시에는 할당된 리소스(CPU, 메모리)를 줄이기로 하였습니다. 즉, 환경별로 달라지는 설정들이 생기기 시작하였습니다.

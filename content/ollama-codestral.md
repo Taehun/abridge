@@ -18,7 +18,7 @@ toc = true
 그래서 사내 GPU 서버에 ollama와 [Codestral](https://mistral.ai/news/codestral/)이라는 Code LLM 모델을 설치 및 설정해서 사용해보았습니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/ollama-codestral/1.png" alt="시스템 구성도">
+<img src="https://img-src.io/i/taehun/ollama-codestral/1.png" alt="시스템 구성도">
 </p>
 
 위와 같이 GPU 서버에 ollama와 Codestral 모델을 설치하여 API로 사내 개발자들이 모두 사용할 수 있도록 구성했습니다. Codestral은 파라메터 크기가 커서 로컬에서 실행 하기엔 메모리 사용량이 부담됩니다.
@@ -93,13 +93,13 @@ curl http://192.168.1.123:11434/api/generate -d '{
    - `Continue` 확장 선택후 설치
 
 <p align="center">
-<img src="https://img-src.io/taehun/ollama-codestral/2.png?w=800" alt="Continue 확장 설치">
+<img src="https://img-src.io/i/taehun/ollama-codestral/2.png?w=800" alt="Continue 확장 설치">
 </p>
 
 2. 우측 아래 Continue 확장을 클릭하여, 설정 파일을 수정 합니다. → *Configure autocomplete options* 메뉴 선택
 
 <p align="center">
-<img src="https://img-src.io/taehun/ollama-codestral/3.png?w=800" alt="Continue 설정">
+<img src="https://img-src.io/i/taehun/ollama-codestral/3.png?w=800" alt="Continue 설정">
 </p>
 
 3. 설정파일의 `models` 항목과 `tabAutocompleteModel` 항목을 아래와 같이 수정합니다. GPU 서버 주소는 `192.168.1.123` 으로 가정 했습니다.
@@ -130,7 +130,7 @@ curl http://192.168.1.123:11434/api/generate -d '{
 기대가 크지 않아서 그런지, 생각보다 쓸 만합니다. 오픈소스 모델이라 무료라는 장점과 GPU 서버 및 로컬 네트워크 성능에 비례하여 코드 생성 속도도 빨라집니다. 아래와 같이 RAG로 커스터마이징도 가능합니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/ollama-codestral/4.png" alt="RAG 아키텍처">
+<img src="https://img-src.io/i/taehun/ollama-codestral/4.png" alt="RAG 아키텍처">
 <i>그림 출처> <a href="https://thenewstack.io/enhancing-ai-coding-assistants-with-context-using-rag-and-sem-rag/">https://thenewstack.io/enhancing-ai-coding-assistants-with-context-using-rag-and-sem-rag/</a></i>
 </p>
 

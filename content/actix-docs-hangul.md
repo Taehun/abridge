@@ -2884,7 +2884,7 @@ async fn main() -> std::io::Result<()> {
 ```
 
 <p align="center">
-<img src="https://img-src.io/taehun/actix-docs-hangul/1.svg" alt="HTTP 서버 아키텍처">
+<img src="https://img-src.io/i/taehun/actix-docs-hangul/1.svg" alt="HTTP 서버 아키텍처">
 </p>
 
 서버가 모든 소켓을 수신 대기하기 시작한 후 [`Accept`](https://github.com/actix/actix-net/blob/master/actix-server/src/accept.rs)와 [`Worker`](https://github.com/actix/actix-net/blob/master/actix-server/src/worker.rs)는 들어오는 클라이언트 연결을 처리하는 두 가지 주요 루프입니다.
@@ -2892,13 +2892,13 @@ async fn main() -> std::io::Result<()> {
 아래 다이어그램은 happy-path 시나리오만 간략하게 설명한 것입니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/actix-docs-hangul/2.svg" alt="연결 개요">
+<img src="https://img-src.io/i/taehun/actix-docs-hangul/2.svg" alt="연결 개요">
 </p>
 
 #### Accept 루프 자세히 보기
 
 <p align="center">
-<img src="https://img-src.io/taehun/actix-docs-hangul/3.svg" alt="Accept 루프">
+<img src="https://img-src.io/i/taehun/actix-docs-hangul/3.svg" alt="Accept 루프">
 </p>
 
 대부분의 코드 구현은 구조체 [`Accept`](https://github.com/actix/actix-net/blob/master/actix-server/src/accept.rs)를 위한 [`actix-server`](https://crates.io/crates/actix-server) 크레이트에 있습니다.
@@ -2906,7 +2906,7 @@ async fn main() -> std::io::Result<()> {
 #### 워커 루프 자세히 보기
 
 <p align="center">
-<img src="https://img-src.io/taehun/actix-docs-hangul/4.svg" alt="워커 루프">
+<img src="https://img-src.io/i/taehun/actix-docs-hangul/4.svg" alt="워커 루프">
 </p>
 
 대부분의 코드 구현은 구조체 [`Worker`](https://github.com/actix/actix-net/blob/master/actix-server/src/worker.rs)를 위한 [`actix-server`](https://crates.io/crates/actix-server) 크레이트에 있습니다.
@@ -2914,7 +2914,7 @@ async fn main() -> std::io::Result<()> {
 #### 대략적인 요청 루프
 
 <p align="center">
-<img src="https://img-src.io/taehun/actix-docs-hangul/5.svg" alt="요청 루프">
+<img src="https://img-src.io/i/taehun/actix-docs-hangul/5.svg" alt="요청 루프">
 </p>
 
 요청 루프에 대한 대부분의 코드 구현은 [`actix-web`](https://crates.io/crates/actix-web) 및 [`actix-http`](https://crates.io/crates/actix-http) 크레이트에 있습니다.

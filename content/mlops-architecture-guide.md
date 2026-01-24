@@ -18,7 +18,7 @@ toc = true
 많은 머신 러닝 프로젝트를 수행하다 보면, 일부는 개발 중에는 잘 작동하지만 프로덕션에는 도달하지 못하는 것을 발견합니다. 다른 프로젝트는 프로덕션 단계에 있긴 하지만 사용자 요구에 맞게 확장이 안됩니다. 또 다른 프로젝트는 규모가 커진 후에는 너무 많은 비용이 들어서 수익을 창출하지 못합니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/mlops-architecture-guide/1.png" alt="ML 프로젝트 계획과 현실"><br>
+<img src="https://img-src.io/i/taehun/mlops-architecture-guide/1.png" alt="ML 프로젝트 계획과 현실"><br>
 출처> <a href="https://neptune.ai/blog/mlops-architecture-guide">원문 기사</a>
 </p>
 
@@ -28,7 +28,7 @@ toc = true
 
 
 <p align="center">
-<img src="https://img-src.io/taehun/mlops-architecture-guide/2.png?w=800" alt="ML Systems"><br>
+<img src="https://img-src.io/i/taehun/mlops-architecture-guide/2.png?w=800" alt="ML Systems"><br>
 출처> <a>https://dl.acm.org/doi/10.5555/2969442.2969519</a>
 </p>
 
@@ -47,7 +47,7 @@ toc = true
 머신러닝 프로젝트의 작업들을 생각해보면 다음과 같은 매우 상세한 워크플로우가 될 수 있습니다:
 
 <p align="center">
-<img src="https://img-src.io/taehun/mlops-architecture-guide/3.png?w=800" alt="ML Workflow"><br>
+<img src="https://img-src.io/i/taehun/mlops-architecture-guide/3.png?w=800" alt="ML Workflow"><br>
 </p>
 
 사실, 이와 같은 워크플로를 사용하여 이미 모델을 개발했으며 모델을 배포하고 성능 저하, 확장성, 속도, 유지 관리등과 같은 프로덕션 문제에 대해서만 대비하고자 할수도 있습니다.
@@ -61,7 +61,7 @@ toc = true
 아래는 프로젝트에 적합한 아키텍처를 찾을 때 볼 수 있는 복잡한 그림입니다 (복잡해 보이는 아키텍처이지만 지속적인 가치를 제공하는 프로덕션 등급 머신러닝 시스템을 구축하는 데 필요한 모든 것을 고려하지 않고 있습니다).
 
 <p align="center">
-<img src="https://img-src.io/taehun/mlops-architecture-guide/4.png?w=800" alt="ML Workflow"><br>
+<img src="https://img-src.io/i/taehun/mlops-architecture-guide/4.png?w=800" alt="ML Workflow"><br>
 </p>
 
 고려할 사항이 참 많네요! 보시다시피 시스템의 머신러닝(ML) 섹션과 시스템 운영(Ops) 섹션이 있습니다. 둘 다 함께 머신러닝 시스템의 아키텍처를 정의합니다.
@@ -87,7 +87,7 @@ MLOps의 아키텍처 패턴은 학습 및 서빙 설계에 관한 것입니다.
 #### 1. 이벤트 기반 학습 아키텍처 (push-based)
 
 <p align="center">
-<img src="https://img-src.io/taehun/mlops-architecture-guide/5.png" alt="Push-based architecture"><br>
+<img src="https://img-src.io/i/taehun/mlops-architecture-guide/5.png" alt="Push-based architecture"><br>
 </p>
 
 데이터 웨어하우스로의 데이터 스트리밍와 같은 특정 이벤트로 다음과 같은 트리거 구성 요소가 켜지는 이벤트 기반 시나리오에 대한 학습 아키텍처:
@@ -100,7 +100,7 @@ MLOps의 아키텍처 패턴은 학습 및 서빙 설계에 관한 것입니다.
 #### 2. 오케스트레이션된 풀 기반 (pull-based) 학습 아키텍처
 
 <p align="center">
-<img src="https://img-src.io/taehun/mlops-architecture-guide/6.png" alt="Pull-based architecture"><br>
+<img src="https://img-src.io/i/taehun/mlops-architecture-guide/6.png" alt="Pull-based architecture"><br>
 </p>
 
 일정 간격으로 모델을 재학습해야 하는 시나리오에 대한 학습 아키텍처. 데이터는 웨어하우스에서 대기하고 있으며, 워크플로우 오케스트레이션 도구를 사용하여 추출 및 처리를 예약하고, 새로운 데이터에 대한 모델의 재학습을 실시합니다. 이 아키텍처는 특히 사용자가 계정에 로그인할 때 미리 계산된 추천 사항을 제공하는 콘텐츠 추천 엔진(노래 또는 기사용)과 같이 실시간 점수가 필요하지 않은 문제에 유용합니다.
@@ -108,7 +108,7 @@ MLOps의 아키텍처 패턴은 학습 및 서빙 설계에 관한 것입니다.
 #### 3. 메시지 기반 (message-based) 학습 아키텍처
 
 <p align="center">
-<img src="https://img-src.io/taehun/mlops-architecture-guide/7.png" alt="Message-based architecture"><br>
+<img src="https://img-src.io/i/taehun/mlops-architecture-guide/7.png" alt="Message-based architecture"><br>
 </p>
 
 이러한 학습 아키텍처는 지속적인 모델 학습이 필요할 때 유용합니다. 예를 들어:
@@ -130,7 +130,7 @@ MLOps의 아키텍처 패턴은 학습 및 서빙 설계에 관한 것입니다.
 다음은 정적 학습을 위한 레퍼런스 아키텍처입니다. 한 번 학습하고 가끔씩 재학습합니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/mlops-architecture-guide/8.png" alt="Static-training architecture"><br>
+<img src="https://img-src.io/i/taehun/mlops-architecture-guide/8.png" alt="Static-training architecture"><br>
 </p>
 
 ### 서빙 아키텍처
@@ -146,7 +146,7 @@ MLOps의 아키텍처 패턴은 학습 및 서빙 설계에 관한 것입니다.
 이것은 프로덕션에서 검증된 모델을 제공하는 데 사용할 수 있는 가장 간단한 아키텍처입니다. 기본적으로 모델은 오프라인에서 추론을 수행하고 주문형(on-demand) 서비스를 제공할 수 있는 데이터 저장소에 결과를 저장합니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/mlops-architecture-guide/9.png" alt="Batch architecture"><br>
+<img src="https://img-src.io/i/taehun/mlops-architecture-guide/9.png" alt="Batch architecture"><br>
 </p>
 
 요구 사항에 몇 초 또는 몇 분 안에 클라이언트에게 추론 결과를 제공하지 않아도 되면 이러한 종류의 서빙 패턴을 사용할 수 있습니다. 일반적인 사용 사례는 콘텐츠 추천 시스템(사용자가 계정에 로그인하거나 애플리케이션을 열기 전에 추천을 미리 계산함)입니다.
@@ -154,7 +154,7 @@ MLOps의 아키텍처 패턴은 학습 및 서빙 설계에 관한 것입니다.
 ### 온라인/실시간 아키텍처 패턴
 
 <p align="center">
-<img src="https://img-src.io/taehun/mlops-architecture-guide/10.png" alt="Real-time architecture"><br>
+<img src="https://img-src.io/i/taehun/mlops-architecture-guide/10.png" alt="Real-time architecture"><br>
 </p>
 
 매우 최소한의 지연(몇 초 또는 몇 분 이내)으로 사용자에게 모델 추론 결과를 제공해야 하는 시나리오가 있습니다. 사용자가 요청할 때 실시간 추론을 제공하기 위한 온라인 서빙 아키텍처를 고려할 수 있습니다.
@@ -255,7 +255,7 @@ AWS에서 개발한 Well-Architected 솔루션의 5대 요소를 채택합니다
 **프로젝트: 뉴스 기사 추천 시스템**
 
 <p align="center">
-<img src="https://img-src.io/taehun/mlops-architecture-guide/11.png" alt="Sample Problem"><br>
+<img src="https://img-src.io/i/taehun/mlops-architecture-guide/11.png" alt="Sample Problem"><br>
 </p>
 
 컨텐츠 추천 시스템은 사용자가 플랫폼에 더 많은 비용을 지출하도록 기업이 관련 컨텐츠에 계속 관여할 수 있도록 도움을 줍니다. 특히 항상 고객 참여를 높이는 것이 목표였던 미디어에서는 더욱 그렇습니다.
@@ -378,7 +378,7 @@ AWS에서 개발한 Well-Architected 솔루션의 5대 요소를 채택합니다
 위에 나열된 목표, 요구사항 및 스펙을 기반으로 시스템에 대한 아래 구조를 만들 수 있습니다. 도구 또는 구현에 대한 언급이 전혀 없다는 것을 알 수 있습니다. 그렇습니다! 이것은 비즈니스 목표와 최종 사용자를 염두에 둔 시스템 설계에 관한 것입니다. 아키텍처를 설계할 때는 가능한 한 기술에 구애받지 않고 요구사항과 스펙에만 집중해야 합니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/mlops-architecture-guide/12.png?w=800" alt="System structure"><br>
+<img src="https://img-src.io/i/taehun/mlops-architecture-guide/12.png?w=800" alt="System structure"><br>
 </p>
 
 시스템의 구조는 비즈니스 목표에 기반한 요구사항과 스펙을 기반으로 합니다. 시스템 구조를 제대로 잡을 수 있게 되면, 이제 구현할 도구와 기술을 선택할 수 있습니다.
@@ -554,7 +554,7 @@ MLOps 아키텍처를 구현하기 위한 도구(또는 “장난감”)을 결�
 - 그리고 가장 중요한 것은:
 
 <p align="center">
-<img src="https://img-src.io/taehun/mlops-architecture-guide/13.png?w=800" alt="Success"><br>
+<img src="https://img-src.io/i/taehun/mlops-architecture-guide/13.png?w=800" alt="Success"><br>
 </p>
 
 읽어주셔서 감사합니다!

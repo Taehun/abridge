@@ -12,7 +12,7 @@ toc = false
 +++
 
 <p align="center">
-<img src="https://img-src.io/taehun/geultto-7-end/1.png" alt="글또 노션 페이지"><br>
+<img src="https://img-src.io/i/taehun/geultto-7-end/1.png" alt="글또 노션 페이지"><br>
 <a href="https://bit.ly/geultto"><i>글또 노션 페이지</i></a>
 </p>
 

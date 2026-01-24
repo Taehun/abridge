@@ -27,18 +27,18 @@ SaaS(Software as a Service)에서 'Tenant' 개념은 아파트 건물에 비유�
 1. 좌측 메뉴의 `Applications` → `Applications` → `Create Application` 클릭
 
 <p align="center">
-<img src="https://img-src.io/taehun/nextjs14-auth0-login/1.png?w=800" alt="스크린샷">
+<img src="https://img-src.io/i/taehun/nextjs14-auth0-login/1.png?w=800" alt="스크린샷">
 </p>
 
 2. 어플리케이션 이름을 입력하고, `Regular Web Applications`을 선택후 `Create` 를 클릭합니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/nextjs14-auth0-login/2.png?w=800" alt="스크린샷">
+<img src="https://img-src.io/i/taehun/nextjs14-auth0-login/2.png?w=800" alt="스크린샷">
 </p>
 
 3. 생성된 어플리케이션의 `Settings` 탭으로 가서 **Domain**, **Client ID**, **Client Secret**를 기록해 둡니다.
 <p align="center">
-<img src="https://img-src.io/taehun/nextjs14-auth0-login/3.png?w=800" alt="스크린샷">
+<img src="https://img-src.io/i/taehun/nextjs14-auth0-login/3.png?w=800" alt="스크린샷">
 </p>
 
 4. Settings에 필요한 설정을 추가 후 `Save Changes` 를 클릭하여 저장 합니다.
@@ -242,7 +242,7 @@ export default async function DashbaordPager() {
 Next.js 미들웨어의 기능을 활용하여 Auth0을 사용하여 페이지를 보호할 수 있습니다. Next.js 미들웨어는 애플리케이션으로 들어오는 요청이 완료되기 전에 코드를 실행합니다. 그런 다음 들어오는 요청의 특성에 따라 응답을 수정하여 애플리케이션의 비즈니스 요구 사항을 충족할 수 있습니다. 응답을 다시 작성하거나 리디렉션하고, 요청 또는 응답 헤더를 수정하거나, 직접 응답할 수 있습니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/nextjs14-auth0-login/4.png?w=800" alt="스크린샷">
+<img src="https://img-src.io/i/taehun/nextjs14-auth0-login/4.png?w=800" alt="스크린샷">
 </p>
 
 > NextJS 호스팅 서비스인 Vercel 아키텍처. NextJS 웹 서비스의 모든 요청은 미들웨어를 거쳐서 전달됩니다.
@@ -338,7 +338,7 @@ export default withPageAuthRequired(
    2.5. **Authorized redirect URIs** 항목에 `https://<Auth0 Domain>/login/callback` 을 입력합니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/nextjs14-auth0-login/5.png?w=800" alt="스크린샷">
+<img src="https://img-src.io/i/taehun/nextjs14-auth0-login/5.png?w=800" alt="스크린샷">
 </p>
 
 3. Auth0로 접속하여, *Authentication* → *Social* 메뉴로 들어 갑니다. Social Connections 화면에서 **Create Connection** 버튼을 클릭합니다.
@@ -348,7 +348,7 @@ export default withPageAuthRequired(
 5. **Client ID** 항목과 **Client Secret** 항목을 Google 개발자 콘솔에 생성된 OAuth 2.0 Client ID의ID와 Secret으로 설정후 **Save Changes** 버튼을 클릭하여 저장합니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/nextjs14-auth0-login/6.png?w=800" alt="스크린샷">
+<img src="https://img-src.io/i/taehun/nextjs14-auth0-login/6.png?w=800" alt="스크린샷">
 </p>
 
 6. 생성된 Google 소셜 로그인을 추가할 Auth0 어플리케이션을 선택합니다.
@@ -367,7 +367,7 @@ export default withPageAuthRequired(
 3. 생성된 OAuth 앱의 **Client ID**와 **Client Secret** (없으면 생성)을 복사해 둡니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/nextjs14-auth0-login/7.png?w=800" alt="스크린샷">
+<img src="https://img-src.io/i/taehun/nextjs14-auth0-login/7.png?w=800" alt="스크린샷">
 </p>
 
 **Auth0 설정**
@@ -381,7 +381,7 @@ export default withPageAuthRequired(
 4. 생성된 GitHub 소셜 로그인을 추가할 Auth0 어플리케이션을 선택합니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/nextjs14-auth0-login/8.png?w=800" alt="스크린샷">
+<img src="https://img-src.io/i/taehun/nextjs14-auth0-login/8.png?w=800" alt="스크린샷">
 </p>
 
 이제 로그인시 Google과 GitHub 소셜 로그인을 사용 할 수 있습니다!
@@ -397,13 +397,13 @@ pnpm run dev
 웹 브라우저에서 `http://localhost:3000` 주소로 접속하면, `create-next-app` 으로 생성된 NextJS 기본 홈페이지에 로그인 버튼이 추가 되어 있습니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/nextjs14-auth0-login/9.png?w=800" alt="스크린샷">
+<img src="https://img-src.io/i/taehun/nextjs14-auth0-login/9.png?w=800" alt="스크린샷">
 </p>
 
 **Login** 버튼을 클릭하면, Auth0 유니버셜 로그인 화면으로 넘어갑니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/nextjs14-auth0-login/10.png?w=800" alt="스크린샷">
+<img src="https://img-src.io/i/taehun/nextjs14-auth0-login/10.png?w=800" alt="스크린샷">
 </p>
 
 Auth0 → User Management → Users 메뉴에서 테스트용 `test@test.com` 사용자를 추가 하였습니다.
@@ -411,13 +411,13 @@ Auth0 → User Management → Users 메뉴에서 테스트용 `test@test.com` �
 로그인을 하면, 대쉬보드 페이지로 넘어갑니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/nextjs14-auth0-login/11.png?w=800" alt="스크린샷">
+<img src="https://img-src.io/i/taehun/nextjs14-auth0-login/11.png?w=800" alt="스크린샷">
 </p>
 
 로그아웃을 한 뒤, 대쉬보드 페이지가 보호되고 있는지 확인해 봅시다. 로그아웃 버튼을 클릭후, 웹 브라우저에서 [`http://localhost:3000/dashboard`](http://localhost:3000/dashboard) 주소로 대쉬보드 페이지로 접속을 시도해 보겠습니다. 대쉬보드 페이지는 사용자 인증이 필요하므로, 아래와 같이 로그인 화면으로 리디렉션 됩니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/nextjs14-auth0-login/12.gif" alt="스크린샷">
+<img src="https://img-src.io/i/taehun/nextjs14-auth0-login/12.gif" alt="스크린샷">
 </p>
 
 > 전체 예제 코드는 다음 [링크](https://github.com/Taehun/nextjs-auth0-example)를 통해 확인하실 수 있습니다.

@@ -35,7 +35,7 @@ toc = true
 ## 시스템 아키텍처
 
 <p align="center">
-<img src="https://img-src.io/taehun/rsquery-review/1.png?w=800" alt="RSQuery 시스템 아키텍처">
+<img src="https://img-src.io/i/taehun/rsquery-review/1.png?w=800" alt="RSQuery 시스템 아키텍처">
 </p>
 
 - Web → Rest API Server (POST 요청)

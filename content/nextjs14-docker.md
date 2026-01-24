@@ -22,7 +22,7 @@ npx create-next-app@latest nextjs-app --ts --use-pnpm
 ```
 
 <p align="center">
-<img src="https://img-src.io/taehun/nextjs14-docker/1.png?w=800" alt="스크린샷">
+<img src="https://img-src.io/i/taehun/nextjs14-docker/1.png?w=800" alt="스크린샷">
 </p>
 
 → *ESLint, Tailwind CSS,* *`src/`* *디렉토리, App Router, import alias*는 모두 디폴트 설정 입니다.
@@ -117,5 +117,5 @@ docker run -p 3000:3000 nextjs-app
 → 웹 브라우저 주소창에서 [`http://localhost:3000`](http://localhost:3000) 로 접속
 
 <p align="center">
-<img src="https://img-src.io/taehun/nextjs14-docker/2.png?w=800" alt="스크린샷">
+<img src="https://img-src.io/i/taehun/nextjs14-docker/2.png?w=800" alt="스크린샷">
 </p>

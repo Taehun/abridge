@@ -18,7 +18,7 @@ toc = true
 DevOps가 개발/QA/운영의 교차점이라면, MLOps는 머신러닝/데이터 엔지니어링/DevOps의 교차점 입니다. 이러한 관점에서 MLOps는 _머신러닝, DevOps 및 데이터 엔지니어링을 결합한 일련의 방식으로 프로덕션 환경에서 ML 시스템을 안정적이고 효율적으로 배포 및 유지 관리하는 것_ 이라고 할 수 있습니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/introduction-mlops/1.webp" alt="그림 1. DevOps와 MLOps"><br>
+<img src="https://img-src.io/i/taehun/introduction-mlops/1.webp" alt="그림 1. DevOps와 MLOps"><br>
 <strong>그림 1. DevOps와 MLOps</strong>
 </p>
 
@@ -27,7 +27,7 @@ DevOps가 개발/QA/운영의 교차점이라면, MLOps는 머신러닝/데이�
 ## End-to-End 머신러닝 워크플로우
 
 <p align="center">
-<img src="https://img-src.io/taehun/introduction-mlops/2.webp" alt="그림 2. End-to-End 머신러닝 워크플로우"><br>
+<img src="https://img-src.io/i/taehun/introduction-mlops/2.webp" alt="그림 2. End-to-End 머신러닝 워크플로우"><br>
 <strong>그림 2. End-to-End 머신러닝 워크플로우</strong>
 </p>
 
@@ -53,7 +53,7 @@ DevOps가 개발/QA/운영의 교차점이라면, MLOps는 머신러닝/데이�
 앞서 MLOps를 실제 머신러닝 프로젝트에 적용하는 것은 End-to-End 머신러닝 워크플로우를 자동화 하는 것이라고 하였습니다. 각 분야별 담당자로 구성된 머신러닝 팀이라면 이런 목적을 달성하기 위해 모든 구성원이 MLOps를 이해하고 하나의 자동화된 End-to-End 머신러닝 시스템을 만들어 나가야 합니다. 머신러닝 워크플로우를 자동화하는 대표적인 구현체가 머신러닝 파이프라인(이하 ML 파이프라인) 입니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/introduction-mlops/3-1.png?w=800" alt="그림 3. Kubeflow Pipeline"><br>
+<img src="https://img-src.io/i/taehun/introduction-mlops/3-1.png?w=800" alt="그림 3. Kubeflow Pipeline"><br>
 <strong>그림 3. Kubeflow Pipeline</strong>
 </p>
 
@@ -91,7 +91,7 @@ MLOps는 작년(2021년)부터 업계 종사자들에게 널리 알려지기 시
 
 
 <p align="center">
-<img src="https://img-src.io/taehun/introduction-mlops/4.png" alt="그림 4. 소프트웨어와 머신러닝 모델에서 코드와 데이터"><br>
+<img src="https://img-src.io/i/taehun/introduction-mlops/4.png" alt="그림 4. 소프트웨어와 머신러닝 모델에서 코드와 데이터"><br>
 <strong>그림 4. 소프트웨어와 머신러닝 모델에서 코드와 데이터</strong>
 </p>
 
@@ -128,7 +128,7 @@ MLOps는 작년(2021년)부터 업계 종사자들에게 널리 알려지기 시
 ## ML 파이프라인
 
 <p align="center">
-<img src="https://img-src.io/taehun/introduction-mlops/5.png?w=800" alt="그림 5. ML 파이프라인 CI/CD"><br>
+<img src="https://img-src.io/i/taehun/introduction-mlops/5.png?w=800" alt="그림 5. ML 파이프라인 CI/CD"><br>
 <strong>그림 5. ML 파이프라인 CI/CD</strong> <i>(출처: <a href="https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning">MLOps: 머신러닝의 지속적 배포 및 자동화 파이프라인</a>)</i>
 </p>
 

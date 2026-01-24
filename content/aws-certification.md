@@ -63,11 +63,11 @@ AWS 자격증 시험은 Amazon Web Services(AWS)가 제공하는 클라우드 �
 
 <p align="center">
 <a href="https://www.credly.com/badges/3383825a-ac0c-4b51-9673-2bad79d22017/public_url">
-<img src="https://img-src.io/taehun/aws-certification/1.png" alt="AWS Certified Solutions Architect – Associate"></a>
+<img src="https://img-src.io/i/taehun/aws-certification/1.png" alt="AWS Certified Solutions Architect – Associate"></a>
 </p>
 
 <p align="center">
-<a href=https://www.credly.com/badges/ac751e2a-634f-4015-92b9-bc9ca50fa6e4/public_url><img src="https://img-src.io/taehun/aws-certification/2.png" alt="AWS Certified Machine Learning – Specialty"></a>
+<a href=https://www.credly.com/badges/ac751e2a-634f-4015-92b9-bc9ca50fa6e4/public_url><img src="https://img-src.io/i/taehun/aws-certification/2.png" alt="AWS Certified Machine Learning – Specialty"></a>
 </p>
 
 결과는 두 시험 모두 800점대 중반 점수로 합격 했습니다. (750점이 합격 커트라인 입니다) 관련 강의를 들으면서, 덤프를 3번이상 풀어보면 900점은 여유롭게 넘길 수 있을것 같네요. 다른 AWS 자격증이나 직무 관련 자격증을 취득할 것인가? 는 고민 중 입니다. *‘그 시간에 차라리 사이드 프로젝트나 다른걸 하는게 더 가치 있지 않을까?’, ‘그래도, AWS Certified DevOps Engineer - Professional 는 있으면 좋을것 같은데…’, ‘요령도 생겼는데 GCP 자격증도 따볼까?’* 라는 여러가지 생각이 드네요.

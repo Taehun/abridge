@@ -12,7 +12,7 @@ toc = true
 +++
 
 <p align="center">
-<img src="https://img-src.io/taehun/2022-mlops-tools/1.png?w=800" alt="MLOps Tools"><br>
+<img src="https://img-src.io/i/taehun/2022-mlops-tools/1.png?w=800" alt="MLOps Tools"><br>
 <i>제가 선택한 MLOps 툴체인. 당신의 선택은?</i>
 </p>
 
@@ -206,7 +206,7 @@ XAI는 AI 모델이 특정 결정을 내린 원인과 그 작동 원리를 사�
 5. ***메인 툴을 정하세요.*** [하이브리드 클라우드](https://www.vmware.com/kr/topics/glossary/content/hybrid-cloud.html) 환경에는 온프레미스 환경에 설치된 MLOps 툴과 공용 클라우드의 ML 서비스간에 겹치는 기능이 많습니다. 더구나 요즘 MLOps 툴들은 통합 솔루션을 지향하고 있어 위에 나열된 도구들 중에도 중복된 기능을 가진 것이 많습니다. 비용, 확장성, 고가용성, 관리용이성, 개발편의성 등을 고려하여 중복되는 기능은 어떤 도구를 메인으로 사용할지 결정해야 합니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/2022-mlops-tools/2.png?w=800" alt="MLOps Tools"><br>
+<img src="https://img-src.io/i/taehun/2022-mlops-tools/2.png?w=800" alt="MLOps Tools"><br>
 <i>선택 장애를 일으키는 수많은 MLOps 도구들...AI/ML 분야의 또다른 겨울이 오지 않는 이상 줄어들것 같지는 않습니다.</i>
 </p>
 

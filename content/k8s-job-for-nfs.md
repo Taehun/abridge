@@ -20,7 +20,7 @@ toc = true
 ### 시스템 구성도
 
 <p align="center">
-<img src="https://img-src.io/taehun/k8s-job-for-nfs/1.png" alt="스크린샷">
+<img src="https://img-src.io/i/taehun/k8s-job-for-nfs/1.png" alt="스크린샷">
 </p>
 
 **처리 과정**
@@ -80,7 +80,7 @@ kubectl -n kube-system get pod -o wide -l app=csi-nfs-node
 ```
 
 <p align="center">
-<img src="https://img-src.io/taehun/k8s-job-for-nfs/2.png?w=800" alt="스크린샷">
+<img src="https://img-src.io/i/taehun/k8s-job-for-nfs/2.png?w=800" alt="스크린샷">
 </p>
 
 ### StorageClass 생성

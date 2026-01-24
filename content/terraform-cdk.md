@@ -16,7 +16,7 @@ DevOps 성숙도가 높은 기업이나 팀이라면 *IaC (Infrastructure as Co
 그 중 대표적인 IaC 툴인 Terraform은 많은 자료들이 있지만, *HCL (HashiCorp Configuration Language)* 이라는 전용 언어를 익혀야 하는 약간의 진입 장벽이 있습니다. 직관적이고 가독성이 높은 쉬운 언어이지만, 새로운 언어를 배운다는 것은 언제나 심리적 허들이 생기기 마련입니다. HCL을 사용하지 않고, 익숙한 Python과 같은 언어로 인프라 코드를 작성할 수 있는 **CDKTF (CDK for Terraform)** 를 소개해 드리겠습니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/terraform-cdk/1.png?w=800" alt="CDKTF 개요"><br>
+<img src="https://img-src.io/i/taehun/terraform-cdk/1.png?w=800" alt="CDKTF 개요"><br>
 <strong>CDKTF 개요</strong> <i>출처> <a href=https://www.terraform.io/cdktf>https://www.terraform.io/cdktf</a></i>
 </p>
 
@@ -181,7 +181,7 @@ Please review the diff output above for gcp_instance
 [GCP 콘솔](https://console.cloud.google.com/)에 접속하여 `Compute Engine` -> `VM 인스턴스` 메뉴를 클릭하면 아래와 같이 새로운 VM이 생성되어 있는 것을 확인 하실 수 있습니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/terraform-cdk/2.png?w=800" alt="그림 2. GCP 콘솔에서 VM 인스턴스 확인"><br>
+<img src="https://img-src.io/i/taehun/terraform-cdk/2.png?w=800" alt="그림 2. GCP 콘솔에서 VM 인스턴스 확인"><br>
 <strong>그림 2. GCP 콘솔에서 VM 인스턴스 확인</strong>
 </p>
 

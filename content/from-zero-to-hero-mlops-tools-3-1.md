@@ -12,7 +12,7 @@ toc = true
 +++
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-3-1/1.png?w=800" alt="그림 3-1. 3장 컴퓨팅 인프라 - 쿠버네티스의 구성 요소와 도구들 (컴퓨팅 인프라, 클러스터 생성, 인프라 관리 자동화)"><br>
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-3-1/1.png?w=800" alt="그림 3-1. 3장 컴퓨팅 인프라 - 쿠버네티스의 구성 요소와 도구들 (컴퓨팅 인프라, 클러스터 생성, 인프라 관리 자동화)"><br>
 <i>그림 3-1. 3장 컴퓨팅 인프라 - 쿠버네티스의 구성 요소와 도구들 (컴퓨팅 인프라, 클러스터 생성, 인프라 관리 자동화)</i>
 </p>
 
@@ -31,7 +31,7 @@ toc = true
 ### 3.1.1 컨테이너 배포의 시대
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-3-1/2.webp" alt="그림 3-2. 소포트웨어 배포 시대 흐름  (출처&gt; https://kubernetes.io/ko/docs/concepts/overview/)"><br>
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-3-1/2.webp" alt="그림 3-2. 소포트웨어 배포 시대 흐름  (출처&gt; https://kubernetes.io/ko/docs/concepts/overview/)"><br>
 <i>그림 3-2. 소포트웨어 배포 시대 흐름  (출처&gt; https://kubernetes.io/ko/docs/concepts/overview/)</i>
 </p>
 
@@ -75,7 +75,7 @@ toc = true
 ### 3.1.2 쿠버네티스 기본
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-3-1/3.png?w=800" alt="그림 3-3. 쿠버네티스 아키텍처 예시"><br>
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-3-1/3.png?w=800" alt="그림 3-3. 쿠버네티스 아키텍처 예시"><br>
 <i>그림 3-3. 쿠버네티스 아키텍처 예시</i>
 </p>
 
@@ -112,7 +112,7 @@ toc = true
 ### 3.1.3 쿠버네티스 클러스터 구성 요소
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-3-1/4.webp" alt="그림 3-4. 쿠버네티스 클러스터 구성 요소 (출처&gt; https://kubernetes.io/ko/docs/concepts/overview/components)"><br>
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-3-1/4.webp" alt="그림 3-4. 쿠버네티스 클러스터 구성 요소 (출처&gt; https://kubernetes.io/ko/docs/concepts/overview/components)"><br>
 <i>그림 3-4. 쿠버네티스 클러스터 구성 요소 (출처&gt; <a href="https://kubernetes.io/ko/docs/concepts/overview/components">https://kubernetes.io/ko/docs/concepts/overview/components</a>)</i>
 </p>
 
@@ -200,7 +200,7 @@ toc = true
 이러한 권장 사항은 일반적인 지침이며 MLOps 워크로드의 특정 요구 사항에 따라 조정해야 합니다. 머신러닝 작업의 규모와 복잡성, 데이터 세트의 크기, 조직의 성장 가능성을 고려하여 쿠버네티스 클러스터의 하드웨어 사양을 선택해야 합니다. 이 글의 주요 대상인 예산이 부족한 소규모 ML 팀이라면 먼저 회사나 연구실의 여분의 데스크탑 PC나 노트북을 활용하시는 것을 추천합니다. 저사양의 노트북은 컨트롤 플레인 노드로 설정하고, *테인트(taint)* 를 설정하여 어플리케이션 파드가 스케쥴 되지 않도록 설정 합니다. 여분의 PC나 노트북이 없다면, [다나와](https://www.danawa.com/) 같은 싸이트에서 예산이 허용하는 범위내에서 가성비가 좋은 데스크탑 PC를 몇 대와 *NAS(Network Access Storage)* 를 구매하여 쿠버네티스 클러스터를 구축 할 수 있습니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-3-1/5.png" alt="그림 3-5. 노트북, 데스크탑 PC, NAS로 구성한 소규모 쿠버네티스 클러스터"><br>
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-3-1/5.png" alt="그림 3-5. 노트북, 데스크탑 PC, NAS로 구성한 소규모 쿠버네티스 클러스터"><br>
 <i>그림 3-5. 노트북, 데스크탑 PC, NAS로 구성한 소규모 쿠버네티스 클러스터</i>
 </p>
 
@@ -209,7 +209,7 @@ toc = true
 **bfloat16 데이터 타입**
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-3-1/6.png?w=800" alt="그림 3-6. bfloat16 데이터 타입 (출처&gt; https://cloud.google.com/tpu/docs/bfloat16)"><br>
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-3-1/6.png?w=800" alt="그림 3-6. bfloat16 데이터 타입 (출처&gt; https://cloud.google.com/tpu/docs/bfloat16)"><br>
 <i>그림 3-6. bfloat16 데이터 타입 (출처&gt; https://cloud.google.com/tpu/docs/bfloat16)</i>
 </p>
 
@@ -317,7 +317,7 @@ echo 'complete -o default -F __start_kubectl k' >> ~/.bashrc
 GUI 환경에서 쿠버네티스 클러스터를 제어하려면 [k9s](https://k9scli.io/), [Kubernetes Dashboard](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/) 등 다양한 도구들이 있지만, 저는 [Lens](https://k8slens.dev/)를 사용하고 있습니다. Lens를 설치하면 `${HOME}/.kube/config` 설정 파일을 참고하여 쿠버네티스 GUI 사용 환경을 제공해 줍니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-3-1/7.png?w=800" alt="그림 3-7. Lens 실행 화면"><br>
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-3-1/7.png?w=800" alt="그림 3-7. Lens 실행 화면"><br>
 <i>그림 3-7. Lens 실행 화면</i>
 </p>
 
@@ -326,7 +326,7 @@ GUI 환경에서 쿠버네티스 클러스터를 제어하려면 [k9s](https://k
 ### 3.2.3 kind로 쿠버네티스 클러스터 생성
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-3-1/8.png?w=800" alt="그림 3-8. kind 아키텍처 (출처&gt; https://kind.sigs.k8s.io/docs/design/initial)"><br>
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-3-1/8.png?w=800" alt="그림 3-8. kind 아키텍처 (출처&gt; https://kind.sigs.k8s.io/docs/design/initial)"><br>
 <i>그림 3-8. kind 아키텍처 (출처&gt; https://kind.sigs.k8s.io/docs/design/initial)</i>
 </p>
 
@@ -506,7 +506,7 @@ Handling connection for 8080
 ```
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-3-1/9.png?w=800" alt="그림 3-9. nginx 초기 웹 페이지"><br>
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-3-1/9.png?w=800" alt="그림 3-9. nginx 초기 웹 페이지"><br>
 <i>그림 3-9. nginx 초기 웹 페이지</i>
 </p>
 
@@ -547,7 +547,7 @@ OS를 설치하기 전에 USB 드라이브에서 부팅하도록 서버의 BIOS/
 USB 디스크로 부팅이 먼저 되도록 BIOS 설정이 되었다면, 부팅시 아래와 같은 화면이 나옵니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-3-1/10.png" alt="그림 3-10. 우분투 설치 디스크 부팅 화면"><br>
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-3-1/10.png" alt="그림 3-10. 우분투 설치 디스크 부팅 화면"><br>
 <i>그림 3-10. 우분투 설치 디스크 부팅 화면</i>
 </p>
 
@@ -580,7 +580,7 @@ USB 디스크로 부팅이 먼저 되도록 BIOS 설정이 되었다면, 부팅�
 여기까지 진행하면 우분투 서버 설치를 시작합니다. 설치가 완료되면 아래와 같은 화면이 나옵니다. USB 부트 디스크를 제거하고, **Reboot Now**를 선택하면 Ubuntu Server가 설치된 하드디스크로 부팅이 됩니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-3-1/11.png?w=800" alt="그림 3-11. Ubuntu Server 설치 완료 화면"><br>
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-3-1/11.png?w=800" alt="그림 3-11. Ubuntu Server 설치 완료 화면"><br>
 <i>그림 3-11. Ubuntu Server 설치 완료 화면</i>
 </p>
 
@@ -591,7 +591,7 @@ sudo apt update && sudo apt upgrade -y
 ```
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-3-1/12.png?w=800" alt="그림 3-12. Ubuntu 패키지 업데이트"><br>
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-3-1/12.png?w=800" alt="그림 3-12. Ubuntu 패키지 업데이트"><br>
 <i>그림 3-12. Ubuntu 패키지 업데이트</i>
 </p>
 
@@ -612,7 +612,7 @@ sudo vi /etc/fstab
 ### 3.2.5 RKE2로 쿠버네티스 클러스터 생성
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-3-1/13.png?w=800" alt="그림 3-13. RKE2 아키텍처 (출처&gt; https://docs.rke2.io/architecture)"><br>
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-3-1/13.png?w=800" alt="그림 3-13. RKE2 아키텍처 (출처&gt; https://docs.rke2.io/architecture)"><br>
 <i>그림 3-13. RKE2 아키텍처 (출처&gt; https://docs.rke2.io/architecture)</i>
 </p>
 

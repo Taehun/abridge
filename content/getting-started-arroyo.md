@@ -16,7 +16,7 @@ toc = true
 [Arroyo](https://www.arroyo.dev/)는 Rust로 개발된 분산 스트림 처리 엔진으로, 데이터 스트림 상의 상태 유지 계산에 중점을 둡니다. 고성능을 목표로 SQL을 통한 파이프라인 정의를 지원하며, 초당 수백만 개의 이벤트를 처리할 수 있도록 확장 가능합니다. 상태 유지 연산, 내결함성, 이벤트 시간 처리와 같은 기능을 제공합니다. 자체 호스팅이 가능하며, 사기 탐지, 분석, 실시간 머신러닝 피처 생성과 같은 실시간 데이터 처리 애플리케이션에 적합합니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/getting-started-arroyo/1.png?w=800" alt="그림 1. Arroyo UI 스크린샷">
+<img src="https://img-src.io/i/taehun/getting-started-arroyo/1.png?w=800" alt="그림 1. Arroyo UI 스크린샷">
 <i>그림 1. Arroyo UI 스크린샷 (출처> <a href="https://doc.arroyo.dev/introduction">https://doc.arroyo.dev/introduction</a>)</i>
 </p>
 
@@ -58,7 +58,7 @@ Arroyo와 Apache Flink는 모두 오픈소스 스트림 처리 엔진입니다. 
 ### 아키텍처
 
 <p align="center">
-<img src="https://img-src.io/taehun/getting-started-arroyo/2.png?w=800" alt="그림 2. Arroyo 아키텍처">
+<img src="https://img-src.io/i/taehun/getting-started-arroyo/2.png?w=800" alt="그림 2. Arroyo 아키텍처">
 <i>그림 2. Arroyo 아키텍처</i>
 </p>
 
@@ -164,7 +164,7 @@ kubectl port-forward service/arroyo-api 8000:80
 Arroyo UI의 `Connections` 메뉴의 `Create Connection` 버튼을 클릭합니다. Arroyo는 다양한 커넥터를 지원합니다. 여기서는 데모를 위해 *Nexmark 연결*을 생성 합니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/getting-started-arroyo/3.png?w=800" alt="스크린샷">
+<img src="https://img-src.io/i/taehun/getting-started-arroyo/3.png?w=800" alt="스크린샷">
 </p>
 
 - `Connections` → `Create Connection`→ Nexmark 카드 메뉴의 `Create` 클릭
@@ -172,7 +172,7 @@ Arroyo UI의 `Connections` 메뉴의 `Create Connection` 버튼을 클릭합니�
 그런 다음 원하는 이벤트 속도를 설정합니다. 이 튜토리얼에서는 초당 100개의 메시지로 충분하니, 100으로 설정하고 다른 필드는 비워 둡니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/getting-started-arroyo/4.png?w=800" alt="스크린샷">
+<img src="https://img-src.io/i/taehun/getting-started-arroyo/4.png?w=800" alt="스크린샷">
 </p>
 
 - **Event rate (messages / sec):** `100` → `Next` 클릭
@@ -180,7 +180,7 @@ Arroyo UI의 `Connections` 메뉴의 `Create Connection` 버튼을 클릭합니�
 연결 이름을 `nexmark` 로 설정하고, 연결 테스트를 수행합니다. 연결이 이상 없으면, `Create` 버튼을 클릭하여 연결을 생성 합니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/getting-started-arroyo/5.png?w=800" alt="스크린샷">
+<img src="https://img-src.io/i/taehun/getting-started-arroyo/5.png?w=800" alt="스크린샷">
 </p>
 
 - **Connection Name**: `nexmark` → `Test Connection` 클릭 → `Create` 클릭
@@ -190,7 +190,7 @@ Arroyo UI의 `Connections` 메뉴의 `Create Connection` 버튼을 클릭합니�
 데이터 소스 연결을 생성 하였으므로, 이제 SQL 쿼리를 작성하여 스트리밍 파이프라인을 구축 할 수 있습니다. 좌측 메뉴의 `Pipelines` 로 가서 `Create Pipeline` 을 클릭합니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/getting-started-arroyo/6.png?w=800" alt="스크린샷">
+<img src="https://img-src.io/i/taehun/getting-started-arroyo/6.png?w=800" alt="스크린샷">
 </p>
 
 아래와 같이 간단한 쿼리를 작성해서 테스트 해 봅시다.
@@ -202,7 +202,7 @@ SELECT bid FROM nexmark WHERE bid IS NOT NULL;
 - → `Start Preview` 클릭
 
 <p align="center">
-<img src="https://img-src.io/taehun/getting-started-arroyo/7.png?w=800" alt="스크린샷">
+<img src="https://img-src.io/i/taehun/getting-started-arroyo/7.png?w=800" alt="스크린샷">
 </p>
 
 스트리밍 파이프라인은 어떤 식으로든 시간을 다루는 작업을 수반합니다. Arroyo는 데이터의 시간 특성에 대한 계산을 표현하는 몇 가지 다른 방법을 지원합니다. 시간을 기준으로 집계를 수행하기 위해 슬라이딩 창(SQL에서는 hop이라고 함)을 추가해 보겠습니다:
@@ -215,7 +215,7 @@ GROUP BY hop(interval '2 seconds', interval '10 seconds');
 ```
 
 <p align="center">
-<img src="https://img-src.io/taehun/getting-started-arroyo/8.png?w=800" alt="스크린샷">
+<img src="https://img-src.io/i/taehun/getting-started-arroyo/8.png?w=800" alt="스크린샷">
 </p>
 
 이 쿼리는 10초 크기의 슬라이딩 윈도우에서 집계 함수(`avg`)를 계산하여 2초마다 업데이트합니다. 이를 Preview로 확인 해보면 지난 10초 동안의 모든 입찰에 대한 평균 입찰가에 대한 결과를 2초마다 생성하는 등 예상한 대로 작동하는 것을 확인할 수 있습니다.
@@ -235,7 +235,7 @@ SELECT * FROM (
 
 
 <p align="center">
-<img src="https://img-src.io/taehun/getting-started-arroyo/9.png?w=800" alt="스크린샷">
+<img src="https://img-src.io/i/taehun/getting-started-arroyo/9.png?w=800" alt="스크린샷">
 </p>
 
 SQL 쿼리로 작성한 파이프라인이 마음에 들면, 실제로 파이프라인을 실행할 수 있습니다. `Start Pipeline` 을 클릭하고 파이프라인 이름을 지정 합니다. (ex> `top_auctions`) `Start` 버튼을 클릭하여 파이프라인을 실행 합니다.
@@ -243,11 +243,11 @@ SQL 쿼리로 작성한 파이프라인이 마음에 들면, 실제로 파이프
 파이프라인이 실행되면, 데이터 흐름 그래프에서 노드를 클릭해 메트릭을 확인하고, 출력 탭에서 결과를 추적할 수 있습니다. Arroyo는 일관된 체크포인트를 통해 장애 복구를 지원하며, 파이프라인의 실행을 중지 및 시작할 수 있도록 제어 기능을 제공합니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/getting-started-arroyo/10.png?w=800" alt="스크린샷">
+<img src="https://img-src.io/i/taehun/getting-started-arroyo/10.png?w=800" alt="스크린샷">
 </p>
 
 <p align="center">
-<img src="https://img-src.io/taehun/getting-started-arroyo/11.png?w=800" alt="스크린샷">
+<img src="https://img-src.io/i/taehun/getting-started-arroyo/11.png?w=800" alt="스크린샷">
 </p>
 
 ## 참고자료

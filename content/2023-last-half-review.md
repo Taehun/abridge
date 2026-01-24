@@ -60,7 +60,7 @@ ChatGPT와 같은 LLM 모델을 활용하는 *RAG(Retrieval-Augmented Generation
 [글또](/--) 소모임으로 *22주 알고리즘 챌린지 모임*에 참가하여 매주 화/목/토마다 알고리즘 문제를 하나씩 풀었습니다. 22주 동안 총 137 문제를 풀었네요. 특히, 9월은 하루도 빠짐없이 매일 한 문제씩 풀었던 퍼펙트달이라 뿌듯했습니다. 8~10월에 가장 재미있게 열심히 했습니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/2023-last-half-review/1.png?w=800" alt="알고리즘 문제 풀이 현황">
+<img src="https://img-src.io/i/taehun/2023-last-half-review/1.png?w=800" alt="알고리즘 문제 풀이 현황">
 </p>
 
 > **Jira Task**

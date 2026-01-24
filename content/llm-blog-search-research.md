@@ -16,7 +16,7 @@ toc = true
 블로그에 검색창은 있지만 아직 동작하지 않아서 이참에 검색 기능을 추가해보려고 합니다. 개인 블로그라 데이터가 많지 않으므로 블로그 기사 제목의 **키워드 검색**만으로도 충분할 것 입니다. 그래도 명색이 머신러닝 엔지니어이므로 기왕이면 LLM을 활용한 **시맨틱 검색** 기능도 추가해보겠습니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/llm-blog-search-research/1.png" alt="스크린샷">
+<img src="https://img-src.io/i/taehun/llm-blog-search-research/1.png" alt="스크린샷">
 </p>
 
 > *본 기사에서 소개된 코드는 아래의 Colab 노트북에 작성되어 있습니다.*
@@ -34,11 +34,11 @@ Notion API를 사용하려면 API 키가 필요합니다. Notion API 키는 아�
 - <https://www.notion.so/my-integrations>
 
 <p align="center">
-<img src="https://img-src.io/taehun/llm-blog-search-research/2.png?w=800" alt="스크린샷">
+<img src="https://img-src.io/i/taehun/llm-blog-search-research/2.png?w=800" alt="스크린샷">
 </p>
 
 <p align="center">
-<img src="https://img-src.io/taehun/llm-blog-search-research/3.png?w=800" alt="스크린샷">
+<img src="https://img-src.io/i/taehun/llm-blog-search-research/3.png?w=800" alt="스크린샷">
 </p>
 
 Notion 통합이 생성되면, **Secrets** 문자열을 복사 해 둡니다. 이 문자열을 Notion API 키로 사용합니다.
@@ -46,7 +46,7 @@ Notion 통합이 생성되면, **Secrets** 문자열을 복사 해 둡니다. �
 아래와 같이, 생성된 Notion 통합을 사용할 노션 페이지와 연결합니다. 노션 우측 상단 메뉴 (`…`)에서 Connections → Connect to 메뉴에서 생성한 통합을 선택하여 연결 합니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/llm-blog-search-research/4.png?w=800" alt="스크린샷">
+<img src="https://img-src.io/i/taehun/llm-blog-search-research/4.png?w=800" alt="스크린샷">
 </p>
 
 
@@ -569,7 +569,7 @@ for idx, post in enumerate(blog_posts):
 먼저, 블로그 기사의 제목과 내용을 키워드로 검색하는 키워드 검색부터 살펴 봅시다. *FTS(Full-Text Search)* 기능을 구현한 대부분의 도구는 검색의 대상이 되는 문서를 [역색인(Inverted Index)](https://ko.wikipedia.org/wiki/%EC%97%AD%EC%83%89%EC%9D%B8)으로 저장합니다. (책 뒷면의 색인 같은 것) 사용자가 검색 키워드를 입력하면 해당 키워드가 포함된 모든 문서를 찾습니다. 찾은 문서에서 [BM25](https://en.wikipedia.org/wiki/Okapi_BM25)라는 알고리즘을 사용하여 가장 연관도가 높은 문서를 반환합니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/llm-blog-search-research/5.jpeg?w=800" alt="출처&gt; https://programminghistorian.org/posts/full-text-search">
+<img src="https://img-src.io/i/taehun/llm-blog-search-research/5.jpeg?w=800" alt="출처&gt; https://programminghistorian.org/posts/full-text-search">
 <i>출처> <a href="https://programminghistorian.org/posts/full-text-search">https://programminghistorian.org/posts/full-text-search</a></i>
 </p>
 
@@ -679,7 +679,7 @@ for score, doc_addr in searcher.search(query, 5).hits:
 시맨틱 검색은 딥러닝 기술이 대중화 되기 이전부터 존재 했지만, LLM 등장이후부터는 고성능의 시맨틱 검색을 쉽게 구현 할 수 있게 되었습니다. 먼저, 검색 대상이 되는 컨텐츠 (문서, 이미지, 동영상)를 *임베딩 모델*로 벡터로 변환하여 *벡터 DB*에 저장합니다. 사용자가 검색 쿼리를 입력하면, 검색 쿼리도 벡터로 변환후 벡터 DB에서 가장 인접한 벡터 값을 가진 컨텐츠를 리턴합니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/llm-blog-search-research/6.png" alt="시맨틱 검색 과정. 임베딩 모델과 벡터 DB를 사용합니다.">
+<img src="https://img-src.io/i/taehun/llm-blog-search-research/6.png" alt="시맨틱 검색 과정. 임베딩 모델과 벡터 DB를 사용합니다.">
 </p>
 
 시맨틱 검색 과정. 임베딩 모델과 벡터 DB를 사용합니다.
@@ -1090,7 +1090,7 @@ for query in queries:
 하이브리드 검색은 텍스트 기반 검색과 벡터 기반 검색을 결합한 검색 방식입니다. 하이브리드 검색은 키워드 검색과 시맨틱 검색 장점을 결합하여, 사용자가 입력한 키워드에 정확하게 일치하는 문서를 찾으면서도, 동시에 문서의 의미적 맥락을 고려하여 유사한 내용을 포함한 문서도 제시할 수 있습니다. 예를 들어, 사용자가 *"태양의 도시"* 로 검색했을 때, 하이브리드 검색은 이 키워드를 포함하는 문서와 함께 *"태양의 도시"* 가 은유적으로 사용된 문맥에서 관련된 다른 문서들도 함께 제공할 수 있습니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/llm-blog-search-research/7.webp" alt="그림 출처&gt; https://blog.lancedb.com/hybrid-search-combining-bm25-and-semantic-search-for-better-results-with-lan-1358038fe7e6/">
+<img src="https://img-src.io/i/taehun/llm-blog-search-research/7.webp" alt="그림 출처&gt; https://blog.lancedb.com/hybrid-search-combining-bm25-and-semantic-search-for-better-results-with-lan-1358038fe7e6/">
 <i>그림 출처> <a href="https://blog.lancedb.com/hybrid-search-combining-bm25-and-semantic-search-for-better-results-with-lan-1358038fe7e6/">LancdDB Blog</a> </i>
 </p>
 

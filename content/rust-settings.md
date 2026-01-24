@@ -30,7 +30,7 @@ rustc --version
 결과
 
 <p align="center">
-<img src="https://img-src.io/taehun/rust-settings/1.png?w=800" alt="rustc version">
+<img src="https://img-src.io/i/taehun/rust-settings/1.png?w=800" alt="rustc version">
 </p>
 
 Rust는 `rustc` (컴파일러), `cargo` (프로젝트/패키지 관리자) 등이 포함된 Rust 툴체인을 관리하는 `rustup` 툴체인 관리 도구를 제공 합니다.
@@ -44,7 +44,7 @@ rustup update
 결과
 
 <p align="center">
-<img src="https://img-src.io/taehun/rust-settings/2.png?w=800" alt="rustup update">
+<img src="https://img-src.io/i/taehun/rust-settings/2.png?w=800" alt="rustup update">
 </p>
 
 ## Cargo: Rust 프로젝트/패키지 관리자
@@ -80,7 +80,7 @@ cargo build
 결과
 
 <p align="center">
-<img src="https://img-src.io/taehun/rust-settings/3.png?w=800" alt="cargo build">
+<img src="https://img-src.io/i/taehun/rust-settings/3.png?w=800" alt="cargo build">
 </p>
 
 실행 파일은 `./target/debug/` 폴더에 *<프로젝트 이름>*과 같은 파일로 생성 됩니다. (여기선 `rust-demo`)
@@ -94,7 +94,7 @@ cargo build
 결과
 
 <p align="center">
-<img src="https://img-src.io/taehun/rust-settings/4.png?w=800" alt="실행 결과">
+<img src="https://img-src.io/i/taehun/rust-settings/4.png?w=800" alt="실행 결과">
 </p>
 
 디버깅 심볼등을 제외한 릴리즈용 실행 파일은 `-r`(또는 `--release`)옵션을 추가하여 빌드 합니다.
@@ -106,7 +106,7 @@ cargo build -r
 결과
 
 <p align="center">
-<img src="https://img-src.io/taehun/rust-settings/5.png?w=800" alt="cargo build -r">
+<img src="https://img-src.io/i/taehun/rust-settings/5.png?w=800" alt="cargo build -r">
 </p>
 
 `cargo run` 으로 빌드와 실행을 한번에 할 수도 있습니다.
@@ -118,7 +118,7 @@ cargo run
 결과
 
 <p align="center">
-<img src="https://img-src.io/taehun/rust-settings/6.png?w=800" alt="cargo run">
+<img src="https://img-src.io/i/taehun/rust-settings/6.png?w=800" alt="cargo run">
 </p>
 
 `cargo run` 으로 빌드와 실행을 한번에 할 수 있습니다.
@@ -130,7 +130,7 @@ cargo run
 결과
 
 <p align="center">
-<img src="https://img-src.io/taehun/rust-settings/7.png?w=800" alt="cargo run 결과">
+<img src="https://img-src.io/i/taehun/rust-settings/7.png?w=800" alt="cargo run 결과">
 </p>
 
 ### Crate 바이너리 설치
@@ -144,7 +144,7 @@ cargo install wasm-pack
 결과
 
 <p align="center">
-<img src="https://img-src.io/taehun/rust-settings/8.png?w=800" alt="cargo install">
+<img src="https://img-src.io/i/taehun/rust-settings/8.png?w=800" alt="cargo install">
 </p>
 
 ### 자주쓰는 Cargo 명령어 정리
@@ -206,7 +206,7 @@ nvim .
 결과
 
 <p align="center">
-<img src="https://img-src.io/taehun/rust-settings/9.png?w=800" alt="LspInstall rust">
+<img src="https://img-src.io/i/taehun/rust-settings/9.png?w=800" alt="LspInstall rust">
 </p>
 
 `tree-snitter` (Rust용 구문 분석기)도 설치 합니다.
@@ -284,7 +284,7 @@ cargo test
 결과
 
 <p align="center">
-<img src="https://img-src.io/taehun/rust-settings/10.png?w=800" alt="cargo test">
+<img src="https://img-src.io/i/taehun/rust-settings/10.png?w=800" alt="cargo test">
 </p>
 
 ## 생성형 AI 활용
@@ -304,7 +304,7 @@ Generate actix-web source code to inference uploaded model
 결과
 
 <p align="center">
-<img src="https://img-src.io/taehun/rust-settings/11.png?w=800" alt="ChatGPT Code Interpreter">
+<img src="https://img-src.io/i/taehun/rust-settings/11.png?w=800" alt="ChatGPT Code Interpreter">
 </p>
 
 Rust 코드로 변환 하기
@@ -331,7 +331,7 @@ Convert this code to Rust
 결과
 
 <p align="center">
-<img src="https://img-src.io/taehun/rust-settings/12.png?w=800" alt="Python to Rust 변환">
+<img src="https://img-src.io/i/taehun/rust-settings/12.png?w=800" alt="Python to Rust 변환">
 </p>
 
 개발 가이드
@@ -344,7 +344,7 @@ How to develop CLI tools using Rust?
 
 결과
 <p align="center">
-<img src="https://img-src.io/taehun/rust-settings/13.png?w=800" alt="ChatGPT 개발 가이드">
+<img src="https://img-src.io/i/taehun/rust-settings/13.png?w=800" alt="ChatGPT 개발 가이드">
 </p>
 
 ### Copilot Labs
@@ -362,7 +362,7 @@ ChatGPT와 연동된 Copilot Labs를 사용하면 매우 편리합니다. VSCode
 - <https://githubnext.com/projects/copilot-labs/>
 
 <p align="center">
-<img src="https://img-src.io/taehun/rust-settings/14.gif" alt="Copilot Labs 데모">
+<img src="https://img-src.io/i/taehun/rust-settings/14.gif" alt="Copilot Labs 데모">
 </p>
 
 ## 참고 링크

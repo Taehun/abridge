@@ -86,7 +86,7 @@ from matplotlib import pyplot as plt   # 시각화
 10개의 범주(category)와 70,000개의 흑백 이미지로 구성된 [패션 MNIST 데이터셋](https://github.com/zalandoresearch/fashion-mnist)을 사용하겠습니다. 이미지는 해상도(28x28 픽셀)가 낮고 다음처럼 개별 옷 품목을 나타냅니다:
 
 <p align="center">
-<img src="https://img-src.io/taehun/start-deep-learning-with-flax_jax/1.png?w=800" alt="그림 1. 패션-MNIST 샘플"><br>
+<img src="https://img-src.io/i/taehun/start-deep-learning-with-flax_jax/1.png?w=800" alt="그림 1. 패션-MNIST 샘플"><br>
 <strong>그림 1. 패션-MNIST 샘플</strong>
 </p>
 
@@ -196,7 +196,7 @@ plt.show()
 ```
 
 <p align="center">
-<img src="https://img-src.io/taehun/start-deep-learning-with-flax_jax/2.png?w=800" alt="그림 2. 훈련 데이터 시각화"><br>
+<img src="https://img-src.io/i/taehun/start-deep-learning-with-flax_jax/2.png?w=800" alt="그림 2. 훈련 데이터 시각화"><br>
 <strong>그림 2. 훈련 데이터 시각화</strong>
 </p>
 
@@ -423,7 +423,7 @@ plt.show()
 ```
 
 <p align="center">
-<img src="https://img-src.io/taehun/start-deep-learning-with-flax_jax/3.png?w=800" alt="그림 3. 추론 결과 시각화"><br>
+<img src="https://img-src.io/i/taehun/start-deep-learning-with-flax_jax/3.png?w=800" alt="그림 3. 추론 결과 시각화"><br>
 <strong>그림 3. 추론 결과 시각화</strong>
 </p>
 

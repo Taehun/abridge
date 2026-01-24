@@ -44,7 +44,7 @@ MLOps는 데이터 과학자와 운영 팀 간의 협업을 개선하고 시장 
 
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-1/1.png?w=800" alt="그림 1-1. MLOps = ML + Dev + Ops"><br>
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-1/1.png?w=800" alt="그림 1-1. MLOps = ML + Dev + Ops"><br>
 <i>그림 1-1. MLOps = ML + Dev + Ops (출처> <a href="https://www.phdata.io/blog/mlops-vs-devops-whats-the-difference/">https://www.phdata.io/blog/mlops-vs-devops-whats-the-difference/</a>)</i>
 </p>
 
@@ -74,7 +74,7 @@ MLOps와 AIOps 사이에는 몇 가지 유사점이 있지만 목표와 애플�
 ## 1.2 MLOps 프로세스
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-1/2.png?w=800" alt="그림 1-2. MLOps 프로세스"><br>
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-1/2.png?w=800" alt="그림 1-2. MLOps 프로세스"><br>
 <i>그림 1-2. MLOps 프로세스</i>
 </p>
 
@@ -165,7 +165,7 @@ MLOps 프로세스에서 데이터 수집 단계는 프로젝트에서 사용할
 >**데이터셋 분할 (Dataset Splitting)**
 >
 > <p align="center">
-> <img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-1/3.png?w=800" alt="그림 1-3. 데이터셋 분할"><br>
+> <img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-1/3.png?w=800" alt="그림 1-3. 데이터셋 분할"><br>
 > <i>그림 1-3. 데이터셋 분할 (출처> <a href="https://itwiki.kr/w/데이터_분할">https://itwiki.kr/w/데이터_분할</a>)</i>
 > </p>
 >
@@ -229,7 +229,7 @@ A/B 테스트에서는 실험 그룹과 제어 그룹을 구성한 후, 일정 �
 ## 1.3 MLOps 구성 요소
 
 <p align="center">
-<img src="https://img-src.io/taehun/from-zero-to-hero-mlops-tools-1/4.png?w=800" alt="그림 1-4. MLOps 프로세스와 구성 요소"><br>
+<img src="https://img-src.io/i/taehun/from-zero-to-hero-mlops-tools-1/4.png?w=800" alt="그림 1-4. MLOps 프로세스와 구성 요소"><br>
 <i>그림 1-4. MLOps 프로세스와 구성 요소</i>
 </p>
 

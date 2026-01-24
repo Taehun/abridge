@@ -16,7 +16,7 @@ toc = true
 우리가 사용하는 어플리케이션은 모두 **가상 주소(Virtual address)** 라는 실제 물리 메모리의 주소가 아닌 논리적 메모리 주소를 사용합니다. 그럼 이 가상 주소를 실제 메모리의 주소인 **물리 주소(Physical Address)** 로 변환해야 할 필요가 있는데, 이러한 가상 주소를 물리 주소로 변환하는 매커니즘을 **페이징(Paging)** 이라고 합니다. 페이징은 가상 주소를 사용하는 시스템이면 메모리 접근시마다 해야하므로 비교적 많은 오버헤드가 걸립니다. 그래서 페이징을 사용하는 시스템은 모두 CPU에 포함된 **MMU(Memory Management Unit)** 에서 하드웨어적으로 처리하게 됩니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/arm-paging-2/1.png" alt="그림 1. 가상 주소와 물리 주소"><br>
+<img src="https://img-src.io/i/taehun/arm-paging-2/1.png" alt="그림 1. 가상 주소와 물리 주소"><br>
 <strong>그림 1. 가상 주소와 물리 주소</strong>
 </p>
 
@@ -52,7 +52,7 @@ ARMv7-A의 페이징은 크게 Short-descriptor translation과 Long-descriptor t
 <!-- TODO: 이미지 추가 - 파일명: Untitled.png, 원본: https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fd180bd20-bcef-46f4-9f8a-bc0e3bcda964%2FUntitled.png?table=block&id=ef62677b-7447-4f7c-82a8-7dbf4eddcf1a&cache=v2 -->
 
 <p align="center">
-<img src="https://img-src.io/taehun/arm-paging-2/2.png" alt="그림 2. 1단계 페이징"><br>
+<img src="https://img-src.io/i/taehun/arm-paging-2/2.png" alt="그림 2. 1단계 페이징"><br>
 <strong>그림 2. 1단계 페이징</strong>
 </p>
 
@@ -73,7 +73,7 @@ _<그림 2>_ 은 ARM Cortex-A의 1단계 페이징 과정을 나타냅니다. _<
 1단계 페이징 루틴을 작성시에 주의해야 할 점은 L1 페이지 테이블의 시작 주소는 14비트(16KB) 단위로 정렬된 주소가 되어야 한다는 점입니다. L1 페이지 테이블의 하나의 엔트리의 크기는 32비트(4B)이고, 4096개의 엔트리를 가지고 있으니, L1 페이지 테이블은 총 16KB를 할당해서 사용해야합니다. 만약 L1 페이지 테이블 시작 주소를 0x1000로 설정한다면, MMU는 TTBA의 상위 18비트만 사용하므로 0x0 번지를 L1 페이지 테이블의 시작 주소로 인식하게 됩니다. 이러면 당연히 엉뚱한 메모리 공간에 접근하였으므로 제대로 동작 할리가 없습니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/arm-paging-2/3.png" alt="그림 3. L1 페이지 테이블 엔트리의 종류"><br>
+<img src="https://img-src.io/i/taehun/arm-paging-2/3.png" alt="그림 3. L1 페이지 테이블 엔트리의 종류"><br>
 <strong>그림 3. L1 페이지 테이블 엔트리의 종류</strong>
 </p>
 
@@ -253,7 +253,7 @@ TTBCR(Translation Table Base Control Register)은 LPAE 사용여부 설정과 TT
 작은 크기 페이지들인 Large Page(64KB)와 Small Page(4KB)를 사용하고자 할 때는 2단계 페이징을 합니다. 물론 크기가 작은 페이지도 하나의 페이지 테이블을 활용하는 1단계 페이징으로 할 수 있습니다만, 이것은 매우 비효율적입니다. 예를 들어, 4KB 페이지를 하나의 페이지 테이블로 페이징한다고 가정해 봅시다. 32비트 머신에서 가장 주소 공간은 4GB이므로, 총 1048576개의 엔트리가 필요합니다. 하나의 엔트리 크기는 4B이므로, 페이지 테이블의 크기는 총 4MB가 됩니다. 페이지 테이블은 프로세스마다 존재하므로 프로세스를 생성할때마다 페이지 테이블 용도로 4MB 메모리 공간을 할당하는 것은 낭비가 너무 심합니다. 이것을 2단계 페이징으로 변경하면, 16KB 크기의 1단계 페이지 테이블을 할당하고, 2단계 페이지 테이블은 가상 주소 영역에서 필요한 공간만 할당해서 사용할 수 있습니다. 이것이 다단계 페이징을 하는 이유입니다. 앞으로 2단계 페이지 테이블도 L1 페이지 테이블과 마찬가지로 **L2 페이지 테이블(Level 2 Page Table)** 이라고 하겠습니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/arm-paging-2/4.png" alt="그림 4. 2단계 페이징"><br>
+<img src="https://img-src.io/i/taehun/arm-paging-2/4.png" alt="그림 4. 2단계 페이징"><br>
 <strong>그림 4. 2단계 페이징</strong>
 </p>
 
@@ -291,7 +291,7 @@ L2 페이지 테이블 엔트리에는 페이지 프레임의 주소가 저장�
 자 그럼, L2 페이지 테이블 엔트리들이 어떻게 생겼는지 한번 살펴 보겠습니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/arm-paging-2/5.png" alt="그림 5. L2 페이지 테이블 엔트리의 종류"><br>
+<img src="https://img-src.io/i/taehun/arm-paging-2/5.png" alt="그림 5. L2 페이지 테이블 엔트리의 종류"><br>
 <strong>그림 5. L2 페이지 테이블 엔트리의 종류</strong>
 </p>
 
@@ -302,7 +302,7 @@ L2 페이지 테이블 엔트리도 L1 페이지 테이블 엔트리와 마찬�
 페이지 테이블 엔트리의 TEX, C, B등의 필드로 메모리 속성을 설정한다고 했는데, 메모리 속성을 도대체 어떻게 설정하는지 한번 알아보겠습니다. 우선, TEX, B, C 필드 값에 따라서 다음과 같이 메모리 속성이 설정 됩니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/arm-paging-2/6.png" alt="테이블 1. 페이지 테이블 엔트리 값에 따른 메모리 타입과 캐시 속성 설정"><br>
+<img src="https://img-src.io/i/taehun/arm-paging-2/6.png" alt="테이블 1. 페이지 테이블 엔트리 값에 따른 메모리 타입과 캐시 속성 설정"><br>
 <strong>테이블 1. 페이지 테이블 엔트리 값에 따른 메모리 타입과 캐시 속성 설정</strong>
 </p>
 
@@ -317,7 +317,7 @@ _<테이블 1>_ 의 메모리 타입은 메모리 오더링을 어떻게 하는�
 도메인은 ARM에서 메모리 영역을 구분하는 매커니즘입니다. 도메인은 L1 페이지 테이블 엔트리에서 총 16개의 도메인 ID로 설정 가능하며, 도메인 별로 접근 권한을 다르게 할 수 있습니다. 도메인 설정은 DACR(Domain Access Control Register)에서 하게 되는데, 2비트로 하나의 도메인을 설정합니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/arm-paging-2/7.png" alt="그림 6. DACR"><br>
+<img src="https://img-src.io/i/taehun/arm-paging-2/7.png" alt="그림 6. DACR"><br>
 <strong>그림 6. DACR</strong>
 </p>
 
@@ -344,7 +344,7 @@ ARM은 두단계를 거쳐서 메모리 접근 권한을 체크합니다. 먼저
 페이지 테이블 엔트리에 설정된 접근 권한은 해당 메모리가 속한 도메인이 Client일 경우에만 체크합니다. 페이지 테이블 엔트리의 APX, AP 필드 값에 따라 다음과 같이 접근 권한을 설정 할 수 있습니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/arm-paging-2/8.png" alt="테이블 2. 페이지 테이블 엔트리 접근 권한"><br>
+<img src="https://img-src.io/i/taehun/arm-paging-2/8.png" alt="테이블 2. 페이지 테이블 엔트리 접근 권한"><br>
 <strong>테이블 2. 페이지 테이블 엔트리 접근 권한</strong>
 </p>
 

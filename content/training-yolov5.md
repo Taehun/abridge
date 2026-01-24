@@ -16,7 +16,7 @@ toc = true
 **YOLO(You Only Look Once)** 는 빠른 속도와 높은 정확도를 가진 가장 널리 사용되는 **딥러닝 기반 객체 감지 알고리즘** 중 하나 입니다. 이 기사에서는 PyTorch 기반의 최신 YOLO 프레임웍인 [ultralytics/yolov5](https://github.com/ultralytics/yolov5) 에서 커스텀 데이터세트로 YOLOv5 모델을 학습하는 방법을 살펴보겠습니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/training-yolov5/1.png?w=600" alt="Training Yolo5"><br>
+<img src="https://img-src.io/i/taehun/training-yolov5/1.png?w=600" alt="Training Yolo5"><br>
 </p>
 
 ## YOLOv5 설치
@@ -50,7 +50,7 @@ open runs/detect/exp/680e8885-1556-4710-aa94-ba80f5ab4f49.jpg # MacOS
 ```
 
 <p align="center">
-<img src="https://img-src.io/taehun/training-yolov5/2.png" alt="Sony"><br>
+<img src="https://img-src.io/i/taehun/training-yolov5/2.png" alt="Sony"><br>
 </p>
 
 YOLOv5에는 간단하게 YOLOv5 모델 추론을 테스트 할 수 있는 `detect.py` 파이썬 스크립트 파일이 포함되어 있습니다. 이 스크립트를 실행하여 모델 추론시 필요한 모델 파일은 [최신 YOLOv5 릴리즈](https://github.com/ultralytics/yolov5/releases)에서 자동으로 다운로드 됩니다. 추론 후 결과는 `runs/detect/exp[실험 번호]` 폴더에 기록됩니다. 사용법은 다음과 같습니다:
@@ -86,7 +86,7 @@ results.print()  # or .show(), .save(), .crop(), .pandas(), etc.
 ## 데이터 수집
 
 <p align="center">
-<img src="https://img-src.io/taehun/training-yolov5/3.png" alt="Data Collection"><br>
+<img src="https://img-src.io/i/taehun/training-yolov5/3.png" alt="Data Collection"><br>
 </p>
 
 YOLOv5 객체 감지 모델 학습에 사용하는 데이터셋은 다양한 방식으로 마련할 수 있습니다. 제품에서 사용할 이미지와 유사한 공개 데이터셋을 사용하거나 비공개 데이터셋을 구매해서 사용 할 수도 있을것 입니다. (공개 데이터셋 사용시에는 라이센스 위반 여부를 반드시 확인후 사용하시기 바랍니다.) 아니면, 제품에서 사용할 데이터를 직접 수집하여 학습 할 수도 있을 것 입니다. 여기서는 커스텀 데이터셋으로 YOLOv5 모델 학습하는 내용이므로 직접 수집한 데이터라고 가정 하겠습니다.
@@ -113,7 +113,7 @@ YOLOv5 모델 학습에는 이미지 데이터를 사용하지만, 데이터 수
 ## 데이터 라벨링
 
 <p align="center">
-<img src="https://img-src.io/taehun/training-yolov5/4.png" alt="Data Labeling"><br>
+<img src="https://img-src.io/i/taehun/training-yolov5/4.png" alt="Data Labeling"><br>
 </p>
 
 DB에 추론할 대상이 되는 값이 들어 있는 **정형 데이터(Structured Data 또는 Tabular Data)** 와 달리, 딥러닝 모델에서 사용하는 이미지나 사운드와 같은 **비정형 데이터(Unstructured Data)** 는 사람이 직접 라벨링을 하여 어노테이션 데이터를 생성합니다. (라벨링이 필요한 데이터가 많아지면 딥러닝 워크플로우 중에서 가장 많은 리소스가 드는 단계가 됩니다.)
@@ -271,7 +271,7 @@ names: [ 'car', 'truck', 'pedestrian', 'bicyclist', 'light' ]  # class names
 이 기사 초반부에 YOLOv5 모델 네트워크 크기에 따른 추론 속도 및 정확도에 대한 그래프를 첨부 하였습니다. 추론 속도와 정확도는 트레이드오프이므로 ML 어플리케이션에 따라 적절한 모델을 선택해서 사용하시기 바랍니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/training-yolov5/5.png?w=800" alt="YOLOv5 Models"><br>
+<img src="https://img-src.io/i/taehun/training-yolov5/5.png?w=800" alt="YOLOv5 Models"><br>
 </p>
 
 ### 학습 스크립트 실행
@@ -294,11 +294,11 @@ python train.py --batch-size 16 --epochs 10 --data custom_dataset.yaml --weights
 - 클래스 분포와 학습 데이터 배치 시각화
 
 <p align="center">
-<img src="https://img-src.io/taehun/training-yolov5/6.png?w=800" alt="YOLOv5 Training Result1"><br>
+<img src="https://img-src.io/i/taehun/training-yolov5/6.png?w=800" alt="YOLOv5 Training Result1"><br>
 </p>
 
 <p align="center">
-<img src="https://img-src.io/taehun/training-yolov5/7.jpg?w=800" alt="YOLOv5 Training Result2"><br>
+<img src="https://img-src.io/i/taehun/training-yolov5/7.jpg?w=800" alt="YOLOv5 Training Result2"><br>
 </p>
 
 학습 결과는 `runs/train/exp[실험번호]/results.csv` 파일에 저장되어 있습니다.
@@ -309,7 +309,7 @@ plot_results('./runs/train/exp/results.csv')  # plot 'results.csv' as 'results.p
 ```
 
 <p align="center">
-<img src="https://img-src.io/taehun/training-yolov5/8.jpg?w=800" alt="YOLOv5 Training Result3"><br>
+<img src="https://img-src.io/i/taehun/training-yolov5/8.jpg?w=800" alt="YOLOv5 Training Result3"><br>
 </p>
 
 ## 학습된 모델 추론 테스트
@@ -323,7 +323,7 @@ open runs/detect/exp2/1479503426306710339.jpg
 
 
 <p align="center">
-<img src="https://img-src.io/taehun/training-yolov5/9.jpg" alt="YOLOv5 Inference"><br>
+<img src="https://img-src.io/i/taehun/training-yolov5/9.jpg" alt="YOLOv5 Inference"><br>
 </p>
 
 ## 참고링크

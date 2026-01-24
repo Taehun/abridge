@@ -68,7 +68,7 @@ print(response)
 결과
 
 <p align="center">
-<img src="https://img-src.io/taehun/getting-started-llamaindex/1.png?w=800" alt="스크린샷">
+<img src="https://img-src.io/i/taehun/getting-started-llamaindex/1.png?w=800" alt="스크린샷">
 </p>
 
 ### 로깅을 사용하여 쿼리 및 이벤트 보기
@@ -127,7 +127,7 @@ print(response)
 결과
 
 <p align="center">
-<img src="https://img-src.io/taehun/getting-started-llamaindex/2.png?w=800" alt="스크린샷">
+<img src="https://img-src.io/i/taehun/getting-started-llamaindex/2.png?w=800" alt="스크린샷">
 </p>
 
 ## 상위 개념
@@ -141,7 +141,7 @@ RAG에서는 데이터가 로드되고 쿼리를 위해 준비되거나 "*인덱
 챗봇이나 에이전트를 구축하는 경우에도 데이터를 애플리케이션으로 가져오기 위한 RAG 기술을 알고 싶을 것입니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/getting-started-llamaindex/3.png?w=800" alt="스크린샷">
+<img src="https://img-src.io/i/taehun/getting-started-llamaindex/3.png?w=800" alt="스크린샷">
 </p>
 
 ### RAG 단계
@@ -155,7 +155,7 @@ RAG에는 다섯 가지 주요 단계가 있으며, 이 단계는 여러분이 �
 5. **평가**: 모든 파이프라인에서 중요한 단계는 다른 전략과 비교하여 얼마나 효과적인지 또는 언제 변경해야 하는지 확인하는 것입니다. 평가는 쿼리에 대한 응답이 얼마나 정확하고 충실하며 빠른지에 대한 객관적인 척도를 제공합니다.
 
 <p align="center">
-<img src="https://img-src.io/taehun/getting-started-llamaindex/4.png?w=800" alt="스크린샷">
+<img src="https://img-src.io/i/taehun/getting-started-llamaindex/4.png?w=800" alt="스크린샷">
 </p>
 
 ### 각 단계의 중요 개념
