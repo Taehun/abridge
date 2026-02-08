@@ -17,7 +17,7 @@ toc = true
 
 ## 2/2 ~ 2/9 주요 업데이트 내역
 
-- AI 시대에 맞춰서 [MCP 서버](https://docs.img-src.io/mcp)를 추가 했습니다.
+- AI 시대에 맞춰서 [MCP 서버](https://github.com/img-src-io/mcp)를 추가 했습니다.
 - 출력 포맷에 [JXL 포맷](https://en.wikipedia.org/wiki/JPEG_XL)을 추가 했습니다.
 - 랜딩 페이지를 변경 했습니다.
 
