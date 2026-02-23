@@ -1,0 +1,61 @@
+{%- if config.extra.sidebar_banner | default(value=false) %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<div class="imgsrc-sidebar">
+  <a href="https://img-src.io?ref=blog-sidebar" target="_blank" rel="noopener">
+    <div class="imgsrc-sidebar-card">
+      <div class="imgsrc-sidebar-dots"></div>
+      <div class="imgsrc-sidebar-inner">
+
+        <!-- Logo -->
+        <div class="imgsrc-sidebar-logo">
+          <svg viewBox="0 0 64 64" width="28" height="28" aria-hidden="true">
+            <defs>
+              <linearGradient id="imgsrc-g" x1="0" y1="0" x2="64" y2="64">
+                <stop stop-color="#1976d2"/>
+                <stop offset="1" stop-color="#1565c0"/>
+              </linearGradient>
+            </defs>
+            <rect width="64" height="64" rx="14" fill="url(#imgsrc-g)"/>
+            <circle cx="32" cy="32" r="24" fill="none" stroke="#fff" stroke-width="2.5" opacity="0.4"/>
+            <ellipse cx="32" cy="32" rx="9" ry="24" fill="none" stroke="#fff" stroke-width="2" opacity="0.3"/>
+            <line x1="8" y1="32" x2="56" y2="32" stroke="#fff" stroke-width="2" opacity="0.3"/>
+            <g transform="translate(22,22)">
+              <rect width="20" height="20" rx="3" fill="#fff"/>
+              <path d="M2 17L7 10 12 17Z" fill="#1976d2"/>
+              <path d="M9 17L14 8 19 17Z" fill="#1565c0"/>
+              <circle cx="15" cy="6" r="2.5" fill="#1976d2"/>
+            </g>
+          </svg>
+          <span class="imgsrc-sidebar-brand">img-src</span>
+        </div>
+
+        <hr class="imgsrc-sidebar-divider">
+
+        <!-- Tagline -->
+        <div class="imgsrc-sidebar-tagline">
+          <span>Image CDN</span> for<br>Developers
+        </div>
+
+        <!-- Features -->
+        <ul class="imgsrc-sidebar-features">
+          <li>쉽고, 간단한 CDN 서비스</li>
+          <li>URL 파라메터로 변환</li>
+          <li>글로벌 CDN 캐싱</li>
+        </ul>
+
+        <!-- CTA -->
+        <div class="imgsrc-sidebar-cta">
+          무료로 시작하기
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </div>
+
+        <!-- Footer -->
+        <div class="imgsrc-sidebar-footer">img-src.io</div>
+
+      </div>
+    </div>
+  </a>
+</div>
+{%- endif %}
