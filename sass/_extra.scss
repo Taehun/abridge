@@ -99,34 +99,37 @@ main {
   gap: 0.5rem;
   margin-bottom: 0.5rem;
   overflow: hidden;
-  max-height: 1.5rem;
+  max-height: 1.8rem;
 }
 
 .post-card-tag {
-  display: inline-block;
-  font-size: 0.7rem;
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.73rem;
   font-weight: 600;
-  color: var(--a1) !important;
-  background: rgba(24, 119, 242, 0.1);
-  padding: 0.25rem 0.6rem;
+  color: #0d5cbf !important;
+  background: rgba(13, 92, 191, 0.1);
+  padding: 0.35rem 0.7rem;
+  min-height: 24px;
+  box-sizing: border-box;
   border-radius: 4px;
   text-decoration: none !important;
   transition: background 0.2s ease;
 
   &:hover {
-    background: rgba(24, 119, 242, 0.2);
+    background: rgba(13, 92, 191, 0.18);
     text-decoration: none !important;
   }
 
   &:visited {
-    color: var(--a1) !important;
+    color: #0d5cbf !important;
   }
 }
 
 .post-card-title {
   font-size: 1.1rem !important;
   font-weight: 600 !important;
-  line-height: 1.4 !important;
+  line-height: 1.5 !important;
   margin: 0 0 0.5rem 0 !important;
   padding: 0 !important;
   display: -webkit-box;
@@ -676,6 +679,10 @@ footer {
     max-width: 1200px;
     margin: 0 auto;
   }
+
+  a {
+    color: #0d5cbf !important;
+  }
 }
 
 // Add padding to main to prevent content from being hidden behind fixed footer
@@ -694,7 +701,7 @@ main {
   font-size: 0.9rem;
   font-weight: 600;
   color: white;
-  background: var(--a1);
+  background: #0d5cbf;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -702,7 +709,7 @@ main {
   min-width: 120px;
 
   &:hover:not(:disabled) {
-    background: var(--a2);
+    background: #0a4a99;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   }
@@ -755,7 +762,7 @@ main {
   left: max(20px, calc(50vw - 764px));
   width: 130px;
   z-index: 1000;
-  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Segoe UI', sans-serif;
   animation: imgsrc-fadein 0.5s ease-out 0.4s both;
 }
 
