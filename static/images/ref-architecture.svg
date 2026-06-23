@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 360" width="920" height="360" role="img" aria-labelledby="refTitle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',sans-serif">
+  <title id="refTitle">통합 참조 아키텍처: 추상 목표를 받은 메타-오케스트레이터(계층 0)가 명세화(1)·팀 합성(2)·구축 검증(3)·배포 운영(4)·자기개선(5) 계층을 생성하고, 계층 2는 ChatDev/MetaGPT SWE 팀을 인스턴스화하며, 계층 4의 운영 텔레메트리가 적합도 신호로 계층 5에 환류되어 계층 0으로 루프가 닫힌다</title>
+  <defs>
+    <marker id="ahRef" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 10 5 0 10z" fill="#9aa0a6"/>
+    </marker>
+  </defs>
+  <rect x="2" y="2" width="916" height="356" rx="14" fill="#f8f9fb" stroke="#e6e8eb"/>
+
+  <!-- solid edges: 순방향 파이프라인 -->
+  <g fill="none" stroke="#9aa0a6" stroke-width="2" marker-end="url(#ahRef)">
+    <path d="M188 55 H345"/>
+    <path d="M218 189 H252"/>
+    <path d="M452 189 H486"/>
+    <path d="M664 189 H698"/>
+    <path d="M793 218 V270"/>
+  </g>
+  <!-- dashed edges: 생성 · 인스턴스화 · 재합성(환류) -->
+  <g fill="none" stroke="#9aa0a6" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#ahRef)">
+    <path d="M470 84 V120 H129 V160"/>
+    <path d="M352 218 V270"/>
+    <path d="M888 299 H905 V56 H595"/>
+  </g>
+
+  <!-- edge labels -->
+  <g font-size="11.5" fill="#5f6368">
+    <text x="300" y="114" text-anchor="middle">생성·관장</text>
+    <text x="362" y="247">인스턴스화</text>
+    <text x="786" y="247" text-anchor="end">텔레메트리 = 적합도 신호</text>
+    <text x="750" y="48" text-anchor="middle">계층 2~4 재합성</text>
+  </g>
+
+  <!-- nodes -->
+  <g text-anchor="middle" fill="#1e1e1e">
+    <rect x="24" y="28" width="164" height="52" rx="9" fill="#FFECBD" stroke="#FFC943"/>
+    <text x="106" y="50" font-size="13.5" font-weight="600">추상 목표</text>
+    <text x="106" y="68" font-size="11" fill="#5f6368">모바일 게임을 만들고 싶어</text>
+
+    <rect x="345" y="28" width="250" height="56" rx="9" fill="#DCCCFF" stroke="#874FFF"/>
+    <text x="470" y="52" font-size="13.5" font-weight="600">계층 0 · 메타-오케스트레이터</text>
+    <text x="470" y="70" font-size="11" fill="#5f6368">아카이브 + 변이 + 선택 루프</text>
+
+    <rect x="40" y="160" width="178" height="58" rx="9" fill="#EDEEF0" stroke="#B3B3B3"/>
+    <text x="129" y="185" font-size="13.5" font-weight="600">계층 1 · 명세화</text>
+    <text x="129" y="203" font-size="11" fill="#5f6368">ClarifyGPT · HITL</text>
+
+    <rect x="252" y="160" width="200" height="58" rx="9" fill="#C2E5FF" stroke="#3DADFF"/>
+    <text x="352" y="185" font-size="13.5" font-weight="600">계층 2 · 팀 합성</text>
+    <text x="352" y="203" font-size="11" fill="#5f6368">AutoAgents · AgentSquare · AFlow</text>
+
+    <rect x="252" y="270" width="200" height="48" rx="9" fill="#D9D9D9" stroke="#B3B3B3"/>
+    <text x="352" y="291" font-size="12.5" font-weight="600">ChatDev / MetaGPT</text>
+    <text x="352" y="308" font-size="11" fill="#5f6368">SWE 팀 (산출물)</text>
+
+    <rect x="486" y="160" width="178" height="58" rx="9" fill="#EDEEF0" stroke="#B3B3B3"/>
+    <text x="575" y="185" font-size="13.5" font-weight="600">계층 3 · 구축·검증</text>
+    <text x="575" y="203" font-size="11" fill="#5f6368">Reflexion · Voyager</text>
+
+    <rect x="698" y="160" width="190" height="58" rx="9" fill="#EDEEF0" stroke="#B3B3B3"/>
+    <text x="793" y="185" font-size="13.5" font-weight="600">계층 4 · 배포·운영</text>
+    <text x="793" y="203" font-size="11" fill="#5f6368">LLM-AIOps · RCA</text>
+
+    <rect x="698" y="270" width="190" height="58" rx="9" fill="#CDF4D3" stroke="#66D575"/>
+    <text x="793" y="295" font-size="13.5" font-weight="600">계층 5 · 자기개선</text>
+    <text x="793" y="313" font-size="11" fill="#5f6368">DGM · Gödel Agent</text>
+  </g>
+</svg>

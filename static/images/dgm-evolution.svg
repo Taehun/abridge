@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 360" width="760" height="360" role="img" aria-labelledby="dgmTitle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',sans-serif">
+  <title id="dgmTitle">Darwin Gödel Machine의 열린 진화 개념 재현: 초기 코딩 에이전트에서 자기코드 변이로 가지가 갈라지고, 저적합도였던 에이전트 v2가 기반 v2.1을 거쳐 최고 적합도 후손 v2.1.1을 낳는다</title>
+  <defs>
+    <marker id="ahDgm" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 10 5 0 10z" fill="#9aa0a6"/>
+    </marker>
+  </defs>
+  <rect x="2" y="2" width="756" height="356" rx="14" fill="#f8f9fb" stroke="#e6e8eb"/>
+
+  <!-- tree edges -->
+  <g fill="none" stroke="#9aa0a6" stroke-width="2" marker-end="url(#ahDgm)">
+    <path d="M350 70 C 300 90 250 100 214 116"/>
+    <path d="M412 70 C 470 90 520 102 552 116"/>
+    <path d="M200 162 V208"/>
+    <path d="M552 162 V208"/>
+    <path d="M552 252 V296"/>
+  </g>
+  <g font-size="11.5" fill="#5f6368">
+    <text x="262" y="92">변이</text>
+    <text x="478" y="92">변이</text>
+  </g>
+
+  <!-- nodes -->
+  <g font-size="14" font-weight="500" fill="#1e1e1e" text-anchor="middle">
+    <rect x="300" y="24" width="160" height="46" rx="9" fill="#CDF4D3" stroke="#66D575"/>
+    <text x="380" y="52">초기 코딩 에이전트</text>
+
+    <rect x="140" y="120" width="120" height="42" rx="9" fill="#ffffff" stroke="#B3B3B3"/>
+    <text x="200" y="146">에이전트 v1</text>
+    <rect x="462" y="120" width="180" height="42" rx="9" fill="#D9D9D9" stroke="#B3B3B3"/>
+    <text x="552" y="146">에이전트 v2 · 저적합도</text>
+
+    <rect x="150" y="210" width="100" height="40" rx="9" fill="#ffffff" stroke="#B3B3B3"/>
+    <text x="200" y="235">v1.1</text>
+    <rect x="477" y="210" width="150" height="40" rx="9" fill="#C2E5FF" stroke="#3DADFF"/>
+    <text x="552" y="235">v2.1 · 기반</text>
+
+    <rect x="462" y="298" width="180" height="44" rx="9" fill="#FFECBD" stroke="#FFC943"/>
+    <text x="552" y="325">v2.1.1 · 최고 적합도</text>
+  </g>
+
+  <!-- insight callout -->
+  <rect x="56" y="276" width="332" height="62" rx="10" fill="#FFF6D6" stroke="#FFC943"/>
+  <text x="74" y="302" font-size="12.5" font-weight="600" fill="#8a6d00">열린 탐색의 핵심</text>
+  <text x="74" y="323" font-size="12" fill="#5f5320">저적합도 기반(v2)이 최고 적합도 후손을 낳는다</text>
+  <path d="M388 304 C 430 290 448 262 470 240" fill="none" stroke="#FFC943" stroke-width="2" stroke-dasharray="5 4"/>
+</svg>

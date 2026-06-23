@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 340" width="820" height="340" role="img" aria-labelledby="gsTitle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',sans-serif">
+  <title id="gsTitle">GPTSwarm의 최적화 가능한 계산 그래프 개념 재현: 입력에서 LLM 질의를 거쳐 도구 호출·추론으로 갈라졌다 출력으로 모이는 그래프 위에서, 노드 최적화는 프롬프트를 개선하고 에지 최적화는 연결 구조를 재배선한다</title>
+  <defs>
+    <marker id="ahGs" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 10 5 0 10z" fill="#9aa0a6"/>
+    </marker>
+    <marker id="ahNode" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 10 5 0 10z" fill="#FF9E42"/>
+    </marker>
+    <marker id="ahEdge" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 10 5 0 10z" fill="#874FFF"/>
+    </marker>
+  </defs>
+  <rect x="2" y="2" width="816" height="336" rx="14" fill="#f8f9fb" stroke="#e6e8eb"/>
+
+  <!-- computational graph container -->
+  <rect x="40" y="60" width="624" height="168" rx="10" fill="#eef6ff" stroke="#3DADFF" stroke-dasharray="5 4"/>
+  <text x="54" y="52" font-size="12.5" fill="#2f7dd1" font-weight="500">계산 그래프 (에이전트)</text>
+
+  <!-- graph edges -->
+  <g fill="none" stroke="#9aa0a6" stroke-width="2" marker-end="url(#ahGs)">
+    <path d="M162 150 H214"/>
+    <path d="M330 142 L406 108"/>
+    <path d="M330 158 L406 192"/>
+    <path d="M512 108 L566 142"/>
+    <path d="M512 192 L566 158"/>
+  </g>
+
+  <!-- graph nodes -->
+  <g font-size="13.5" font-weight="500" fill="#1e1e1e" text-anchor="middle">
+    <rect x="78" y="128" width="84" height="44" rx="22" fill="#C2E5FF" stroke="#3DADFF"/>
+    <text x="120" y="155">입력</text>
+    <rect x="214" y="128" width="116" height="44" rx="9" fill="#ffffff" stroke="#B3B3B3"/>
+    <text x="272" y="155">LLM 질의</text>
+    <rect x="408" y="86" width="104" height="42" rx="9" fill="#ffffff" stroke="#B3B3B3"/>
+    <text x="460" y="112">도구 호출</text>
+    <rect x="408" y="172" width="104" height="42" rx="9" fill="#ffffff" stroke="#B3B3B3"/>
+    <text x="460" y="198">추론</text>
+    <rect x="568" y="128" width="84" height="44" rx="22" fill="#C2E5FF" stroke="#3DADFF"/>
+    <text x="610" y="155">출력</text>
+  </g>
+
+  <!-- optimizers -->
+  <g font-size="13" font-weight="500" fill="#1e1e1e" text-anchor="middle">
+    <rect x="96" y="272" width="232" height="46" rx="9" fill="#FFE0C2" stroke="#FF9E42"/>
+    <text x="212" y="300">노드 최적화 · 프롬프트 개선</text>
+    <rect x="404" y="272" width="232" height="46" rx="9" fill="#DCCCFF" stroke="#874FFF"/>
+    <text x="520" y="300">에지 최적화 · 연결 재배선</text>
+  </g>
+
+  <!-- optimizer action arrows (dashed) -->
+  <path d="M232 272 C 250 240 262 200 272 174" fill="none" stroke="#FF9E42" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#ahNode)"/>
+  <text x="296" y="232" font-size="11.5" fill="#c9761f">노드 갱신</text>
+  <path d="M500 272 C 486 245 472 230 462 216" fill="none" stroke="#874FFF" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#ahEdge)"/>
+  <text x="516" y="244" font-size="11.5" fill="#6b35d6">구조 변경</text>
+</svg>
