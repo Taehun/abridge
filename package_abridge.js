@@ -45,6 +45,7 @@ if (fs.existsSync('./themes')) {
 _rmRegex(path.join(__dirname, "static/js/"), /^wasm.*pagefind$/);
 _rmRegex(path.join(__dirname, "static/js/"), /^pagefind.*pf_meta$/);
 _rmRegex(path.join(__dirname, "static/js/"), /^pagefind-entry.*json$/);
+_rmRegex(path.join(__dirname, "static/js/"), /^pagefind-worker\.js$/);
 _rmRecursive(path.join(__dirname, "static/js/index"));
 _rmRecursive(path.join(__dirname, "static/js/fragment"));
 
@@ -95,7 +96,7 @@ async function abridge() {
     // Generate pagefind index at start, otherwise it happens too late asyncronously.
     await createPagefindIndex(); // makes program wait for pagefind build execution
     _rmRegex(path.join(__dirname, "static/js/"), /^pagefind\.js$/);//pagefind temporary intermediate files
-    _rmRegex(path.join(__dirname, "static/js/"), /^pagefind-.*\.js$/);//pagefind temporary intermediate files
+    _rmRegex(path.join(__dirname, "static/js/"), /^pagefind-(?!worker\.js$).*\.js$/);//pagefind temporary intermediate files (keep pagefind-worker.js, pagefind >= 1.5)
     _rmRegex(path.join(__dirname, "static/js/"), /^pagefind-.*\.css$/);//pagefind temporary intermediate files
 
     // This line in pagefind is causing a problem for the PWA:
@@ -104,15 +105,17 @@ async function abridge() {
     var hash = Math.floor(new Date().getTime() / 1000);
     fs.renameSync(path.join(__dirname, "static/js/pagefind-entry.json"), path.join(__dirname, "static/js/pagefind-entry-" + hash + ".json"));
 
-    // original: var e=await(await fetch(this.basePath+"pagefind-entry.json?ts="+Date.now())).json();
-    //      new: var e=await(await fetch(this.basePath+"pagefind-entry-1723268715.json")).json();
-    // Tricky regex, so I split it into two replaceInFileSync() calls, pull requests welcome if you can improve this.
-    replaceInFileSync({ files: path.join(__dirname, "static/js/pagefind_search.js"), from: /pagefind-entry\.json\?ts=/g, to: "pagefind-entry-" + hash + "\.json" });
+    // pagefind >= 1.5: let entryUrl=`${this.basePath}pagefind-entry.json`; ... entryUrl+=`?ts=${Date.now()}`;
+    // The same loader code also lives in pagefind-worker.js (search runs in a Web Worker), so patch both.
+    const pagefindFiles = [path.join(__dirname, "static/js/pagefind_search.js"), path.join(__dirname, "static/js/pagefind-worker.js")];
+    replaceInFileSync({ files: pagefindFiles, from: /pagefind-entry\.json/g, to: "pagefind-entry-" + hash + ".json" });
+    replaceInFileSync({ files: pagefindFiles, from: /`\?ts=\$\{Date\.now\(\)\}`/g, to: "\"\"" });
     replaceInFileSync({ files: path.join(__dirname, "static/js/pagefind_search.js"), from: /Date.now\(\)/g, to: "\"\"" });
 
     //copy to public so the files are included in the PWA cache list if necessary.
     fs.copyFileSync(path.join(__dirname, "static/js/pagefind-entry-" + hash + ".json"), path.join(__dirname, "public/js/pagefind-entry-" + hash + ".json"))
     _cpRegex(path.join(__dirname, "static/js/"), path.join(__dirname, "public/js/"), /^pagefind-entry\.json$/);
+    _cpRegex(path.join(__dirname, "static/js/"), path.join(__dirname, "public/js/"), /^pagefind-worker\.js$/);
     _cpRegex(path.join(__dirname, "static/js/"), path.join(__dirname, "public/js/"), /^pagefind.*pf_meta$/);
     _cpRegex(path.join(__dirname, "static/js/"), path.join(__dirname, "public/js/"), /^wasm.*pagefind$/);
     _cpRecursive(path.join(__dirname, "static/js/index"), path.join(__dirname, "public/js/index"));
