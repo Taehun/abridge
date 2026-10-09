@@ -240,8 +240,9 @@ When using Abridge as a theme (submodule):
 - **Cachebust**: Hashes in filenames prevent stale cache (handled by Zola)
 - **Uglify URLs**: Setting `uglyurls = true` generates explicit `.html` links for offline use
 - **Security headers**: Can be set via `netlify.toml` or as meta tags in config.toml
-- **Syntax highlighting**: Uses Zola's built-in highlighting with `highlight_theme = "css"`
+- **Syntax highlighting**: giallo via `[markdown] highlighting = {theme = "github-dark", style = "class"}`; the emitted `.z-N` classes are colored in `sass/abridge.scss` (see Template System)
 - **Testing offline**: Build with `npm run offline` then open `public/index.html` directly
+- **Deployment (Cloudflare Pages)**: a push to `main` auto-deploys. The Pages build command downloads Zola from GitHub releases using the dashboard variable `ZOLA_VERSION` (0.23.6) and runs `npm run abridge` on `NODE_VERSION` 24 (build system v3). When bumping Zola, update `ZOLA_VERSION` in the Pages project settings (production and preview) together with `theme.toml` and `netlify.toml`; the latter is only read by Netlify.
 
 ## Dependencies
 
