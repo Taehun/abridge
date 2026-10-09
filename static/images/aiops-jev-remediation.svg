@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 300" width="880" height="300" role="img" aria-labelledby="ajrTitle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',sans-serif">
+  <title id="ajrTitle">선조치 후 알람 흐름: 1차 Rule 필터를 통과한 로그·트레이스·메트릭 신호, Jev 분류, 가드레일(허용 목록·횟수 제한·승격 단계) 검사, 런북 실행, 결과 검증 순으로 진행한다. 가드레일을 통과하지 못하면 AI 조치 가이드로 전환하고, 검증에 실패하면 역동작 실행 후 즉시 호출, 성공하면 조치 내역과 원인 분석을 알린다.</title>
+  <defs>
+    <marker id="ahAjr" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 10 5 0 10z" fill="#9aa0a6"/>
+    </marker>
+  </defs>
+  <rect x="2" y="2" width="876" height="296" rx="14" fill="#f8f9fb" stroke="#e6e8eb"/>
+
+  <g fill="none" stroke="#9aa0a6" stroke-width="2" marker-end="url(#ahAjr)">
+    <path d="M170 96 H196"/>
+    <path d="M320 96 H346"/>
+    <path d="M490 96 H516"/>
+    <path d="M640 96 H666"/>
+    <path d="M420 122 V206"/>
+    <path d="M700 122 V160 H605 V206"/>
+    <path d="M770 122 V206"/>
+  </g>
+
+  <g font-size="11.5" fill="#5f6368">
+    <text x="428" y="168">조건 불충족</text>
+    <text x="640" y="152">실패</text>
+    <text x="778" y="168">성공</text>
+  </g>
+
+  <g font-size="14" font-weight="500" fill="#1e1e1e" text-anchor="middle">
+    <rect x="20" y="70" width="150" height="52" rx="9" fill="#EDEEF0" stroke="#B3B3B3"/>
+    <text x="95" y="92" font-size="13">로그 · 트레이스 · 메트릭</text>
+    <rect x="200" y="70" width="120" height="52" rx="9" fill="#DCCCFF" stroke="#874FFF"/>
+    <text x="260" y="101">Jev 분류</text>
+    <rect x="350" y="70" width="140" height="52" rx="9" fill="#FFF1C2" stroke="#FFC943"/>
+    <text x="420" y="92">가드레일 검사</text>
+    <rect x="520" y="70" width="120" height="52" rx="9" fill="#EDEEF0" stroke="#B3B3B3"/>
+    <text x="580" y="101">런북 실행</text>
+    <rect x="670" y="70" width="120" height="52" rx="9" fill="#EDEEF0" stroke="#B3B3B3"/>
+    <text x="730" y="101">결과 검증</text>
+
+    <rect x="320" y="210" width="200" height="56" rx="9" fill="#C2E5FF" stroke="#3DADFF"/>
+    <text x="420" y="243">AI 조치 가이드로 전환</text>
+    <rect x="530" y="210" width="150" height="56" rx="9" fill="#FFCDC2" stroke="#FF7556"/>
+    <text x="605" y="243">역동작 + 즉시 호출</text>
+    <rect x="690" y="210" width="170" height="56" rx="9" fill="#CDF4D3" stroke="#66D575"/>
+    <text x="775" y="234">조치 내역 알람</text>
+  </g>
+
+  <g font-size="11.5" fill="#5f6368" text-anchor="middle">
+    <text x="420" y="110">허용 목록 · 횟수 제한 · 승격 단계</text>
+    <text x="95" y="110">1차 Rule 필터 통과</text>
+    <text x="775" y="253">+ LLM 원인 분석</text>
+  </g>
+</svg>

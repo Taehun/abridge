@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 400" width="880" height="400" role="img" aria-labelledby="ajaTitle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',sans-serif">
+  <title id="ajaTitle">Jev 기반 K8s AIOps 아키텍처: 로그·메트릭·트레이스가 1차 Rule 필터를 거쳐 2차 Jev 라우터로 들어가고, 선조치 후 알람·AI 조치 가이드·즉시 호출의 세 경로로 나뉘어 담당자에게 전달된다. 별도로 주기 점검 에이전트가 클러스터 설정을 분석해 개선 제안을 보낸다.</title>
+  <defs>
+    <marker id="ahAja" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 10 5 0 10z" fill="#9aa0a6"/>
+    </marker>
+  </defs>
+  <rect x="2" y="2" width="876" height="396" rx="14" fill="#f8f9fb" stroke="#e6e8eb"/>
+
+  <g fill="none" stroke="#9aa0a6" stroke-width="2" marker-end="url(#ahAja)">
+    <path d="M130 82 H166"/>
+    <path d="M130 152 H166"/>
+    <path d="M130 222 H166"/>
+    <path d="M320 152 H358"/>
+    <path d="M502 152 H530 V75 H556"/>
+    <path d="M502 152 H556"/>
+    <path d="M502 152 H530 V229 H556"/>
+    <path d="M730 75 H750 V140 H766"/>
+    <path d="M730 152 H766"/>
+    <path d="M730 229 H750 V164 H766"/>
+    <path d="M500 330 H815 V196"/>
+  </g>
+  <path d="M130 330 H166" fill="none" stroke="#9aa0a6" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#ahAja)"/>
+
+  <g font-size="11.5" fill="#5f6368" text-anchor="middle">
+    <text x="657" y="320">개선 제안 리포트 · PR</text>
+    <text x="148" y="320">매주</text>
+  </g>
+
+  <g font-size="14" font-weight="500" fill="#1e1e1e" text-anchor="middle">
+    <rect x="20" y="60" width="110" height="44" rx="9" fill="#EDEEF0" stroke="#B3B3B3"/>
+    <text x="75" y="87">로그</text>
+    <rect x="20" y="130" width="110" height="44" rx="9" fill="#EDEEF0" stroke="#B3B3B3"/>
+    <text x="75" y="157">메트릭</text>
+    <rect x="20" y="200" width="110" height="44" rx="9" fill="#EDEEF0" stroke="#B3B3B3"/>
+    <text x="75" y="227">트레이스</text>
+
+    <rect x="170" y="60" width="150" height="184" rx="9" fill="#CDF4D3" stroke="#66D575"/>
+    <text x="245" y="100">1차 · Rule 필터</text>
+
+    <rect x="362" y="112" width="140" height="80" rx="9" fill="#DCCCFF" stroke="#874FFF"/>
+    <text x="432" y="146">2차 · Jev 라우팅</text>
+
+    <rect x="560" y="50" width="170" height="50" rx="9" fill="#EDEEF0" stroke="#B3B3B3"/>
+    <text x="645" y="72">선조치 후 알람</text>
+    <rect x="560" y="127" width="170" height="50" rx="9" fill="#C2E5FF" stroke="#3DADFF"/>
+    <text x="645" y="149">AI 조치 가이드</text>
+    <rect x="560" y="204" width="170" height="50" rx="9" fill="#FFCDC2" stroke="#FF7556"/>
+    <text x="645" y="226">즉시 호출</text>
+
+    <rect x="770" y="112" width="90" height="80" rx="9" fill="#CDF4D3" stroke="#66D575"/>
+    <text x="815" y="148">담당자</text>
+
+    <rect x="20" y="300" width="110" height="60" rx="9" fill="#EDEEF0" stroke="#B3B3B3"/>
+    <text x="75" y="326">클러스터 설정</text>
+    <rect x="170" y="300" width="330" height="60" rx="9" fill="#FFF1C2" stroke="#FFC943"/>
+    <text x="335" y="326">주기 점검 에이전트 (CronJob)</text>
+  </g>
+
+  <g font-size="11.5" fill="#5f6368" text-anchor="middle">
+    <text x="245" y="132">OTel Collector</text>
+    <text x="245" y="152">Prometheus Rules</text>
+    <text x="245" y="172">Alertmanager</text>
+    <text x="432" y="168">유형 · 심각도 · 런북</text>
+    <text x="645" y="90">런북 자동 조치 → 보고</text>
+    <text x="645" y="167">LLM 원인 분석 + 가이드</text>
+    <text x="645" y="244">애매 · 보안 · 전체 중단</text>
+    <text x="815" y="168">Slack · 전화</text>
+    <text x="75" y="344">매니페스트 · 리포트</text>
+    <text x="335" y="344">보안 · 가용성 · 확장성 · 성능</text>
+  </g>
+</svg>

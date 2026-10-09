@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 320" width="880" height="320" role="img" aria-labelledby="ajgTitle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',sans-serif">
+  <title id="ajgTitle">AI 조치 가이드 흐름: 증상 알람과 컨텍스트를 받아 장애 유형별 툴셋으로 로그·이벤트·배포 diff·트레이스를 조회하고, vLLM으로 배포한 오픈소스 LLM이 원인 후보와 근거를 작성한다. Jev Noul 점수가 낮은 후보를 걸러낸 뒤 상황·원인·조치·근거가 담긴 알람을 담당자에게 보내며, 가이드 실행 여부는 담당자가 결정한다.</title>
+  <defs>
+    <marker id="ahAjg" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 10 5 0 10z" fill="#9aa0a6"/>
+    </marker>
+  </defs>
+  <rect x="2" y="2" width="876" height="316" rx="14" fill="#f8f9fb" stroke="#e6e8eb"/>
+
+  <g fill="none" stroke="#9aa0a6" stroke-width="2" marker-end="url(#ahAjg)">
+    <path d="M150 86 H176"/>
+    <path d="M340 86 H366"/>
+    <path d="M500 86 H526"/>
+    <path d="M670 86 H696"/>
+    <path d="M780 112 V150"/>
+    <path d="M560 219 H494"/>
+  </g>
+
+  <g font-size="14" font-weight="500" fill="#1e1e1e" text-anchor="middle">
+    <rect x="20" y="60" width="130" height="52" rx="9" fill="#EDEEF0" stroke="#B3B3B3"/>
+    <text x="85" y="84">증상 알람</text>
+    <rect x="180" y="60" width="160" height="52" rx="9" fill="#C2E5FF" stroke="#3DADFF"/>
+    <text x="260" y="84">유형별 툴셋 조회</text>
+    <rect x="370" y="60" width="130" height="52" rx="9" fill="#C2E5FF" stroke="#3DADFF"/>
+    <text x="435" y="84">LLM 원인 분석</text>
+    <rect x="530" y="60" width="140" height="52" rx="9" fill="#FFF1C2" stroke="#FFC943"/>
+    <text x="600" y="84">Jev Noul 필터</text>
+    <rect x="700" y="60" width="160" height="52" rx="9" fill="#CDF4D3" stroke="#66D575"/>
+    <text x="780" y="84">담당자 알람</text>
+
+    <rect x="290" y="194" width="200" height="50" rx="9" fill="#EDEEF0" stroke="#B3B3B3"/>
+    <text x="390" y="224">실행 여부는 담당자가 결정</text>
+  </g>
+
+  <g font-size="11.5" fill="#5f6368" text-anchor="middle">
+    <text x="85" y="102">+ 컨텍스트</text>
+    <text x="260" y="102">로그 · 이벤트 · 배포 diff · 트레이스</text>
+    <text x="435" y="102">vLLM 오픈소스 모델</text>
+    <text x="600" y="102">저신뢰 후보 제거</text>
+    <text x="780" y="102">Slack · 전화</text>
+  </g>
+
+  <rect x="560" y="154" width="300" height="146" rx="9" fill="#ffffff" stroke="#B3B3B3"/>
+  <g font-size="12" fill="#1e1e1e">
+    <text x="576" y="178" font-weight="600">[P2] checkout-api · 배포 오류</text>
+    <text x="576" y="200"><tspan fill="#5f6368">분류</tspan>  deploy (Jev 신뢰도 0.91)</text>
+    <text x="576" y="220"><tspan fill="#5f6368">상황</tspan>  v2.8.1 배포 후 5xx 0.2% → 7.4%</text>
+    <text x="576" y="240"><tspan fill="#5f6368">원인</tspan>  ConfigMap에 환경변수 누락</text>
+    <text x="576" y="260"><tspan fill="#5f6368">조치</tspan>  v2.8.0 롤백 → ConfigMap 수정 후 재배포</text>
+    <text x="576" y="280"><tspan fill="#5f6368">근거</tspan>  배포 diff · Pod 로그 · 대시보드</text>
+  </g>
+</svg>
