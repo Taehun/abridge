@@ -243,7 +243,7 @@ When using Abridge as a theme (submodule):
 
 ## Dependencies
 
-- **Zola** ≥ 0.19.1 (static site generator)
+- **Zola** 0.19.1 ~ 0.22.x (static site generator). 0.23+는 Tera 2 템플릿 문법으로 바뀌어 현재 템플릿(`macros::` 호출, 숏코드)과 호환되지 않으므로 0.22.1로 고정해서 사용한다.
 - **Node.js** (for build script)
   - fast-toml
   - jsonminify

@@ -17,7 +17,7 @@
     "fast-toml": "^0.5.4",
     "jsonminify": "^0.4.2",
     "pagefind": "^1.5.2",
-    "replace-in-file": "^8.4.0",
+    "replace-in-file": "^9.0.0",
     "uglify-js": "^3.19.3"
   }
 }
