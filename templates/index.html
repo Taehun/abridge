@@ -4,9 +4,6 @@ This Template can also be used directly for the index eg: example.com/ or as the
 #}
 
 {%- extends "base.html" %}
-{%- set uglyurls = config.extra.uglyurls | default(value=false) -%}
-{%- if config.extra.search_library %}{%- if config.extra.search_library == "offline" %}{% set uglyurls = true %}{% endif %}{% endif %}
-
 
 {%- block seo %}
   {{- super() }}
@@ -27,17 +24,19 @@ This Template can also be used directly for the index eg: example.com/ or as the
 
   {%- set description = config.description %}
 
-  {{- macros_seo::seo(config=config, title=title, title_addition=title_addition, description=description, is_home=true) }}
+  {{<seo config={config} title={title} title_addition={title_addition} description={description or ""} page_url={current_url} page={section} paginator_index={paginator.current_index if paginator else 1} />}}
 {%- endblock seo %}
 
 {%- block jsonld %}
-  {{- macros_jsonld::website(config=config) }}
-  {{- macros_jsonld::person(config=config) }}
+  {{<website config={config} />}}
+  {{<person config={config} />}}
 {%- endblock jsonld %}
 
 
 
 {%- block content %}
+{%- set uglyurls = (config.extra.uglyurls or false) -%}
+{%- if config.extra.search_library %}{%- if config.extra.search_library == "offline" %}{% set uglyurls = true %}{% endif %}{% endif %}
     <div class="post-grid">
     {%- for page in paginator.pages %}
       <article
@@ -50,7 +49,7 @@ This Template can also be used directly for the index eg: example.com/ or as the
           {%- if page.taxonomies.tags %}
           <div class="post-card-tags">
             {%- for tag in page.taxonomies.tags %}
-            <a href="{{ get_taxonomy_url(kind='tags', name=tag, lang=lang) | safe }}{%- if uglyurls %}index.html{%- endif %}" class="post-card-tag">
+            <a href="{{ get_taxonomy_url(kind='tags', term=tag, lang=lang) | safe }}{%- if uglyurls %}index.html{%- endif %}" class="post-card-tag">
               {{ tag }}
             </a>
             {%- endfor %}
@@ -100,23 +99,23 @@ This Template can also be used directly for the index eg: example.com/ or as the
         data-base-url="{{ paginator.base_url | safe }}"
         data-ugly-urls="{{ uglyurls }}"
       >
-        {{ macros::translate(key="more", default="Load More", i18n=i18n) }}
+        {{<translate key="more" default="Load More" i18n={i18n} />}}
       </button>
       <noscript>
-        {{- macros::numpagination(paginator=paginator, config=config) }}
+        {{<numpagination paginator={paginator} config={config} />}}
       </noscript>
     {%- endif %}
     </div>
-  {%- if config.extra.recent | default(value=true) %}
+  {%- if (config.extra.recent if config.extra.recent is defined else true) %}
     {#- The following line is checking if the template is being used for the root or a section #}
-    {%- if current_path is matching("^(/[[:alpha:]][[:alpha:]])?(/page/[[:digit:]]+)?/$") %}
+    {%- if current_path is matching(pat="^(/[[:alpha:]][[:alpha:]])?(/page/[[:digit:]]+)?/$") %}
       {%- set sec = "" %}
     {%- else %}
       {%- if lang == config.default_language %}
-        {%- set sec = current_path | trim_start_matches(pat="/") | split(pat="/page/") | slice(end=1) | join(sep="") | trim_end_matches(pat="/") %}
+        {%- set sec = current_path | trim_start(pat="/") | split(pat="/page/") | first | trim_end(pat="/") %}
         {%- set sec = sec ~ "/" %}
       {%- else %}
-        {%- set sec = current_path | trim_start_matches(pat="/" ~ lang ~ "/") | split(pat="/page/") | slice(end=1) | join(sep="") | trim_end_matches(pat="/") %}
+        {%- set sec = current_path | trim_start(pat="/" ~ lang ~ "/") | split(pat="/page/") | first | trim_end(pat="/") %}
         {%- set sec = sec ~ "/" %}
       {%- endif %}
     {%- endif %}
@@ -128,10 +127,10 @@ This Template can also be used directly for the index eg: example.com/ or as the
     {%- endif %}
     <div class="sblock">
       <div class="blockdiv sticky">
-        <span class="b s150">{{ macros::translate(key="Recent", default="Recent", i18n=i18n) }}</span>
-        {%- set recent_items=config.extra.recent_items | default(value=9) -%}
-        {%- for page in section_item.pages | slice(end=recent_items) %}
-          {{- macros::page_listing(page=page, config=config) }}
+        <span class="b s150">{{<translate key="Recent" default="Recent" i18n={i18n} />}}</span>
+        {%- set recent_items=(config.extra.recent_items if config.extra.recent_items is defined else 9) -%}
+        {%- for page in section_item.pages[:recent_items] %}
+          {{<page_listing page={page} config={config} />}}
         {%- endfor %}
       </div>
     </div>

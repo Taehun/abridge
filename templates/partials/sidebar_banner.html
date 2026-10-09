@@ -1,4 +1,4 @@
-{%- if config.extra.sidebar_banner | default(value=false) %}
+{%- if (config.extra.sidebar_banner or false) %}
 <div class="imgsrc-sidebar">
   <a href="https://img-src.io?ref=blog-sidebar" target="_blank" rel="noopener">
     <div class="imgsrc-sidebar-card">

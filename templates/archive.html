@@ -4,8 +4,6 @@ This Template can also be used as the rendering template for Sections, eg: examp
 #}
 
 {% extends "base.html" %}
-{%- set uglyurls = config.extra.uglyurls | default(value=false) -%}
-{%- if config.extra.search_library %}{%- if config.extra.search_library == "offline" %}{% set uglyurls = true %}{% endif %}{% endif %}
 
 {%- block seo %}
   {{- super() }}
@@ -19,12 +17,14 @@ This Template can also be used as the rendering template for Sections, eg: examp
 
   {%- set description = config.description %}
 
-  {{- macros_seo::seo(config=config, title=title, title_addition=title_addition, description=description, is_home=true) }}
+  {{<seo config={config} title={title} title_addition={title_addition} description={description or ""} page_url={current_url} page={section} />}}
 {%- endblock seo %}
 
 {%- block content %}
+    {%- set uglyurls = (config.extra.uglyurls or false) -%}
+    {%- if config.extra.search_library %}{%- if config.extra.search_library == "offline" %}{% set uglyurls = true %}{% endif %}{% endif %}
     {#- The following line is checking if the template is being used for the archive page or a section #}
-    {%- if current_path is matching("^(/[[:alpha:]][[:alpha:]])?/archive/$") %}
+    {%- if current_path is matching(pat="^(/[[:alpha:]][[:alpha:]])?/archive/$") %}
       {%- if section.extra.sec %}
         {%- set sec = section.extra.sec ~ "/" %}
       {%- else %}
@@ -36,7 +36,7 @@ This Template can also be used as the rendering template for Sections, eg: examp
         {%- set langpath = "/" ~ lang ~ "/" %}
       {%- endif %}
 
-      {%- set sec = current_path | trim_start_matches(pat=langpath) | split(pat="/page/") | slice(end=1) | join(sep="") | trim_end_matches(pat="/") %}
+      {%- set sec = current_path | trim_start(pat=langpath) | split(pat="/page/") | first | trim_end(pat="/") %}
       {%- set sec = sec ~ "/" %}
     {%- endif %}
 
@@ -58,8 +58,14 @@ This Template can also be used as the rendering template for Sections, eg: examp
       <h2>{{ section_item.title }}</h2>
       {%- endif %}
       {{- section_item.content | safe }}
+      {%- set grouped = section_item.pages | group_by(attribute="year") %}
       {%- if config.extra.archive_reverse %}
-      {%- for year, posts in section_item.pages | sort(attribute="year") | reverse | group_by(attribute="year") %}
+      {%- set years = grouped | keys | sort %}
+      {%- else %}
+      {%- set years = grouped | keys | sort | reverse %}
+      {%- endif %}
+      {%- for year in years %}
+      {%- set posts = grouped[year] %}
       {%- if not hide_section_dates %}
       {%- if section_item.title %}
       <h3 class="tpad">{{ year }}</h3>
@@ -71,19 +77,5 @@ This Template can also be used as the rendering template for Sections, eg: examp
       <p><a href="{{ post.permalink | safe }}{%- if uglyurls %}index.html{%- endif %}">{{ post.title }}</a>{%- if not hide_section_dates %} - <time datetime="{{ post.date }}">{{ post.date | date(format="%F") }}</time>{%- endif %}</p>
       {%- endfor %}
       {%- endfor %}
-      {%- else %}
-      {%- for year, posts in section_item.pages | group_by(attribute="year") %}
-      {%- if not hide_section_dates %}
-      {%- if section_item.title %}
-      <h3 class="tpad">{{ year }}</h3>
-      {%- else %}
-      <h2 class="tpad">{{ year }}</h2>
-      {%- endif %}
-      {%- endif %}
-      {%- for post in posts %}
-      <p><a href="{{ post.permalink | safe }}{%- if uglyurls %}index.html{%- endif %}">{{ post.title }}</a>{%- if not hide_section_dates %} - <time datetime="{{ post.date }}">{{ post.date | date(format="%F") }}</time>{%- endif %}</p>
-      {%- endfor %}
-      {%- endfor %}
-      {%- endif %}
     </div>
 {%- endblock content %}

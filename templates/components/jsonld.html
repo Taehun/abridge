@@ -1,7 +1,7 @@
-{#- JSON-LD Structured Data Macros for SEO #}
+{#- JSON-LD Structured Data Components for SEO -#}
 
-{#- WebSite Schema for homepage #}
-{%- macro website(config) %}
+{#- WebSite Schema for homepage -#}
+{% component website(config) %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -21,10 +21,20 @@
   {%- endif %}
 }
 </script>
-{%- endmacro website %}
+{% endcomponent website %}
 
-{#- Person Schema for author #}
-{%- macro person(config) %}
+{#- Person Schema for author -#}
+{% component person(config) %}
+{%- set same_as = [] -%}
+{%- if config.extra.github -%}
+  {%- set same_as = [...same_as, "https://github.com/" ~ config.extra.github] -%}
+{%- endif -%}
+{%- if config.extra.linkedin -%}
+  {%- set same_as = [...same_as, "https://linkedin.com/in/" ~ config.extra.linkedin] -%}
+{%- endif -%}
+{%- if config.extra.twitter -%}
+  {%- set same_as = [...same_as, "https://twitter.com/" ~ config.extra.twitter] -%}
+{%- endif -%}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -34,42 +44,32 @@
   {%- if config.extra.mail %},
   "email": {{ config.extra.mail | json_encode() | safe }}
   {%- endif %}
-  {%- set same_as = [] %}
-  {%- if config.extra.github %}
-    {%- set_global same_as = same_as | concat(with="https://github.com/" ~ config.extra.github) %}
-  {%- endif %}
-  {%- if config.extra.linkedin %}
-    {%- set_global same_as = same_as | concat(with="https://linkedin.com/in/" ~ config.extra.linkedin) %}
-  {%- endif %}
-  {%- if config.extra.twitter %}
-    {%- set_global same_as = same_as | concat(with="https://twitter.com/" ~ config.extra.twitter) %}
-  {%- endif %}
   {%- if same_as | length > 0 %},
   "sameAs": {{ same_as | json_encode() | safe }}
   {%- endif %}
 }
 </script>
-{%- endmacro person %}
+{% endcomponent person %}
 
-{#- BlogPosting Schema for blog posts #}
-{%- macro blogposting(page, config) %}
-{%- set author_name = config.extra.author | default(value="Author") %}
-{%- if page.extra.authors %}
-  {%- set author_name = page.extra.authors | first | default(value=config.extra.author) %}
-{%- endif %}
+{#- BlogPosting Schema for blog posts -#}
+{% component blogposting(page, config) %}
+{%- set author_name = (config.extra.author if config.extra.author else "Author") -%}
+{%- if page.extra.authors -%}
+  {%- set author_name = (page.extra.authors | first) or config.extra.author -%}
+{%- endif -%}
 
-{%- set image_url = "" %}
-{%- if page.extra.thumbnail %}
-  {%- set image_url = get_url(path=page.path ~ page.extra.thumbnail, trailing_slash=false) %}
-{%- elif page.extra.static_thumbnail %}
-  {%- if page.extra.static_thumbnail is matching("^http[s]?://") %}
-    {%- set image_url = page.extra.static_thumbnail %}
-  {%- else %}
-    {%- set image_url = get_url(path=page.extra.static_thumbnail, trailing_slash=false) %}
-  {%- endif %}
-{%- elif config.extra.banner %}
-  {%- set image_url = get_url(path=config.extra.banner, trailing_slash=false) %}
-{%- endif %}
+{%- set image_url = "" -%}
+{%- if page.extra.thumbnail -%}
+  {%- set image_url = get_url(path=page.path ~ page.extra.thumbnail, trailing_slash=false) -%}
+{%- elif page.extra.static_thumbnail -%}
+  {%- if page.extra.static_thumbnail is matching(pat="^http[s]?://") -%}
+    {%- set image_url = page.extra.static_thumbnail -%}
+  {%- else -%}
+    {%- set image_url = get_url(path=page.extra.static_thumbnail, trailing_slash=false) -%}
+  {%- endif -%}
+{%- elif config.extra.banner -%}
+  {%- set image_url = get_url(path=config.extra.banner, trailing_slash=false) -%}
+{%- endif -%}
 
 <script type="application/ld+json">
 {
@@ -104,7 +104,7 @@
   },
   "publisher": {
     "@type": "Person",
-    "name": {{ config.extra.author | default(value=config.title) | json_encode() | safe }},
+    "name": {{ (config.extra.author if config.extra.author else config.title) | json_encode() | safe }},
     "url": {{ config.base_url | json_encode() | safe }}
   },
   "mainEntityOfPage": {
@@ -113,4 +113,4 @@
   }
 }
 </script>
-{%- endmacro blogposting %}
+{% endcomponent blogposting %}

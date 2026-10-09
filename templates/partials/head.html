@@ -1,9 +1,9 @@
 
 {#- Theme Switcher Button to toggle between dark/light #}
-  {%- set integrity = config.extra.integrity | default(value=true) -%}
+  {%- set integrity = (config.extra.integrity if config.extra.integrity is defined else true) -%}
   {%- if config.extra.search_library %}{%- if config.extra.search_library == "offline" %}{% set integrity = false %}{% endif %}{% endif %}
 
-  {%- if config.extra.js_switcher | default(value=true) %}
+  {%- if (config.extra.js_switcher if config.extra.js_switcher is defined else true) %}
   {%- set js_theme="js/theme.min.js" %}
   {%- if config.extra.js_switcher_default %}
     {%- if config.extra.js_switcher_default == "light" %}{% set js_theme="js/theme_light.min.js" %}{% endif %}
@@ -16,12 +16,12 @@
 
 
 {#- Style Sheets #}
-  {%- set stylesheets=config.extra.stylesheets | default(value=[ "abridge.css" ]) -%}
+  {%- set stylesheets=(config.extra.stylesheets if config.extra.stylesheets is defined else [ "abridge.css" ]) -%}
   {%- if stylesheets %}{%- for i in stylesheets %}
   <link rel="stylesheet" href="{{     get_url(path=i                               , trailing_slash=false, cachebust=true) | safe }}" />
   {%- endfor %}{%- endif %}
 
-  {%- if page.extra.stylesheets %}{%- set pagestylesheets=page.extra.stylesheets -%}{%- endif %}
+  {%- if page?.extra?.stylesheets %}{%- set pagestylesheets=page?.extra?.stylesheets -%}{%- endif %}
   {%- if pagestylesheets %}{%- for i in pagestylesheets %}
   <link rel="stylesheet" href="{{     get_url(path=i                               , trailing_slash=false, cachebust=true) | safe }}" />
   {%- endfor %}{%- endif %}
@@ -94,19 +94,19 @@
 
 
 {#- Style Sheets Preload #}
-  {%- set integrity = config.extra.integrity | default(value=true) -%}
+  {%- set integrity = (config.extra.integrity if config.extra.integrity is defined else true) -%}
   {%- if config.extra.search_library %}{%- if config.extra.search_library == "offline" %}{% set integrity = false %}{% endif %}{% endif %}
 
 {#- Google Fonts preconnect for faster font loading -#}
 {%- if config.extra.fonts %}{%- for i in config.extra.fonts %}
-  {%- if i.url is matching("^http[s]?://fonts.googleapis.com") %}
+  {%- if i.url is matching(pat="^http[s]?://fonts.googleapis.com") %}
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   {%- endif %}
 {%- endfor %}{%- endif %}
 
 {%- if config.extra.fonts %}{%- for i in config.extra.fonts %}
-  {%- if i.url is matching("^http[s]?://") %}
+  {%- if i.url is matching(pat="^http[s]?://") %}
   <link rel="preload" as="style" class="preStyle" href="{{ i.url | safe }}" crossorigin="anonymous" />
   {%- else %}
   <link rel="preload" as="font" href="{{ get_url(path=i.url, trailing_slash=false) | safe }}" type="font/woff2" />
@@ -117,10 +117,10 @@
   <link rel="preload" as="style" class="preStyle" href="{{ config.extra.fontawesome | safe }}" crossorigin="anonymous" />
 {%- endif %}
 
-{%- if config.extra.math or page.extra.math %}
+{%- if config.extra.math or page?.extra?.math %}
 
-  {%- set katex_css=config.extra.katex_css | default(value="katex.min.css") -%}
-  {%- if katex_css %}{%- if katex_css is matching("^http[s]?://") %}
+  {%- set katex_css=(config.extra.katex_css if config.extra.katex_css else "katex.min.css") -%}
+  {%- if katex_css %}{%- if katex_css is matching(pat="^http[s]?://") %}
   <link rel="preload" as="style" class="preStyle" href="{{ katex_css | safe }}"{%- if integrity and config.extra.katex_css_integrity %} integrity="{{ config.extra.katex_css_integrity | safe }}"{%- endif %} crossorigin="anonymous" />
   {%- else %}
   <link rel="preload" as="style" class="preStyle" href="{{ get_url(path=katex_css, trailing_slash=false) }}"{%- if integrity %} integrity="sha384-{{ get_hash(path=katex_css, sha_type=384, base64=true) | safe }}"{%- endif %} />
@@ -137,11 +137,11 @@
   {%- if config.generate_feeds %}
   {%- for feed in config.feed_filenames %}
 
-  {%- if feed is containing('atom') %}
+  {%- if feed is containing(pat='atom') %}
   <link rel="alternate" type="application/atom+xml" title="{{ config.title }} Atom Feed" href="{{ get_url(path=feed, trailing_slash=false, lang=lang) | safe }}" />
   {%- endif %}
 
-  {%- if feed is containing('rss') %}
+  {%- if feed is containing(pat='rss') %}
   <link rel="alternate" type="application/rss+xml" title="{{ config.title }} RSS Feed" href="{{ get_url(path=feed, trailing_slash=false, lang=lang) | safe }}" />
   {%- endif %}
 

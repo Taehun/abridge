@@ -97,10 +97,12 @@ abridge/
 Templates use Zola's Tera engine with custom macros:
 
 - **base.html**: Defines site structure with blocks for header, content, footer
-- **macros/macros.html**: Reusable template functions (metadata display, navigation, etc.)
-- **macros/seo.html**: SEO-related meta tags
+- **components/components.html**: Reusable template components (metadata display, pagination, `translate`, etc.). Tera 2 components replace Tera 1 macros: define with `{% component name(args) %}...{% endcomponent name %}` and call with `{{<name arg={expr} str="text" />}}`. Components are hygienic (only explicit params are visible), so pass `page`/`config`/`i18n` explicitly.
+- **components/seo.html**, **components/jsonld.html**: SEO meta tags and JSON-LD structured data
 - **partials/**: Head, JavaScript loading, social links
-- **shortcodes/**: Content embeds (video, images, audio, katex)
+- **components/*.html** (img, image, imgswap, video, youtube, vimeo, audio, gif, katex, showdata, streamable): Content embeds, formerly shortcodes. In markdown call them as `{{<img src="/images/x.svg" alt="..." w={880} h={460} caption="<i>...</i>" />}}` (numbers/booleans/expressions in braces, strings quoted).
+- Markdown content is processed as a Tera template in Zola 0.23+: literal `{{`, `{%` or `{#` in content (Helm/Ansible/Jinja snippets) must be wrapped in `{% raw %}...{% endraw %}` (wrap the whole fenced code block).
+- Syntax highlighting (giallo, `[markdown] highlighting = {theme = "github-dark", style = "class"}`) emits numbered color-slot classes (`.z-1`..`.z-12`); their colors are mapped to the abridge palette in `sass/abridge.scss` (`@if $syntax` block). Zola writes the theme's `giallo.css` into the output dir but the site does not link it.
 
 ### SCSS Customization
 
@@ -212,10 +214,10 @@ When using Abridge as a theme (submodule):
 
 ### Adding a New Template
 
-1. Create template in `templates/` (or `templates/shortcodes/`)
-2. Use existing templates as reference for macro imports
-3. Import i18n data at top: `{%- set i18n = load_data(...) -%}`
-4. Use `{{ macros::translate(key="...", default="...", i18n=i18n) }}` for strings
+1. Create template in `templates/` (or a component in `templates/components/`)
+2. Use existing templates as reference; components are global (no imports)
+3. i18n data is loaded in `base.html`: `{%- set i18n = load_data(...) -%}` and is visible in child blocks
+4. Use `{{<translate key="..." default="..." i18n={i18n} />}}` for strings (capture into a variable with `{% set x %}...{% endset %}` when you need to filter the result)
 5. Handle `uglyurls` mode with conditional `.html` suffix
 
 ### Multi-language Support
@@ -243,7 +245,7 @@ When using Abridge as a theme (submodule):
 
 ## Dependencies
 
-- **Zola** 0.19.1 ~ 0.22.x (static site generator). 0.23+는 Tera 2 템플릿 문법으로 바뀌어 현재 템플릿(`macros::` 호출, 숏코드)과 호환되지 않으므로 0.22.1로 고정해서 사용한다.
+- **Zola** ≥ 0.23.6 (static site generator, Tera 2). 템플릿은 Tera 2 문법(components)으로 작성되어 있어 0.22 이하에서는 빌드되지 않는다.
 - **Node.js** (for build script)
   - fast-toml
   - jsonminify

@@ -10,37 +10,43 @@ Some people prefer a landing page for the index, and then use a separate paginat
   {{- super() }}
   {%- set title_addition = "" %}
 
-  {%- if page.title and config.title %}
+  {%- if page?.title and config.title %}
     {%- set title = page.title %}
     {%- set title_addition = title_separator ~ config.title %}
-  {%- elif section.title and config.title %}
+  {%- elif section?.title and config.title %}
     {%- set title = section.title %}
     {%- set title_addition = title_separator ~ config.title %}
-  {%- elif page.title %}
+  {%- elif page?.title %}
     {%- set title = page.title %}
-  {%- elif section.title %}
+  {%- elif section?.title %}
     {%- set title = section.title %}
   {%- else %}
     {%- set title = config.title %}
   {%- endif %}
 
-  {%- if page.description %}
+  {%- if page?.description %}
     {%- set description = page.description %}
-  {%- elif section.description %}
+  {%- elif section?.description %}
     {%- set description = section.description %}
   {%- else %}
     {%- set description = config.description %}
   {%- endif %}
 
-  {{- macros_seo::seo(config=config, title=title, title_addition=title_addition, description=description) }}
+  {%- if page %}
+  {{<seo config={config} title={title} title_addition={title_addition} description={description or ""} page_url={current_url} page={page} />}}
+  {%- elif section %}
+  {{<seo config={config} title={title} title_addition={title_addition} description={description or ""} page_url={current_url} page={section} />}}
+  {%- else %}
+  {{<seo config={config} title={title} title_addition={title_addition} description={description or ""} page_url={current_url} />}}
+  {%- endif %}
 {%- endblock seo %}
 
 {%- block content %}
     <div>
 
-{%- if page.content %}
+{%- if page?.content %}
 {{ page.content | safe }}
-{%- elif section.content %}
+{%- elif section?.content %}
 {{ section.content | safe }}
 {%- endif %}
     </div>

@@ -204,6 +204,7 @@ PLAY RECAP *********************************************************************
 
 - `playbook.yaml`
 
+{% raw %}
 ```yaml
 - name: Common Tasks
   hosts: all
@@ -287,13 +288,16 @@ PLAY RECAP *********************************************************************
         enabled: true
         state: started
 ```
+{% endraw %}
 
 - `vars.yml`
 
+{% raw %}
 ```yaml
 control_plane_ip: "{{ hostvars[groups['control_plane'][0]]['ansible_host'] | default(groups['control_plane'][0]) }}"
 rke2_token: "{{ hostvars[groups['control_plane'][0]]['rke2_token'] }}"
 ```
+{% endraw %}
 
 각 워커 노드의 RKE2 에이전트 설정 파일에는 컨트롤 플레인의 IP 주소와 RKE2 토큰이 필요합니다. `vars.yml`  파일을 생성하여 이를 Ansible 변수로 추가 하였습니다. 이렇게 작성한 playbook YAML 파일로 Ansible playbook을 실행하면, 관리 노드들에 RKE2 설치 및 설정이 자동화되어 쿠버네티스 클러스터가 생성 됩니다.
 
